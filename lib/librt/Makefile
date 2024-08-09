@@ -6,7 +6,7 @@
 #    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/06 12:49:52 by bgolding          #+#    #+#              #
-#    Updated: 2024/08/09 14:18:26 by bgolding         ###   ########.fr        #
+#    Updated: 2024/08/09 16:05:06 by bgolding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ INC_DIR	=	inc/
 TPL_SRC =	error vector point equal add subtract negate multiply divide \
 			magnitude normalize dot_product cross_product
 
-CLR_SRC =	#rgb_add rgb_subtract rgb_multiply rgb_blend rgb_conversion
+CLR_SRC =	rgb_conversion rgb_add rgb_subtract rgb_scale rgb_multiply \
+			rgb_blend
 
 MX_SRC	=	error init equal multiply #identity transpose submatrices \
 			determinant adjugate inversion translation scaling reflection \
