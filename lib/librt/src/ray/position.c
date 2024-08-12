@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   librt.h                                            :+:      :+:    :+:   */
+/*   position.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/12 14:22:46 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/12 16:19:41 by bgolding         ###   ########.fr       */
+/*   Created: 2024/08/12 16:03:43 by bgolding          #+#    #+#             */
+/*   Updated: 2024/08/12 16:07:09 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBRT_H
-# define LIBRT_H
+#include "ray.h"
 
-# include "tuples.h"
-# include "matrix.h"
-# include "colors.h"
-# include "math_utils.h"
-# include "ray.h"
-
-#endif
+t_point	ray_position(t_ray ray, float t)
+{
+	return (tp_add(ray.origin, tp_multiply(ray.direction, t)));
+}
