@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 11:42:14 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/12 11:46:12 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/12 14:10:17 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_m4x4	mx_inversion(t_m4x4 m)
 		{
 			inverted.data[col][row] = mx_cofactor(m, row, col) / det;
 			col++;
- 		}
+		}
 		row++;
 	}
 	return (inverted);

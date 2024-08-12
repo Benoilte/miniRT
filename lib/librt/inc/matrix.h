@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 15:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/12 11:46:30 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/12 14:05:56 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 # include "tuples.h"
 
 //	DEFINES
-# define MAX_MATRIX_SIZE (10000)
-# define MAT4X4_SIZE (4)
-# define MAT3X3_SIZE (3)
-# define MAT2X2_SIZE (2)
-# define X_AXIS (0)
-# define Y_AXIS (1)
-# define Z_AXIS (2)
+# define MAX_MATRIX_SIZE	(10000)
+# define MAT4X4_SIZE		(4)
+# define MAT3X3_SIZE		(3)
+# define MAT2X2_SIZE		(2)
+# define X_AXIS				(0)
+# define Y_AXIS				(1)
+# define Z_AXIS				(2)
 
 //	ERROR/WARNING MESSAGES
 # define MX_NULL_PTR_ERROR	"received NULL pointer: did not perform operation"
@@ -34,7 +34,7 @@
 typedef struct s_m4x4
 {
 	float	data[MAT4X4_SIZE][MAT4X4_SIZE];
-}				t_m4x4;
+}			t_m4x4;
 
 typedef struct s_m3x3
 {
@@ -46,8 +46,22 @@ typedef struct s_m2x2
 	float	data[MAT2X2_SIZE][MAT2X2_SIZE];
 }			t_m2x2;
 
+typedef struct s_shear_params
+{
+	float	xy;
+	float	xz;
+	float	yx;
+	float	yz;
+	float	zx;
+	float	zy;
+}			t_shear_params;
+
 //	PROTOTYPES
+
 void	mx_error(const char *source, const char *msg);
+
+//		OPERATIONS
+
 t_m4x4	mx_zero(void);
 void	mx_bzero(t_m4x4 *m);
 bool	mx_equal(t_m4x4 a, t_m4x4 b);
@@ -66,5 +80,21 @@ float	mx_determinant_2x2(t_m2x2 m);
 float	mx_cofactor(t_m4x4 a, int sub_row, int sub_col);
 float	mx_cofactor_3x3(t_m3x3 a, int sub_row, int sub_col);
 t_m4x4	mx_inversion(t_m4x4 m);
+
+//		TRANSFORMATIONS
+
+t_m4x4	mx_translation(float x, float y, float z);
+t_m4x4	mx_scaling(float x, float y, float z);
+t_m4x4	mx_reflection(int axis);
+t_m4x4	mx_rotation(float radians, int axis);
+t_m4x4	mx_shearing(t_shear_params shear);
+
+//		TRANSFORMATION WRAPPERS
+
+t_m4x4	mx_add_translation(t_m4x4 m, float x, float y, float z);
+t_m4x4	mx_add_scaling(t_m4x4 m, float x, float y, float z);
+t_m4x4	mx_add_reflection(t_m4x4 m, int axis);
+t_m4x4	mx_add_rotation(t_m4x4 m, float radians, int axis);
+t_m4x4	mx_add_shearing(t_m4x4 m, t_shear_params shear);
 
 #endif

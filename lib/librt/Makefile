@@ -6,7 +6,7 @@
 #    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/06 12:49:52 by bgolding          #+#    #+#              #
-#    Updated: 2024/08/12 11:51:24 by bgolding         ###   ########.fr        #
+#    Updated: 2024/08/12 14:09:20 by bgolding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,12 +23,16 @@ CLR_SRC =	rgb_conversion rgb_add rgb_subtract rgb_scale rgb_multiply \
 			rgb_blend
 
 MX_SRC	=	error init equal multiply identity transpose submatrix \
-			determinant cofactor inversion #translation scaling reflection \
-			rotation shearing unit_conversions
+			determinant cofactor inversion translation scaling reflection \
+			rotation shearing
+
+MTH_SRC	=	equalf fsquaref angle_conversions
 			
 SRCS	=	$(addprefix $(SRC_DIR)tuples/, $(addsuffix .c, $(TPL_SRC))) \
 			$(addprefix $(SRC_DIR)colors/, $(addsuffix .c, $(CLR_SRC))) \
-			$(addprefix $(SRC_DIR)matrix/, $(addsuffix .c, $(MX_SRC)))
+			$(addprefix $(SRC_DIR)matrix/, $(addsuffix .c, $(MX_SRC))) \
+			$(addprefix $(SRC_DIR)math_utils/, $(addsuffix .c, $(MTH_SRC)))
+
 OBJS	=	$(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS))
 
 CC		=	gcc

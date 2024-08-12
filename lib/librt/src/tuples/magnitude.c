@@ -6,16 +6,11 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 15:19:08 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/09 11:00:41 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/12 14:01:47 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tuples.h"
-
-static float	fsquaref(float f)
-{
-	return (f * f);
-}
 
 float	tp_magnitude(t_vector vec)
 {

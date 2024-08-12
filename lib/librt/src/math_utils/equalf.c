@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   equal.c                                            :+:      :+:    :+:   */
+/*   equalf.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/22 12:32:40 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/12 13:58:08 by bgolding         ###   ########.fr       */
+/*   Created: 2024/08/12 13:57:50 by bgolding          #+#    #+#             */
+/*   Updated: 2024/08/12 13:59:54 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tuples.h"
+#include "math_utils.h"
 
-bool	tp_equal(t_tuple a, t_tuple b)
+bool	equalf(float a, float b)
 {
-	return (equalf(a.x, b.x)
-		&& equalf(a.y, b.y)
-		&& equalf(a.z, b.z)
-		&& equalf(a.w, b.w));
+	return (fabsf(a - b) < EPSILON);
 }

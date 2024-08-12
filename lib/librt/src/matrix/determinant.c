@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 11:31:32 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/12 11:37:45 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/12 14:10:04 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 float	mx_determinant_2x2(t_m2x2 m)
 {
 	return ((m.data[0][0] * m.data[1][1]) - (m.data[0][1] * m.data[1][0]));
-} 	 
+}
 
 float	mx_determinant_3x3(t_m3x3 m)
 {

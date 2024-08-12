@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   equal.c                                            :+:      :+:    :+:   */
+/*   angle_conversions.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/22 12:32:40 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/12 13:58:08 by bgolding         ###   ########.fr       */
+/*   Created: 2024/08/12 14:02:40 by bgolding          #+#    #+#             */
+/*   Updated: 2024/08/12 14:02:54 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tuples.h"
+#include "math_utils.h"
 
-bool	tp_equal(t_tuple a, t_tuple b)
+float	deg_to_rad(float degrees)
 {
-	return (equalf(a.x, b.x)
-		&& equalf(a.y, b.y)
-		&& equalf(a.z, b.z)
-		&& equalf(a.w, b.w));
+	return (degrees / 180 * M_PI);
+}
+
+float	rad_to_deg(float radians)
+{
+	return (radians * 180 / M_PI);
 }
