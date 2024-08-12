@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 15:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/09 12:46:34 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/12 11:46:30 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,17 @@ bool	mx_equal(t_m4x4 a, t_m4x4 b);
 bool	mx_equal_3x3(t_m3x3 a, t_m3x3 b);
 bool	mx_equal_2x2(t_m2x2 a, t_m2x2 b);
 t_m4x4	mx_mult(t_m4x4 a, t_m4x4 b);
+t_tuple	mx_mult_tuple(t_m4x4 a, t_tuple tuple);
+t_m4x4	mx_identity(void);
+void	mx_set_to_identity(t_m4x4 *m);
+t_m4x4	mx_transpose(t_m4x4 m);
+t_m3x3	mx_submatrix(t_m4x4 m4, int row, int col);
+t_m2x2	mx_submatrix_3x3(t_m3x3 m3, int row, int col);
+float	mx_determinant(t_m4x4 m);
+float	mx_determinant_3x3(t_m3x3 m);
+float	mx_determinant_2x2(t_m2x2 m);
+float	mx_cofactor(t_m4x4 a, int sub_row, int sub_col);
+float	mx_cofactor_3x3(t_m3x3 a, int sub_row, int sub_col);
+t_m4x4	mx_inversion(t_m4x4 m);
 
 #endif
