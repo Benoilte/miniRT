@@ -6,7 +6,7 @@
 #    By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/06 12:49:52 by bgolding          #+#    #+#              #
-#    Updated: 2024/08/16 17:48:48 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/08/16 17:57:19 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,9 @@ MTH_SRC	=	equalf fsquaref angle_conversions
 
 RAY_SRC	=	ray position
 
-INTER_SRC = 
+INTER_SRC = test
 
-LST_SRC =	
+LST_SRC =	test
 			
 SRCS	=	$(addprefix $(SRC_DIR)tuples/, $(addsuffix .c, $(TPL_SRC))) \
 			$(addprefix $(SRC_DIR)colors/, $(addsuffix .c, $(CLR_SRC))) \
