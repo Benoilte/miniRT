@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
+#    By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/06 12:49:52 by bgolding          #+#    #+#              #
-#    Updated: 2024/08/12 16:20:31 by bgolding         ###   ########.fr        #
+#    Updated: 2024/08/16 17:48:48 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,12 +29,18 @@ MX_SRC	=	error init equal multiply identity transpose submatrix \
 MTH_SRC	=	equalf fsquaref angle_conversions
 
 RAY_SRC	=	ray position
+
+INTER_SRC = 
+
+LST_SRC =	
 			
 SRCS	=	$(addprefix $(SRC_DIR)tuples/, $(addsuffix .c, $(TPL_SRC))) \
 			$(addprefix $(SRC_DIR)colors/, $(addsuffix .c, $(CLR_SRC))) \
 			$(addprefix $(SRC_DIR)matrix/, $(addsuffix .c, $(MX_SRC))) \
 			$(addprefix $(SRC_DIR)math_utils/, $(addsuffix .c, $(MTH_SRC))) \
-			$(addprefix $(SRC_DIR)ray/, $(addsuffix .c, $(RAY_SRC)))
+			$(addprefix $(SRC_DIR)ray/, $(addsuffix .c, $(RAY_SRC))) \
+			$(addprefix $(SRC_DIR)intersection/, $(addsuffix .c, $(INTER_SRC))) \
+			$(addprefix $(SRC_DIR)ft_dbl_lst/, $(addsuffix .c, $(LST_SRC)))
 
 OBJS	=	$(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS))
 
