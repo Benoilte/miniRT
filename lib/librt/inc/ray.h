@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   librt.h                                            :+:      :+:    :+:   */
+/*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/12 14:22:46 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/12 16:19:41 by bgolding         ###   ########.fr       */
+/*   Created: 2024/08/12 16:00:33 by bgolding          #+#    #+#             */
+/*   Updated: 2024/08/12 16:07:34 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBRT_H
-# define LIBRT_H
+#ifndef RAY_H
+# define RAY_H
+
+//	INCLUDES
 
 # include "tuples.h"
-# include "matrix.h"
-# include "colors.h"
-# include "math_utils.h"
-# include "ray.h"
+
+//	TYPEDEFS
+
+typedef struct s_ray
+{
+	t_point		origin;
+	t_vector	direction;
+}	t_ray;
+
+//	PROTOTYPES
+
+t_ray	ray(t_point	origin, t_vector direction);
+t_point	ray_position(t_ray ray, float t);
 
 #endif

@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   librt.h                                            :+:      :+:    :+:   */
+/*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/12 14:22:46 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/12 16:19:41 by bgolding         ###   ########.fr       */
+/*   Created: 2024/08/12 16:01:04 by bgolding          #+#    #+#             */
+/*   Updated: 2024/08/12 16:15:14 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBRT_H
-# define LIBRT_H
+#include "ray.h"
 
-# include "tuples.h"
-# include "matrix.h"
-# include "colors.h"
-# include "math_utils.h"
-# include "ray.h"
-
-#endif
+t_ray	ray(t_point	origin, t_vector direction)
+{
+	return ((t_ray){origin, direction});
+}
