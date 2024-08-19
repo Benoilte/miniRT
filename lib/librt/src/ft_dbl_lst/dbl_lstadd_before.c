@@ -12,16 +12,16 @@
 
 #include "ft_dbl_lst.h"
 
-void	dbl_lstadd_before(t_dbl_lst **lst, t_dbl_lst *new, t_dbl_lst *el)
+void	dbl_lstadd_before(t_dbl_lst **dlst, t_dbl_lst *new, t_dbl_lst *el)
 {
-	if (!*lst)
+	if (!*dlst)
 	{
-		*lst = new;
+		*dlst = new;
 		return ;
 	}
 	if (!el->prev)
 	{
-		dbl_lstadd_front(lst, new);
+		dbl_lstadd_front(dlst, new);
 		return ;
 	}
 	el->prev->next = new;

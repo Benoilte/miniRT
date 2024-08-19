@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   dbl_lstlast.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:06:16 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/19 13:17:17 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/08/19 19:34:47 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_dbl_lst.h"
 
-t_dbl_lst	*dbl_lstlast(t_dbl_lst *lst)
+t_dbl_lst	*dbl_lstlast(t_dbl_lst *dlst)
 {
 	t_dbl_lst	*tmp;
 
-	if (!lst)
+	if (!dlst)
 		return ((void *)0);
-	tmp = lst;
+	tmp = dlst;
 	while (tmp->next)
 		tmp = tmp->next;
 	return (tmp);

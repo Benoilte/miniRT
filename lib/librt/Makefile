@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+         #
+#    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/06 12:49:52 by bgolding          #+#    #+#              #
-#    Updated: 2024/08/19 18:03:21 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/08/19 19:41:09 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,12 +30,12 @@ MTH_SRC	=	equalf fsquaref angle_conversions
 
 RAY_SRC	=	ray position
 
-INTER_SRC = new_intersection add_intersection hit_intersection clear_intersection
+INTER_SRC = new_intersection hit_intersection clear_intersection
 
 LST_SRC =	dbl_lstnew dbl_lstiter dbl_lstclear dbl_lstdelone dbl_lstadd_back \
 			dbl_lstadd_front dbl_lstadd_ordered dbl_lstadd_before \
 			dbl_lstadd_after dbl_lstlast dbl_lstsize dbl_lstgetone
-			
+
 SRCS	=	$(addprefix $(SRC_DIR)tuples/, $(addsuffix .c, $(TPL_SRC))) \
 			$(addprefix $(SRC_DIR)colors/, $(addsuffix .c, $(CLR_SRC))) \
 			$(addprefix $(SRC_DIR)matrix/, $(addsuffix .c, $(MX_SRC))) \
