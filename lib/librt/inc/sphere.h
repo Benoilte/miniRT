@@ -6,13 +6,14 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 16:17:26 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/19 14:05:55 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/19 15:33:12 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SPHERE_H
 # define SPHERE_H
 
+# include "shape.h"
 # include "tuples.h"
 # include "ray.h"
 
@@ -32,6 +33,7 @@ typedef struct s_sphere
 	float			sq_radius;
 }					t_sphere;
 
-void	set_default_sphere(t_shape *self);
+void					set_default_sphere(t_shape *self);
+const t_shape_vtable	*get_sphere_vtable(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:54:15 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/19 14:01:22 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/19 15:34:18 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,12 @@ void	destroy_shape(void *self)
 
 int	set_shape_vtable(t_shape *new, t_shape_type type)
 {
-	static const t_shape_vtable	sphere_vtable = {\
-		set_default_sphere, destroy_shape};
-
 	if (!new)
 		return (shape_error("set_shape_vtable", SH_INVALID_POINTER), 1);
 	if (invalid_shape_type(type))
 		return (shape_error("set_shape_vtable", SH_INVALID_TYPE), 2);
 	if (type == SPHERE)
-		new->f = &sphere_vtable;
+		new->f = get_sphere_vtable();
 	return (0);
 }
 

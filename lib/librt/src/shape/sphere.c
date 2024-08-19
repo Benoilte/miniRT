@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:31:00 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/19 14:05:07 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/19 15:32:43 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,12 @@ void	set_default_sphere(t_shape *self)
 	self->sphere.radius = SPHERE_DEFAULT_RADIUS;
 	self->sphere.sq_radius = fsquaref(SPHERE_DEFAULT_RADIUS);
 	self->transform = mx_identity();
+}
+
+const t_shape_vtable	*get_sphere_vtable(void)
+{
+	static const t_shape_vtable	sphere_vtable = {\
+		set_default_sphere, destroy_shape};
+
+	return (&sphere_vtable);
 }
