@@ -6,7 +6,7 @@
 #    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/06 12:49:52 by bgolding          #+#    #+#              #
-#    Updated: 2024/08/16 17:06:35 by bgolding         ###   ########.fr        #
+#    Updated: 2024/08/19 13:56:42 by bgolding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ MATH_SRC	=	equalf fsquaref angle_conversions
 
 RAY_SRC		=	ray position
 
-SHAPE_SRC	=	error shape
+SHAPE_SRC	=	error shape sphere
 			
 SRCS	=	$(addprefix $(SRC_DIR)tuples/, $(addsuffix .c, $(TUPLE_SRC))) \
 			$(addprefix $(SRC_DIR)colors/, $(addsuffix .c, $(COLOR_SRC))) \

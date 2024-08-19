@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:54:15 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/16 17:33:45 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/19 14:01:22 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,29 @@ bool	invalid_shape_type(t_shape_type type)
 	return (false);
 }
 
-void	destroy_shape(t_shape *self)
+void	destroy_shape(void *self)
 {
+	t_shape	*shape;
+
+	if (!self)
+		return (shape_error("destroy_shape", SH_INVALID_POINTER));
+	shape = (t_shape *)self;
+	free(shape);
 	return ;
+}
+
+int	set_shape_vtable(t_shape *new, t_shape_type type)
+{
+	static const t_shape_vtable	sphere_vtable = {\
+		set_default_sphere, destroy_shape};
+
+	if (!new)
+		return (shape_error("set_shape_vtable", SH_INVALID_POINTER), 1);
+	if (invalid_shape_type(type))
+		return (shape_error("set_shape_vtable", SH_INVALID_TYPE), 2);
+	if (type == SPHERE)
+		new->f = &sphere_vtable;
+	return (0);
 }
 
 t_shape	*create_new_shape(t_shape_type type)
@@ -29,14 +49,17 @@ t_shape	*create_new_shape(t_shape_type type)
 	t_shape	*new;
 
 	if (invalid_shape_type(type))
-		return (shape_error("create_new_shape", SH_INVALID_ERROR), NULL);
+		return (shape_error("create_new_shape", SH_INVALID_TYPE), NULL);
 	new = malloc(sizeof(t_shape));
 	if (!new)
 		return (perror("create_new_shape"), NULL);
-	else
+	new->type = type;
+	if (set_shape_vtable(new, type) != 0)
 	{
-		new->type = type;
-		new->f = 
+		shape_error("create_new_shape", SH_VTABLE_ERROR);
+		free(new);
+		return (NULL);
 	}
+	new->f->set_default_shape(new);
 	return (new);
 }

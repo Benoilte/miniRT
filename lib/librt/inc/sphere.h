@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 16:17:26 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/16 16:24:52 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/19 14:05:55 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,22 @@
 # include "tuples.h"
 # include "ray.h"
 
-typedef struct s_sphere_vtable
-{
-	bool	(*intersect)(t_ray *r, t_sphere *self);
-	//		...
-}	t_sphere_vtable;
+# define SPHERE_DEFAULT_X (0)
+# define SPHERE_DEFAULT_Y (0)
+# define SPHERE_DEFAULT_Z (0)
+# define SPHERE_DEFAULT_RED (0)
+# define SPHERE_DEFAULT_GREEN (0)
+# define SPHERE_DEFAULT_BLUE (0)
+# define SPHERE_DEFAULT_RADIUS (1)
+
+typedef struct s_shape	t_shape;
 
 typedef struct s_sphere
 {
-	t_point			center;
 	float			radius;
 	float			sq_radius;
-	t_sphere_vtable	*f;
 }					t_sphere;
+
+void	set_default_sphere(t_shape *self);
 
 #endif
