@@ -3,18 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
+#    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/06 12:49:52 by bgolding          #+#    #+#              #
-#    Updated: 2024/08/19 13:56:42 by bgolding         ###   ########.fr        #
+#    Updated: 2024/08/19 23:31:03 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	librt.a
+NAME		=	librt.a
 
-SRC_DIR	=	src/
-OBJ_DIR	=	obj/
-INC_DIR	=	inc/
+SRC_DIR		=	src/
+OBJ_DIR		=	obj/
+INC_DIR		=	inc/
 
 TUPLE_SRC	=	error vector point equal add subtract negate multiply divide \
 				magnitude normalize dot_product cross_product
@@ -30,26 +30,35 @@ MATH_SRC	=	equalf fsquaref angle_conversions
 
 RAY_SRC		=	ray position
 
+INTER_SRC 	= new_intersection hit_intersection clear_intersection
+
+DBL_LST_SRC	=	dbl_lstnew dbl_lstiter dbl_lstclear dbl_lstdelone \
+				dbl_lstadd_back dbl_lstadd_front dbl_lstadd_ordered \
+				dbl_lstadd_before dbl_lstadd_after dbl_lstlast \
+				dbl_lstsize dbl_lstgetone
+
 SHAPE_SRC	=	error shape sphere
-			
-SRCS	=	$(addprefix $(SRC_DIR)tuples/, $(addsuffix .c, $(TUPLE_SRC))) \
-			$(addprefix $(SRC_DIR)colors/, $(addsuffix .c, $(COLOR_SRC))) \
-			$(addprefix $(SRC_DIR)matrix/, $(addsuffix .c, $(MATRIX_SRC))) \
-			$(addprefix $(SRC_DIR)math_utils/, $(addsuffix .c, $(MATH_SRC))) \
-			$(addprefix $(SRC_DIR)ray/, $(addsuffix .c, $(RAY_SRC))) \
-			$(addprefix $(SRC_DIR)shape/, $(addsuffix .c, $(SHAPE_SRC)))
 
-OBJS	=	$(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS))
+SRCS		=	$(addprefix $(SRC_DIR)tuples/, $(addsuffix .c, $(TUPLE_SRC))) \
+				$(addprefix $(SRC_DIR)colors/, $(addsuffix .c, $(COLOR_SRC))) \
+				$(addprefix $(SRC_DIR)matrix/, $(addsuffix .c, $(MATRIX_SRC))) \
+				$(addprefix $(SRC_DIR)math_utils/, $(addsuffix .c, $(MATH_SRC))) \
+				$(addprefix $(SRC_DIR)ray/, $(addsuffix .c, $(RAY_SRC))) \
+				$(addprefix $(SRC_DIR)intersection/, $(addsuffix .c, $(INTER_SRC))) \
+				$(addprefix $(SRC_DIR)ft_dbl_lst/, $(addsuffix .c, $(DBL_LST_SRC))) \
+				$(addprefix $(SRC_DIR)shape/, $(addsuffix .c, $(SHAPE_SRC)))
 
-CC		=	gcc
-CFLAGS	=	-Wall -Wextra -Werror
-RM		=	rm -f
-AR		=	ar -rc
+OBJS		=	$(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS))
 
-DEFAULT			=	\033[0m
-RED				=	\033[0;91m
-GREEN			=	\033[0;92m
-YELLOW			=	\033[0;93m
+CC			=	gcc
+CFLAGS		=	-Wall -Wextra -Werror
+RM			=	rm -f
+AR			=	ar -rc
+
+DEFAULT		=	\033[0m
+RED			=	\033[0;91m
+GREEN		=	\033[0;92m
+YELLOW		=	\033[0;93m
 
 all:		$(NAME)
 

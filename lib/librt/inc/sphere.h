@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 16:17:26 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/19 15:33:12 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/19 23:36:51 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ typedef struct s_sphere
 }					t_sphere;
 
 void					set_default_sphere(t_shape *self);
-const t_shape_vtable	*get_sphere_vtable(void);
+// const t_shape_vtable	*get_sphere_vtable(void);
 
 #endif

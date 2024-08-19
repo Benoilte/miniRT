@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   librt.h                                            :+:      :+:    :+:   */
+/*   dbl_lstgetone.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/12 14:22:46 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/19 11:44:04 by bebrandt         ###   ########.fr       */
+/*   Created: 2024/08/19 17:56:12 by bebrandt          #+#    #+#             */
+/*   Updated: 2024/08/19 19:45:31 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBRT_H
-# define LIBRT_H
+#include "ft_dbl_lst.h"
 
-# include "tuples.h"
-# include "matrix.h"
-# include "colors.h"
-# include "math_utils.h"
-# include "ray.h"
-# include "ft_dbl_lst.h"
-# include "intersection.h"
+t_dbl_lst	*dbl_lstgetone(t_dbl_lst **dlst, bool (*f)(t_dbl_lst *))
+{
+	t_dbl_lst	*tmp;
 
-#endif
+	if (!dlst || !f)
+		return (NULL);
+	tmp = *dlst;
+	while (tmp)
+	{
+		if (f(tmp))
+			return (tmp);
+		tmp = tmp->next;
+	}
+	return (NULL);
+}

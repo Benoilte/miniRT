@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shape.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:54:18 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/19 15:33:24 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/19 23:37:04 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ typedef struct s_shape
 void	shape_error(const char *source, const char *msg);
 bool	invalid_shape_type(t_shape_type type);
 void	destroy_shape(void *self);
+const 	t_shape_vtable	*get_sphere_vtable(void);
 
 #endif

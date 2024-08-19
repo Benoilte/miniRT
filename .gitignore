@@ -1,0 +1,12 @@
+# executable file
+
+*.a
+*.o
+
+# test_file
+
+bebrandt_test/*
+
+# unwanted file 
+
+.vscode/

@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   librt.h                                            :+:      :+:    :+:   */
+/*   dbl_lstnew.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/12 14:22:46 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/19 11:44:04 by bebrandt         ###   ########.fr       */
+/*   Created: 2024/08/19 10:39:00 by bebrandt          #+#    #+#             */
+/*   Updated: 2024/08/19 13:05:11 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBRT_H
-# define LIBRT_H
+#include "ft_dbl_lst.h"
 
-# include "tuples.h"
-# include "matrix.h"
-# include "colors.h"
-# include "math_utils.h"
-# include "ray.h"
-# include "ft_dbl_lst.h"
-# include "intersection.h"
+t_dbl_lst	*dbl_lstnew(void *content)
+{
+	t_dbl_lst	*new;
 
-#endif
+	new = (t_dbl_lst *)malloc(sizeof(t_dbl_lst));
+	if (!new)
+	{
+		perror("dbl_lst_new allocation memory");
+		return (NULL);
+	}
+	new->content = content;
+	new->next = NULL;
+	new->prev = NULL;
+	return (new);
+}

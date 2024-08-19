@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   librt.h                                            :+:      :+:    :+:   */
+/*   dbl_lstadd_front.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/12 14:22:46 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/19 11:44:04 by bebrandt         ###   ########.fr       */
+/*   Created: 2024/08/19 13:05:52 by bebrandt          #+#    #+#             */
+/*   Updated: 2024/08/19 19:33:47 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBRT_H
-# define LIBRT_H
+#include "ft_dbl_lst.h"
 
-# include "tuples.h"
-# include "matrix.h"
-# include "colors.h"
-# include "math_utils.h"
-# include "ray.h"
-# include "ft_dbl_lst.h"
-# include "intersection.h"
-
-#endif
+void	dbl_lstadd_front(t_dbl_lst **dlst, t_dbl_lst *new)
+{
+	if (!dlst || !new)
+		return ;
+	if ((*dlst))
+		(*dlst)->prev = new;
+	new->next = *dlst;
+	*dlst = new;
+}
