@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   new_intersection.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 11:35:44 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/19 11:45:57 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/08/19 23:52:18 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "intersection.h"
 
-t_intersection	set_intersection(void *shape, float t)
+t_intersection	set_intersection(t_shape *shape, float t)
 {
 	return ((t_intersection){shape, t});
 }
 
-t_intersection	*new_intersection(void *shape, float t)
+t_intersection	*new_intersection(t_shape *shape, float t)
 {
 	t_intersection	*new;
 
