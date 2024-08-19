@@ -7,3 +7,6 @@
 
 bebrandt_test/*
 
+# unwanted file 
+
+.vscode/

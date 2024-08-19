@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   librt.h                                            :+:      :+:    :+:   */
+/*   dbl_lstiter.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/12 14:22:46 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/19 11:44:04 by bebrandt         ###   ########.fr       */
+/*   Created: 2024/08/19 11:58:33 by bebrandt          #+#    #+#             */
+/*   Updated: 2024/08/19 12:00:09 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBRT_H
-# define LIBRT_H
+#include "ft_dbl_lst.h"
 
-# include "tuples.h"
-# include "matrix.h"
-# include "colors.h"
-# include "math_utils.h"
-# include "ray.h"
-# include "ft_dbl_lst.h"
-# include "intersection.h"
+void	dbl_lstiter(t_dbl_lst *lst, void (*f)(void *))
+{
+	t_dbl_lst	*tmp;
 
-#endif
+	if (!f)
+		return ;
+	tmp = lst;
+	while (tmp)
+	{
+		f(tmp->content);
+		tmp = tmp->next;
+	}
+}

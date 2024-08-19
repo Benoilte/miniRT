@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   librt.h                                            :+:      :+:    :+:   */
+/*   new_intersection.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/12 14:22:46 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/19 11:44:04 by bebrandt         ###   ########.fr       */
+/*   Created: 2024/08/19 11:35:44 by bebrandt          #+#    #+#             */
+/*   Updated: 2024/08/19 11:45:57 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBRT_H
-# define LIBRT_H
-
-# include "tuples.h"
-# include "matrix.h"
-# include "colors.h"
-# include "math_utils.h"
-# include "ray.h"
-# include "ft_dbl_lst.h"
 # include "intersection.h"
 
-#endif
+t_intersection	set_intersection(void *shape, float t)
+{
+	return ((t_intersection){shape, t});
+}
+
+t_intersection	*new_intersection(void *shape, float t)
+{
+	t_intersection	*new;
+
+	new = (t_intersection *)malloc(sizeof(t_intersection));
+	if (!new)
+	{
+		perror("new_intersection allocation memory");
+		return (NULL);
+	}
+	*new = set_intersection(shape, t);
+	return (new);
+}
