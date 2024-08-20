@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   math_utils.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 13:58:21 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/12 14:05:21 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/20 11:18:50 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 
 //	DEFINES
 
-# define EPSILON	(0.00001)
+# define EPSILON	0.00001
 # ifndef M_PI
-#  define M_PI		(3.14159265358979323846f)
+#  define M_PI		3.14159265358979323846f
 # endif
 
 //	PROTOTYPES

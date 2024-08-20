@@ -6,13 +6,15 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:05:56 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/19 19:48:05 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/08/20 11:09:28 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_dbl_lst.h"
 
-void	dbl_lstadd_ordered(t_dbl_lst **dlst, t_dbl_lst *new, bool (*f)(t_dbl_lst *, t_dbl_lst *))
+void	dbl_lstadd_ordered(t_dbl_lst **dlst, \
+							t_dbl_lst *new, \
+							bool (*f)(t_dbl_lst *, t_dbl_lst *))
 {
 	t_dbl_lst	*tmp;
 	t_dbl_lst	*prev;

@@ -6,11 +6,11 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 11:35:44 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/19 23:52:18 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/08/20 11:04:47 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "intersection.h"
+#include "intersection.h"
 
 t_intersection	set_intersection(t_shape *shape, float t)
 {

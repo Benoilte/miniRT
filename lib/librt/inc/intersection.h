@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 16:01:08 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/19 23:51:54 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/08/20 11:11:09 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 //	INCLUDES
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdbool.h>
-#include "shape.h"
-#include "ft_dbl_lst.h"
-#include "math_utils.h"
+# include <stdlib.h>
+# include <stdio.h>
+# include <stdbool.h>
+# include "shape.h"
+# include "ft_dbl_lst.h"
+# include "math_utils.h"
 
 //	TYPEDEFS
 

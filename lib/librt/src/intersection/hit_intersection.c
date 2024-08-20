@@ -6,11 +6,11 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 17:48:01 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/19 19:49:32 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/08/20 11:06:38 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "intersection.h"
+#include "intersection.h"
 
 bool	is_hit_positive(t_dbl_lst *intersection)
 {
@@ -25,7 +25,8 @@ bool	add_new_before_lst(t_dbl_lst *new, t_dbl_lst *lst)
 
 	new_i = ((t_intersection *)new->content)->t;
 	cur_i = ((t_intersection *)lst->content)->t;
-	if ((t_intersection *)lst->prev)
+	if (lst->prev)
 		prev_i = ((t_intersection *)lst->prev->content)->t;
-	return (((new_i < cur_i) || equalf(new_i, cur_i)) && ((lst->prev == NULL) || new_i > prev_i));
+	return (((new_i < cur_i) || equalf(new_i, cur_i))
+		&& ((lst->prev == NULL) || new_i > prev_i));
 }
