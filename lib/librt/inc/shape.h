@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shape.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:54:18 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/20 11:20:23 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/08/20 15:59:40 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_shape_vtable
 {
 	void	(*set_default_shape)(t_shape *self);
 	void	(*destroy)(void *self);
+	bool	(*intersect)(t_ray *ray, t_shape *shape, t_intersect_report *report);
 }			t_shape_vtable;
 
 typedef struct s_shape

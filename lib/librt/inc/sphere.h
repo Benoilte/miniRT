@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 16:17:26 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/19 23:36:51 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/08/20 15:58:14 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "shape.h"
 # include "tuples.h"
 # include "ray.h"
+# include "intersection.h"
 
 # define SPHERE_DEFAULT_X (0)
 # define SPHERE_DEFAULT_Y (0)
@@ -34,6 +35,7 @@ typedef struct s_sphere
 }					t_sphere;
 
 void					set_default_sphere(t_shape *self);
-// const t_shape_vtable	*get_sphere_vtable(void);
+const t_shape_vtable	*get_sphere_vtable(void);
+bool					intersect_sphere(t_ray *r, t_shape *shape, t_intersect_report *report);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 16:01:08 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/20 11:11:09 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/08/20 15:51:53 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 # include "ft_dbl_lst.h"
 # include "math_utils.h"
 
+//	DEFINES
+
+# define INTERSECT_REPORT_SIZE (2)
+
 //	TYPEDEFS
 
 typedef struct s_intersection
@@ -29,6 +33,12 @@ typedef struct s_intersection
 	t_shape	*shape;
 	float	t;
 }	t_intersection;
+
+typedef struct s_intersect_report
+{
+	size_t			count;
+	t_intersection	t[INTERSECT_REPORT_SIZE];
+}					t_intersect_report;
 
 // PROTOTYPES
 
