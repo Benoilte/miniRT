@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 12:51:20 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/20 15:59:28 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/21 10:43:52 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ bool	intersect_sphere(t_ray *ray, t_shape *shape, t_intersect_report *report)
 	if (d < 0)
 		return (false);
 	d = sqrtf(d);
-	report->t[0] = set_intersection(shape, (-b - d) / (2 * a));
-	report->t[1] = set_intersection(shape, (-b + d) / (2 * a));
-    report->count = 2;
+	report->t[0] = (-b - d) / (2 * a);
+	report->t[1] = (-b + d) / (2 * a);
+	report->count = 2;
 	return (true);
 }

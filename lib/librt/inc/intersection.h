@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 16:01:08 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/20 15:51:53 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/21 11:23:31 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,12 @@
 
 //	DEFINES
 
-# define INTERSECT_REPORT_SIZE (2)
+# define REPORT_BUFFER_SIZE (2)
 
 //	TYPEDEFS
+
+typedef t_dbl_lst	t_intersect_list;
+typedef struct s_shape t_shape;
 
 typedef struct s_intersection
 {
@@ -36,9 +39,9 @@ typedef struct s_intersection
 
 typedef struct s_intersect_report
 {
-	size_t			count;
-	t_intersection	t[INTERSECT_REPORT_SIZE];
-}					t_intersect_report;
+	size_t	count;
+	float	t[REPORT_BUFFER_SIZE];
+}			t_intersect_report;
 
 // PROTOTYPES
 
