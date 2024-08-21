@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 16:17:26 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/20 15:58:14 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/21 16:11:49 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@
 # define SPHERE_DEFAULT_X (0)
 # define SPHERE_DEFAULT_Y (0)
 # define SPHERE_DEFAULT_Z (0)
-# define SPHERE_DEFAULT_RED (0)
-# define SPHERE_DEFAULT_GREEN (0)
-# define SPHERE_DEFAULT_BLUE (0)
+# define SPHERE_DEFAULT_COLOR (0xFFFFFF)
 # define SPHERE_DEFAULT_RADIUS (1)
 
 typedef struct s_shape	t_shape;
