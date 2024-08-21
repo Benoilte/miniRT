@@ -6,11 +6,11 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 12:51:20 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/21 10:43:52 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/21 16:47:30 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sphere.h"
+#include "shape.h"
 
 bool	intersect_sphere(t_ray *ray, t_shape *shape, t_intersect_report *report)
 {
