@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   dbl_lstnew.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 10:39:00 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/19 13:05:11 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/08/22 09:32:13 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_dbl_lst.h"
+#include "dlist.h"
 
 t_dbl_lst	*dbl_lstnew(void *content)
 {

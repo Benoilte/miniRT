@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 16:01:08 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/21 11:23:31 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/22 11:01:03 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,10 @@
 
 //	INCLUDES
 
+# include "minirt.h"
 # include <stdlib.h>
 # include <stdio.h>
 # include <stdbool.h>
-# include "shape.h"
-# include "ft_dbl_lst.h"
-# include "math_utils.h"
 
 //	DEFINES
 

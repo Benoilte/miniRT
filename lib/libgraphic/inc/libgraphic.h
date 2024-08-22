@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray.h                                              :+:      :+:    :+:   */
+/*   libgraphic.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/12 16:00:33 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/12 16:07:34 by bgolding         ###   ########.fr       */
+/*   Created: 2024/08/22 09:06:27 by bebrandt          #+#    #+#             */
+/*   Updated: 2024/08/22 09:07:07 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RAY_H
-# define RAY_H
+#ifndef LIBGRAPHIC_H
+# define LIBGRAPHIC_H
 
-//	INCLUDES
-
+# include "colors.h"
+# include "math_utils.h"
+# include "matrix.h"
 # include "tuples.h"
-
-//	TYPEDEFS
-
-typedef struct s_ray
-{
-	t_point		origin;
-	t_vector	direction;
-}	t_ray;
-
-//	PROTOTYPES
-
-t_ray	ray(t_point	origin, t_vector direction);
-t_point	ray_position(t_ray ray, float t);
 
 #endif

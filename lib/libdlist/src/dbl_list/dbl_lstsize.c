@@ -6,11 +6,11 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:06:21 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/19 19:34:59 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/08/22 09:32:17 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_dbl_lst.h"
+#include "dlist.h"
 
 int	dbl_lstsize(t_dbl_lst *dlst)
 {

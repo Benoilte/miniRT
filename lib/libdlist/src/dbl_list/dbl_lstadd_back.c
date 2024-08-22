@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dbl_lstgetone.c                                    :+:      :+:    :+:   */
+/*   dbl_lstadd_back.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/19 17:56:12 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/19 19:45:31 by bebrandt         ###   ########.fr       */
+/*   Created: 2024/08/19 13:04:26 by bebrandt          #+#    #+#             */
+/*   Updated: 2024/08/22 09:31:36 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_dbl_lst.h"
+#include "dlist.h"
 
-t_dbl_lst	*dbl_lstgetone(t_dbl_lst **dlst, bool (*f)(t_dbl_lst *))
+void	dbl_lstadd_back(t_dbl_lst **dlst, t_dbl_lst *new)
 {
-	t_dbl_lst	*tmp;
+	t_dbl_lst	*last;
 
-	if (!dlst || !f)
-		return (NULL);
-	tmp = *dlst;
-	while (tmp)
+	if (!dlst || !new)
+		return ;
+	if (!*dlst)
+		*dlst = new;
+	else
 	{
-		if (f(tmp))
-			return (tmp);
-		tmp = tmp->next;
+		last = dbl_lstlast(*dlst);
+		last->next = new;
+		new->prev = last;
 	}
-	return (NULL);
 }

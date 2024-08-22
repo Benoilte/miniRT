@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_dbl_lst.h"
+#include "dlist.h"
 
 void	dbl_lstadd_before(t_dbl_lst **dlst, t_dbl_lst *new, t_dbl_lst *el)
 {

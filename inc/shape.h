@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shape.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:54:18 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/21 16:46:34 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/22 11:00:51 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,7 @@
 
 //	INCLUDES
 
-# include "tuples.h"
-# include "matrix.h"
-# include "ray.h"
-# include "colors.h"
-# include "intersection.h"
+# include "minirt.h"
 # include <stdbool.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -89,6 +85,7 @@ void					destroy_shape(void *self);
 //	PROTOTYPES SPHERE
 void					set_default_sphere(t_shape *self);
 const t_shape_vtable	*get_sphere_vtable(void);
+t_shape					*create_new_shape(t_shape_type type);
 bool					intersect_sphere(t_ray *r, t_shape *shape, t_intersect_report *report);
 
 #endif

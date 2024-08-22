@@ -6,47 +6,22 @@
 #    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/06 12:49:52 by bgolding          #+#    #+#              #
-#    Updated: 2024/08/19 23:31:03 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/08/22 09:24:57 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	librt.a
+NAME		=	libdlist.a
 
 SRC_DIR		=	src/
 OBJ_DIR		=	obj/
 INC_DIR		=	inc/
-
-TUPLE_SRC	=	error vector point equal add subtract negate multiply divide \
-				magnitude normalize dot_product cross_product
-
-COLOR_SRC 	=	rgb_conversion rgb_add rgb_subtract rgb_scale rgb_multiply \
-				rgb_blend
-
-MATRIX_SRC	=	error init equal multiply identity transpose submatrix \
-				determinant cofactor inversion translation scaling reflection \
-				rotation shearing
-
-MATH_SRC	=	equalf fsquaref angle_conversions
-
-RAY_SRC		=	ray position
-
-INTER_SRC 	= new_intersection hit_intersection clear_intersection
 
 DBL_LST_SRC	=	dbl_lstnew dbl_lstiter dbl_lstclear dbl_lstdelone \
 				dbl_lstadd_back dbl_lstadd_front dbl_lstadd_ordered \
 				dbl_lstadd_before dbl_lstadd_after dbl_lstlast \
 				dbl_lstsize dbl_lstgetone
 
-SHAPE_SRC	=	error shape sphere
-
-SRCS		=	$(addprefix $(SRC_DIR)tuples/, $(addsuffix .c, $(TUPLE_SRC))) \
-				$(addprefix $(SRC_DIR)colors/, $(addsuffix .c, $(COLOR_SRC))) \
-				$(addprefix $(SRC_DIR)matrix/, $(addsuffix .c, $(MATRIX_SRC))) \
-				$(addprefix $(SRC_DIR)math_utils/, $(addsuffix .c, $(MATH_SRC))) \
-				$(addprefix $(SRC_DIR)ray/, $(addsuffix .c, $(RAY_SRC))) \
-				$(addprefix $(SRC_DIR)intersection/, $(addsuffix .c, $(INTER_SRC))) \
-				$(addprefix $(SRC_DIR)ft_dbl_lst/, $(addsuffix .c, $(DBL_LST_SRC))) \
-				$(addprefix $(SRC_DIR)shape/, $(addsuffix .c, $(SHAPE_SRC)))
+SRCS		=	$(addprefix $(SRC_DIR)dbl_list/, $(addsuffix .c, $(DBL_LST_SRC)))
 
 OBJS		=	$(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS))
 

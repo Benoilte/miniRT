@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dbl_lstadd_back.c                                  :+:      :+:    :+:   */
+/*   dbl_lstiter.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/19 13:04:26 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/19 19:33:07 by bebrandt         ###   ########.fr       */
+/*   Created: 2024/08/19 11:58:33 by bebrandt          #+#    #+#             */
+/*   Updated: 2024/08/22 09:32:02 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_dbl_lst.h"
+#include "dlist.h"
 
-void	dbl_lstadd_back(t_dbl_lst **dlst, t_dbl_lst *new)
+void	dbl_lstiter(t_dbl_lst *dlst, void (*f)(void *))
 {
-	t_dbl_lst	*last;
+	t_dbl_lst	*tmp;
 
-	if (!dlst || !new)
+	if (!f)
 		return ;
-	if (!*dlst)
-		*dlst = new;
-	else
+	tmp = dlst;
+	while (tmp)
 	{
-		last = dbl_lstlast(*dlst);
-		last->next = new;
-		new->prev = last;
+		f(tmp->content);
+		tmp = tmp->next;
 	}
 }

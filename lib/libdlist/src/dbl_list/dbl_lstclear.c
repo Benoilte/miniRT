@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dbl_lstiter.c                                      :+:      :+:    :+:   */
+/*   dbl_lstclear.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/19 11:58:33 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/19 19:34:37 by bebrandt         ###   ########.fr       */
+/*   Created: 2024/08/19 12:04:09 by bebrandt          #+#    #+#             */
+/*   Updated: 2024/08/22 09:31:51 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_dbl_lst.h"
+#include "dlist.h"
 
-void	dbl_lstiter(t_dbl_lst *dlst, void (*f)(void *))
+void	dbl_lstclear(t_dbl_lst **dlst, void (*del)(void *))
 {
-	t_dbl_lst	*tmp;
+	t_dbl_lst	*to_del;
+	t_dbl_lst	*next;
 
-	if (!f)
-		return ;
-	tmp = dlst;
-	while (tmp)
+	to_del = *dlst;
+	*dlst = NULL;
+	while (to_del != NULL)
 	{
-		f(tmp->content);
-		tmp = tmp->next;
+		next = to_del->next;
+		dbl_lstdelone(to_del, del);
+		to_del = next;
 	}
 }

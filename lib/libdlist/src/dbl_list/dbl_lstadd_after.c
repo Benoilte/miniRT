@@ -6,11 +6,11 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 17:24:12 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/19 19:32:49 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/08/22 09:31:26 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_dbl_lst.h"
+#include "dlist.h"
 
 void	dbl_lstadd_after(t_dbl_lst **dlst, t_dbl_lst *new, t_dbl_lst *el)
 {
