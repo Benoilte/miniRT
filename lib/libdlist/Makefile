@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
+#    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/06 12:49:52 by bgolding          #+#    #+#              #
-#    Updated: 2024/08/22 09:24:57 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/08/23 16:15:47 by bgolding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,25 +34,29 @@ DEFAULT		=	\033[0m
 RED			=	\033[0;91m
 GREEN		=	\033[0;92m
 YELLOW		=	\033[0;93m
+CLEAR_LINE	=	\033[2K
+
+TOTAL_FILES		=	$(words $(SRCS))
+COMPILED_COUNT	=	0
 
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
 			@$(AR) $@ $(OBJS)
-			@echo "$(GREEN)\t$(NAME) compiled$(DEFAULT)"
+			@printf "$(CLEAR_LINE)"
+			@echo "\r$(GREEN)$(NAME) compiled$(DEFAULT)"
 
 $(OBJ_DIR)%.o:	$(SRC_DIR)%.c
 				@mkdir -p $(dir $@)
-				@printf "$(YELLOW).$(DEFAULT)"
+				@$(eval COMPILED_COUNT=$(shell echo $$(($(COMPILED_COUNT) + 1))))
+				@printf "\r$(YELLOW)[$(COMPILED_COUNT)/$(TOTAL_FILES)] Compiling $(NAME) files$(DEF_COLOR)"
 				@$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
 
 clean:
 			@$(RM) -rf $(OBJ_DIR)
-			@echo "$(RED)##### Removed librt object files #####$(DEFAULT)"
 
 fclean:		clean
 			@$(RM) $(NAME)
-			@echo "$(RED)##### Removed librt archive file #####$(DEFAULT)"
 
 re:			fclean all
 
