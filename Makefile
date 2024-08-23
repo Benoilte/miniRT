@@ -6,7 +6,7 @@
 #    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/08/23 16:25:41 by bgolding         ###   ########.fr        #
+#    Updated: 2024/08/23 19:00:27 by bgolding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,24 +22,27 @@ MINILIBX_DIR	=	$(LIB)mlx/
 LIBGRAPHIC_DIR	=	$(LIB)libgraphic/
 LIBDLIST		=	$(LIB)libdlist/
 
+MAIN_FILES		=	main
+ERROR_FILES		=	error
+DATA_FILES		=	init_data destroy_data
+WINDOW_FILES	=	init_mlx
+HOOKS_FILES		=	hooks keypress mouse
+RENDERING_FILES	=	render draw_utils
+INTERSECT_FILES	=	clear_intersection hit_intersection new_intersection
+RAY_FILES		=	ray position
+SHAPE_FILES		=	shape error sphere sphere_intersect
 
-TEMPLATE_FILES	=	main error init_data init_mlx destroy_data \
-					hooks keypress mouse draw_utils render
-
-PROJECT_FILES	=	
-
-SRC_FILES		=	$(TEMPLATE_FILES) $(PROJECT_FILES)
 
 # OS specific settings
 UNAME_S			=	$(shell uname -s)
 ifeq ($(UNAME_S), Linux)
 	MINILIBX_DIR	:=	$(addsuffix Linux/, $(MINILIBX_DIR))
 	OS_FLAGS		:=	-lXext -lX11 -lm
-	TEMPLATE_FILES	+=	destroy_mlx_linux close_linux
+	WINDOW_FILES	+=	destroy_mlx_linux close_linux
 else ifeq ($(UNAME_S), Darwin)
 	MINILIBX_DIR	:=	$(addsuffix MacOS/, $(MINILIBX_DIR))
 	OS_FLAGS		:=	-framework OpenGL -framework AppKit
-	TEMPLATE_FILES	+=	destroy_mlx_macos close_macos
+	WINDOW_FILES	+=	destroy_mlx_macos close_macos
 else
 	$(error OS not supported)
 	exit 1
@@ -56,10 +59,21 @@ INC_PATHS		=	$(addprefix -I, $(INC_DIR) \
 									$(LIBGRAPHIC_DIR)inc \
 									$(LIBDLIST)inc)
 
+SRC_FILES		=	$(addprefix main/, $(MAIN_FILES)) \
+					$(addprefix error/, $(ERROR_FILES)) \
+					$(addprefix data/, $(DATA_FILES)) \
+					$(addprefix window/, $(WINDOW_FILES)) \
+					$(addprefix hooks/, $(HOOKS_FILES)) \
+					$(addprefix rendering/, $(RENDERING_FILES)) \
+					$(addprefix intersection/, $(INTERSECT_FILES)) \
+					$(addprefix ray/, $(RAY_FILES)) \
+					$(addprefix shape/, $(SHAPE_FILES))
+					
+
 SRCS			=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJS			=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
-LIB_LINK		=	-L$(LIBFT_DIR) -lft -L$(MINILIBX_DIR) -lmlx -L$(LIBGRAPHIC_DIR) -lrt -L$(LIBDLIST) -ldlist $(OS_FLAGS)
+LIB_LINK		=	-L$(LIBFT_DIR) -lft -L$(MINILIBX_DIR) -lmlx -L$(LIBGRAPHIC_DIR) -lgraphic -L$(LIBDLIST) -ldlist $(OS_FLAGS)
 
 CC				=	gcc
 CFLAGS			=	-Wall -Wextra -Werror
@@ -88,18 +102,16 @@ $(STATIC_LIBS):
 				@make -C $(LIBDLIST)
 				@echo "$(GREEN)All static libraries compiled$(DEF_COLOR)"
 
-$(NAME):		$(OBJ_DIR) $(OBJS) $(STATIC_LIBS)
+$(NAME):		$(OBJS) $(STATIC_LIBS)
 				@$(CC) $(CFLAGS) $(OBJS) $(LIB_LINK) -o $@
 				@printf "$(CLEAR_LINE)"
 				@echo "\r$(GREEN)Successfully created executable: $(NAME) $(DEF_COLOR)"
 
-$(OBJ_DIR)%.o:	$(SRC_DIR)%.c | $(OBJ_DIR)
+$(OBJ_DIR)%.o:	$(SRC_DIR)%.c
+				@mkdir -p $(dir $@)
 				@$(eval COMPILED_COUNT=$(shell echo $$(($(COMPILED_COUNT) + 1))))
 				@printf "\r$(YELLOW)[$(COMPILED_COUNT)/$(TOTAL_FILES)] Compiling $(NAME) files$(DEF_COLOR)"
 				@$(CC) $(CFLAGS) $(INC_PATHS) -c $< -o $@
-
-$(OBJ_DIR):
-				@mkdir -p $@
 
 clean:			
 				@$(RM) -rf $(OBJ_DIR)
