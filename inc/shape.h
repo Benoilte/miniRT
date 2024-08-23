@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shape.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:54:18 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/22 11:00:51 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/08/23 16:48:31 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@
 
 //	TYPEDEFS - forward declarations
 
-typedef struct s_intersect_report t_intersect_report;
-typedef struct s_ray	t_ray;
+typedef struct s_intersect_report	t_intersect_report;
+typedef struct s_ray				t_ray;
+typedef struct s_shape				t_shape;
 
 //	TYPEDEFS - SHPERE
 
@@ -48,8 +49,6 @@ typedef struct s_sphere
 }					t_sphere;
 
 //	TYPEDEFS - SHAPES
-
-typedef struct s_shape	t_shape;
 
 typedef enum e_shape_type
 {

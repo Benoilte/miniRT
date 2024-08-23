@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 16:01:08 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/22 11:01:03 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/08/23 16:44:33 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 
 //	TYPEDEFS
 
-typedef t_dbl_lst	t_intersect_list;
-typedef struct s_shape t_shape;
+typedef t_dbl_lst		t_intersect_list;
+typedef struct s_shape	t_shape;
 
 typedef struct s_intersection
 {
