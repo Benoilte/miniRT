@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:53:19 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/23 16:29:11 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/27 14:56:07 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,8 @@ t_data	*init_data(void)
 	data->mlx = init_mlx();
 	if (!data->mlx)
 		exit_error(data, "Failed to initialize mlx data");
+	data->world = init_world();
+	if (!data->world)
+		exit_error(data, "Failed to initialize world");
 	return (data);
 }

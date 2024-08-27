@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:54:18 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/23 16:48:31 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/27 13:36:10 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct s_shape
 		t_sphere			sphere;
 	};
 	t_m4x4					transform;
+	t_m4x4					inverse;
 	const t_shape_vtable	*f;
 }							t_shape;
 
@@ -80,6 +81,7 @@ typedef struct s_shape
 void					shape_error(const char *source, const char *msg);
 bool					invalid_shape_type(t_shape_type type);
 void					destroy_shape(void *self);
+void					update_inverse(t_shape *shape);
 
 //	PROTOTYPES SPHERE
 void					set_default_sphere(t_shape *self);

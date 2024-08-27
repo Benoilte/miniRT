@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/27 14:12:23 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/08/27 16:18:12 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@
 # include <errno.h>
 # include <stdio.h>
 
-// DEFINES
+//	DEFINES
 # define WINDOW_NAME "miniRT"
 
-// OS specifics
+//	OS specifics
 # ifdef __APPLE__
 #  include "macos_keycodes.h"
 #  define WIN_WIDTH (1800)
@@ -47,7 +47,12 @@
 #  define WIN_MID_Y (800)
 # endif
 
-// TYPEDEFS
+//	TYPEDEFS - forward declarations
+
+typedef enum e_shape_type t_shape_type;
+
+// 	TYPEDEFS
+
 typedef struct s_mlx
 {
 	void	*xvar;
@@ -59,9 +64,17 @@ typedef struct s_mlx
 	int		endian;
 }			t_mlx;
 
+typedef t_list	t_shape_list;
+
+typedef struct s_world
+{
+	t_shape_list	*shapes;
+}					t_world;
+
 typedef struct s_data
 {
 	t_mlx	*mlx;
+	t_world	*world;
 }			t_data;
 
 //	PROTOTYPES
@@ -70,14 +83,20 @@ typedef struct s_data
 
 void	exit_error(t_data *data, char *message);
 
-	//	INIT/DESTROY
+	//	DATA
 
 t_data	*init_data(void);
-t_mlx	*init_mlx(void);
-void	reset_image(t_data *data);
+t_world	*init_world(void);
 void	destroy_data(t_data *data);
+void	destroy_world(t_world *world);
+int		add_new_shape_to_world(t_world *world, t_shape_type type);
+
+	//	WINDOW (MLX)
+
+t_mlx	*init_mlx(void);
 void	destroy_mlx(t_mlx *mlx);
-int		close_editor(t_data *data);
+int		close_minirt(t_data *data);
+void	reset_image(t_data *data);
 
 	//	HOOKS
 

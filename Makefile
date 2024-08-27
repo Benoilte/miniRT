@@ -6,7 +6,7 @@
 #    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/08/27 14:07:48 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/08/27 16:17:31 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ LIBDLIST		=	$(LIB)libdlist/
 
 MAIN_FILES		=	main
 ERROR_FILES		=	error
-DATA_FILES		=	init_data destroy_data
+DATA_FILES		=	init_data destroy_data init_world destroy_world
 WINDOW_FILES	=	init_mlx
 HOOKS_FILES		=	hooks keypress mouse
 RENDERING_FILES	=	render draw_utils
