@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tuples.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 12:53:08 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/12 14:00:52 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/28 00:18:47 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ float		tp_magnitude(t_vector vec);
 t_vector	tp_normalize(t_vector t);
 float		tp_dot_product(t_vector a, t_vector b);
 t_vector	tp_cross_product(t_vector a, t_vector b);
+t_vector	tp_reflect(t_vector in, t_vector normal);
 
 #endif

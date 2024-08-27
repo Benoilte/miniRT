@@ -6,7 +6,7 @@
 #    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/06 12:49:52 by bgolding          #+#    #+#              #
-#    Updated: 2024/08/27 16:02:25 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/08/28 00:19:32 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ OBJ_DIR		=	obj/
 INC_DIR		=	inc/
 
 TUPLE_SRC	=	error vector point equal add subtract negate multiply divide \
-				magnitude normalize dot_product cross_product
+				magnitude normalize dot_product cross_product reflect
 
 COLOR_SRC 	=	rgb_new rgb_equal rgb_destroy rgb_conversion rgb_add \
 				rgb_subtract rgb_scale rgb_multiply rgb_blend error
