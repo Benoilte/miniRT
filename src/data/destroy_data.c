@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 12:05:55 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/23 16:29:11 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/27 15:11:12 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	destroy_data(t_data *data)
 {
 	if (!data)
 		return ;
-	if (data->mlx)
-		destroy_mlx(data->mlx);
+	destroy_mlx(data->mlx);
+	destroy_world(data->world);
 	free(data);
 }

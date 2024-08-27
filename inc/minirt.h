@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/23 16:28:32 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/27 15:12:06 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,20 @@ typedef struct s_mlx
 	int		endian;
 }			t_mlx;
 
+typedef t_list	t_shape_list;
+
+typedef struct s_world
+{
+	//	CAMERA
+	t_shape_list	*shapes;
+	//	AMBIENT LIGHT
+	//	SPOT LIGHTS
+}					t_world;
+
 typedef struct s_data
 {
 	t_mlx	*mlx;
+	t_world	*world;
 }			t_data;
 
 //	PROTOTYPES
@@ -73,10 +84,12 @@ void	exit_error(t_data *data, char *message);
 
 t_data	*init_data(void);
 t_mlx	*init_mlx(void);
-void	reset_image(t_data *data);
+t_world	*init_world(void);
 void	destroy_data(t_data *data);
 void	destroy_mlx(t_mlx *mlx);
+void	destroy_world(t_world *world);
 int		close_editor(t_data *data);
+void	reset_image(t_data *data);
 
 	//	HOOKS
 
