@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:31:00 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/27 10:33:38 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/27 16:38:30 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	set_default_sphere(t_shape *self)
 {
 	self->center = point(SPHERE_DEFAULT_X, SPHERE_DEFAULT_Y, SPHERE_DEFAULT_Z);
-	self->color = rgb_itos(SPHERE_DEFAULT_COLOR);
 	self->sphere.radius = SPHERE_DEFAULT_RADIUS;
 	self->sphere.sq_radius = fsquaref(SPHERE_DEFAULT_RADIUS);
 	self->transform = mx_identity();

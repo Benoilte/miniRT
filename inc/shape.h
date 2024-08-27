@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shape.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:54:18 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/27 13:36:10 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/27 16:46:16 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@
 # define SH_INVALID_TYPE "invalid shape type"
 # define SH_INVALID_POINTER "invalid (null) shape pointer"
 # define SH_VTABLE_ERROR "could not set shape vtable"
+# define SH_DEFAULT_COLOR (0xFFFFFF)
+
+# define MATERIAL_INVALID_POINTER "invalid (null) material pointer"
 
 # define SPHERE_DEFAULT_X (0)
 # define SPHERE_DEFAULT_Y (0)
 # define SPHERE_DEFAULT_Z (0)
-# define SPHERE_DEFAULT_COLOR (0xFFFFFF)
 # define SPHERE_DEFAULT_RADIUS (1)
 
 //	TYPEDEFS - forward declarations
@@ -39,6 +41,17 @@
 typedef struct s_intersect_report	t_intersect_report;
 typedef struct s_ray				t_ray;
 typedef struct s_shape				t_shape;
+
+// TYPEDEFS - MATERIAL
+
+typedef struct s_material
+{
+	t_color	color;
+	float	ambient;
+	float	diffuse;
+	float	specular;
+	float	shininess;
+}	t_material;
 
 //	TYPEDEFS - SHPERE
 
@@ -66,7 +79,7 @@ typedef struct s_shape_vtable
 typedef struct s_shape
 {
 	t_shape_type			type;
-	t_color					color;
+	t_material				material;
 	t_point					center;
 	union
 	{
@@ -78,15 +91,16 @@ typedef struct s_shape
 }							t_shape;
 
 //	PROTOTYPES SHAPE
+t_shape					*create_new_shape(t_shape_type type);
 void					shape_error(const char *source, const char *msg);
 bool					invalid_shape_type(t_shape_type type);
 void					destroy_shape(void *self);
 void					update_inverse(t_shape *shape);
+void					set_default_material(t_material *m);
 
 //	PROTOTYPES SPHERE
 void					set_default_sphere(t_shape *self);
 const t_shape_vtable	*get_sphere_vtable(void);
-t_shape					*create_new_shape(t_shape_type type);
 bool					intersect_sphere(t_ray *r, t_shape *shape, t_intersect_report *report);
 
 #endif
