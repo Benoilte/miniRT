@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/27 16:18:12 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/08/27 17:27:20 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ typedef struct s_data
 	//	ERROR HANDLING
 
 void	exit_error(t_data *data, char *message);
+void	print_error(const char *source, const char *msg);
 
 	//	DATA
 

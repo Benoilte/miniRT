@@ -1,38 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   light.h                                            :+:      :+:    :+:   */
+/*   destroy_light.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 12:34:41 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/27 17:30:33 by bebrandt         ###   ########.fr       */
+/*   Created: 2024/08/27 17:28:00 by bebrandt          #+#    #+#             */
+/*   Updated: 2024/08/27 17:29:44 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIGHT_H
-# define LIGHT_H
+#include "light.h"
 
-//	INCLUDES
-
-# include "minirt.h"
-
-// DEFINES
-
-# define LIGHT_INVALID_POINTER "invalid (null) light pointer"
-
-// TYPEDEFS
-
-typedef struct s_light
+void	destroy_light(t_light *light)
 {
-	t_point	position;
-	t_color	intensity;
-}	t_light;
-
-// PROTOTYPES
-
-t_light	*new_light(t_point position, t_color intensity);
-t_light	set_light(t_point position, t_color intensity);
-void	destroy_light(t_light *light);
-
-#endif
+	if (!light)
+		print_error("destroy_light", LIGHT_INVALID_POINTER);
+	free(light);
+}

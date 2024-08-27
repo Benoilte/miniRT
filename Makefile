@@ -6,7 +6,7 @@
 #    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/08/27 16:50:30 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/08/27 17:34:15 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ RENDERING_FILES	=	render draw_utils
 INTERSECT_FILES	=	clear_intersection hit_intersection new_intersection
 RAY_FILES		=	ray position
 SHAPE_FILES		=	shape error material sphere sphere_intersect
-LIGHT_FILES		=	new_light lighting
+LIGHT_FILES		=	new_light destroy_light lighting
 
 
 # OS specific settings
