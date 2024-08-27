@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/27 15:42:07 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/27 15:50:16 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int		add_new_shape_to_world(t_world *world, t_shape_type type);
 	
 t_mlx	*init_mlx(void);
 void	destroy_mlx(t_mlx *mlx);
-int		close_editor(t_data *data);
+int		close_minirt(t_data *data);
 void	reset_image(t_data *data);
 
 	//	HOOKS

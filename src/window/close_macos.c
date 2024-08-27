@@ -6,15 +6,15 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 18:26:38 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/23 16:29:11 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/27 15:50:27 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	close_editor(t_data *data)
+int	close_minirt(t_data *data)
 {
-	printf("Closing miniRT_editor...\n");
+	printf("Closing miniRT ...\n");
 	destroy_data(data);
 	exit(EXIT_SUCCESS);
 }
