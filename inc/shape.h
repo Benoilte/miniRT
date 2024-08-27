@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:54:18 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/27 16:46:16 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/08/27 23:48:24 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ bool					invalid_shape_type(t_shape_type type);
 void					destroy_shape(void *self);
 void					update_inverse(t_shape *shape);
 void					set_default_material(t_material *m);
+t_vector				get_normal(t_shape *shape, t_point world_point);
 
 //	PROTOTYPES SPHERE
 void					set_default_sphere(t_shape *self);
