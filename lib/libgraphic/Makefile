@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
+#    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/06 12:49:52 by bgolding          #+#    #+#              #
-#    Updated: 2024/08/23 15:38:09 by bgolding         ###   ########.fr        #
+#    Updated: 2024/08/27 16:02:25 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,8 @@ INC_DIR		=	inc/
 TUPLE_SRC	=	error vector point equal add subtract negate multiply divide \
 				magnitude normalize dot_product cross_product
 
-COLOR_SRC 	=	rgb_conversion rgb_add rgb_subtract rgb_scale rgb_multiply \
-				rgb_blend
+COLOR_SRC 	=	rgb_new rgb_equal rgb_destroy rgb_conversion rgb_add \
+				rgb_subtract rgb_scale rgb_multiply rgb_blend error
 
 MATRIX_SRC	=	error init equal multiply identity transpose submatrix \
 				determinant cofactor inversion translation scaling reflection \
