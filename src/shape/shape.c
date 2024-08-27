@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:54:15 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/19 15:34:18 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/27 13:37:56 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,11 @@ t_shape	*create_new_shape(t_shape_type type)
 	}
 	new->f->set_default_shape(new);
 	return (new);
+}
+
+void	update_inverse(t_shape *shape)
+{
+	if (!shape)
+		return (shape_error("update_inverse", SH_INVALID_POINTER));
+	shape->inverse = mx_inversion(shape->transform);
 }
