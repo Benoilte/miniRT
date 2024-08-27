@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
+#    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/08/23 19:00:27 by bgolding         ###   ########.fr        #
+#    Updated: 2024/08/27 14:07:48 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ RENDERING_FILES	=	render draw_utils
 INTERSECT_FILES	=	clear_intersection hit_intersection new_intersection
 RAY_FILES		=	ray position
 SHAPE_FILES		=	shape error sphere sphere_intersect
+LIGHT_FILES		=	new_light lighting
 
 
 # OS specific settings
@@ -67,8 +68,9 @@ SRC_FILES		=	$(addprefix main/, $(MAIN_FILES)) \
 					$(addprefix rendering/, $(RENDERING_FILES)) \
 					$(addprefix intersection/, $(INTERSECT_FILES)) \
 					$(addprefix ray/, $(RAY_FILES)) \
-					$(addprefix shape/, $(SHAPE_FILES))
-					
+					$(addprefix shape/, $(SHAPE_FILES)) \
+					$(addprefix light/, $(LIGHT_FILES))
+
 
 SRCS			=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJS			=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -113,7 +115,7 @@ $(OBJ_DIR)%.o:	$(SRC_DIR)%.c
 				@printf "\r$(YELLOW)[$(COMPILED_COUNT)/$(TOTAL_FILES)] Compiling $(NAME) files$(DEF_COLOR)"
 				@$(CC) $(CFLAGS) $(INC_PATHS) -c $< -o $@
 
-clean:			
+clean:
 				@$(RM) -rf $(OBJ_DIR)
 				@make clean -C $(LIBFT_DIR)
 				@make clean -C $(LIBGRAPHIC_DIR)
