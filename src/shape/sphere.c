@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:31:00 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/27 16:38:30 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/08/28 21:43:26 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	set_default_sphere(t_shape *self)
 const t_shape_vtable	*get_sphere_vtable(void)
 {
 	static const t_shape_vtable	sphere_vtable = {\
-		set_default_sphere, destroy_shape, intersect_sphere};
+		set_default_sphere, destroy_shape, intersect_sphere, normal_sphere};
 
 	return (&sphere_vtable);
 }

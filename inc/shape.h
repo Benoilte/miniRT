@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:54:18 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/27 23:48:24 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/08/28 21:47:29 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,10 @@ typedef enum e_shape_type
 
 typedef struct s_shape_vtable
 {
-	void	(*set_default_shape)(t_shape *self);
-	void	(*destroy)(void *self);
-	bool	(*intersect)(t_ray *ray, t_shape *shape, t_intersect_report *report);
+	void		(*set_default_shape)(t_shape *self);
+	void		(*destroy)(void *self);
+	bool		(*intersect)(t_ray *ray, t_shape *shape, t_intersect_report *report);
+	t_vector	(*normal)(t_shape *shape, t_point *object_point);
 }			t_shape_vtable;
 
 typedef struct s_shape
@@ -103,5 +104,6 @@ t_vector				get_normal(t_shape *shape, t_point world_point);
 void					set_default_sphere(t_shape *self);
 const t_shape_vtable	*get_sphere_vtable(void);
 bool					intersect_sphere(t_ray *r, t_shape *shape, t_intersect_report *report);
+t_vector				normal_sphere(t_shape *shape, t_point *object_point);
 
 #endif

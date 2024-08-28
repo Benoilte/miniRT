@@ -6,7 +6,7 @@
 #    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/08/27 19:14:44 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/08/28 21:50:33 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ HOOKS_FILES		=	hooks keypress mouse
 RENDERING_FILES	=	render draw_utils
 INTERSECT_FILES	=	clear_intersection hit_intersection new_intersection
 RAY_FILES		=	ray position
-SHAPE_FILES		=	shape error material sphere sphere_intersect normal
+SHAPE_FILES		=	shape error material sphere sphere_intersect sphere_normal normal
 LIGHT_FILES		=	new_light destroy_light lighting
 
 
