@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 13:26:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/30 14:13:49 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/30 15:36:40 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,26 +40,22 @@ t_camera	camera(size_t hsize, size_t vsize, float fov)
 	camera.vsize = vsize;
 	camera.field_of_view = fov;
 	camera.transform = mx_identity();
-	camera.transform_inverse = mx_inversion(camera.transform);
+	camera.transform_inverse = mx_identity();
 	calibrate_camera(&camera);
 	return (camera);
 }
 
-t_ray	ray_for_pixel(t_camera camera, size_t px, size_t py)
+t_ray	ray_for_pixel(t_camera c, size_t px, size_t py)
 {
-	float	offset_x;
-	float	offset_y;
-	float	world_x;
-	float	world_y;
+	t_point	world;
 	t_point	pixel;
 	t_ray	ray;
 
-	offset_x = (px + 0.5f) * camera.pixel_size;
-	offset_y = (py + 0.5f) * camera.pixel_size;
-	world_x = camera.half_width - offset_x;
-	world_y = camera.half_height - offset_y;
-	pixel = mx_mult_tuple(camera.transform_inverse, point(world_x, world_y, -1));
-	ray.origin = mx_mult_tuple(camera.transform_inverse, point(0, 0, 0));
+	world = point(\
+		c.half_width - ((px + 0.5f) * c.pixel_size), \
+		c.half_height - ((py + 0.5f) * c.pixel_size), -1);
+	pixel = mx_mult_tuple(c.transform_inverse, world);
+	ray.origin = mx_mult_tuple(c.transform_inverse, point(0, 0, 0));
 	ray.direction = tp_normalize(tp_subtract(pixel, ray.origin));
 	return (ray);
 }
