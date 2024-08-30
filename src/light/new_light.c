@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_light.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:52:39 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/27 14:03:16 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/08/30 16:43:04 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_light	set_light(t_point position, t_color intensity)
 t_light	*new_light(t_point position, t_color intensity)
 {
 	t_light	*new;
+
 	new = (t_light *)malloc(sizeof(t_light));
 	if (!new)
 	{

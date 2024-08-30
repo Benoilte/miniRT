@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lighting.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 13:41:06 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/30 15:41:05 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/08/30 17:37:33 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static t_color	compute_diffuse(t_intersect_details *details, t_color effective, 
 
 	light_dot_normal = tp_dot_product(lightv, details->normalv);
 	if (light_dot_normal < 0)
-		return rgb_set(0, 0, 0);
-	else 
+		return (rgb_set(0, 0, 0));
+	else
 		return (rgb_scale(effective, details->shape->material.diffuse * light_dot_normal));
 }
 

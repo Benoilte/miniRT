@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tuples.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 12:53:08 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/28 00:18:47 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/08/30 16:49:57 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include "math_utils.h"
 
 //	DEFINES
-# define VECTOR 	(0.0)
-# define POINT		(1.0)
+# define VECTOR 	0.0
+# define POINT		1.0
 
 //	ERROR/WARNING MESSAGES
 # define TP_ADD_ERROR	"resulting .w value is > 1"

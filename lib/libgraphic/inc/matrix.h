@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 15:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/12 14:05:56 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/30 16:49:44 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 # include "tuples.h"
 
 //	DEFINES
-# define MAX_MATRIX_SIZE	(10000)
-# define MAT4X4_SIZE		(4)
-# define MAT3X3_SIZE		(3)
-# define MAT2X2_SIZE		(2)
-# define X_AXIS				(0)
-# define Y_AXIS				(1)
-# define Z_AXIS				(2)
+# define MAX_MATRIX_SIZE	10000
+# define MAT4X4_SIZE		4
+# define MAT3X3_SIZE		3
+# define MAT2X2_SIZE		2
+# define X_AXIS				0
+# define Y_AXIS				1
+# define Z_AXIS				2
 
 //	ERROR/WARNING MESSAGES
 # define MX_NULL_PTR_ERROR	"received NULL pointer: did not perform operation"

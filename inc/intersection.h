@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 16:01:08 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/30 15:45:57 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/08/30 17:36:40 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@
 
 //	DEFINES
 
-# define REPORT_BUFFER_SIZE (2)
+# define REPORT_BUFFER_SIZE 2
 
 //	TYPEDEFS - forward declarations
 
-typedef struct s_ray				t_ray;
+typedef struct s_ray	t_ray;
 
 //	TYPEDEFS
 

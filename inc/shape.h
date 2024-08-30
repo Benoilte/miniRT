@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shape.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:54:18 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/28 21:47:29 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/08/30 17:22:14 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@
 # define SH_INVALID_TYPE "invalid shape type"
 # define SH_INVALID_POINTER "invalid (null) shape pointer"
 # define SH_VTABLE_ERROR "could not set shape vtable"
-# define SH_DEFAULT_COLOR (0xFFFFFF)
+# define SH_DEFAULT_COLOR 0xFFFFFF
 
 # define MATERIAL_INVALID_POINTER "invalid (null) material pointer"
 
-# define SPHERE_DEFAULT_X (0)
-# define SPHERE_DEFAULT_Y (0)
-# define SPHERE_DEFAULT_Z (0)
-# define SPHERE_DEFAULT_RADIUS (1)
+# define SPHERE_DEFAULT_X 0
+# define SPHERE_DEFAULT_Y 0
+# define SPHERE_DEFAULT_Z 0
+# define SPHERE_DEFAULT_RADIUS 1
 
 //	TYPEDEFS - forward declarations
 
@@ -69,12 +69,17 @@ typedef enum e_shape_type
 	SHAPE_COUNT
 }	t_shape_type;
 
+typedef void						(*t_vset_default)(t_shape *self);
+typedef void						(*t_vdestroy)(void *self);
+typedef bool						(*t_vintersect)(t_ray *ray, t_shape *shape, t_intersect_report *report);
+typedef t_vector					(*t_vnormal)(t_shape *shape, t_point *object_point);
+
 typedef struct s_shape_vtable
 {
-	void		(*set_default_shape)(t_shape *self);
-	void		(*destroy)(void *self);
-	bool		(*intersect)(t_ray *ray, t_shape *shape, t_intersect_report *report);
-	t_vector	(*normal)(t_shape *shape, t_point *object_point);
+	t_vset_default	set_default_shape;
+	t_vdestroy		destroy;
+	t_vintersect	intersect;
+	t_vnormal		normal;
 }			t_shape_vtable;
 
 typedef struct s_shape

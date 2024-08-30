@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/27 17:27:20 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/08/30 17:35:57 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +32,26 @@
 //	OS specifics
 # ifdef __APPLE__
 #  include "macos_keycodes.h"
-#  define WIN_WIDTH (1800)
-#  define WIN_HEIGHT (1200)
-#  define WIN_MID_X (800)
-#  define WIN_MID_Y (600)
-#  define LINUX (0)
-# elif defined __linux__
+#  define WIN_WIDTH 1800
+#  define WIN_HEIGHT 1200
+#  define WIN_MID_X 800
+#  define WIN_MID_Y 600
+#  define LINUX 0
+# endif
+
+# ifdef __linux__
 #  include "linux_keycodes.h"
 #  include <X11/X.h>
-#  define LINUX (1)
-#  define WIN_WIDTH (2400)
-#  define WIN_HEIGHT (1600)
-#  define WIN_MID_X (1200)
-#  define WIN_MID_Y (800)
+#  define LINUX 1
+#  define WIN_WIDTH 2400
+#  define WIN_HEIGHT 1600
+#  define WIN_MID_X 1200
+#  define WIN_MID_Y 800
 # endif
 
 //	TYPEDEFS - forward declarations
 
-typedef enum e_shape_type t_shape_type;
+typedef enum e_shape_type	t_shape_type;
 
 // 	TYPEDEFS
 
@@ -64,7 +66,7 @@ typedef struct s_mlx
 	int		endian;
 }			t_mlx;
 
-typedef t_list	t_shape_list;
+typedef t_list				t_shape_list;
 
 typedef struct s_world
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:34:41 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/30 14:46:50 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/08/30 16:42:57 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_light
 {
 	t_point	position;
 	t_color	intensity;
-}	t_light;
+}			t_light;
 
 // PROTOTYPES
 
