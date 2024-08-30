@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
+#    By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/08/28 21:50:33 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/08/30 11:50:57 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ DATA_FILES		=	init_data destroy_data init_world destroy_world
 WINDOW_FILES	=	init_mlx
 HOOKS_FILES		=	hooks keypress mouse
 RENDERING_FILES	=	render draw_utils
-INTERSECT_FILES	=	clear_intersection hit_intersection new_intersection
+INTERSECT_FILES	=	clear_intersection hit_intersection new_intersection details_intersection
 RAY_FILES		=	ray position
 SHAPE_FILES		=	shape error material sphere sphere_intersect sphere_normal normal
 LIGHT_FILES		=	new_light destroy_light lighting
