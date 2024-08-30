@@ -6,21 +6,15 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:30:29 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/30 12:00:50 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/08/30 15:45:31 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "intersection.h"
 
-/*
-​ 	point  ← position(ray, hit.t)
-​ 	normal ← normal_at(hit.object, point)
-​ 	eye    ← -ray.direction
-*/
-
-t_intersection_details	set_details_intersection(t_intersection *hit, t_ray ray)
+t_intersect_details	set_intersect_details(t_intersection *hit, t_ray ray)
 {
-	t_intersection_details	new;
+	t_intersect_details	new;
 
 	new.shape = hit->shape;
 	new.t = hit->t;
