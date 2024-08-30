@@ -6,7 +6,7 @@
 #    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/08/27 14:56:55 by bgolding         ###   ########.fr        #
+#    Updated: 2024/08/30 11:47:47 by bgolding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ ERROR_FILES		=	error
 DATA_FILES		=	init_data destroy_data init_world destroy_world
 WINDOW_FILES	=	init_mlx
 HOOKS_FILES		=	hooks keypress mouse
-RENDERING_FILES	=	render draw_utils
+RENDERING_FILES	=	render draw_utils view_transform
 INTERSECT_FILES	=	clear_intersection hit_intersection new_intersection
 RAY_FILES		=	ray position
 SHAPE_FILES		=	shape error sphere sphere_intersect

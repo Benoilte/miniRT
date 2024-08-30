@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/27 15:50:16 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/08/30 11:48:03 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,6 @@ void	set_pixel_color(t_data *data, int x, int y, int color);
 	//	RENDER
 
 void	render(t_data *data);
+t_m4x4	view_transform(t_point from, t_point to, t_vector up);
 
 #endif
