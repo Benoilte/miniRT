@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:20:16 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/23 16:29:11 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/02 14:40:03 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	main(void)
 {
 	t_data	*data;
 
+	printf("Hello, in main default\n");
 	data = init_data();
 	set_hooks(data);
 	mlx_loop(data->mlx->xvar);

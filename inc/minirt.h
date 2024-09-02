@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/30 18:11:20 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/02 15:15:36 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@
 #  include "linux_keycodes.h"
 #  include <X11/X.h>
 #  define LINUX 1
-#  define WIN_WIDTH 2400
-#  define WIN_HEIGHT 1600
-#  define WIN_MID_X 1200
-#  define WIN_MID_Y 800
+#  define WIN_WIDTH 800
+#  define WIN_HEIGHT 800
+#  define WIN_MID_X 400
+#  define WIN_MID_Y 400
 # endif
 
 //	TYPEDEFS - forward declarations
