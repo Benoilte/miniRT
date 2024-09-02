@@ -6,7 +6,7 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 12:48:53 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/02 15:13:06 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/02 19:01:25 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int	print_sp(t_point r_origin, t_m4x4 transform, t_data *data)
 
 	sp->material.color = rgb_set(1, 0.2, 1);
 	sp->transform = mx_mult(sp->transform, transform);
+	update_inverse(sp);
 	y = 0;
 	while (y < (WIN_HEIGHT - 1))
 	{
@@ -85,7 +86,7 @@ int	print_sp(t_point r_origin, t_m4x4 transform, t_data *data)
 			world_x = -half + pixel_size * x;
 			position = point(world_x, world_y, wall_z);
 			r1 = ray(r_origin, tp_normalize(tp_subtract(position, r_origin)));
-			r2 = transform_ray(r1, mx_inversion(sp->transform));
+			r2 = transform_ray(r1, sp->inverse);
 			i_list = generate_list_intersections(sp, r2);
 			hit = dbl_lstgetone(&i_list, is_hit_positive);
 			if (hit)
@@ -106,13 +107,13 @@ int	print_sp(t_point r_origin, t_m4x4 transform, t_data *data)
 int	main(void)
 {
 	t_data	*data;
-	// t_m4x4	m;
+	t_m4x4	m;
 
 	printf("main exo_ls\n");
-	// // m = mx_scaling(1, 0.5, 1);
+	m = mx_translation(1.5, -0.5, 0);
 	// m = mx_add_rotation(m, M_PI / 4, Z_AXIS);
 	data = init_data();
-	print_sp(point(0, 0, -10), mx_identity(), data);
+	print_sp(point(0, 0, -10), m, data);
 	set_hooks(data);
 	mlx_loop(data->mlx->xvar);
 	destroy_data(data);
