@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:53:19 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/27 14:56:07 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/02 16:00:29 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,8 @@ t_data	*init_data(void)
 	data->world = init_world();
 	if (!data->world)
 		exit_error(data, "Failed to initialize world");
+	data->camera = init_camera();
+	if (!data->camera)
+		exit_error(data, "Failed to allocate memory for camera");
 	return (data);
 }
