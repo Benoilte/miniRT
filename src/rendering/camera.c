@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 13:26:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/30 15:36:40 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/02 16:01:39 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,23 @@ t_camera	camera(size_t hsize, size_t vsize, float fov)
 	camera.transform_inverse = mx_identity();
 	calibrate_camera(&camera);
 	return (camera);
+}
+
+t_camera	*init_camera(void)
+{
+	t_camera	*cam;
+
+	cam = ft_calloc(1, sizeof(t_camera));
+	if (!cam)
+		return (NULL);
+	*cam = camera(WIN_WIDTH, WIN_HEIGHT, deg_to_rad(CAMERA_DEFAULT_FOV));
+	return (cam);
+}
+
+void	destroy_camera(t_camera *camera)
+{
+	if (camera)
+		free(camera);
 }
 
 t_ray	ray_for_pixel(t_camera c, size_t px, size_t py)
