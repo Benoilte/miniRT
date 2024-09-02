@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:20:16 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/02 15:49:26 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/02 18:03:01 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	main(void)
 	printf("Hello, in main program!\n");
 	data = init_data();
 	set_hooks(data);
+	render(data);
 	mlx_loop(data->mlx->xvar);
 	destroy_data(data);
 	return (0);
