@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/02 16:19:19 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/02 16:47:14 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@
 #  define WIN_MID_X 1200
 #  define WIN_MID_Y 800
 # endif
+
+# define CAMERA_DEFAULT_FOV 90
 
 //	TYPEDEFS - forward declarations
 
@@ -105,8 +107,10 @@ void		print_error(const char *source, const char *msg);
 
 t_data		*init_data(void);
 t_world		*init_world(void);
+t_camera	*init_camera(void);
 void		destroy_data(t_data *data);
 void		destroy_world(t_world *world);
+void		destroy_camera(t_camera *camera);
 int			add_new_shape_to_world(t_world *world, t_shape_type type);
 
 	//	WINDOW (MLX)
