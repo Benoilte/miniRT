@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/12 11:20:16 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/02 15:49:26 by bebrandt         ###   ########.fr       */
+/*   Created: 2024/09/02 15:49:32 by bebrandt          #+#    #+#             */
+/*   Updated: 2024/09/02 15:59:55 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(void)
 {
 	t_data	*data;
 
-	printf("Hello, in main program!\n");
+	printf("Hello, in test program!\n");
 	data = init_data();
 	set_hooks(data);
 	mlx_loop(data->mlx->xvar);
