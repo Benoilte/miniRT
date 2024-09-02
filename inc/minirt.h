@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/30 18:11:20 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/02 15:44:29 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef t_list				t_shape_list;
 typedef struct s_world
 {
 	t_shape_list	*shapes;
+	t_light			*light;
 }					t_world;
 
 typedef struct s_camera
@@ -87,9 +88,10 @@ typedef struct s_camera
 
 typedef struct s_data
 {
-	t_mlx	*mlx;
-	t_world	*world;
-}			t_data;
+	t_mlx		*mlx;
+	t_world		*world;
+	t_camera	*camera;
+}				t_data;
 
 //	PROTOTYPES
 
