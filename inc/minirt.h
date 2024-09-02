@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/30 18:11:20 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/02 14:06:55 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "libgraphic.h"
 # include "dlist.h"
 # include "hex_colors.h"
+# include "parsing.h"
 # include "ray.h"
 # include "shape.h"
 # include "intersection.h"

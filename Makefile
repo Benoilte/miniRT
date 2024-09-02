@@ -6,7 +6,7 @@
 #    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/08/30 18:08:40 by bgolding         ###   ########.fr        #
+#    Updated: 2024/09/02 15:14:42 by bgolding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ LIBDLIST		=	$(LIB)libdlist/
 
 MAIN_FILES		=	main
 ERROR_FILES		=	error
+PARSING_FILES	=	file_validation
 DATA_FILES		=	init_data destroy_data init_world destroy_world
 WINDOW_FILES	=	init_mlx
 HOOKS_FILES		=	hooks keypress mouse
@@ -62,6 +63,7 @@ INC_PATHS		=	$(addprefix -I, $(INC_DIR) \
 
 SRC_FILES		=	$(addprefix main/, $(MAIN_FILES)) \
 					$(addprefix error/, $(ERROR_FILES)) \
+					$(addprefix parsing/, $(PARSING_FILES)) \
 					$(addprefix data/, $(DATA_FILES)) \
 					$(addprefix window/, $(WINDOW_FILES)) \
 					$(addprefix hooks/, $(HOOKS_FILES)) \
