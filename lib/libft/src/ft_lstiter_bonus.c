@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 15:32:13 by bgolding          #+#    #+#             */
-/*   Updated: 2023/12/08 13:14:52 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/02 10:06:05 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 	on the content of each node.
 */
 
-#include "../inc/libft.h"
+#include "libft.h"
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {

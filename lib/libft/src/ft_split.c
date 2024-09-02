@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 10:06:02 by bgolding          #+#    #+#             */
-/*   Updated: 2023/12/08 13:17:16 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/02 10:06:05 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 	The array must end with a NULL pointer.
 */
 
-#include "../inc/libft.h"
+#include "libft.h"
 
 static int	string_count(char const *s, char c);
 static int	next_strlen(const char *s, char c);

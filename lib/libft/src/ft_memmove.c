@@ -6,11 +6,11 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:40:55 by bgolding          #+#    #+#             */
-/*   Updated: 2023/12/08 13:16:30 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/02 10:06:05 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
+#include "libft.h"
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {

@@ -6,7 +6,7 @@
 #    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/24 11:39:18 by bgolding          #+#    #+#              #
-#    Updated: 2024/08/23 15:40:37 by bgolding         ###   ########.fr        #
+#    Updated: 2024/09/02 10:06:30 by bgolding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME	=	libft.a
 
 SRC_DIR	=	src/
 OBJ_DIR	=	obj/
-INC		=	inc/
+INC_DIR	=	inc/
 SRC_F	=	ft_isalpha \
 			ft_isdigit \
 			ft_isalnum \
@@ -64,6 +64,7 @@ SRC_F	=	ft_isalpha \
 			get_next_line_utils_bonus \
 			ft_isspace \
 			ft_atoi_base \
+			ft_atod
 			
 SRCS	=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_F)))
 OBJS	=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_F)))
@@ -91,7 +92,7 @@ $(NAME):	$(OBJ_DIR) $(OBJS)
 $(OBJ_DIR)%.o:		$(SRC_DIR)%.c | $(OBJ_DIR)
 					@$(eval COMPILED_COUNT=$(shell echo $$(($(COMPILED_COUNT) + 1))))
 					@printf "\r$(YELLOW)[$(COMPILED_COUNT)/$(TOTAL_FILES)] Compiling libft files$(DEF_COLOR)"
-					@$(CC) $(CFLAGS) -c $< -o $@
+					@$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
 
 $(OBJ_DIR):
 			@mkdir -p $@
