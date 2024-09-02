@@ -3,14 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
+#    By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/08/30 18:08:40 by bgolding         ###   ########.fr        #
+#    Updated: 2024/09/02 15:47:58 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	miniRT
+
+TEST			=
 
 LIB				=	lib/
 INC				=	inc/
@@ -22,7 +24,8 @@ MINILIBX_DIR	=	$(LIB)mlx/
 LIBGRAPHIC_DIR	=	$(LIB)libgraphic/
 LIBDLIST		=	$(LIB)libdlist/
 
-MAIN_FILES		=	main
+MAIN_FILES		=	
+TEST_FILES		=	
 ERROR_FILES		=	error
 DATA_FILES		=	init_data destroy_data init_world destroy_world
 WINDOW_FILES	=	init_mlx
@@ -33,6 +36,13 @@ RAY_FILES		=	ray position
 SHAPE_FILES		=	shape error material sphere sphere_intersect sphere_normal normal
 LIGHT_FILES		=	new_light destroy_light lighting
 
+# define main function to use
+
+ifeq ($(TEST), test)
+	TEST_FILES		=	test
+else 
+	MAIN_FILES		=	main
+endif
 
 # OS specific settings
 UNAME_S			=	$(shell uname -s)
@@ -61,6 +71,7 @@ INC_PATHS		=	$(addprefix -I, $(INC_DIR) \
 									$(LIBDLIST)inc)
 
 SRC_FILES		=	$(addprefix main/, $(MAIN_FILES)) \
+					$(addprefix test/, $(TEST_FILES)) \
 					$(addprefix error/, $(ERROR_FILES)) \
 					$(addprefix data/, $(DATA_FILES)) \
 					$(addprefix window/, $(WINDOW_FILES)) \
