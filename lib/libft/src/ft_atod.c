@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 10:04:25 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/02 10:11:10 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/02 10:16:48 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ double	ft_atof(const char *str)
 	while (*str && (ft_isdigit(*str) || (*str == '.' && !afterdot)))
 	{
 		if (*str == '.')
-				afterdot++;
+			afterdot++;
 		else
 			number = increment(&number, &scale, afterdot, *str);
 		str++;
