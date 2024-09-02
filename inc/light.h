@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:34:41 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/30 16:42:57 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/02 16:06:08 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@
 // DEFINES
 
 # define LIGHT_INVALID_POINTER "invalid (null) light pointer"
+
+# define LIGHT_DEFAULT_X -10
+# define LIGHT_DEFAULT_Y 10
+# define LIGHT_DEFAULT_Z -10
+# define LIGHT_DEFAULT_R 1
+# define LIGHT_DEFAULT_G 1
+# define LIGHT_DEFAULT_B 1
 
 //	TYPEDEFS - forward declarations
 
