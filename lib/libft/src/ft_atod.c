@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 10:04:25 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/02 10:06:05 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/02 10:11:10 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ double	ft_atof(const char *str)
 	sign = 1;
 	scale = 1;
 	afterdot = 0;
+	if (!str)
+		return (number);
 	while (ft_isspace(*str))
 		str++;
 	set_sign(&str, &sign);
