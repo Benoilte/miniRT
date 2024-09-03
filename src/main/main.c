@@ -6,11 +6,13 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:20:16 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/02 18:03:01 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/03 08:44:45 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+void set_default_scene(t_data *data);
 
 int	main(void)
 {
@@ -18,6 +20,7 @@ int	main(void)
 
 	printf("Hello, in main program!\n");
 	data = init_data();
+	set_default_scene(data);
 	set_hooks(data);
 	render(data);
 	mlx_loop(data->mlx->xvar);

@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 13:26:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/02 16:01:39 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/03 16:07:31 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	destroy_camera(t_camera *camera)
 
 t_ray	ray_for_pixel(t_camera c, size_t px, size_t py)
 {
+	const t_point origin = point(0, 0, 0);
 	t_point	world;
 	t_point	pixel;
 	t_ray	ray;
@@ -72,7 +73,7 @@ t_ray	ray_for_pixel(t_camera c, size_t px, size_t py)
 		c.half_width - ((px + 0.5f) * c.pixel_size), \
 		c.half_height - ((py + 0.5f) * c.pixel_size), -1);
 	pixel = mx_mult_tuple(c.transform_inverse, world);
-	ray.origin = mx_mult_tuple(c.transform_inverse, point(0, 0, 0));
+	ray.origin = mx_mult_tuple(c.transform_inverse, origin);
 	ray.direction = tp_normalize(tp_subtract(pixel, ray.origin));
 	return (ray);
 }

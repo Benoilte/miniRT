@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 12:57:38 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/02 19:40:37 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/03 16:01:53 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ t_color	color_at(t_world *world, t_ray *ray)
 		color = lighting(&details, world->light);
 	}
 	dbl_lstclear(&intersects, clear_intersection);
-	return (color);	
+	return (color);
 }
 
 void render_draft(t_data *data)
@@ -117,22 +117,26 @@ void change_shape(void *self)
 {
 	t_shape	*shape = (t_shape *)self;
 
-	shape->transform = mx_translation(-10, 0, 0);
+	// shape->transform = mx_translation(-10, 0, 0);
 	update_inverse(shape);
-	shape->material.color = rgb_itos(CYAN);
+	shape->material.color = rgb_itos(ORANGE);
 }
 
-void	render(t_data *data)
+void set_default_scene(t_data *data)
 {
-	t_point	from = point(0, 0, -15);
+	t_point	from = point(0, 0, -5);
 	t_point to = point(0, 0, 0);
 	t_vector up = vector(0, 1, 0);
-	
-	reset_image(data);
+
 	add_new_shape_to_world(data->world, SPHERE);
 	change_shape(data->world->shapes->content);
 	data->camera->transform = view_transform(from, to, up);
 	data->camera->transform_inverse = mx_inversion(data->camera->transform);
+}
+
+void	render(t_data *data)
+{
+	reset_image(data);
 	render_draft(data);
 	mlx_put_image_to_window(data->mlx->xvar, data->mlx->win, \
 							data->mlx->img, 0, 0);
