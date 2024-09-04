@@ -6,7 +6,7 @@
 #    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/09/04 15:59:53 by bgolding         ###   ########.fr        #
+#    Updated: 2024/09/04 16:34:20 by bgolding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ LIGHT_FILES		=	new_light destroy_light lighting
 # define main function to use
 
 ifeq ($(TEST), test)
-	TEST_FILES		=	test
+	TEST_FILES		=	test default_world
 else 
 	MAIN_FILES		=	main
 endif
