@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/04 15:56:59 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/04 16:00:51 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@
 typedef enum e_shape_type		t_shape_type;
 typedef struct s_light			t_light;
 typedef t_dbl_lst				t_intersect_list;
+typedef t_list					t_shape_list;
 
 // 	TYPEDEFS
 
@@ -72,8 +73,6 @@ typedef struct s_mlx
 	int		line_len;
 	int		endian;
 }			t_mlx;
-
-typedef t_list				t_shape_list;
 
 typedef struct s_world
 {
@@ -143,5 +142,6 @@ t_m4x4				view_transform(t_point from, t_point to, t_vector up);
 t_camera			camera(size_t hsize, size_t vsize, float fov);
 t_ray				ray_for_pixel(t_camera camera, size_t px, size_t py);
 t_intersect_list	*intersect_world(t_ray *r, t_world *world);
+t_color				color_at(t_ray *ray, t_world *world);
 
 #endif
