@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 13:28:49 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/04 15:04:57 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/04 15:44:57 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,16 +84,16 @@ static int	intersect_all_shapes(	t_ray *r, \
 		-	More complex code (extra list pointer passed as argument)
 		-	Can distinguish between errors / no intersections
 */
-t_intersect_list	*intersect_world(t_ray *r, t_world *world)
+t_intersect_list	*intersect_world(t_ray *ray, t_world *world)
 {
 	t_intersect_list	*list;
 	t_shape_list		*shape_node;
 	t_shape				*shape;
 
 	list = NULL;
-	if (!r || !world)
+	if (!ray || !world)
 		print_error("intersect_world", INVALID_POINTER);
-	else if (intersect_all_shapes(r, world->shapes, &list) != 0)
+	else if (intersect_all_shapes(ray, world->shapes, &list) != 0)
 		print_error("intersect_world", INTERSECT_INCOMPLETE);
 	return (list);
 }
