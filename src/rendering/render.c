@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 12:57:38 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/03 16:01:53 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/04 11:31:19 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,23 @@ static int    add_intersects_to_list(t_intersect_list **list,\
 	t_intersection        *new_intersect;
 	t_intersect_list    *new_node;
 
-	new_intersect = new_intersection(shape, report.t[report.count]);
-	if (!new_intersect)
+	while (report.count--)
 	{
-		perror("add_intersects_to_list");
-		return (1);
+		new_intersect = new_intersection(shape, report.t[report.count]);
+		if (!new_intersect)
+		{
+			perror("add_intersects_to_list");
+			return (1);
+		}
+		new_node = dbl_lstnew(new_intersect);
+		if (!new_node)
+		{
+			perror("add_intersects_to_list");
+			free(new_intersect);
+			return (2);
+		}
+		dbl_lstadd_ordered(list, new_node, add_new_before_lst);
 	}
-	new_node = dbl_lstnew(new_intersect);
-	if (!new_node)
-	{
-		perror("add_intersects_to_list");
-		free(new_intersect);
-		return (2);
-	}
-	dbl_lstadd_ordered(list, new_node, add_new_before_lst);
 	return (0);
 }
 
