@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 16:01:08 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/30 17:36:40 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/04 12:25:18 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,6 @@ bool				add_new_before_lst(t_dbl_lst *new, t_dbl_lst *lst);
 bool				is_hit_positive(t_dbl_lst *intersection);
 void				clear_intersection(void *intersection);
 t_intersect_details	set_intersect_details(t_intersection *hit, t_ray ray);
+t_dbl_lst			*get_first_hit(t_dbl_lst **dlist);
 
 #endif
