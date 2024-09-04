@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/02 16:47:14 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/04 14:42:27 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,13 @@
 # include "intersection.h"
 # include "light.h"
 # include <errno.h>
+# include <string.h>
 # include <stdio.h>
 
 //	DEFINES
 # define WINDOW_NAME "miniRT"
+
+# define INVALID_POINTER "invalid (null) pointer passed as argument"
 
 //	OS specifics
 # ifdef __APPLE__

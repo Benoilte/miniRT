@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 16:01:08 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/04 12:25:18 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/04 14:25:13 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 //	DEFINES
 
 # define REPORT_BUFFER_SIZE 2
+
+# define INTERSECT_INCOMPLETE "unable to compute intersections"
 
 //	TYPEDEFS - forward declarations
 
