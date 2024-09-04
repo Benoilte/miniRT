@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 13:28:49 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/04 15:44:57 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/04 15:54:28 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,6 @@ static int	intersect_all_shapes(	t_ray *r, \
 t_intersect_list	*intersect_world(t_ray *ray, t_world *world)
 {
 	t_intersect_list	*list;
-	t_shape_list		*shape_node;
-	t_shape				*shape;
 
 	list = NULL;
 	if (!ray || !world)
