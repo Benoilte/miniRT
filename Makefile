@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
+#    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/09/04 16:34:20 by bgolding         ###   ########.fr        #
+#    Updated: 2024/09/04 22:00:06 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,8 @@ MINILIBX_DIR	=	$(LIB)mlx/
 LIBGRAPHIC_DIR	=	$(LIB)libgraphic/
 LIBDLIST		=	$(LIB)libdlist/
 
-MAIN_FILES		=	
-TEST_FILES		=	
+MAIN_FILES		=
+TEST_FILES		=
 ERROR_FILES		=	error
 DATA_FILES		=	init_data destroy_data init_world destroy_world
 WINDOW_FILES	=	init_mlx
@@ -39,8 +39,8 @@ LIGHT_FILES		=	new_light destroy_light lighting
 # define main function to use
 
 ifeq ($(TEST), test)
-	TEST_FILES		=	test default_world
-else 
+	TEST_FILES		=	test default_world first_scene
+else
 	MAIN_FILES		=	main
 endif
 

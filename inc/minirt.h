@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/04 16:00:51 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/04 20:39:54 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@
 #  include "linux_keycodes.h"
 #  include <X11/X.h>
 #  define LINUX 1
-#  define WIN_WIDTH 2400
-#  define WIN_HEIGHT 1600
-#  define WIN_MID_X 1200
-#  define WIN_MID_Y 800
+#  define WIN_WIDTH 1200
+#  define WIN_HEIGHT 800
+#  define WIN_MID_X 600
+#  define WIN_MID_Y 400
 # endif
 
 # define CAMERA_DEFAULT_FOV 90
