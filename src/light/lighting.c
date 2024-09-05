@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lighting.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 13:41:06 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/30 17:37:33 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/05 12:03:28 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,7 @@ t_color	lighting(t_intersect_details *details, t_light *light)
 	ambient = compute_ambient(details, effective_color);
 	diffuse = compute_diffuse(details, effective_color, lightv);
 	specular = compute_specular(details, light, lightv);
+	if (details->in_shadow)
+		return (ambient);
 	return (rgb_add(rgb_add(ambient, diffuse), specular));
 }

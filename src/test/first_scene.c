@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   first_scene.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 12:19:06 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/04 22:42:04 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/05 14:04:53 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ void	set_first_scene(t_data *data)
 		mx_mult(mx_translation(-1.5, 0.33, -0.75), \
 		mx_scaling(0.33, 0.33, 0.33)), \
 		rgb_set(1, 0.8, 0.1));
-	data->world->light = new_light(point(-10, 10, -10), rgb_set(1, 1, 1));
 	data->camera->transform = view_transform(point(0, 1.5, -5), \
 												point(0, 1, 0), \
 												vector(0, 1, 0));

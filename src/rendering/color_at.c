@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color_at.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:38:39 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/04 15:52:04 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/05 12:09:19 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_color	color_at(t_ray *ray, t_world *world)
 		color = no_color();
 	else
 	{
-		details = set_intersect_details(first_hit->content, *ray);
+		details = set_intersect_details(first_hit->content, *ray, world);
 		color = lighting(&details, world->light);
 	}
 	dbl_lstclear(&intersects, clear_intersection);

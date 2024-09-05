@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/05 07:50:58 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/05 15:19:34 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,5 +143,9 @@ t_camera			camera(size_t hsize, size_t vsize, float fov);
 t_ray				ray_for_pixel(t_camera camera, size_t px, size_t py);
 t_intersect_list	*intersect_world(t_ray *r, t_world *world);
 t_color				color_at(t_ray *ray, t_world *world);
+
+	// TEST
+	
+void				print_color(t_color c, char *msg);
 
 #endif
