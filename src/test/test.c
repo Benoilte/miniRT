@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 15:49:32 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/04 21:59:13 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/05 07:47:12 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,21 @@
 void	set_default_scene(t_data *data);
 void	set_first_scene(t_data *data);
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_data	*data;
 
 	printf("Hello, in test program!\n");
+	if (argc != 2)
+		return (0);
 	data = init_data();
 	set_hooks(data);
-	// set_default_scene(data);
-	set_first_scene(data);
+	if (ft_strncmp(argv[1], "default", 8) == 0)
+		set_default_scene(data);
+	else if (ft_strncmp(argv[1], "fscene", 8) == 0)
+		set_first_scene(data);
+	else
+		return (0);
 	render(data);
 	mlx_loop(data->mlx->xvar);
 	destroy_data(data);
