@@ -6,7 +6,7 @@
 #    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/09/04 22:00:06 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/09/05 10:37:24 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ LIGHT_FILES		=	new_light destroy_light lighting
 # define main function to use
 
 ifeq ($(TEST), test)
-	TEST_FILES		=	test default_world first_scene
+	TEST_FILES		=	test default_world first_scene shadow
 else
 	MAIN_FILES		=	main
 endif

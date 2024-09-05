@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 15:49:32 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/05 07:47:12 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/05 08:52:02 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	set_default_scene(t_data *data);
 void	set_first_scene(t_data *data);
+void	test_shadow(t_data *data);
 
 int	main(int argc, char **argv)
 {
@@ -28,6 +29,11 @@ int	main(int argc, char **argv)
 		set_default_scene(data);
 	else if (ft_strncmp(argv[1], "fscene", 8) == 0)
 		set_first_scene(data);
+	else if (ft_strncmp(argv[1], "shadow", 8) == 0)
+	{
+		test_shadow(data);
+		return (0);
+	}
 	else
 		return (0);
 	render(data);
