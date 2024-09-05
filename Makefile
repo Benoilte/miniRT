@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
+#    By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/09/05 10:37:24 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/09/05 11:05:03 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	miniRT
 
-TEST			=
+NAME_TEST		=	test_miniRT
 
 LIB				=	lib/
 INC				=	inc/
@@ -24,8 +24,8 @@ MINILIBX_DIR	=	$(LIB)mlx/
 LIBGRAPHIC_DIR	=	$(LIB)libgraphic/
 LIBDLIST		=	$(LIB)libdlist/
 
-MAIN_FILES		=
-TEST_FILES		=
+MAIN_FILES		=	main
+TEST_FILES		=	test default_world first_scene shadow
 ERROR_FILES		=	error
 DATA_FILES		=	init_data destroy_data init_world destroy_world
 WINDOW_FILES	=	init_mlx
@@ -35,14 +35,6 @@ INTERSECT_FILES	=	clear_intersection hit_intersection new_intersection details_i
 RAY_FILES		=	ray position transform
 SHAPE_FILES		=	shape error material sphere sphere_intersect sphere_normal normal
 LIGHT_FILES		=	new_light destroy_light lighting
-
-# define main function to use
-
-ifeq ($(TEST), test)
-	TEST_FILES		=	test default_world first_scene shadow
-else
-	MAIN_FILES		=	main
-endif
 
 # OS specific settings
 UNAME_S			=	$(shell uname -s)
@@ -70,9 +62,7 @@ INC_PATHS		=	$(addprefix -I, $(INC_DIR) \
 									$(LIBGRAPHIC_DIR)inc \
 									$(LIBDLIST)inc)
 
-SRC_FILES		=	$(addprefix main/, $(MAIN_FILES)) \
-					$(addprefix test/, $(TEST_FILES)) \
-					$(addprefix error/, $(ERROR_FILES)) \
+SRC_FILES		=	$(addprefix error/, $(ERROR_FILES)) \
 					$(addprefix data/, $(DATA_FILES)) \
 					$(addprefix window/, $(WINDOW_FILES)) \
 					$(addprefix hooks/, $(HOOKS_FILES)) \
@@ -82,9 +72,15 @@ SRC_FILES		=	$(addprefix main/, $(MAIN_FILES)) \
 					$(addprefix shape/, $(SHAPE_FILES)) \
 					$(addprefix light/, $(LIGHT_FILES))
 
+SRC_MAIN		=	$(addprefix main/, $(MAIN_FILES))
 
-SRCS			=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
+SRC_TEST		=	$(addprefix test/, $(TEST_FILES))
+
+
+SRCS			=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES) $(SRC_MAIN) $(SRC_TEST)))
 OBJS			=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
+OBJS_MAIN		=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_MAIN)))
+OBJS_TEST		=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_TEST)))
 
 LIB_LINK		=	-L$(LIBFT_DIR) -lft -L$(MINILIBX_DIR) -lmlx -L$(LIBGRAPHIC_DIR) -lgraphic -L$(LIBDLIST) -ldlist $(OS_FLAGS)
 
@@ -107,6 +103,8 @@ COMPILED_COUNT	=	0
 
 all:			$(STATIC_LIBS) $(NAME)
 
+test:			$(STATIC_LIBS) $(NAME_TEST)
+
 $(STATIC_LIBS):
 				@echo "$(YELLOW)Compiling static libraries...$(DEF_COLOR)"
 				@make -C $(MINILIBX_DIR)
@@ -115,8 +113,13 @@ $(STATIC_LIBS):
 				@make -C $(LIBDLIST)
 				@echo "$(GREEN)All static libraries compiled$(DEF_COLOR)"
 
-$(NAME):		$(OBJS) $(STATIC_LIBS)
-				@$(CC) $(CFLAGS) $(OBJS) $(LIB_LINK) -o $@
+$(NAME):		$(OBJS) $(OBJS_MAIN) $(STATIC_LIBS)
+				@$(CC) $(CFLAGS) $(OBJS) $(OBJS_MAIN) $(LIB_LINK) -o $@
+				@printf "$(CLEAR_LINE)"
+				@echo "\r$(GREEN)Successfully created executable: $(NAME) $(DEF_COLOR)"
+
+$(NAME_TEST):	$(OBJS) $(OBJS_TEST) $(STATIC_LIBS)
+				@$(CC) $(CFLAGS) $(OBJS) $(OBJS_TEST) $(LIB_LINK) -o $@
 				@printf "$(CLEAR_LINE)"
 				@echo "\r$(GREEN)Successfully created executable: $(NAME) $(DEF_COLOR)"
 
@@ -135,6 +138,7 @@ clean:
 
 fclean:			clean
 				@$(RM) $(NAME)
+				@$(RM) $(NAME_TEST)
 				@make clean -C $(MINILIBX_DIR)
 				@make fclean -C $(LIBFT_DIR)
 				@make fclean -C $(LIBGRAPHIC_DIR)
@@ -142,6 +146,8 @@ fclean:			clean
 				@echo "$(YELLOW)fclean complete $(DEF_COLOR)"
 
 re:				fclean all
+
+retest:				fclean test
 
 libft:
 				@make -C $(LIBFT_DIR)
@@ -155,4 +161,4 @@ libdlist:
 mlx:
 				@make -C $(MINILIBX_DIR)
 
-.PHONY:			all clean fclean re
+.PHONY:			all clean fclean re test retest
