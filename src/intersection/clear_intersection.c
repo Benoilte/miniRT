@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   clear_intersection.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 11:52:24 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/20 11:05:31 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/06 16:48:18 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "intersection.h"
+#include <stdlib.h>
 
 void	clear_intersection(void *intersection)
 {

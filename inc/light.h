@@ -6,7 +6,7 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:34:41 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/06 14:07:36 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/06 16:39:01 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,6 @@
 # define LIGHT_DEFAULT_R 1
 # define LIGHT_DEFAULT_G 1
 # define LIGHT_DEFAULT_B 1
-
-//	TYPEDEFS - forward declarations
-
-typedef struct s_intersect_details	t_details;
 
 // TYPEDEFS
 

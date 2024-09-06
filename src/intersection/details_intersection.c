@@ -6,7 +6,7 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:30:29 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/06 14:07:36 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/06 15:58:42 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ bool	is_shadowed(t_world *world, t_point point)
 	return (false);
 }
 
-t_details	intersect_details(t_intersection *hit, t_ray ray, t_world *world)
+t_details	compute_details(t_intersection *hit, t_ray ray, t_world *world)
 {
 	t_details	new;
 

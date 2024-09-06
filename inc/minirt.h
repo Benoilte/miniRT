@@ -6,23 +6,28 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/05 15:19:34 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/06 16:39:14 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
-//	LIBRARIES
+//	STATIC LIBRARIES
 # include "mlx.h"
 # include "libft.h"
 # include "libgraphic.h"
 # include "dlist.h"
+
+//	LOCAL HEADERS
+# include "forward_declarations.h"
 # include "hex_colors.h"
 # include "ray.h"
-# include "shape.h"
 # include "intersection.h"
+# include "shape.h"
 # include "light.h"
+
+//	STANDARD LIBRARIES
 # include <errno.h>
 # include <string.h>
 # include <stdio.h>
@@ -54,13 +59,6 @@
 
 # define CAMERA_DEFAULT_FOV 90
 
-//	TYPEDEFS - forward declarations
-
-typedef enum e_shape_type		t_shape_type;
-typedef struct s_light			t_light;
-typedef t_dbl_lst				t_intersect_list;
-typedef t_list					t_shape_list;
-
 // 	TYPEDEFS
 
 typedef struct s_mlx
@@ -73,6 +71,8 @@ typedef struct s_mlx
 	int		line_len;
 	int		endian;
 }			t_mlx;
+
+typedef t_list					t_shape_list;
 
 typedef struct s_world
 {
@@ -145,7 +145,7 @@ t_intersect_list	*intersect_world(t_ray *r, t_world *world);
 t_color				color_at(t_ray *ray, t_world *world);
 
 	// TEST
-	
+
 void				print_color(t_color c, char *msg);
 
 #endif

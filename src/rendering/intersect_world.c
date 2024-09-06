@@ -6,7 +6,7 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 13:28:49 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/06 14:12:48 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/06 14:33:16 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,20 @@ static int	add_intersects_to_list(	t_intersect_list **list, \
 	return (0);
 }
 
-static int	intersect_all_shapes(	t_ray *r, \
+static int	intersect_all_shapes(	t_ray *ray, \
 									t_shape_list *node, \
 									t_intersect_list **list)
 {
-	t_shape				*shape;
+	t_shape		*shape;
 	t_report	report;
-	t_ray				transformed_ray;
+	t_ray		transformed_ray;
 
-	if (!r || ! node || !list)
+	if (!ray || ! node || !list)
 		return (print_error("intersect_all_shapes", INVALID_POINTER), 1);
 	while (node)
 	{
 		shape = (t_shape *)node->content;
-		transformed_ray = transform_ray(r, shape->inverse);
+		transformed_ray = transform_ray(ray, shape->inverse);
 		if (shape->f->intersect(&transformed_ray, shape, &report) == true)
 		{
 			if (add_intersects_to_list(list, &report, shape) != 0)
