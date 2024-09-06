@@ -6,18 +6,18 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 13:41:06 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/05 12:03:28 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/06 14:07:36 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "light.h"
 
-static t_color	compute_ambient(t_intersect_details *details, t_color effective_color)
+static t_color	compute_ambient(t_details *details, t_color effective_color)
 {
 	return (rgb_scale(effective_color, details->shape->material.ambient));
 }
 
-static t_color	compute_diffuse(t_intersect_details *details, t_color effective, t_vector lightv)
+static t_color	compute_diffuse(t_details *details, t_color effective, t_vector lightv)
 {
 	float		light_dot_normal;
 
@@ -28,7 +28,7 @@ static t_color	compute_diffuse(t_intersect_details *details, t_color effective, 
 		return (rgb_scale(effective, details->shape->material.diffuse * light_dot_normal));
 }
 
-static t_color	compute_specular(t_intersect_details *details, t_light *light, t_vector lightv)
+static t_color	compute_specular(t_details *details, t_light *light, t_vector lightv)
 {
 	t_vector	reflectv;
 	float		reflect_dot_eye;
@@ -45,7 +45,7 @@ static t_color	compute_specular(t_intersect_details *details, t_light *light, t_
 	}
 }
 
-t_color	lighting(t_intersect_details *details, t_light *light)
+t_color	lighting(t_details *details, t_light *light)
 {
 	t_color		effective_color;
 	t_color		ambient;

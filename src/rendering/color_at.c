@@ -6,7 +6,7 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:38:39 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/05 12:09:19 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/06 14:10:36 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_color	color_at(t_ray *ray, t_world *world)
 	t_intersect_list	*intersects;
 	t_intersect_list	*first_hit;
 	t_color				color;
-	t_intersect_details	details;
+	t_details			details;
 
 	if (!ray || !world)
 	{
@@ -39,7 +39,7 @@ t_color	color_at(t_ray *ray, t_world *world)
 		color = no_color();
 	else
 	{
-		details = set_intersect_details(first_hit->content, *ray, world);
+		details = intersect_details(first_hit->content, *ray, world);
 		color = lighting(&details, world->light);
 	}
 	dbl_lstclear(&intersects, clear_intersection);

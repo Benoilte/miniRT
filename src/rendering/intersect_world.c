@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   intersect_world.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 13:28:49 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/04 15:54:28 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/06 14:12:48 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void	reset_report(t_intersect_report *report)
+static void	reset_report(t_report *report)
 {
-	const size_t	size = sizeof(t_intersect_report);
+	const size_t	size = sizeof(t_report);
 
 	ft_bzero(report, size);
 }
 
 static int	add_intersects_to_list(	t_intersect_list **list, \
-									t_intersect_report *report, \
+									t_report *report, \
 									t_shape *shape)
 {
 	t_intersection		*new_intersect;
@@ -53,7 +53,7 @@ static int	intersect_all_shapes(	t_ray *r, \
 									t_intersect_list **list)
 {
 	t_shape				*shape;
-	t_intersect_report	report;
+	t_report	report;
 	t_ray				transformed_ray;
 
 	if (!r || ! node || !list)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shadow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 08:44:27 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/05 23:00:30 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/06 14:07:36 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	set_default_scene(t_data *data);
 
 static	void	test_lighting(t_vector eyev, bool in_shadow, t_point lightp, t_color result)
 {
-	t_intersect_details details;
+	t_details details;
 	t_shape				*sp1;
 	t_light				light;
 	t_color				color;
@@ -56,7 +56,7 @@ static void	test_shade_it(t_data *data)
 	t_shape				*sp;
 	t_ray				r1;
 	t_intersection		i1;
-	t_intersect_details	details;
+	t_details	details;
 	t_color				color;
 
 	data->world->light->position = point(0, 0, -10);
@@ -66,7 +66,7 @@ static void	test_shade_it(t_data *data)
 	ft_lstadd_back(&data->world->shapes, ft_lstnew(sp));
 	r1 = ray(point(0, 0, 5), vector(0, 0, 1));
 	i1 = set_intersection(sp, 4);
-	details	= set_intersect_details(&i1, r1, data->world);
+	details	= intersect_details(&i1, r1, data->world);
 	color = lighting(&details, data->world->light);
 	printf("\nshould check if material color is equal to color(0.1, 0.1, 0.1)\n");
 	print_color(color, "resulting color");
@@ -81,14 +81,14 @@ static void test_hit_offset(t_data *data)
 	t_shape				*sp;
 	t_ray				r1;
 	t_intersection		i1;
-	t_intersect_details details;
+	t_details details;
 
 	r1 = ray(point(0, 0, -5), vector(0, 0, 1));
 	sp = create_new_shape(SPHERE);
 	sp->transform = mx_add_translation(sp->transform, 0, 0, 1);
 	update_inverse(sp);
 	i1 = set_intersection(sp, 5);
-	details	= set_intersect_details(&i1, r1, data->world);
+	details	= intersect_details(&i1, r1, data->world);
 	printf("\nshould check if over_point.z is smaller tha EPSILON / 2 and smaller than position.z\n");
 	if ((details.over_point.z < (-EPSILON / 2)) && details.position.z > details.over_point.z)
 		printf("\033[0;92mSUCCESS\033[0;39m\n");
