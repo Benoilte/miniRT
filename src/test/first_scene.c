@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   first_scene.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 12:19:06 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/05 14:04:53 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/05 23:45:43 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ static void	add_right_wall(t_data *data)
 	right_w->transform = mx_add_rotation(right_w->transform, M_PI / 4, Y_AXIS);
 	right_w->transform = mx_add_translation(right_w->transform, 0, 0, 5);
 	update_inverse(right_w);
+	right_w->material.color = rgb_set(1, 0, 0);
 	ft_lstadd_back(&data->world->shapes, ft_lstnew(right_w));
 }
 

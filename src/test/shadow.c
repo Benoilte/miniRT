@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shadow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 08:44:27 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/05 16:08:45 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/05 23:00:30 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	test_shade_it(t_data *data)
 	t_intersection		i1;
 	t_intersect_details	details;
 	t_color				color;
-	
+
 	data->world->light->position = point(0, 0, -10);
 	sp = create_new_shape(SPHERE);
 	sp->transform = mx_add_translation(sp->transform, 0, 0, 10);
@@ -88,7 +88,7 @@ static void test_hit_offset(t_data *data)
 	sp->transform = mx_add_translation(sp->transform, 0, 0, 1);
 	update_inverse(sp);
 	i1 = set_intersection(sp, 5);
-	details	=	set_intersect_details(&i1, r1, data->world);
+	details	= set_intersect_details(&i1, r1, data->world);
 	printf("\nshould check if over_point.z is smaller tha EPSILON / 2 and smaller than position.z\n");
 	if ((details.over_point.z < (-EPSILON / 2)) && details.position.z > details.over_point.z)
 		printf("\033[0;92mSUCCESS\033[0;39m\n");
