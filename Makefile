@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+         #
+#    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/09/05 15:18:32 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/09/06 12:13:46 by bgolding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -121,7 +121,7 @@ $(NAME):		$(OBJS) $(OBJS_MAIN) $(STATIC_LIBS)
 $(NAME_TEST):	$(OBJS) $(OBJS_TEST) $(STATIC_LIBS)
 				@$(CC) $(CFLAGS) $(OBJS) $(OBJS_TEST) $(LIB_LINK) -o $@
 				@printf "$(CLEAR_LINE)"
-				@echo "\r$(GREEN)Successfully created executable: $(NAME) $(DEF_COLOR)"
+				@echo "\r$(GREEN)Successfully created executable: $(NAME_TEST) $(DEF_COLOR)"
 
 $(OBJ_DIR)%.o:	$(SRC_DIR)%.c
 				@mkdir -p $(dir $@)
@@ -136,18 +136,20 @@ clean:
 				@make clean -C $(LIBDLIST)
 				@echo "$(YELLOW)clean complete $(DEF_COLOR)"
 
-fclean:			clean
+fclean:			clean fcleanlibs
 				@$(RM) $(NAME)
 				@$(RM) $(NAME_TEST)
+				@echo "$(YELLOW)fclean complete $(DEF_COLOR)"
+
+fcleanlibs:
 				@make clean -C $(MINILIBX_DIR)
 				@make fclean -C $(LIBFT_DIR)
 				@make fclean -C $(LIBGRAPHIC_DIR)
 				@make fclean -C $(LIBDLIST)
-				@echo "$(YELLOW)fclean complete $(DEF_COLOR)"
 
 re:				fclean all
 
-retest:				fclean test
+retest:			re test
 
 libft:
 				@make -C $(LIBFT_DIR)
@@ -161,4 +163,4 @@ libdlist:
 mlx:
 				@make -C $(MINILIBX_DIR)
 
-.PHONY:			all clean fclean re test retest
+.PHONY:			all clean fclean re fcleanlibs test retest libft libgraphic libdlist mlx
