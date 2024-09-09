@@ -6,7 +6,7 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:54:18 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/06 16:47:39 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/09 17:05:08 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,21 @@
 
 # define MATERIAL_INVALID_POINTER "invalid (null) material pointer"
 
+// SPHERE CENTER DEFAULT
+
 # define SPHERE_DEFAULT_X 0
 # define SPHERE_DEFAULT_Y 0
 # define SPHERE_DEFAULT_Z 0
+
+// SPHERE RADIUS DEFAULT
+
 # define SPHERE_DEFAULT_RADIUS 1
+
+// PLANE CENTER DEFAULT
+
+# define PLANE_DEFAULT_X 0
+# define PLANE_DEFAULT_Y 0
+# define PLANE_DEFAULT_Z 0
 
 // TYPEDEFS - MATERIAL
 
@@ -60,6 +71,7 @@ typedef struct s_sphere
 typedef enum e_shape_type
 {
 	SPHERE,
+	PLANE,
 	SHAPE_COUNT
 }	t_shape_type;
 
@@ -106,5 +118,11 @@ void			set_default_sphere(t_shape *self);
 const t_vtable	*get_sphere_vtable(void);
 bool			intersect_sphere(t_ray *r, t_shape *shape, t_report *report);
 t_vector		normal_sphere(t_shape *shape, t_point *object_point);
+
+//	PROTOTYPES PLANE
+void			set_default_plane(t_shape *self);
+const t_vtable	*get_plane_vtable(void);
+bool			intersect_plane(t_ray *r, t_shape *shape, t_report *report);
+t_vector		normal_plane(t_shape *shape, t_point *object_point);
 
 #endif
