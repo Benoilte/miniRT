@@ -6,7 +6,7 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:30:29 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/06 15:58:42 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/09 16:57:40 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ bool	is_shadowed(t_world *world, t_point point)
 	if (!intersects)
 		return (false);
 	first_hit = get_first_hit(&intersects);
-	if (first_hit && ((t_intersection *)(first_hit->content))->t < distance)
+	if (first_hit && (((t_intersection *)(first_hit->content))->t < distance
+		|| equalf(((t_intersection *)(first_hit->content))->t, distance)))
 	{
 		dbl_lstclear(&intersects, clear_intersection);
 		return (true);
