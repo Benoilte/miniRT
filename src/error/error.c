@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:49:38 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/27 17:27:38 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/09 18:09:31 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	separator(void)
 	write(STDERR_FILENO, ": ", 2);
 }
 
-void	print_error(const char *source, const char *msg)
+int	print_error(const char *source, const char *msg)
 {
 	const char	error[] = "ERROR";
 	const char	unknown_source[] = "unknown source";
@@ -35,6 +35,7 @@ void	print_error(const char *source, const char *msg)
 	else
 		write(STDERR_FILENO, unknown_error, ft_strlen(unknown_error));
 	write(STDERR_FILENO, "\n", 1);
+	return (1);
 }
 
 void	exit_error(t_data *data, char *message)

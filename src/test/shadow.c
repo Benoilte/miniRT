@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shadow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 08:44:27 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/06 15:58:42 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/09 18:00:00 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ static void	test_shade_it(t_data *data)
 	t_details		details;
 	t_color			color;
 
+	ft_bzero(&details, sizeof(details));
 	data->world->light->position = point(0, 0, -10);
 	sp = create_new_shape(SPHERE);
 	sp->transform = mx_add_translation(sp->transform, 0, 0, 10);
@@ -69,7 +70,7 @@ static void	test_shade_it(t_data *data)
 	ft_lstadd_back(&data->world->shapes, ft_lstnew(sp));
 	r1 = ray(point(0, 0, 5), vector(0, 0, 1));
 	i1 = set_intersection(sp, 4);
-	details = compute_details(&i1, r1, data->world);
+	compute_details(&details, &i1, r1, data->world);
 	color = lighting(&details, data->world->light);
 	printf("\ncheck if material color is equal to color(0.1, 0.1, 0.1)\n");
 	print_color(color, "resulting color");
@@ -86,12 +87,13 @@ static void	test_hit_offset(t_data *data)
 	t_intersection	i1;
 	t_details		details;
 
+	ft_bzero(&details, sizeof(details));
 	r1 = ray(point(0, 0, -5), vector(0, 0, 1));
 	sp = create_new_shape(SPHERE);
 	sp->transform = mx_add_translation(sp->transform, 0, 0, 1);
 	update_inverse(sp);
 	i1 = set_intersection(sp, 5);
-	details = compute_details(&i1, r1, data->world);
+	compute_details(&details, &i1, r1, data->world);
 	printf("\ncheck if over_point.z is smaller tha -EPSILON / 2 and ");
 	printf("check if over_point.z is smaller than position.z\n");
 	if ((details.over_point.z < (-EPSILON / 2)) \

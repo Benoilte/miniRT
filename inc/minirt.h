@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/06 16:39:14 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/09 18:09:25 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ typedef struct s_data
 	//	ERROR HANDLING
 
 void				exit_error(t_data *data, char *message);
-void				print_error(const char *source, const char *msg);
+int					print_error(const char *source, const char *msg);
 
 	//	DATA
 
@@ -141,8 +141,9 @@ void				render(t_data *data);
 t_m4x4				view_transform(t_point from, t_point to, t_vector up);
 t_camera			camera(size_t hsize, size_t vsize, float fov);
 t_ray				ray_for_pixel(t_camera camera, size_t px, size_t py);
-t_intersect_list	*intersect_world(t_ray *r, t_world *world);
-t_color				color_at(t_ray *ray, t_world *world);
+int					intersect_world(t_intersect_list **list, t_ray *ray, \
+									t_world *world);
+int					color_at(t_color *color, t_ray *ray, t_world *world);
 
 	// TEST
 

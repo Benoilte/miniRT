@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect_world.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 13:28:49 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/06 14:33:16 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/09 18:27:18 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,25 +73,17 @@ static int	intersect_all_shapes(	t_ray *ray, \
 	return (0);
 }
 
-/*
-	To debate:
-	-	Return a linked list:
-		-	Clearer code
-		-	Can't distinguish between errors / no intersections found
-		-	Any error would report for every pixel iterated over in
-			calling function
-	-	Return a status code (int)
-		-	More complex code (extra list pointer passed as argument)
-		-	Can distinguish between errors / no intersections
-*/
-t_intersect_list	*intersect_world(t_ray *ray, t_world *world)
+int	intersect_world(t_intersect_list **list, t_ray *ray, t_world *world)
 {
-	t_intersect_list	*list;
-
-	list = NULL;
-	if (!ray || !world)
+	if (!list || !ray || !world)
+	{
 		print_error("intersect_world", INVALID_POINTER);
-	else if (intersect_all_shapes(ray, world->shapes, &list) != 0)
+		return (1);
+	}
+	else if (intersect_all_shapes(ray, world->shapes, list) != 0)
+	{
 		print_error("intersect_world", INTERSECT_INCOMPLETE);
-	return (list);
+		return (2);
+	}
+	return (0);
 }

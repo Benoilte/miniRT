@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane_intersect.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 14:48:51 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/09 15:04:06 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/09 18:30:23 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@
 
 bool	intersect_plane(t_ray *ray, t_shape *shape, t_report *report)
 {
-    if (!ray || !shape || !report)
+	if (!ray || !shape || !report)
 		return (false);
-    if (fabsf(ray->direction.y) < EPSILON)
-        return (false);
-    report->t[0] = -ray->origin.y / ray->direction.y;
-    report->count = 1;
-    return (true);
+	if (fabsf(ray->direction.y) < EPSILON)
+		return (false);
+	report->t[0] = -ray->origin.y / ray->direction.y;
+	report->count = 1;
+	return (true);
 }
