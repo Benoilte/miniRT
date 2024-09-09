@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   first_scene.c                                      :+:      :+:    :+:   */
+/*   plane_scene.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/04 12:19:06 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/09 15:58:08 by bebrandt         ###   ########.fr       */
+/*   Created: 2024/09/09 15:55:03 by bebrandt          #+#    #+#             */
+/*   Updated: 2024/09/09 16:55:45 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ static void	add_floor(t_data *data)
 {
 	t_shape		*floor;
 
-	floor = create_new_shape(SPHERE);
-	floor->transform = mx_add_scaling(floor->transform, 10, 0.01, 10);
-	update_inverse(floor);
+	floor = create_new_shape(PLANE);
 	floor->material.color = rgb_set(1, 0.9, 0.9);
 	floor->material.specular = 0;
 	ft_lstadd_back(&data->world->shapes, ft_lstnew(floor));
@@ -28,10 +26,9 @@ static void	add_left_wall(t_data *data)
 {
 	t_shape		*left_w;
 
-	left_w = create_new_shape(SPHERE);
-	left_w->transform = mx_add_scaling(left_w->transform, 10, 0.01, 10);
+	left_w = create_new_shape(PLANE);
 	left_w->transform = mx_add_rotation(left_w->transform, M_PI / 2, X_AXIS);
-	left_w->transform = mx_add_rotation(left_w->transform, -M_PI / 4, Y_AXIS);
+    left_w->transform = mx_add_rotation(left_w->transform, -M_PI / 4, Y_AXIS);
 	left_w->transform = mx_add_translation(left_w->transform, 0, 0, 5);
 	update_inverse(left_w);
 	ft_lstadd_back(&data->world->shapes, ft_lstnew(left_w));
@@ -41,8 +38,7 @@ static void	add_right_wall(t_data *data)
 {
 	t_shape		*right_w;
 
-	right_w = create_new_shape(SPHERE);
-	right_w->transform = mx_add_scaling(right_w->transform, 10, 0.01, 10);
+	right_w = create_new_shape(PLANE);
 	right_w->transform = mx_add_rotation(right_w->transform, M_PI / 2, X_AXIS);
 	right_w->transform = mx_add_rotation(right_w->transform, M_PI / 4, Y_AXIS);
 	right_w->transform = mx_add_translation(right_w->transform, 0, 0, 5);
@@ -64,11 +60,11 @@ static void	add_sp(t_data *data, t_m4x4 m, t_color color)
 	ft_lstadd_back(&data->world->shapes, ft_lstnew(sp));
 }
 
-void	set_first_scene(t_data *data)
+void	set_first_scene_with_plane(t_data *data)
 {
 	add_floor(data);
-	add_right_wall(data);
 	add_left_wall(data);
+	add_right_wall(data);
 	add_sp(data, \
 		mx_translation(-0.5, 1, 0.5), \
 		rgb_set(0.1, 1, 0.5));

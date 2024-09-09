@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 15:49:32 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/06 19:16:42 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/09 16:01:40 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 
 void	set_default_scene(t_data *data);
 void	set_first_scene(t_data *data);
+void	set_first_scene_with_plane(t_data *data);
 void	test_shadow(t_data *data);
+int		test_plane(void);
 
 void	timed_render(t_data *data)
 {
@@ -35,6 +37,8 @@ int	main(int argc, char **argv)
 	printf("Hello, in test program!\n");
 	if (argc != 2)
 		return (0);
+	if (ft_strncmp(argv[1], "plane", 6) == 0)
+		return (test_plane());
 	data = init_data();
 	set_hooks(data);
 	if (ft_strncmp(argv[1], "default", 8) == 0)
@@ -43,6 +47,8 @@ int	main(int argc, char **argv)
 		set_first_scene(data);
 	else if (ft_strncmp(argv[1], "shadow", 7) == 0)
 		test_shadow(data);
+	else if (ft_strncmp(argv[1], "pscene", 7) == 0)
+		set_first_scene_with_plane(data);
 	else
 		return (0);
 	timed_render(data);
