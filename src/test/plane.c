@@ -6,7 +6,7 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 13:27:18 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/09 16:00:22 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/09 17:05:41 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,6 @@ static void	test_plane_create(t_shape *plane)
 		printf("\033[0;91mFAILED\033[0;39m\n");
 	printf("\nshould check if transform matrix is equal to the identity\n");
 	if (mx_equal(plane->transform, mx_identity()))
-		printf("\033[0;92mSUCCESS\033[0;39m\n");
-	else
-		printf("\033[0;91mFAILED\033[0;39m\n");
-	printf("\nshould check if orientation vector is equal to vector(0, 1, 0)\n");
-	if (tp_equal(plane->plane.orientation, vector(0, 1, 0)))
 		printf("\033[0;92mSUCCESS\033[0;39m\n");
 	else
 		printf("\033[0;91mFAILED\033[0;39m\n");

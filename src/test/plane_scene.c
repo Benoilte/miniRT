@@ -6,7 +6,7 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:55:03 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/09 16:55:45 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/09 17:07:25 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	add_left_wall(t_data *data)
 
 	left_w = create_new_shape(PLANE);
 	left_w->transform = mx_add_rotation(left_w->transform, M_PI / 2, X_AXIS);
-    left_w->transform = mx_add_rotation(left_w->transform, -M_PI / 4, Y_AXIS);
+	left_w->transform = mx_add_rotation(left_w->transform, -M_PI / 4, Y_AXIS);
 	left_w->transform = mx_add_translation(left_w->transform, 0, 0, 5);
 	update_inverse(left_w);
 	ft_lstadd_back(&data->world->shapes, ft_lstnew(left_w));
