@@ -6,11 +6,11 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 10:32:15 by bgolding          #+#    #+#             */
-/*   Updated: 2023/12/08 13:17:00 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/02 10:06:05 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
+#include "libft.h"
 
 int	i_put_char(char c)
 {

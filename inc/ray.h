@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 16:00:33 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/22 11:00:43 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/04 12:06:55 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ typedef struct s_ray
 
 t_ray	ray(t_point	origin, t_vector direction);
 t_point	ray_position(t_ray ray, float t);
+t_ray	transform_ray(t_ray *r, t_m4x4 m);
 
 #endif

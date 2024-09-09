@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 13:38:09 by bgolding          #+#    #+#             */
-/*   Updated: 2023/12/08 13:16:14 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/02 10:06:05 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 	Counts the number of nodes in a list.
 */
 
-#include "../inc/libft.h"
+#include "libft.h"
 
 int	ft_lstsize(t_list *lst)
 {

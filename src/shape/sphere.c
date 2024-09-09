@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:31:00 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/28 21:43:26 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/06 16:46:27 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	set_default_sphere(t_shape *self)
 	self->inverse = mx_identity();
 }
 
-const t_shape_vtable	*get_sphere_vtable(void)
+const t_vtable	*get_sphere_vtable(void)
 {
-	static const t_shape_vtable	sphere_vtable = {\
+	static const t_vtable	sphere_vtable = {\
 		set_default_sphere, destroy_shape, intersect_sphere, normal_sphere};
 
 	return (&sphere_vtable);

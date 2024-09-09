@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:06:32 by bgolding          #+#    #+#             */
-/*   Updated: 2023/12/15 14:44:17 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/02 10:16:19 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,6 @@ void	*gnl_clean_up(void *p, char *leftovers);
 char	*ft_strcpy(char *dest, char *src);
 int		ft_isspace(int c);
 int		ft_atoi_base(char *str, char *base);
+double	ft_atof(const char *str);
 
 #endif

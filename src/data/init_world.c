@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 14:49:42 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/27 15:40:36 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/02 16:14:23 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@ t_world	*init_world(void)
 	world = ft_calloc(1, sizeof(t_world));
 	if (!world)
 		return (NULL);
+	world->light = new_light(\
+		point(LIGHT_DEFAULT_X, LIGHT_DEFAULT_Y, LIGHT_DEFAULT_Z), \
+		rgb_set(LIGHT_DEFAULT_R, LIGHT_DEFAULT_G, LIGHT_DEFAULT_B));
+	if (!world->light)
+	{
+		destroy_world(world);
+		return (NULL);
+	}
 	return (world);
 }
 

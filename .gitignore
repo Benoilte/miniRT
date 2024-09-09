@@ -4,6 +4,7 @@
 *.o
 lib/mlx/Linux/test/mlx-test
 miniRT
+test_miniRT
 
 # test_file
 

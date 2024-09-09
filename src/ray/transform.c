@@ -1,35 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   transform.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 10:06:47 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/02 10:06:05 by bgolding         ###   ########.fr       */
+/*   Created: 2024/09/04 12:03:00 by bgolding          #+#    #+#             */
+/*   Updated: 2024/09/04 12:06:58 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-	Allocates (with malloc) and returns a new string, 
-	which is the result of the concatenation of 's1' and 's2'.
-*/
+#include "minirt.h"
 
-#include "libft.h"
-
-char	*ft_strjoin(char const *s1, char const *s2)
+t_ray	transform_ray(t_ray *r, t_m4x4 m)
 {
-	int		i;
-	char	*s3;
-
-	s3 = malloc((ft_strlen(s1) + ft_strlen(s2)) * sizeof(char) + 1);
-	if (!s3)
-		return (NULL);
-	i = 0;
-	while (*s1)
-		s3[i++] = *s1++;
-	while (*s2)
-		s3[i++] = *s2++;
-	s3[i] = '\0';
-	return (s3);
+	return (ray(mx_mult_tuple(m, r->origin), mx_mult_tuple(m, r->direction)));
 }

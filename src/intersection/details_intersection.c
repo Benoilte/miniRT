@@ -6,15 +6,39 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:30:29 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/30 15:45:31 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/06 15:58:42 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "intersection.h"
 
-t_intersect_details	set_intersect_details(t_intersection *hit, t_ray ray)
+bool	is_shadowed(t_world *world, t_point point)
 {
-	t_intersect_details	new;
+	t_intersect_list	*intersects;
+	t_intersect_list	*first_hit;
+	t_vector			lightv;
+	t_ray				r1;
+	float				distance;
+
+	lightv = tp_subtract(world->light->position, point);
+	distance = tp_magnitude(lightv);
+	r1 = ray(point, tp_normalize(lightv));
+	intersects = intersect_world(&r1, world);
+	if (!intersects)
+		return (false);
+	first_hit = get_first_hit(&intersects);
+	if (first_hit && ((t_intersection *)(first_hit->content))->t < distance)
+	{
+		dbl_lstclear(&intersects, clear_intersection);
+		return (true);
+	}
+	dbl_lstclear(&intersects, clear_intersection);
+	return (false);
+}
+
+t_details	compute_details(t_intersection *hit, t_ray ray, t_world *world)
+{
+	t_details	new;
 
 	new.shape = hit->shape;
 	new.t = hit->t;
@@ -28,5 +52,7 @@ t_intersect_details	set_intersect_details(t_intersection *hit, t_ray ray)
 	}
 	else
 		new.inside = false;
+	new.over_point = tp_add(new.position, tp_multiply(new.normalv, EPSILON));
+	new.in_shadow = is_shadowed(world, new.over_point);
 	return (new);
 }
