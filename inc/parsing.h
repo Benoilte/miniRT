@@ -6,13 +6,14 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/09 09:17:30 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/09 12:06:38 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
 
+# include "libft.h"
 # include <fcntl.h>
 # include <string.h>
 
@@ -25,6 +26,7 @@
 
 # define LX_INVALID_PTR "invalid (null) pointer passed as argument"
 # define LX_INVALID_FILENAME "invalid filename. Expected format: *.rt"
+# define LX_INCOMPLETE "unable to complete lexical analysis"
 
 # define STR_AMBIENT "A"
 # define STR_CAMERA "C"
@@ -49,13 +51,14 @@ typedef enum e_info
 
 typedef enum e_id
 {
+	ID_INVALID = -1,
 	ID_AMBIENT,
 	ID_CAMERA,
 	ID_LIGHT,
 	ID_SPHERE,
 	ID_PLANE,
 	ID_CYLINDER,
-	ID_COUNT
+	ID_VALID_COUNT,
 }	t_id;
 
 typedef enum e_value_type
@@ -67,7 +70,24 @@ typedef enum e_value_type
 	VT_FOV
 }	t_value_type;
 
+typedef struct t_token
+{
+	char	**args;
+	t_id	identifier;
+	int		line_number;
+}			t_token;
+
 //	PROTOTYPES
-int	validate_file(const char *filename, int *fd);
+
+//	file_validation.c
+int		validate_file(const char *filename, int *fd);
+
+//	lexer.c
+int		lexer(int fd, t_list **token_list);
+
+//	tokenize.c
+int		tokenize_line(t_list **token_list, char *line);
+int		tokenize_error(char *source);
+void	delete_token(void *token);
 
 #endif
