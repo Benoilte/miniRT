@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/02 15:13:46 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/09 09:17:30 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,14 @@
 
 # define LX_INVALID_PTR "invalid (null) pointer passed as argument"
 # define LX_INVALID_FILENAME "invalid filename. Expected format: *.rt"
+
+# define STR_AMBIENT "A"
+# define STR_CAMERA "C"
+# define STR_LIGHT "L"
+
+# define STR_SPHERE "sp"
+# define STR_PLANE "pl"
+# define STR_CYLINDER "cy"
 
 //	TYPEDEFS
 
