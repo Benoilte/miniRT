@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/09 12:06:38 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/09 16:01:06 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 # define LX_SUFFIX ".rt"
 # define LX_SUFFIX_LEN 3
 
-# define LX_INVALID_PTR "invalid (null) pointer passed as argument"
-# define LX_INVALID_FILENAME "invalid filename. Expected format: *.rt"
-# define LX_INCOMPLETE "unable to complete lexical analysis"
+# define INPUT_ERR_USAGE "Invalid input. Usage: ./miniRT <filename>"
+# define INPUT_ERR_FILENAME "Invalid filename. Expected format: *.rt"
+# define LX_INCOMPLETE "Unable to complete lexical analysis"
 
 # define STR_AMBIENT "A"
 # define STR_CAMERA "C"
@@ -35,6 +35,8 @@
 # define STR_SPHERE "sp"
 # define STR_PLANE "pl"
 # define STR_CYLINDER "cy"
+
+# define INPUT_ERROR_LIMIT 50
 
 //	TYPEDEFS
 
@@ -77,17 +79,33 @@ typedef struct t_token
 	int		line_number;
 }			t_token;
 
+typedef struct t_error
+{
+	int		error_type;
+	int		line;
+}			t_error;
+
+typedef struct s_input_data
+{
+	int		fd;
+	t_list	*token_list;
+	t_list	*errors;
+}			t_input_data;
+
 //	PROTOTYPES
 
 //	file_validation.c
 int		validate_file(const char *filename, int *fd);
 
 //	lexer.c
-int		lexer(int fd, t_list **token_list);
+int		lexer(t_input_data *input);
 
 //	tokenize.c
 int		tokenize_line(t_list **token_list, char *line);
+
+//	token_utils.c
 int		tokenize_error(char *source);
+t_token	*new_token(char *str, int line);
 void	delete_token(void *token);
 
 #endif

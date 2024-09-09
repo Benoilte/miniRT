@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:03:03 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/09 12:06:26 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/09 16:03:38 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ static void	free_args(char **args)
 		free(*args);
 		args++;
 	}
-	free(args);
 }
 
 void	delete_token(void *content)
@@ -42,6 +41,47 @@ void	delete_token(void *content)
 	if (!token)
 		return ;
 	if (token->args)
+	{
 		free_args(token->args);
+		free(token->args);
+	}
 	free(token);
+}
+
+static t_id	set_identifier(char *str)
+{
+	const char	*identifiers[ID_VALID_COUNT] = {\
+	STR_AMBIENT, STR_CAMERA, STR_LIGHT, STR_SPHERE, STR_PLANE, STR_CYLINDER};
+	int			i;
+
+	if (!str)
+		return (ID_INVALID);
+	i = 0;
+	while (i < ID_VALID_COUNT)
+	{
+		if (ft_strncmp(str, identifiers[i], ft_strlen(str)) == 0)
+			return (i);
+		i++;
+	}
+	return (ID_INVALID);
+}
+
+t_token	*new_token(char *str, int line)
+{
+	t_token	*token;
+
+	token = ft_calloc(1, sizeof(t_token));
+	if (token)
+	{
+		token->args = ft_split(str, ' ');
+		if (!token->args)
+		{
+			print_error("new_token: ft_split: ", strerror(errno));
+			free(token);
+			return (NULL);
+		}
+		token->identifier = set_identifier(token->args[0]);
+		token->line_number = line;
+	}
+	return (token);
 }

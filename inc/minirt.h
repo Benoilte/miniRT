@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/09 09:06:20 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/09 14:22:02 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,23 +95,28 @@ typedef struct s_camera
 
 typedef struct s_data
 {
-	t_mlx		*mlx;
-	t_world		*world;
-	t_camera	*camera;
-}				t_data;
+	t_input_data	*input;
+	t_mlx			*mlx;
+	t_world			*world;
+	t_camera		*camera;
+}					t_data;
 
 //	PROTOTYPES
 
 	//	ERROR HANDLING
 
+int					input_error(t_input_data *input, const char *source, \
+															const char *msg);
 void				exit_error(t_data *data, char *message);
 void				print_error(const char *source, const char *msg);
 
 	//	DATA
 
+int					init_input(int argc, char **argv, t_input_data *input);
 t_data				*init_data(void);
 t_world				*init_world(void);
 t_camera			*init_camera(void);
+void				destroy_input(t_input_data *input);
 void				destroy_data(t_data *data);
 void				destroy_world(t_world *world);
 void				destroy_camera(t_camera *camera);

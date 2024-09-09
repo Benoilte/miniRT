@@ -3,33 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:49:38 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/27 17:27:38 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/09 16:52:12 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void	separator(void)
-{
-	write(STDERR_FILENO, ": ", 2);
-}
-
 void	print_error(const char *source, const char *msg)
 {
-	const char	error[] = "ERROR";
 	const char	unknown_source[] = "unknown source";
 	const char	unknown_error[] = "unknown error";
 
-	write(STDERR_FILENO, error, ft_strlen(error));
-	separator();
+	ft_putendl_fd("Error", STDERR_FILENO);
 	if (source)
 		write(STDERR_FILENO, source, ft_strlen(source));
 	else
 		write(STDERR_FILENO, unknown_source, ft_strlen(unknown_source));
-	separator();
+	ft_putstr_fd(": ", STDERR_FILENO);
 	if (msg)
 		write(STDERR_FILENO, msg, ft_strlen(msg));
 	else
@@ -45,4 +38,11 @@ void	exit_error(t_data *data, char *message)
 		ft_putendl_fd(message, STDERR_FILENO);
 	destroy_data(data);
 	exit(EXIT_FAILURE);
+}
+
+int	input_error(t_input_data *input, const char *source, const char *msg)
+{
+	print_error(source, msg);
+	destroy_input(input);
+	return (1);
 }
