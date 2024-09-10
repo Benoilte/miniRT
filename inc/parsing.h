@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/10 18:56:30 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/10 19:51:47 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,5 +132,15 @@ void	delete_token(void *token);
 
 //	parser.c
 int		parser(t_input_data *input);
+
+//	validate_single_element.c
+int		validate_ambient(t_token *token, t_list **errors);
+int		validate_camera(t_token *token, t_list **errors);
+int		validate_light(t_token *token, t_list **errors);
+
+//	validate_shape.c
+int		validate_sphere(t_token *token, t_list **errors);
+int		validate_plane(t_token *token, t_list **errors);
+int		validate_cylinder(t_token *token, t_list **errors);
 
 #endif
