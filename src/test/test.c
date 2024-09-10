@@ -3,21 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 15:49:32 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/09 16:01:40 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/10 13:09:23 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include <time.h>
 
-void	set_default_scene(t_data *data);
-void	set_first_scene(t_data *data);
-void	set_first_scene_with_plane(t_data *data);
-void	test_shadow(t_data *data);
+int		set_default_scene(t_data *data);
+int		set_first_scene(t_data *data);
+int		set_first_scene_with_plane(t_data *data);
+int		test_shadow(t_data *data);
 int		test_plane(void);
+int		test_cylinder(void);
 
 void	timed_render(t_data *data)
 {
@@ -30,6 +31,29 @@ void	timed_render(t_data *data)
 	printf("Render time: %.2f seconds\n", end);
 }
 
+int	test_code(char *test, t_data *data)
+{
+	if (ft_strncmp(test, "shadow", 7) == 0)
+		return (test_shadow(data));
+	else if (ft_strncmp(test, "plane", 6) == 0)
+		return (test_plane());
+	else if (ft_strncmp(test, "cylinder", 9) == 0)
+		return (test_cylinder());
+	return (1);
+}
+
+int	set_scene(char *test, t_data *data)
+{
+	if (ft_strncmp(test, "default", 8) == 0)
+		return (set_default_scene(data));
+	else if (ft_strncmp(test, "fscene", 7) == 0)
+		return (set_first_scene(data));
+	else if (ft_strncmp(test, "pscene", 7) == 0)
+		return (set_first_scene_with_plane(data));
+	else
+		return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	*data;
@@ -37,20 +61,18 @@ int	main(int argc, char **argv)
 	printf("Hello, in test program!\n");
 	if (argc != 2)
 		return (0);
-	if (ft_strncmp(argv[1], "plane", 6) == 0)
-		return (test_plane());
 	data = init_data();
-	set_hooks(data);
-	if (ft_strncmp(argv[1], "default", 8) == 0)
-		set_default_scene(data);
-	else if (ft_strncmp(argv[1], "fscene", 7) == 0)
-		set_first_scene(data);
-	else if (ft_strncmp(argv[1], "shadow", 7) == 0)
-		test_shadow(data);
-	else if (ft_strncmp(argv[1], "pscene", 7) == 0)
-		set_first_scene_with_plane(data);
-	else
+	if (test_code(argv[1], data) == 0)
+	{
+		destroy_data(data);
 		return (0);
+	}
+	if (set_scene(argv[1], data) == 1)
+	{
+		destroy_data(data);
+		return (0);
+	}
+	set_hooks(data);
 	timed_render(data);
 	mlx_loop(data->mlx->xvar);
 	destroy_data(data);

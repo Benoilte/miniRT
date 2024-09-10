@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shadow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 08:44:27 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/09 18:00:00 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/10 12:55:42 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ static void	test_hit_offset(t_data *data)
 	sp->f->destroy(sp);
 }
 
-void	test_shadow(t_data *data)
+int	test_shadow(t_data *data)
 {
 	test_lighting(vector(0, 0, -1), false, \
 					point(0, 0, -10), rgb_set(1.9, 1.9, 1.9));
@@ -125,4 +125,5 @@ void	test_shadow(t_data *data)
 	test_is_shadowed(data, point(-2, 2, -2), false);
 	test_shade_it(data);
 	test_hit_offset(data);
+	return (0);
 }

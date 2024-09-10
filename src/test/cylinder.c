@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   default_world.c                                    :+:      :+:    :+:   */
+/*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/04 16:28:26 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/10 13:02:36 by bebrandt         ###   ########.fr       */
+/*   Created: 2024/09/10 13:07:32 by bebrandt          #+#    #+#             */
+/*   Updated: 2024/09/10 13:09:09 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void	set_default_camera(t_camera *camera)
+int	test_cylinder(void)
 {
-	t_point		from;
-	t_point		to;
-	t_vector	up;
+	// t_shape	*cylinder;
 
-	from = point(0, 0, -2);
-	to = point(0, 0, 0);
-	up = vector(0, 1, 0);
-	camera->transform = view_transform(from, to, up);
-	camera->transform_inverse = mx_inversion(camera->transform);
-}
-
-int	set_default_scene(t_data *data)
-{
-	set_default_camera(data->camera);
-	add_new_shape_to_world(data->world, SPHERE);
+	// cylinder = create_new_shape(CYLINDER);
+	// test_plane_create(cylinder);
+	// test_plane_normal(cylinder);
+	// test_no_intersect(cylinder);
+	// test_intersect(cylinder);
+	// cylinder->f->destroy(cylinder);
 	return (0);
 }

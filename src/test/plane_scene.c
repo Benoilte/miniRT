@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane_scene.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:55:03 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/09 17:07:25 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/10 13:03:30 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	add_sp(t_data *data, t_m4x4 m, t_color color)
 	ft_lstadd_back(&data->world->shapes, ft_lstnew(sp));
 }
 
-void	set_first_scene_with_plane(t_data *data)
+int	set_first_scene_with_plane(t_data *data)
 {
 	add_floor(data);
 	add_left_wall(data);
@@ -80,4 +80,5 @@ void	set_first_scene_with_plane(t_data *data)
 												point(0, 1, 0), \
 												vector(0, 1, 0));
 	data->camera->transform_inverse = mx_inversion(data->camera->transform);
+	return (0);
 }
