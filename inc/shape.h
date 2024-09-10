@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:54:18 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/10 13:27:39 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/11 00:45:42 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ t_vector		normal_plane(t_shape *shape, t_point *object_point);
 //	PROTOTYPES CYLINDER
 void			set_default_cylinder(t_shape *self);
 const t_vtable	*get_cylinder_vtable(void);
-bool			intersect_cylinder(t_ray *r, t_shape *shape, t_report *report);
+bool			intersect_cylinder(t_ray *ray, t_shape *cl, t_report *report);
 t_vector		normal_cylinder(t_shape *shape, t_point *object_point);
 
 #endif
