@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/09 14:22:02 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/10 13:26:37 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ typedef struct s_data
 
 int					input_error(t_input_data *input, const char *source, \
 															const char *msg);
+int					log_error(t_list **errors, int type, int line);
 void				exit_error(t_data *data, char *message);
 void				print_error(const char *source, const char *msg);
 

@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/09 16:01:06 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/10 14:12:51 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,15 @@
 # define STR_PLANE "pl"
 # define STR_CYLINDER "cy"
 
-# define INPUT_ERROR_LIMIT 50
+# define INPUT_ERROR_REPORT_LIMIT 50
+
+# define ERRMSG_INVALID_ID "Invalid identifier"
+# define ERRMSG_REAL_NUM "Invalid number detected"
+# define ERRMSG_RATIO "Invalid ratio [0.0 - 1.0]"
+# define ERRMSG_POS_NUM "Invalid number: expected positive number"
+# define ERRMSG_UINT8 "Invalid 8-bit integer [0 - 255]"
+# define ERRMSG_FOV "Invalid camera field of view [0 - 180]"
+# define ERRMSG_DUPLICATE "Duplicate identifier (only one allowed)"
 
 //	TYPEDEFS
 
@@ -71,6 +79,18 @@ typedef enum e_value_type
 	VT_UINT8,
 	VT_FOV
 }	t_value_type;
+
+typedef enum e_error_code
+{
+	ERR_INVALID_ID,
+	ERR_REAL_NUM,
+	ERR_RATIO,
+	ERR_POS_NUM,
+	ERR_UINT8,
+	ERR_FOV,
+	ERR_DUPLICATE,
+	ERR_CODE_LIMIT
+}	t_error_code;
 
 typedef struct t_token
 {

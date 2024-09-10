@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:49:38 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/09 16:52:12 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/10 13:16:54 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,4 @@ void	exit_error(t_data *data, char *message)
 		ft_putendl_fd(message, STDERR_FILENO);
 	destroy_data(data);
 	exit(EXIT_FAILURE);
-}
-
-int	input_error(t_input_data *input, const char *source, const char *msg)
-{
-	print_error(source, msg);
-	destroy_input(input);
-	return (1);
 }

@@ -6,7 +6,7 @@
 #    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/09/09 14:29:06 by bgolding         ###   ########.fr        #
+#    Updated: 2024/09/10 13:43:29 by bgolding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ LIBDLIST		=	$(LIB)libdlist/
 
 MAIN_FILES		=	main
 TEST_FILES		=	test print default_world first_scene shadow
-ERROR_FILES		=	error
+ERROR_FILES		=	error input_error
 PARSING_FILES	=	file_validation lexer tokenize token_utils
 DATA_FILES		=	init_data destroy_data init_world destroy_world init_input destroy_input
 WINDOW_FILES	=	init_mlx
@@ -87,7 +87,7 @@ OBJS_TEST		=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_TEST)))
 LIB_LINK		=	-L$(LIBFT_DIR) -lft -L$(MINILIBX_DIR) -lmlx -L$(LIBGRAPHIC_DIR) -lgraphic -L$(LIBDLIST) -ldlist $(OS_FLAGS)
 
 CC				=	gcc
-CFLAGS			=	-Wall -Wextra -Werror
+CFLAGS			=	-Wall -Wextra -Werror -g
 RM				=	rm -f
 AR				=	ar -r
 
