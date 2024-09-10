@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shape.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:54:18 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/09 17:05:08 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/10 13:27:39 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,12 @@
 # define PLANE_DEFAULT_Y 0
 # define PLANE_DEFAULT_Z 0
 
+// CYLINDER CENTER DEFAULT
+
+# define CL_DEFAULT_X 0
+# define CL_DEFAULT_Y 0
+# define CL_DEFAULT_Z 0
+
 // TYPEDEFS - MATERIAL
 
 typedef struct s_material
@@ -72,6 +78,7 @@ typedef enum e_shape_type
 {
 	SPHERE,
 	PLANE,
+	CYLINDER,
 	SHAPE_COUNT
 }	t_shape_type;
 
@@ -124,5 +131,11 @@ void			set_default_plane(t_shape *self);
 const t_vtable	*get_plane_vtable(void);
 bool			intersect_plane(t_ray *r, t_shape *shape, t_report *report);
 t_vector		normal_plane(t_shape *shape, t_point *object_point);
+
+//	PROTOTYPES CYLINDER
+void			set_default_cylinder(t_shape *self);
+const t_vtable	*get_cylinder_vtable(void);
+bool			intersect_cylinder(t_ray *r, t_shape *shape, t_report *report);
+t_vector		normal_cylinder(t_shape *shape, t_point *object_point);
 
 #endif

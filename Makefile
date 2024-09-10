@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+         #
+#    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/09/09 15:57:21 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/09/10 13:25:33 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ LIBGRAPHIC_DIR	=	$(LIB)libgraphic/
 LIBDLIST		=	$(LIB)libdlist/
 
 MAIN_FILES		=	main
-TEST_FILES		=	test print default_world first_scene shadow plane plane_scene utils
+TEST_FILES		=	test print default_world first_scene plane_scene \
+					shadow plane cylinder utils
 ERROR_FILES		=	error
 DATA_FILES		=	init_data destroy_data init_world destroy_world
 WINDOW_FILES	=	init_mlx
@@ -35,7 +36,8 @@ INTERSECT_FILES	=	clear_intersection hit_intersection new_intersection details_i
 RAY_FILES		=	ray position transform
 SHAPE_FILES		=	shape error material normal \
 					sphere sphere_intersect sphere_normal \
-					plane plane_intersect plane_normal
+					plane plane_intersect plane_normal \
+					cylinder cylinder_intersect cylinder_normal
 LIGHT_FILES		=	new_light destroy_light lighting
 
 # OS specific settings
