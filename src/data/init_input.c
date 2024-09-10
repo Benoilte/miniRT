@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 14:12:51 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/09 16:52:03 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/10 14:58:57 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,9 @@ void	print_token(void *content)
 int	init_input(int argc, char **argv, t_input_data *input)
 {
 	if (!argv || !input)
-		return (input_error(NULL, "init_input", INVALID_POINTER));
-	ft_bzero(input, sizeof(t_input_data));
+		return (input_error(input, "init_input", INVALID_POINTER));
 	if (argc != 2)
-		return (input_error(NULL, "init_input", INPUT_ERR_USAGE));
+		return (input_error(input, "init_input", INPUT_ERR_USAGE));
 	if (validate_file(argv[1], &input->fd) != 0)
 		return (2);
 	if (lexer(input) != 0)
