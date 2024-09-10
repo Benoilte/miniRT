@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/10 14:12:51 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/10 18:56:30 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # define INPUT_ERR_USAGE "Invalid input. Usage: ./miniRT <filename>"
 # define INPUT_ERR_FILENAME "Invalid filename. Expected format: *.rt"
 # define LX_INCOMPLETE "Unable to complete lexical analysis"
+# define SYN_CHK_INCOMPLETE "Unable to complete syntax check"
+# define SNY_CHK_ERROR "Syntax error(s) detected"
 
 # define STR_AMBIENT "A"
 # define STR_CAMERA "C"
@@ -127,5 +129,8 @@ int		tokenize_line(t_list **token_list, char *line);
 int		tokenize_error(char *source);
 t_token	*new_token(char *str, int line);
 void	delete_token(void *token);
+
+//	parser.c
+int		parser(t_input_data *input);
 
 #endif

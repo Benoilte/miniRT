@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 14:12:51 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/10 14:58:57 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/10 19:18:21 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ int	init_input(int argc, char **argv, t_input_data *input)
 		return (2);
 	if (lexer(input) != 0)
 		return (3);
+	if (parser(input) != 0)
+		return (4);
 	ft_lstiter(input->token_list, print_token);
 	destroy_input(input);
 	return (0);
