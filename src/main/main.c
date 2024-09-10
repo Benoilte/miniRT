@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:20:16 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/09 15:01:45 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/10 16:25:48 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	main(int argc, char **argv)
 	t_input_data	input;
 	t_data			*data;
 
+	return (parse_test(argc, argv));//BYPASS
+	
 	printf("Hello, in main program!\n");
 	if (init_input(argc, argv, &input) != 0)
 		return (1);

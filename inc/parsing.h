@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/09 16:01:06 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/10 17:43:15 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,25 @@ typedef struct s_input_data
 	t_list	*errors;
 }			t_input_data;
 
+//		AST (SYNTAX TREE)
+
+typedef bool	(*t_validate)(t_id id, char *arg);
+
+typedef enum e_ast_type
+{
+	AST_FALSE,
+	AST_TRUE,
+	AST_EVALUATE,
+}	t_ast_type;
+
+typedef struct s_ast
+{
+	t_ast_type		type;
+	t_validate		validate;
+	struct s_ast	*left;
+	struct s_ast	*right;
+}					t_ast;
+
 //	PROTOTYPES
 
 //	file_validation.c
@@ -107,5 +126,8 @@ int		tokenize_line(t_list **token_list, char *line);
 int		tokenize_error(char *source);
 t_token	*new_token(char *str, int line);
 void	delete_token(void *token);
+
+//	parser.c
+int 	parse_test(int argc, char **argv);
 
 #endif
