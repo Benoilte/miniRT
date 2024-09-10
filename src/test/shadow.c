@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 08:44:27 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/10 12:55:42 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/11 00:40:40 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static	void	test_lighting(	t_vector eyev, \
 	t_color		color;
 
 	sp1 = create_new_shape(SPHERE);
+	if (!sp1)
+		return ;
 	details.shape = sp1;
 	details.eyev = eyev;
 	details.normalv = vector(0, 0, -1);
@@ -65,12 +67,15 @@ static void	test_shade_it(t_data *data)
 	ft_bzero(&details, sizeof(details));
 	data->world->light->position = point(0, 0, -10);
 	sp = create_new_shape(SPHERE);
+	if (!sp)
+		return ;
 	sp->transform = mx_add_translation(sp->transform, 0, 0, 10);
 	update_inverse(sp);
 	ft_lstadd_back(&data->world->shapes, ft_lstnew(sp));
 	r1 = ray(point(0, 0, 5), vector(0, 0, 1));
 	i1 = set_intersection(sp, 4);
-	compute_details(&details, &i1, r1, data->world);
+	if (compute_details(&details, &i1, r1, data->world))
+		return ;
 	color = lighting(&details, data->world->light);
 	printf("\ncheck if material color is equal to color(0.1, 0.1, 0.1)\n");
 	print_color(color, "resulting color");
@@ -90,10 +95,14 @@ static void	test_hit_offset(t_data *data)
 	ft_bzero(&details, sizeof(details));
 	r1 = ray(point(0, 0, -5), vector(0, 0, 1));
 	sp = create_new_shape(SPHERE);
+	if (!sp)
+		return ;
 	sp->transform = mx_add_translation(sp->transform, 0, 0, 1);
 	update_inverse(sp);
+	ft_lstadd_back(&data->world->shapes, ft_lstnew(sp));
 	i1 = set_intersection(sp, 5);
-	compute_details(&details, &i1, r1, data->world);
+	if (compute_details(&details, &i1, r1, data->world))
+		return ;
 	printf("\ncheck if over_point.z is smaller tha -EPSILON / 2 and ");
 	printf("check if over_point.z is smaller than position.z\n");
 	if ((details.over_point.z < (-EPSILON / 2)) \
@@ -101,7 +110,6 @@ static void	test_hit_offset(t_data *data)
 		printf("\033[0;92mSUCCESS\033[0;39m\n");
 	else
 		printf("\033[0;91mFAILED\033[0;39m\n");
-	sp->f->destroy(sp);
 }
 
 int	test_shadow(t_data *data)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 13:27:18 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/09 17:05:41 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/11 00:33:05 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ static void	test_plane_normal(t_shape *plane)
 	t_point	p2;
 	t_point	p3;
 
-	printf("\n\tThe normal of a plane is constant everywhere\n");
 	p1 = point(0, 0, 0);
 	p2 = point(10, 0, -10);
 	p3 = point(-5, 0, 150);
+	printf("\n\tThe normal of a plane is constant everywhere\n");
 	printf("\nshould check if normal is equal to vector(0, 1, 0)\n");
 	if (tp_equal(plane->f->normal(plane, &p1), vector(0, 1, 0)))
 		printf("\033[0;92mSUCCESS\033[0;39m\n");
@@ -115,6 +115,8 @@ int	test_plane(void)
 	t_shape	*plane;
 
 	plane = create_new_shape(PLANE);
+	if(!plane)
+		return (1);
 	test_plane_create(plane);
 	test_plane_normal(plane);
 	test_no_intersect(plane);

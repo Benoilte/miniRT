@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 15:49:32 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/10 13:09:23 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/11 00:26:13 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 #include <time.h>
 
 int		set_default_scene(t_data *data);
+int		add_walls_and_floor(t_data *data);
 int		set_first_scene(t_data *data);
 int		set_first_scene_with_plane(t_data *data);
 int		test_shadow(t_data *data);
 int		test_plane(void);
 int		test_cylinder(void);
+int		set_scene_with_cylinder(t_data *data);
 
 void	timed_render(t_data *data)
 {
@@ -50,6 +52,8 @@ int	set_scene(char *test, t_data *data)
 		return (set_first_scene(data));
 	else if (ft_strncmp(test, "pscene", 7) == 0)
 		return (set_first_scene_with_plane(data));
+	else if (ft_strncmp(test, "clscene", 8) == 0)
+		return (set_scene_with_cylinder(data));
 	else
 		return (1);
 }

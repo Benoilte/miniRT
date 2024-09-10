@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   plane_scene.c                                      :+:      :+:    :+:   */
+/*   cylinder_scene.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/09 15:55:03 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/11 00:30:01 by bebrandt         ###   ########.fr       */
+/*   Created: 2024/09/10 16:28:42 by bebrandt          #+#    #+#             */
+/*   Updated: 2024/09/11 00:31:29 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,32 @@
 
 int	add_walls_and_floor(t_data *data);
 
-static void	add_sp(t_data *data, t_m4x4 m, t_color color)
+static void	add_cl(t_data *data, t_m4x4 m, t_color color)
 {
-	t_shape		*sp;
+	t_shape		*cl;
 
-	sp = create_new_shape(SPHERE);
-	if (!sp)
+	cl = create_new_shape(CYLINDER);
+	if (!cl)
 		return ;
-	sp->transform = mx_mult(m, sp->transform);
-	update_inverse(sp);
-	sp->material.color = color;
-	sp->material.diffuse = 0.7;
-	sp->material.specular = 0.3;
-	ft_lstadd_back(&data->world->shapes, ft_lstnew(sp));
+	cl->transform = mx_mult(m, cl->transform);
+	update_inverse(cl);
+	cl->material.color = color;
+	cl->material.diffuse = 0.7;
+	cl->material.specular = 0.3;
+	ft_lstadd_back(&data->world->shapes, ft_lstnew(cl));
 }
 
-int	set_first_scene_with_plane(t_data *data)
+int	set_scene_with_cylinder(t_data *data)
 {
 	add_walls_and_floor(data);
-	add_sp(data, \
+	add_cl(data, \
 		mx_translation(-0.5, 1, 0.5), \
 		rgb_set(0.1, 1, 0.5));
-	add_sp(data, \
+	add_cl(data, \
 		mx_mult(mx_translation(1.5, 0.5, -0.5), \
 		mx_scaling(0.5, 0.5, 0.5)), \
 		rgb_set(0.5, 1, 0.1));
-	add_sp(data, \
+	add_cl(data, \
 		mx_mult(mx_translation(-1.5, 0.33, -0.75), \
 		mx_scaling(0.33, 0.33, 0.33)), \
 		rgb_set(1, 0.8, 0.1));
