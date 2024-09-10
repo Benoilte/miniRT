@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 13:16:41 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/10 14:14:19 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/10 19:17:20 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	report_error(void *error_node)
 	if (!error_node)
 		return ;
 	error = (t_error *)error_node;
-	ft_printf("\t[Line\t%d]:\t", error->line);
+	ft_printf("\tLine\t%d\t:\t", error->line);
 	if (error->error_type >= 0 && error->error_type < ERR_CODE_LIMIT)
 		ft_printf("%s\n", msg[error->error_type]);
 	else
@@ -33,10 +33,7 @@ int	input_error(t_input_data *input, const char *source, const char *msg)
 {
 	print_error(source, msg);
 	if (input)
-	{
 		ft_lstiter(input->errors, report_error);
-		destroy_input(input);
-	}
 	return (1);
 }
 
