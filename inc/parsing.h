@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/11 16:58:09 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/11 17:31:41 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,15 @@
 
 # define ERRMSG_INVALID_ID "Invalid identifier"
 # define ERRMSG_REAL_NUM "Invalid number format detected"
-# define ERRMSG_RATIO "Invalid ratio [0.0 - 1.0]"
+# define ERRMSG_RATIO "Invalid ratio [0.0 .. 1.0]"
 # define ERRMSG_POS_NUM "Invalid number: expected positive number"
-# define ERRMSG_UINT8 "Invalid 8-bit unsigned integer value [0 - 255]"
-# define ERRMSG_FOV "Invalid camera field of view [0 - 180]"
+# define ERRMSG_COLOR "Invalid color [R,G,B in range [0 .. 255]]"
+# define ERRMSG_FOV "Invalid camera field of view [0 .. 180]"
 # define ERRMSG_DUPLICATE "Duplicate identifier (only one allowed)"
-# define ERRMSG_ARGS_ECCESS "Too many parameters for element"
+# define ERRMSG_VECTOR_RANGE "Invalid vector element range [-1 .. 1]"
+# define ERRMSG_RANGE_EXCESS "Value exceeds permitted range"
 # define ERRMSG_ARGS_MISSING "Missing parameter(s) for element"
+# define ERRMSG_ARGS_EXCESS "Too many parameters for element"
 
 # define RANGE_MIN -1000
 # define RANGE_MAX 1000
@@ -93,9 +95,13 @@ typedef enum e_error_code
 	ERR_REAL_NUM,
 	ERR_RATIO,
 	ERR_POS_NUM,
-	ERR_UINT8,
+	ERR_COLOR,
 	ERR_FOV,
 	ERR_DUPLICATE,
+	ERR_VECTOR_RANGE,
+	ERR_RANGE_LIMIT,
+	ERR_ARGS_MISSING,
+	ERR_ARGS_EXCESS,
 	ERR_CODE_LIMIT
 }	t_error_code;
 
