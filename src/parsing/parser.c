@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:20:21 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/10 19:53:18 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/11 16:53:38 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	validate_id(t_token *token, t_list **errors)
 
 static int	validate_token(t_token *token, t_list **errors)
 {
-	static int	(*validate[ID_VALID_COUNT])(t_token *, t_list **) = {\
+	const t_validate_token	validate[ID_VALID_COUNT] = {\
 	validate_ambient, validate_camera, validate_light, \
 	validate_sphere, validate_plane, validate_cylinder};
 
