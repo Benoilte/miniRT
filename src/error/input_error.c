@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 13:16:41 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/11 17:31:52 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/11 18:02:15 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,18 @@ int	log_error(t_list **errors, int type, int line)
 	t_list	*node;
 
 	if (!errors)
-		return (1);
+		return (-1);
 	new = ft_calloc(1, sizeof(t_error));
 	if (!new)
-		return (2);
+		return (-1);
 	new->error_type = type;
 	new->line = line;
 	node = ft_lstnew(new);
 	if (!node)
 	{
 		free(new);
-		return (2);
+		return (-1);
 	}
 	ft_lstadd_back(errors, node);
-	return (0);
+	return (1);
 }
