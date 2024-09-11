@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 19:39:32 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/10 19:52:44 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/11 19:26:34 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,22 @@
 
 int	validate_ambient(t_token *token, t_list **errors)
 {
-	(void)token;
-	(void)errors;
+	const t_info	info[2] = {INFO_BRIGHTNESS, INFO_COLOR};
+	int		i;
+
+	if (!token || !token->args || !errors)
+		return (-1);
+	i = 1;
+	while (i <= 2)
+	{
+		if (!token->args[i])
+			return (log_error(errors, ERR_ARGS_MISSING, token->line_number));
+		if (validate_info(token->args[i], token->line_number, info[i - 1], errors) == -1)
+			return (-1);
+		i++;
+	}
+	if (token->args[i])
+		return (log_error(errors, ERR_ARGS_EXCESS, token->line_number));
 	return (0);
 }
 
