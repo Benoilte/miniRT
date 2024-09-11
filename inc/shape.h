@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:54:18 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/11 00:45:42 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/11 08:11:17 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,14 @@ typedef struct s_sphere
 	float			sq_radius;
 }					t_sphere;
 
+//	TYPEDEFS - CYLINDER
+
+typedef struct s_cylinder
+{
+	float			min;
+	float			max;
+}					t_cylinder;
+
 //	TYPEDEFS - SHAPES
 
 typedef enum e_shape_type
@@ -105,6 +113,7 @@ typedef struct s_shape
 	union
 	{
 		t_sphere			sphere;
+		t_cylinder			cylinder;
 	};
 	t_m4x4					transform;
 	t_m4x4					inverse;
