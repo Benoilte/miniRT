@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/11 09:31:07 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/11 15:47:27 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,14 @@
 # define INPUT_ERROR_REPORT_LIMIT 50
 
 # define ERRMSG_INVALID_ID "Invalid identifier"
-# define ERRMSG_REAL_NUM "Invalid number detected"
+# define ERRMSG_REAL_NUM "Invalid number format detected"
 # define ERRMSG_RATIO "Invalid ratio [0.0 - 1.0]"
 # define ERRMSG_POS_NUM "Invalid number: expected positive number"
-# define ERRMSG_UINT8 "Invalid 8-bit integer [0 - 255]"
+# define ERRMSG_UINT8 "Invalid 8-bit unsigned integer value [0 - 255]"
 # define ERRMSG_FOV "Invalid camera field of view [0 - 180]"
 # define ERRMSG_DUPLICATE "Duplicate identifier (only one allowed)"
+# define ERRMSG_ARGS_ECCESS "Too many parameters for element"
+# define ERRMSG_ARGS_MISSING "Missing parameter(s) for element"
 
 //	TYPEDEFS
 
@@ -56,7 +58,7 @@ typedef enum e_info
 	INFO_BRIGHTNESS,
 	INFO_COLOR,
 	INFO_COORD,
-	INFO_NORM_VECTOR,
+	INFO_VECTOR,
 	INFO_FOV,
 	INFO_SIZE
 }	t_info;
