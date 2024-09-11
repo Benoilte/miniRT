@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/10 19:51:47 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/11 09:31:07 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@
 typedef enum e_info
 {
 	INFO_ID,
-	INFO_LIGHT,
+	INFO_BRIGHTNESS,
 	INFO_COLOR,
 	INFO_COORD,
 	INFO_NORM_VECTOR,
