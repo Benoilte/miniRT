@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/11 15:53:54 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/11 16:58:09 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,13 @@
 
 typedef enum e_info
 {
-	INFO_ID,
 	INFO_BRIGHTNESS,
 	INFO_COLOR,
 	INFO_COORD,
 	INFO_VECTOR,
 	INFO_FOV,
-	INFO_SIZE
+	INFO_SIZE,
+	INFO_COUNT
 }	t_info;
 
 typedef enum e_id
@@ -118,6 +118,9 @@ typedef struct s_input_data
 	t_list	*token_list;
 	t_list	*errors;
 }			t_input_data;
+
+typedef int	(*t_validate_token)(t_token *, t_list **);
+typedef int	(*t_validate_str)(const char *, t_list **);
 
 //	PROTOTYPES
 
