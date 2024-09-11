@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/11 17:31:41 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/11 18:55:34 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,36 +24,44 @@
 # define LX_SUFFIX ".rt"
 # define LX_SUFFIX_LEN 3
 
-# define INPUT_ERR_USAGE "Invalid input. Usage: ./miniRT <filename>"
+# define INPUT_ERR_USAGE	"Invalid input. Usage: ./miniRT <filename>"
 # define INPUT_ERR_FILENAME "Invalid filename. Expected format: *.rt"
-# define LX_INCOMPLETE "Unable to complete lexical analysis"
-# define SYN_CHK_INCOMPLETE "Unable to complete syntax check"
-# define SNY_CHK_ERROR "Syntax error(s) detected"
+# define LX_INCOMPLETE 		"Unable to complete lexical analysis"
+# define SYN_CHK_INCOMPLETE	"Unable to complete syntax check"
+# define SNY_CHK_ERROR		"Syntax error(s) detected"
 
-# define STR_AMBIENT "A"
-# define STR_CAMERA "C"
-# define STR_LIGHT "L"
+# define STR_AMBIENT	"A"
+# define STR_CAMERA		"C"
+# define STR_LIGHT		"L"
 
-# define STR_SPHERE "sp"
-# define STR_PLANE "pl"
-# define STR_CYLINDER "cy"
+# define STR_SPHERE		"sp"
+# define STR_PLANE		"pl"
+# define STR_CYLINDER	"cy"
 
 # define INPUT_ERROR_REPORT_LIMIT 50
 
-# define ERRMSG_INVALID_ID "Invalid identifier"
-# define ERRMSG_REAL_NUM "Invalid number format detected"
-# define ERRMSG_RATIO "Invalid ratio [0.0 .. 1.0]"
-# define ERRMSG_POS_NUM "Invalid number: expected positive number"
-# define ERRMSG_COLOR "Invalid color [R,G,B in range [0 .. 255]]"
-# define ERRMSG_FOV "Invalid camera field of view [0 .. 180]"
-# define ERRMSG_DUPLICATE "Duplicate identifier (only one allowed)"
-# define ERRMSG_VECTOR_RANGE "Invalid vector element range [-1 .. 1]"
-# define ERRMSG_RANGE_EXCESS "Value exceeds permitted range"
-# define ERRMSG_ARGS_MISSING "Missing parameter(s) for element"
-# define ERRMSG_ARGS_EXCESS "Too many parameters for element"
+# define ERRMSG_INVALID_ID 		"Invalid identifier"
+# define ERRMSG_REAL_NUM 		"Invalid number format detected"
+# define ERRMSG_RATIO 			"Invalid ratio [0.0 .. 1.0]"
+# define ERRMSG_POS_NUM 		"Invalid number: expected positive number"
+# define ERRMSG_COLOR 			"Invalid color [R,G,B ints in range [0 .. 255]]"
+# define ERRMSG_FOV 			"Invalid camera field of view [0 .. 180]"
+# define ERRMSG_DUPLICATE 		"Duplicate identifier (only one allowed)"
+# define ERRMSG_VECTOR_RANGE	"Invalid vector element range [-1 .. 1]"
+# define ERRMSG_RANGE_EXCESS 	"Value exceeds permitted range"
+# define ERRMSG_ARGS_MISSING 	"Missing parameter(s) for element"
+# define ERRMSG_ARGS_EXCESS		 "Too many parameters for element"
 
-# define RANGE_MIN -1000
-# define RANGE_MAX 1000
+# define RANGE_MIN			-1000
+# define RANGE_MAX			1000
+# define FOV_MIN			0
+# define FOV_MAX			180
+# define VECTOR_RANGE_MIN	-1
+# define VECTOR_RANGE_MAX	1
+# define SIZE_MIN			0.1
+# define SIZE_MAX			1000
+# define COLOR_MIN			0
+# define COLOR_MAX			255
 
 //	TYPEDEFS
 
@@ -126,7 +134,7 @@ typedef struct s_input_data
 }			t_input_data;
 
 typedef int	(*t_validate_token)(t_token *, t_list **);
-typedef int	(*t_validate_str)(const char *, t_list **);
+typedef int	(*t_validate_str)(const char *, int, t_list **);
 
 //	PROTOTYPES
 
@@ -143,6 +151,7 @@ int		tokenize_line(t_list **token_list, char *line);
 int		tokenize_error(char *source);
 t_token	*new_token(char *str, int line);
 void	delete_token(void *token);
+void	free_args(char **args);
 
 //	parser.c
 int		parser(t_input_data *input);
@@ -157,9 +166,19 @@ int		validate_sphere(t_token *token, t_list **errors);
 int		validate_plane(t_token *token, t_list **errors);
 int		validate_cylinder(t_token *token, t_list **errors);
 
+//	validate_info_1.c
+int		validate_brightness(const char *str, int line, t_list **errors);
+int		validate_color(const char *str, int line, t_list **errors);
+int		validate_coordinate(const char *str, int line, t_list **errors);
+int		validate_vector(const char *str, int line, t_list **errors);
+int		validate_fov(const char *str, int line, t_list **errors);
+int		validate_size(const char *str, int line, t_list **errors);
+
 //	validate_utils.c
 int		is_real_num(const char *str);
 int		only_digits(const char *str);
 int		in_range(float num, float min, float max);
+int		validate_info(const char *str, int line, t_info info, t_list **errors);
+int		count_args(const char **args);
 
 #endif

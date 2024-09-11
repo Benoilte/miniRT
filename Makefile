@@ -6,7 +6,7 @@
 #    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/09/10 19:51:02 by bgolding         ###   ########.fr        #
+#    Updated: 2024/09/11 18:53:29 by bgolding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ LIBDLIST		=	$(LIB)libdlist/
 MAIN_FILES		=	main
 TEST_FILES		=	test print default_world first_scene shadow
 ERROR_FILES		=	error input_error
-PARSING_FILES	=	file_validation lexer tokenize token_utils parser validate_single_element validate_shape
+PARSING_FILES	=	file_validation lexer tokenize token_utils parser validate_single_element \
+					validate_shape validate_info_1 validate_info_2 validate_utils
 DATA_FILES		=	init_data destroy_data init_world destroy_world init_input destroy_input
 WINDOW_FILES	=	init_mlx
 HOOKS_FILES		=	hooks keypress mouse

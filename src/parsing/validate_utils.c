@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 15:49:31 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/11 15:53:16 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/11 18:56:52 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,33 @@ int	in_range(float num, float min, float max)
 	if (num >= min && num <= max)
 		return (1);
 	return (0);
+}
+
+int	validate_info(const char *str, int line, t_info info, t_list **errors)
+{
+	const t_validate_str	validate[INFO_COUNT] = {
+		validate_brightness,
+		validate_color,
+		validate_coordinate,
+		validate_vector,
+		validate_fov,
+		validate_size
+	};
+
+	if (info < 0 || info >= INFO_COUNT)
+		return (-1);
+	return (validate[info](str, line, errors));
+}
+
+int	count_args(const char **args)
+{
+	int	count;
+
+	count = 0;
+	if (args)
+	{
+		while (args[count])
+			count++;
+	}
+	return (count);
 }

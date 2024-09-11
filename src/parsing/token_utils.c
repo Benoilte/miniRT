@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:03:03 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/09 16:03:38 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/11 17:49:51 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	tokenize_error(char *source)
 	return (1);
 }
 
-static void	free_args(char **args)
+void	free_args(char **args)
 {
 	if (!args)
 		return ;
