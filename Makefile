@@ -6,7 +6,7 @@
 #    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/09/10 13:25:33 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/09/11 12:04:15 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ LIBDLIST		=	$(LIB)libdlist/
 
 MAIN_FILES		=	main
 TEST_FILES		=	test print default_world first_scene plane_scene \
-					shadow plane cylinder utils
+					shadow plane cylinder cylinder_scene utils add_wall \
+					cylinder_utils
 ERROR_FILES		=	error
 DATA_FILES		=	init_data destroy_data init_world destroy_world
 WINDOW_FILES	=	init_mlx
