@@ -6,13 +6,14 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 13:07:32 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/10 16:26:45 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/11 12:07:07 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 void	print_tuple(t_tuple a, char *msg);
+int		test_cylinder_utils(t_shape *cylinder);
 
 static void	test_cylinder_creation(t_shape *cylinder)
 {
@@ -23,6 +24,11 @@ static void	test_cylinder_creation(t_shape *cylinder)
 		printf("\033[0;91mFAILED\033[0;39m\n");
 	printf("\nshould check if center is at origin\n");
 	if (tp_equal(cylinder->center, point(0, 0, 0)))
+		printf("\033[0;92mSUCCESS\033[0;39m\n");
+	else
+		printf("\033[0;91mFAILED\033[0;39m\n");
+	printf("\nshould check if min is equal to -1 and max is equal to 1\n");
+	if (equalf(cylinder->cylinder.min, -1) && equalf(cylinder->cylinder.max, 1))
 		printf("\033[0;92mSUCCESS\033[0;39m\n");
 	else
 		printf("\033[0;91mFAILED\033[0;39m\n");
@@ -99,7 +105,7 @@ void	test_cylinder_normal(t_shape *cl, t_point p, t_vector res)
 
 int	test_cylinder(void)
 {
-	t_shape	*cylinder;
+	t_shape		*cylinder;
 
 	cylinder = create_new_shape(CYLINDER);
 	if (!cylinder)
@@ -109,15 +115,16 @@ int	test_cylinder(void)
 	test_ray_miss_cylinder(cylinder, point(0, 0, 0), vector(0, 1, 0));
 	test_ray_miss_cylinder(cylinder, point(0, 0, -5), vector(1, 1, 1));
 	test_ray_hit_cylinder(cylinder, point(1, 0, -5), vector(0, 0, 1), \
-							(float[2]){5, 5});
+							(float [2]){5, 5});
 	test_ray_hit_cylinder(cylinder, point(0, 0, -5), vector(0, 0, 1), \
-							(float[2]){4, 6});
+							(float [2]){4, 6});
 	test_ray_hit_cylinder(cylinder, point(0.5, 0, -5), vector(0.1, 1, 1), \
-							(float[2]){6.808006, 7.088698});
+							(float [2]){6.808006, 7.088698});
 	test_cylinder_normal(cylinder, point(1, 0, 0), vector(1, 0, 0));
 	test_cylinder_normal(cylinder, point(0, 5, -1), vector(0, 0, -1));
 	test_cylinder_normal(cylinder, point(0, -2, 1), vector(0, 0, 1));
 	test_cylinder_normal(cylinder, point(-1, 1, 0), vector(-1, 0, 0));
+	test_cylinder_utils(cylinder);
 	cylinder->f->destroy(cylinder);
 	return (0);
 }
