@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/11 15:47:27 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/11 15:53:54 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@
 # define ERRMSG_DUPLICATE "Duplicate identifier (only one allowed)"
 # define ERRMSG_ARGS_ECCESS "Too many parameters for element"
 # define ERRMSG_ARGS_MISSING "Missing parameter(s) for element"
+
+# define RANGE_MIN -1000
+# define RANGE_MAX 1000
 
 //	TYPEDEFS
 
@@ -144,5 +147,10 @@ int		validate_light(t_token *token, t_list **errors);
 int		validate_sphere(t_token *token, t_list **errors);
 int		validate_plane(t_token *token, t_list **errors);
 int		validate_cylinder(t_token *token, t_list **errors);
+
+//	validate_utils.c
+int		is_real_num(const char *str);
+int		only_digits(const char *str);
+int		in_range(float num, float min, float max);
 
 #endif
