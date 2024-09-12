@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 17:08:18 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 12:33:22 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 13:45:45 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	validate_coordinate(const char *str, int line, t_list **errors)
 			return (free_args(&args), log_error(errors, ERR_ARG_MISSING, line));
 		if (!is_real_num(args[i]))
 			return (free_args(&args), log_error(errors, ERR_REAL_NUM, line));
-		if (!in_range(ft_atod(args[1]), RANGE_MIN, RANGE_MAX))
+		if (!in_range(ft_atod(args[i]), RANGE_MIN, RANGE_MAX))
 			log_error(errors, ERR_RANGE_LIMIT, line);
 		i++;
 	}
