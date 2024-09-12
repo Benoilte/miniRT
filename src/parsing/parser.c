@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:20:21 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 12:28:51 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 13:22:58 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	validate_token(t_token *token, t_list **errors)
 	validate_ambient, validate_camera, validate_light, \
 	validate_sphere, validate_plane, validate_cylinder};
 
-	if (validate_id(token, errors) == -1)
+	if (validate_id(token, errors) != 0)
 		return (1);
 	return (validate[token->identifier](token, errors));
 }

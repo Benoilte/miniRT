@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 19:39:32 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 12:33:22 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 13:15:50 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,13 @@ int	validate_ambient(t_token *token, t_list **errors)
 	const t_info	info[AMBIENT_PARAMS] = {INFO_BRIGHTNESS, INFO_COLOR};
 	int				i;
 	char			**args;
+	static int		ambient_exists = 0;
 
 	if (!token || !token->args || !errors)
 		return (-1);
+	if (ambient_exists)
+		return (log_error(errors, ERR_DUPLICATE, token->line));
+	ambient_exists = 1;
 	i = 0;
 	args = &token->args[1];
 	while (i < AMBIENT_PARAMS)
