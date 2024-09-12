@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/10 13:26:37 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 14:55:05 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ typedef struct s_camera
 
 typedef struct s_data
 {
-	t_input_data	*input;
+	t_input_data	input;
 	t_mlx			*mlx;
 	t_world			*world;
 	t_camera		*camera;
@@ -113,8 +113,8 @@ void				print_error(const char *source, const char *msg);
 
 	//	DATA
 
-int					init_input(int argc, char **argv, t_input_data *input);
-t_data				*init_data(void);
+int					init_input(t_input_data *input, int argc, char **argv);
+t_data				*init_data(int argc, char **argv);
 t_world				*init_world(void);
 t_camera			*init_camera(void);
 void				destroy_input(t_input_data *input);
