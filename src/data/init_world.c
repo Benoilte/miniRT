@@ -6,27 +6,39 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 14:49:42 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/02 16:14:23 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 17:41:51 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_world	*init_world(void)
+static t_light	*init_light(char **str)
+{
+	t_light	*light;
+
+	if (!str)
+		return (NULL);
+	light = new_light();
+	if (!light)
+		return (NULL);
+	*light = set_light(\
+		str_to_tuple(str[1], POINT), \
+		rgb_scale(str_to_rgb(str[3]), ft_atod(str[2])));
+	return (light);
+}
+
+t_world	*init_world(t_list *token_list)
 {
 	t_world	*world;
+	char	**element;
 
 	world = ft_calloc(1, sizeof(t_world));
 	if (!world)
 		return (NULL);
-	world->light = new_light(\
-		point(LIGHT_DEFAULT_X, LIGHT_DEFAULT_Y, LIGHT_DEFAULT_Z), \
-		rgb_set(LIGHT_DEFAULT_R, LIGHT_DEFAULT_G, LIGHT_DEFAULT_B));
+	element = get_element(token_list, ID_LIGHT);
+	world->light = init_light(element);
 	if (!world->light)
-	{
-		destroy_world(world);
-		return (NULL);
-	}
+		return (destroy_world(world), NULL);
 	return (world);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:34:41 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/06 16:39:01 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/12 17:15:23 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_light
 
 // PROTOTYPES
 
-t_light	*new_light(t_point position, t_color intensity);
+t_light	*new_light(void);
 t_light	set_light(t_point position, t_color intensity);
 void	destroy_light(t_light *light);
 t_color	lighting(t_details *details, t_light *light);

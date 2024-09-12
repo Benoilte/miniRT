@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 16:53:50 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 16:53:56 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 17:32:40 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,17 @@ t_tuple	str_to_tuple(char *str, int type)
 		return (vector(x, y, z));
 	else
 		return (point(x, y, z));
+}
+
+t_color	str_to_rgb(char *str)
+{
+	char	*next_value;
+	int		color;
+
+	color = (ft_atoi(str) << 16);
+	next_value = ft_strchr(str, ',') + 1;
+	color |= (ft_atoi(next_value) << 8);
+	next_value = ft_strchr(next_value, ',') + 1;
+	color |= ft_atoi(next_value);
+	return (rgb_itos(color));
 }

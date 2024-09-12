@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:52:39 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/30 16:43:04 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 17:14:57 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_light	set_light(t_point position, t_color intensity)
 	return ((t_light){position, intensity});
 }
 
-t_light	*new_light(t_point position, t_color intensity)
+t_light	*new_light(void)
 {
 	t_light	*new;
 
@@ -27,6 +27,8 @@ t_light	*new_light(t_point position, t_color intensity)
 		perror("new_light()");
 		return (NULL);
 	}
-	*new = set_light(position, intensity);
+	*new = set_light(\
+		point(LIGHT_DEFAULT_X, LIGHT_DEFAULT_Y, LIGHT_DEFAULT_Z), \
+		rgb_set(LIGHT_DEFAULT_R, LIGHT_DEFAULT_G, LIGHT_DEFAULT_B));
 	return (new);
 }
