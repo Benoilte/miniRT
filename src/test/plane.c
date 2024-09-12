@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 13:27:18 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/11 00:33:05 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:36:45 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int	test_plane(void)
 	t_shape	*plane;
 
 	plane = create_new_shape(PLANE);
-	if(!plane)
+	if (!plane)
 		return (1);
 	test_plane_create(plane);
 	test_plane_normal(plane);

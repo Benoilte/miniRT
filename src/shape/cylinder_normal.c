@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 12:08:46 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/12 15:48:23 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:36:14 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static bool	hit_upper_cap(t_shape *shape, t_point *object_point, float dist)
 	float	max;
 
 	max = shape->cylinder.max - EPSILON;
-	return ((dist < 1 ) && greater_or_equalf(object_point->y, max));
+	return ((dist < 1) && greater_or_equalf(object_point->y, max));
 }
 
 static bool	hit_lower_cap(t_shape *shape, t_point *object_point, float dist)
@@ -27,7 +27,7 @@ static bool	hit_lower_cap(t_shape *shape, t_point *object_point, float dist)
 	float	min;
 
 	min = shape->cylinder.min + EPSILON;
-	return ((dist < 1 ) && lower_or_equalf(object_point->y, min));
+	return ((dist < 1) && lower_or_equalf(object_point->y, min));
 }
 
 t_vector	normal_cylinder(t_shape *shape, t_point *object_point)
