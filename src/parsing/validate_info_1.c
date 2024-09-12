@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 17:08:18 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 12:09:18 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 12:33:22 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	validate_color(const char *str, int line, t_list **errors)
 	while (i < 3)
 	{
 		if (!args[i])
-			return (free_args(&args), log_error(errors, ERR_ARGS_MISSING, line));
+			return (free_args(&args), log_error(errors, ERR_ARG_MISSING, line));
 		if (!is_real_num(args[i]))
 			return (free_args(&args), log_error(errors, ERR_REAL_NUM, line));
 		if (!only_digits(args[i])
@@ -42,7 +42,7 @@ int	validate_color(const char *str, int line, t_list **errors)
 		i++;
 	}
 	if (args[i])
-		return (free_args(&args), log_error(errors, ERR_ARGS_EXCESS, line));
+		return (free_args(&args), log_error(errors, ERR_ARG_EXCESS, line));
 	free_args(&args);
 	return (0);
 }
@@ -59,7 +59,7 @@ int	validate_coordinate(const char *str, int line, t_list **errors)
 	while (i < 3)
 	{
 		if (!args[i])
-			return (free_args(&args), log_error(errors, ERR_ARGS_MISSING, line));
+			return (free_args(&args), log_error(errors, ERR_ARG_MISSING, line));
 		if (!is_real_num(args[i]))
 			return (free_args(&args), log_error(errors, ERR_REAL_NUM, line));
 		if (!in_range(ft_atod(args[1]), RANGE_MIN, RANGE_MAX))
@@ -67,7 +67,7 @@ int	validate_coordinate(const char *str, int line, t_list **errors)
 		i++;
 	}
 	if (args[i])
-		return (free_args(&args), log_error(errors, ERR_ARGS_EXCESS, line));
+		return (free_args(&args), log_error(errors, ERR_ARG_EXCESS, line));
 	free_args(&args);
 	return (0);
 }
