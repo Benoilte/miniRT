@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 14:55:05 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 15:32:08 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void				print_error(const char *source, const char *msg);
 int					init_input(t_input_data *input, int argc, char **argv);
 t_data				*init_data(int argc, char **argv);
 t_world				*init_world(void);
-t_camera			*init_camera(void);
+t_camera			*init_camera(char **str);
 void				destroy_input(t_input_data *input);
 void				destroy_data(t_data *data);
 void				destroy_world(t_world *world);
