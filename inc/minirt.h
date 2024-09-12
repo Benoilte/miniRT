@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 17:21:50 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 21:55:02 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ void				destroy_input(t_input_data *input);
 void				destroy_data(t_data *data);
 void				destroy_world(t_world *world);
 void				destroy_camera(t_camera *camera);
-int					add_new_shape_to_world(t_world *world, t_shape_type type);
+t_shape				*add_new_shape_to_world(t_world *world, t_shape_type type);
 char				**get_element(t_list *token_list, t_id id);
 t_tuple				str_to_tuple(char *str, int type);
 t_color				str_to_rgb(char *str);
