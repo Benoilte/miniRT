@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 13:58:21 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/20 11:18:50 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/12 15:26:30 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 //	PROTOTYPES
 
 bool	equalf(float a, float b);
+bool	lower_or_equalf(float a, float b);
+bool	greater_or_equalf(float a, float b);
 float	fsquaref(float f);
 float	deg_to_rad(float degrees);
 float	rad_to_deg(float radians);
