@@ -6,11 +6,26 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:52:39 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/12 17:14:57 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 22:10:32 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "light.h"
+
+t_light	*init_light(char **str)
+{
+	t_light	*light;
+
+	if (!str)
+		return (NULL);
+	light = new_light();
+	if (!light)
+		return (NULL);
+	*light = set_light(\
+		str_to_tuple(str[1], POINT), \
+		rgb_scale(str_to_rgb(str[3]), ft_atod(str[2])));
+	return (light);
+}
 
 t_light	set_light(t_point position, t_color intensity)
 {

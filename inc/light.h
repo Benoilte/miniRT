@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:34:41 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/12 17:15:23 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 22:12:39 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_light
 
 // PROTOTYPES
 
+t_light	*init_light(char **str);
 t_light	*new_light(void);
 t_light	set_light(t_point position, t_color intensity);
 void	destroy_light(t_light *light);

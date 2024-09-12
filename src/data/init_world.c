@@ -6,26 +6,11 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 14:49:42 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 21:54:42 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 22:13:22 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-static t_light	*init_light(char **str)
-{
-	t_light	*light;
-
-	if (!str)
-		return (NULL);
-	light = new_light();
-	if (!light)
-		return (NULL);
-	*light = set_light(\
-		str_to_tuple(str[1], POINT), \
-		rgb_scale(str_to_rgb(str[3]), ft_atod(str[2])));
-	return (light);
-}
 
 t_world	*init_world(t_list *token_list)
 {
@@ -58,7 +43,7 @@ t_shape	*add_new_shape_to_world(t_world *world, t_shape_type type)
 	if (!new_node)
 	{
 		destroy_shape(new_shape);
-		return (shape_error("add_new_shape_to_world", sterror(errno)), NULL);
+		return (shape_error("add_new_shape_to_world", strerror(errno)), NULL);
 	}
 	ft_lstadd_back(&world->shapes, new_node);
 	return (new_shape);
