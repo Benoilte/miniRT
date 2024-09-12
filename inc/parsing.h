@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 11:29:27 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 11:31:14 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@
 # define STR_PLANE		"pl"
 # define STR_CYLINDER	"cy"
 
-# define AMBIENT_PARAMS 2
-# define CAMERA_PARAMS 2
-# define LIGHT_PARAMS 3
-# define SPHERE_PARAMS 3
-# define PLANE_PARAMS 3
-# define CYLINDER_PARAMS 5
+# define AMBIENT_PARAMS		2
+# define CAMERA_PARAMS 		2
+# define LIGHT_PARAMS 		3
+# define SPHERE_PARAMS 		3
+# define PLANE_PARAMS 		3
+# define CYLINDER_PARAMS	5
 
 # define INPUT_ERROR_REPORT_LIMIT 50
 
