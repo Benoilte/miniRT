@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/11 18:55:34 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 10:55:39 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ int		tokenize_line(t_list **token_list, char *line);
 int		tokenize_error(char *source);
 t_token	*new_token(char *str, int line);
 void	delete_token(void *token);
-void	free_args(char **args);
+void	free_args(char ***args);
 
 //	parser.c
 int		parser(t_input_data *input);

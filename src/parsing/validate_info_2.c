@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 17:11:10 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/11 18:53:40 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 10:56:25 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@ int	validate_vector(const char *str, int line, t_list **errors)
 	while (i < 3)
 	{
 		if (!args[i])
-			return (free_args(args), log_error(errors, ERR_ARGS_MISSING, line));
+			return (free_args(&args), log_error(errors, ERR_ARGS_MISSING, line));
 		if (!is_real_num(args[i]))
-			return (free_args(args), log_error(errors, ERR_REAL_NUM, line));
+			return (free_args(&args), log_error(errors, ERR_REAL_NUM, line));
 		if (!in_range(ft_atof(args[i]), VECTOR_RANGE_MIN, VECTOR_RANGE_MAX))
 			log_error(errors, ERR_VECTOR_RANGE, line);
 		i++;
 	}
 	if (args[i])
-		return (free_args(args), log_error(errors, ERR_ARGS_EXCESS, line));
-	free_args(args);
+		return (free_args(&args), log_error(errors, ERR_ARGS_EXCESS, line));
+	free_args(&args);
 	return (0);
 }
 

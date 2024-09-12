@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:03:03 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/11 17:49:51 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 10:57:51 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,21 @@ int	tokenize_error(char *source)
 	return (1);
 }
 
-void	free_args(char **args)
+void	free_args(char ***args)
 {
+	char	**p;
+
 	if (!args)
 		return ;
-	while (*args)
+	p = *args;
+	while (*p)
 	{
-		free(*args);
-		args++;
+		free(*p);
+		*p = NULL;
+		p++;
 	}
+	free(*args);
+	*args = NULL;
 }
 
 void	delete_token(void *content)
@@ -41,10 +47,7 @@ void	delete_token(void *content)
 	if (!token)
 		return ;
 	if (token->args)
-	{
-		free_args(token->args);
-		free(token->args);
-	}
+		free_args(&token->args);
 	free(token);
 }
 
