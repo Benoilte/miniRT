@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 19:39:32 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 11:31:39 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 11:34:33 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ int	validate_ambient(t_token *token, t_list **errors)
 	while (i <= AMBIENT_PARAMS)
 	{
 		if (!token->args[i])
-			return (log_error(errors, ERR_ARGS_MISSING, token->line_number));
-		if (validate_info(token->args[i], token->line_number, info[i - 1], errors) == -1)
+			return (log_error(errors, ERR_ARGS_MISSING, token->line));
+		if (validate_info(token->args[i], token->line, info[i - 1], errors) == -1)
 			return (-1);
 		i++;
 	}
 	if (token->args[i])
-		return (log_error(errors, ERR_ARGS_EXCESS, token->line_number));
+		return (log_error(errors, ERR_ARGS_EXCESS, token->line));
 	return (0);
 }
 

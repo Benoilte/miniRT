@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 14:12:51 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/10 19:18:21 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 11:34:33 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	print_token(void *content)
 	ft_printf("identifier:\t%d\n", token->identifier);
 	ft_printf("args:\t\t");
 	print_args(token->args);
-	ft_printf("line:\t\t%d\n", token->line_number);
+	ft_printf("line:\t\t%d\n", token->line);
 	ft_printf("=== <END> ===\n\n");
 }
 

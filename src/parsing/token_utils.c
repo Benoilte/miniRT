@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:03:03 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 10:57:51 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 11:34:33 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ t_token	*new_token(char *str, int line)
 			return (NULL);
 		}
 		token->identifier = set_identifier(token->args[0]);
-		token->line_number = line;
+		token->line = line;
 	}
 	return (token);
 }

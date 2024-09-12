@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:20:21 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/11 18:58:51 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 11:34:33 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	validate_id(t_token *token, t_list **errors)
 {
 	if (token->identifier < 0 || token->identifier >= ID_VALID_COUNT)
-		return(log_error(errors, ERR_INVALID_ID, token->line_number));
+		return(log_error(errors, ERR_INVALID_ID, token->line));
 	return (0);
 }
 

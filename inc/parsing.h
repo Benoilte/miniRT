@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 11:31:14 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 11:34:49 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ typedef struct t_token
 {
 	char	**args;
 	t_id	identifier;
-	int		line_number;
+	int		line;
 }			t_token;
 
 typedef struct t_error
