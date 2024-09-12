@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:54:18 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/11 08:11:17 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/11 13:01:58 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ typedef struct s_cylinder
 {
 	float			min;
 	float			max;
+	bool			closed;
 }					t_cylinder;
 
 //	TYPEDEFS - SHAPES
