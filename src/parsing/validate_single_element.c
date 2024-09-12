@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 19:39:32 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 13:34:10 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 13:36:19 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ int	validate_camera(t_token *token, t_list **errors)
 	const t_info	info[CAMERA_PARAMS] = {INFO_COORD, INFO_VECTOR, INFO_FOV};
 	int				i;
 	char			**args;
-	static int		ambient_exists = 0;
+	static int		camera_exists = 0;
 
 	if (!token || !token->args || !errors)
 		return (-1);
-	if (ambient_exists)
+	if (camera_exists)
 		return (log_error(errors, ERR_DUPLICATE, token->line));
-	ambient_exists = 1;
+	camera_exists = 1;
 	i = 0;
 	args = &token->args[1];
 	while (i < CAMERA_PARAMS)
@@ -72,13 +72,13 @@ int	validate_light(t_token *token, t_list **errors)
 	INFO_COORD, INFO_BRIGHTNESS, INFO_COLOR};
 	int				i;
 	char			**args;
-	static int		ambient_exists = 0;
+	static int		light_exists = 0;
 
 	if (!token || !token->args || !errors)
 		return (-1);
-	if (ambient_exists)
+	if (light_exists)
 		return (log_error(errors, ERR_DUPLICATE, token->line));
-	ambient_exists = 1;
+	light_exists = 1;
 	i = 0;
 	args = &token->args[1];
 	while (i < LIGHT_PARAMS)
