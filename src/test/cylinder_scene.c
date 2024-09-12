@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:28:42 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/11 12:48:50 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:12:34 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int	set_scene_with_cylinder(t_data *data)
 	add_cl(data, \
 		mx_mult(mx_translation(-2, 0.33, -0.75), \
 		mx_scaling(0.33, 0.33, 0.33)), \
-		rgb_set(1, 0.8, 0.1), 8);
-	data->camera->transform = view_transform(point(0, 1.5, -5), \
+		rgb_set(1, 0.8, 0.1), 1);
+	data->camera->transform = view_transform(point(0, 3, -5), \
 												point(0, 1, 0), \
 												vector(0, 1, 0));
 	data->camera->transform_inverse = mx_inversion(data->camera->transform);

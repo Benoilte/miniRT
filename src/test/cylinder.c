@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 13:07:32 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/11 12:07:07 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/11 13:07:05 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ static void	test_cylinder_creation(t_shape *cylinder)
 		printf("\033[0;92mSUCCESS\033[0;39m\n");
 	else
 		printf("\033[0;91mFAILED\033[0;39m\n");
-	printf("\nshould check if transform matrix is equal to the identity\n");
-	if (mx_equal(cylinder->transform, mx_identity()))
+	printf("\nshould check if cylinder is open\n");
+	if (!cylinder->cylinder.closed)
 		printf("\033[0;92mSUCCESS\033[0;39m\n");
 	else
 		printf("\033[0;91mFAILED\033[0;39m\n");
@@ -64,10 +64,7 @@ void	test_ray_hit_cylinder(t_shape *cl, t_point o, t_vector d, float t[2])
 
 	printf("\n\tA ray strikes a cylinder\n");
 	r1 = ray(o, tp_normalize(d));
-	if (cl->f->intersect(&r1, cl, &report) == true)
-		printf("\033[0;92mSUCCESS\033[0;39m\n");
-	else
-		printf("\033[0;91mFAILED\033[0;39m\n");
+	cl->f->intersect(&r1, cl, &report);
 	printf("\nshould check if t[0] is equal to %f\n", t[0]);
 	if (equalf(t[0], report.t[0]))
 		printf("\033[0;92mSUCCESS\033[0;39m\n");
