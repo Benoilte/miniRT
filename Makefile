@@ -6,7 +6,7 @@
 #    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/09/12 16:56:44 by bgolding         ###   ########.fr        #
+#    Updated: 2024/09/12 22:31:06 by bgolding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ HOOKS_FILES		=	hooks keypress mouse
 RENDERING_FILES	=	render draw_utils view_transform camera intersect_world color_at
 INTERSECT_FILES	=	clear_intersection hit_intersection new_intersection details_intersection utils
 RAY_FILES		=	ray position transform
-SHAPE_FILES		=	shape error material sphere sphere_intersect sphere_normal normal
+SHAPE_FILES		=	init_shapes shape error material sphere sphere_intersect sphere_normal normal
 LIGHT_FILES		=	new_light destroy_light lighting
 
 # OS specific settings

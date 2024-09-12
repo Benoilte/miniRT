@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shape.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:54:18 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/06 16:47:39 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/12 22:30:16 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void			set_default_material(t_material *m);
 t_vector		get_normal(t_shape *shape, t_point world_point);
 
 //	PROTOTYPES SPHERE
+int				init_shapes(t_world *world, t_list *token_list);
 void			set_default_sphere(t_shape *self);
 const t_vtable	*get_sphere_vtable(void);
 bool			intersect_sphere(t_ray *r, t_shape *shape, t_report *report);
