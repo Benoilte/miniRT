@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 12:33:22 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 13:34:00 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 # define STR_CYLINDER	"cy"
 
 # define AMBIENT_PARAMS		2
-# define CAMERA_PARAMS 		2
+# define CAMERA_PARAMS 		3
 # define LIGHT_PARAMS 		3
 # define SPHERE_PARAMS 		3
 # define PLANE_PARAMS 		3
