@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 13:34:00 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 22:00:21 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@
 # define FOV_MAX			180
 # define VECTOR_RANGE_MIN	-1
 # define VECTOR_RANGE_MAX	1
-# define SIZE_MIN			0.1
-# define SIZE_MAX			1000
+# define SHAPE_SIZE_MIN		0.1
+# define SHAPE_SIZE_MAX		1000
 # define COLOR_MIN			0
 # define COLOR_MAX			255
 

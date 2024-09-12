@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 17:11:10 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 12:33:22 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 22:00:04 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	validate_size(const char *str, int line, t_list **errors)
 {
 	if (!is_real_num(str))
 		return (log_error(errors, ERR_REAL_NUM, line));
-	if (!in_range(ft_atod(str), SIZE_MIN, SIZE_MAX))
+	if (!in_range(ft_atod(str), SHAPE_SIZE_MIN, SHAPE_SIZE_MAX))
 		return (log_error(errors, ERR_RANGE_LIMIT, line));
 	return (0);
 }
