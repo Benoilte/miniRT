@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 14:12:51 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 14:53:02 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:50:48 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,6 @@ int	init_input(t_input_data *input, int argc, char **argv)
 		return (4);
 	if (parser(input) != 0)
 		return (5);
-	// ft_lstiter(input->token_list, print_token);
+	ft_lstiter(input->token_list, print_token);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 13:26:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 16:29:23 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:52:22 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,24 +43,6 @@ t_camera	camera(size_t hsize, size_t vsize, float fov)
 	camera.transform_inverse = mx_identity();
 	calibrate_camera(&camera);
 	return (camera);
-}
-
-t_tuple	str_to_tuple(char *str, int type)
-{
-	float	x;
-	float	y;
-	float	z;
-	char	*next_value;
-
-	x = ft_atod(str);
-	next_value = ft_strchr(str, ',') + 1;
-	y = ft_atod(next_value);
-	next_value = ft_strchr(next_value, ',') + 1;
-	z = ft_atod(next_value);
-	if (type == VECTOR)
-		return (vector(x, y, z));
-	else
-		return (point(x, y, z));
 }
 
 t_camera	*init_camera(char **str)
