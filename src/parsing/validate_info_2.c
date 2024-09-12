@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 17:11:10 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 10:56:25 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 12:09:18 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	validate_vector(const char *str, int line, t_list **errors)
 			return (free_args(&args), log_error(errors, ERR_ARGS_MISSING, line));
 		if (!is_real_num(args[i]))
 			return (free_args(&args), log_error(errors, ERR_REAL_NUM, line));
-		if (!in_range(ft_atof(args[i]), VECTOR_RANGE_MIN, VECTOR_RANGE_MAX))
+		if (!in_range(ft_atod(args[i]), VECTOR_RANGE_MIN, VECTOR_RANGE_MAX))
 			log_error(errors, ERR_VECTOR_RANGE, line);
 		i++;
 	}
@@ -41,7 +41,7 @@ int	validate_fov(const char *str, int line, t_list **errors)
 {
 	if (!is_real_num(str))
 		return (log_error(errors, ERR_REAL_NUM, line));
-	if (!in_range(ft_atof(str), FOV_MIN, FOV_MAX))
+	if (!in_range(ft_atod(str), FOV_MIN, FOV_MAX))
 		return (log_error(errors, ERR_FOV, line));
 	return (0);
 }
@@ -50,7 +50,7 @@ int	validate_size(const char *str, int line, t_list **errors)
 {
 	if (!is_real_num(str))
 		return (log_error(errors, ERR_REAL_NUM, line));
-	if (!in_range(ft_atof(str), SIZE_MIN, SIZE_MAX))
+	if (!in_range(ft_atod(str), SIZE_MIN, SIZE_MAX))
 		return (log_error(errors, ERR_RANGE_LIMIT, line));
 	return (0);
 }

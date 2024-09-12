@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 17:08:18 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 10:56:13 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 12:09:18 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	validate_brightness(const char *str, int line, t_list **errors)
 {
 	if (!is_real_num(str))
 		return (log_error(errors, ERR_REAL_NUM, line));
-	if (!in_range(ft_atof(str), 0, 1))
+	if (!in_range(ft_atod(str), 0, 1))
 		return (log_error(errors, ERR_RATIO, line));
 	return (0);
 }
@@ -62,7 +62,7 @@ int	validate_coordinate(const char *str, int line, t_list **errors)
 			return (free_args(&args), log_error(errors, ERR_ARGS_MISSING, line));
 		if (!is_real_num(args[i]))
 			return (free_args(&args), log_error(errors, ERR_REAL_NUM, line));
-		if (!in_range(ft_atof(args[1]), RANGE_MIN, RANGE_MAX))
+		if (!in_range(ft_atod(args[1]), RANGE_MIN, RANGE_MAX))
 			log_error(errors, ERR_RANGE_LIMIT, line);
 		i++;
 	}
