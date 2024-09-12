@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 19:49:36 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/10 19:55:00 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 13:40:38 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,70 @@
 
 int	validate_sphere(t_token *token, t_list **errors)
 {
-	(void)token;
-	(void)errors;
+	const t_info	info[SPHERE_PARAMS] = {INFO_COORD, INFO_SIZE, INFO_COLOR};
+	int				i;
+	char			**args;
+
+	if (!token || !token->args || !errors)
+		return (-1);
+	i = 0;
+	args = &token->args[1];
+	while (i < SPHERE_PARAMS)
+	{
+		if (!args[i])
+			return (log_error(errors, ERR_ARG_MISSING, token->line));
+		if (validate_info(args[i], token->line, info[i], errors) == -1)
+			return (-1);
+		i++;
+	}
+	if (args[i])
+		return (log_error(errors, ERR_ARG_EXCESS, token->line));
 	return (0);
 }
 
 int	validate_plane(t_token *token, t_list **errors)
 {
-	(void)token;
-	(void)errors;
+	const t_info	info[PLANE_PARAMS] = {INFO_COORD, INFO_VECTOR, INFO_COLOR};
+	int				i;
+	char			**args;
+
+	if (!token || !token->args || !errors)
+		return (-1);
+	i = 0;
+	args = &token->args[1];
+	while (i < PLANE_PARAMS)
+	{
+		if (!args[i])
+			return (log_error(errors, ERR_ARG_MISSING, token->line));
+		if (validate_info(args[i], token->line, info[i], errors) == -1)
+			return (-1);
+		i++;
+	}
+	if (args[i])
+		return (log_error(errors, ERR_ARG_EXCESS, token->line));
 	return (0);
 }
 
 int	validate_cylinder(t_token *token, t_list **errors)
 {
-	(void)token;
-	(void)errors;
+	const t_info	info[CYLINDER_PARAMS] = {\
+	INFO_COORD, INFO_VECTOR, INFO_SIZE, INFO_SIZE, INFO_COLOR};
+	int				i;
+	char			**args;
+
+	if (!token || !token->args || !errors)
+		return (-1);
+	i = 0;
+	args = &token->args[1];
+	while (i < CYLINDER_PARAMS)
+	{
+		if (!args[i])
+			return (log_error(errors, ERR_ARG_MISSING, token->line));
+		if (validate_info(args[i], token->line, info[i], errors) == -1)
+			return (-1);
+		i++;
+	}
+	if (args[i])
+		return (log_error(errors, ERR_ARG_EXCESS, token->line));
 	return (0);
 }
