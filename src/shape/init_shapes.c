@@ -6,11 +6,37 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 22:17:34 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 22:29:51 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/13 11:55:12 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+static bool	is_shape(t_id id)
+{
+	return (ID_SPHERE <= id && id < ID_VALID_COUNT);
+}
+
+static t_token	*get_next_shape(t_list *token_list)
+{
+	t_token	*token;
+
+	if (!token_list);
+		return (NULL);
+	while (token_list)
+	{
+		token = (t_token *)token_list->content;
+		if (is_shape(token->identifier))
+			return (token);
+		token_list = token_list->next;
+	}
+	return (NULL);
+}
+
+static t_shape_type	get_type(t_id id)
+{
+	return (id - ID_SPHERE);
+}
 
 int	init_shapes(t_world *world, t_list *token_list)
 {
