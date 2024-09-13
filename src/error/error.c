@@ -6,30 +6,23 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:49:38 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/09 18:09:31 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/13 15:49:33 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void	separator(void)
+void	print_error(const char *source, const char *msg)
 {
-	write(STDERR_FILENO, ": ", 2);
-}
-
-int	print_error(const char *source, const char *msg)
-{
-	const char	error[] = "ERROR";
 	const char	unknown_source[] = "unknown source";
 	const char	unknown_error[] = "unknown error";
 
-	write(STDERR_FILENO, error, ft_strlen(error));
-	separator();
+	ft_putendl_fd("Error", STDERR_FILENO);
 	if (source)
 		write(STDERR_FILENO, source, ft_strlen(source));
 	else
 		write(STDERR_FILENO, unknown_source, ft_strlen(unknown_source));
-	separator();
+	ft_putstr_fd(": ", STDERR_FILENO);
 	if (msg)
 		write(STDERR_FILENO, msg, ft_strlen(msg));
 	else

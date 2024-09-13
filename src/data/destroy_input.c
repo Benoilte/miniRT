@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   destroy_input.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/12 11:20:16 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 14:55:28 by bgolding         ###   ########.fr       */
+/*   Created: 2024/09/09 14:18:00 by bgolding          #+#    #+#             */
+/*   Updated: 2024/09/12 13:25:28 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	main(int argc, char **argv)
+void	destroy_input(t_input_data *input)
 {
-	t_data			*data;
-
-	printf("Hello, in main program!\n");
-	data = init_data(argc, argv);
-	set_hooks(data);
-	mlx_loop(data->mlx->xvar);
-	destroy_data(data);
-	return (0);
+	if (!input)
+		return ;
+	if (close(input->fd) != 0)
+		print_error("destroy_input", strerror(errno));
+	ft_lstclear(&input->errors, free);
+	ft_lstclear(&input->token_list, delete_token);
 }

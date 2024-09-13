@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 13:26:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/02 16:01:39 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:52:22 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,24 @@ t_camera	camera(size_t hsize, size_t vsize, float fov)
 	return (camera);
 }
 
-t_camera	*init_camera(void)
+t_camera	*init_camera(char **str)
 {
 	t_camera	*cam;
+	t_point		from;
+	t_point		to;
+	t_vector	up;
 
+	if (!str || count_args((const char **)str) != 4)
+		return (print_error("init_camera", INVALID_POINTER), NULL);
 	cam = ft_calloc(1, sizeof(t_camera));
 	if (!cam)
 		return (NULL);
-	*cam = camera(WIN_WIDTH, WIN_HEIGHT, deg_to_rad(CAMERA_DEFAULT_FOV));
+	*cam = camera(WIN_WIDTH, WIN_HEIGHT, deg_to_rad(ft_atod(str[3])));
+	from = str_to_tuple(str[1], POINT);
+	to = tp_add(from, str_to_tuple(str[2], VECTOR));
+	up = vector(0, 1, 0);
+	cam->transform = view_transform(from, to, up);
+	cam->transform_inverse = mx_inversion(cam->transform);
 	return (cam);
 }
 

@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/09 18:09:25 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/13 15:46:37 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 //	LOCAL HEADERS
 # include "forward_declarations.h"
 # include "hex_colors.h"
+# include "parsing.h"
 # include "ray.h"
 # include "intersection.h"
 # include "shape.h"
@@ -94,27 +95,36 @@ typedef struct s_camera
 
 typedef struct s_data
 {
-	t_mlx		*mlx;
-	t_world		*world;
-	t_camera	*camera;
-}				t_data;
+	t_input_data	input;
+	t_mlx			*mlx;
+	t_world			*world;
+	t_camera		*camera;
+}					t_data;
 
 //	PROTOTYPES
 
 	//	ERROR HANDLING
 
+int					input_error(t_input_data *input, const char *source, \
+															const char *msg);
+int					log_error(t_list **errors, int type, int line);
 void				exit_error(t_data *data, char *message);
 int					print_error(const char *source, const char *msg);
 
 	//	DATA
 
-t_data				*init_data(void);
-t_world				*init_world(void);
-t_camera			*init_camera(void);
+int					init_input(t_input_data *input, int argc, char **argv);
+t_data				*init_data(int argc, char **argv);
+t_world				*init_world(t_list *token_list);
+t_camera			*init_camera(char **str);
+void				destroy_input(t_input_data *input);
 void				destroy_data(t_data *data);
 void				destroy_world(t_world *world);
 void				destroy_camera(t_camera *camera);
-int					add_new_shape_to_world(t_world *world, t_shape_type type);
+t_shape				*add_new_shape_to_world(t_world *world, t_shape_type type);
+char				**get_element(t_list *token_list, t_id id);
+t_tuple				str_to_tuple(char *str, int type);
+t_color				str_to_rgb(char *str);
 
 	//	WINDOW (MLX)
 

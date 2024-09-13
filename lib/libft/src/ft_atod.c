@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 10:04:25 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/02 10:16:48 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/12 12:24:32 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	increment(double *number, double *scale, int afterdot, char c)
 	return (0);
 }
 
-double	ft_atof(const char *str)
+double	ft_atod(const char *str)
 {
 	double	number;
 	int		sign;
@@ -60,7 +60,7 @@ double	ft_atof(const char *str)
 		if (*str == '.')
 			afterdot++;
 		else
-			number = increment(&number, &scale, afterdot, *str);
+			increment(&number, &scale, afterdot, *str);
 		str++;
 	}
 	return (number * sign);

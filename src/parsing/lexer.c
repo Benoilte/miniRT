@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/12 11:20:16 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 14:55:28 by bgolding         ###   ########.fr       */
+/*   Created: 2024/09/09 09:31:49 by bgolding          #+#    #+#             */
+/*   Updated: 2024/09/09 16:00:37 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	main(int argc, char **argv)
+int	lexer(t_input_data *input)
 {
-	t_data			*data;
+	char	*line;
 
-	printf("Hello, in main program!\n");
-	data = init_data(argc, argv);
-	set_hooks(data);
-	mlx_loop(data->mlx->xvar);
-	destroy_data(data);
+	if (!input)
+		return (input_error(NULL, "init_input", INVALID_POINTER));
+	line = get_next_line(input->fd);
+	while (line)
+	{
+		if (ft_strlen(line) && tokenize_line(&input->token_list, line) != 0)
+		{
+			ft_lstclear(&input->token_list, delete_token);
+			free(line);
+			return (input_error(input, "lexer", LX_INCOMPLETE));
+		}
+		free(line);
+		line = get_next_line(input->fd);
+	}
 	return (0);
 }
