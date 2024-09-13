@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 22:17:34 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/13 17:34:21 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/13 17:53:22 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static bool	is_shape(t_id id)
 	return (ID_SPHERE <= id && id < ID_VALID_COUNT);
 }
 
-static t_list	*get_next_shape(t_list *tokens)
+t_list	*get_next_shape(t_list *tokens)
 {
 	if (!tokens)
 		return (NULL);

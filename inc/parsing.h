@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 22:00:21 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/13 17:49:27 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,11 @@
 # define INPUT_ERR_FILENAME "Invalid filename. Expected format: *.rt"
 # define LX_INCOMPLETE 		"Unable to complete lexical analysis"
 # define SYN_CHK_INCOMPLETE	"Unable to complete syntax check"
-# define SNY_CHK_ERROR		"Syntax error(s) detected"
+# define SYN_CHK_ERROR		"Syntax error(s) detected"
+# define WORLD_ERROR_AMB	"Missing Ambient element (A)"
+# define WORLD_ERROR_CAM	"Missing Camera element (C)"
+# define WORLD_ERROR_LIGHT	"Missing Light element (L)"
+# define WORLD_ERROR_SHAPE	"No shapes in world: must have at least 1"
 
 # define STR_AMBIENT	"A"
 # define STR_CAMERA		"C"

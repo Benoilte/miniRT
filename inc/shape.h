@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:54:18 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/13 15:47:13 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/13 17:53:55 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ void			destroy_shape(void *self);
 void			update_inverse(t_shape *shape);
 void			set_default_material(t_material *m);
 t_vector		get_normal(t_shape *shape, t_point world_point);
+t_list			*get_next_shape(t_list *tokens);
 
 //	PROTOTYPES SPHERE
 int				init_shapes(t_world *world, t_list *token_list);

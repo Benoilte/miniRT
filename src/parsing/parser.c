@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:20:21 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 13:22:58 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/13 18:00:36 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,40 @@ static int	validate_syntax(t_input_data *input)
 	return (0);
 }
 
+static int	validate_world(t_input_data *input)
+{
+	int		count[ID_VALID_COUNT];
+	t_list	*tokens;
+	t_id	id;
+	int		errors;
+
+	ft_bzero(&count, sizeof(count));
+	tokens = input->token_list;
+	while (tokens)
+	{
+		id = ((t_token *)tokens->content)->identifier;
+		count[id]++;
+		tokens = tokens->next;
+	}
+	errors = 0;
+	if (count[ID_AMBIENT] < 1)
+		errors += print_error("validate_world", WORLD_ERROR_AMB);
+	if (count[ID_CAMERA] < 1)
+		errors += print_error("validate_world", WORLD_ERROR_CAM);
+	if (count[ID_LIGHT] < 1)
+		errors += print_error("validate_world", WORLD_ERROR_LIGHT);
+	if (!get_next_shape(input->token_list))
+		errors += print_error("validate_world", WORLD_ERROR_SHAPE);
+	return (errors);
+}
+
 int	parser(t_input_data *input)
 {
 	if (validate_syntax(input) == -1)
 		return (input_error(input, "parser", SYN_CHK_INCOMPLETE));
 	if (input->errors)
-		return (input_error(input, "parser", SNY_CHK_ERROR));
+		return (input_error(input, "parser", SYN_CHK_ERROR));
+	if (validate_world(input) != 0)
+		return (1);
 	return (0);
 }
