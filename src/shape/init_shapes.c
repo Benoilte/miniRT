@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 22:17:34 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/13 11:55:12 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/13 15:34:34 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static t_token	*get_next_shape(t_list *token_list)
 {
 	t_token	*token;
 
-	if (!token_list);
+	if (!token_list)
 		return (NULL);
 	while (token_list)
 	{
@@ -46,7 +46,16 @@ int	init_shapes(t_world *world, t_list *token_list)
 				add_new_shape_to_world[type]
 				set_shape[type] << const function array
 	*/
-	(void)world;
-	(void)token_list;
+	t_token	*token;
+	t_shape	*new_shape;
+
+	while (token_list)
+	{
+		token = get_next_shape(token_list);
+		(void)new_shape;
+		(void)world;
+		ft_printf("Placeholder for add_new_shape_to_world(%d)\n", get_type(token->identifier));
+		token_list = token_list->next;
+	}
 	return (0);
 }
