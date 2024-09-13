@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 14:49:42 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 22:13:22 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/13 15:54:19 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ t_world	*init_world(t_list *token_list)
 	element = get_element(token_list, ID_LIGHT);
 	world->light = init_light(element);
 	if (!world->light)
+		return (destroy_world(world), NULL);
+	if (init_shapes(world, token_list) != 0)
 		return (destroy_world(world), NULL);
 	return (world);
 }
