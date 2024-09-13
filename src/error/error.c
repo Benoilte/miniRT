@@ -6,13 +6,13 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:49:38 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/13 15:49:33 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/13 15:51:44 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	print_error(const char *source, const char *msg)
+int	print_error(const char *source, const char *msg)
 {
 	const char	unknown_source[] = "unknown source";
 	const char	unknown_error[] = "unknown error";
