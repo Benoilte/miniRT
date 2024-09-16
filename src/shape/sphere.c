@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:31:00 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/06 16:46:27 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/16 10:04:20 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,21 @@ const t_vtable	*get_sphere_vtable(void)
 		set_default_sphere, destroy_shape, intersect_sphere, normal_sphere};
 
 	return (&sphere_vtable);
+}
+
+int	set_sphere(t_shape *self, char **args)
+{
+	t_point	origin;
+	float	radius;
+
+	if (!self || !args)
+		return (print_error("set_sphere", INVALID_POINTER));
+	origin = str_to_tuple(args[1], POINT);
+	radius = ft_atod(args[2]) / 2;
+	self->transform = mx_add_scaling(self->transform, radius, radius, radius);
+	self->transform = mx_add_translation(self->transform, \
+											origin.x, origin.y, origin.z);
+	self->inverse = mx_inversion(self->transform);
+	self->material.color = str_to_rgb(args[3]);
+	return (0);
 }
