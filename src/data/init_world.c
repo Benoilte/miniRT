@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_world.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 14:49:42 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/13 15:54:19 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/16 18:11:01 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,12 @@ t_world	*init_world(t_list *token_list)
 	if (!world)
 		return (NULL);
 	element = get_element(token_list, ID_LIGHT);
-	world->light = init_light(element);
+	world->light = init_light(element, ID_LIGHT);
 	if (!world->light)
+		return (destroy_world(world), NULL);
+	element = get_element(token_list, ID_AMBIENT);
+	world->ambiant_light = init_light(element, ID_AMBIENT);
+	if (!world->ambiant_light)
 		return (destroy_world(world), NULL);
 	if (init_shapes(world, token_list) != 0)
 		return (destroy_world(world), NULL);

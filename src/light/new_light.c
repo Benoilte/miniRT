@@ -3,26 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   new_light.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:52:39 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/12 22:10:32 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/16 18:10:09 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "light.h"
 
-t_light	*init_light(char **str)
+t_light	*init_light(char **str, t_id id)
 {
 	t_light	*light;
+	t_point	origin;
 
 	if (!str)
 		return (NULL);
 	light = new_light();
 	if (!light)
 		return (NULL);
+	if (id == ID_AMBIENT)
+		origin = point(0,0,0);
+	else
+		origin = str_to_tuple(str[1], POINT);
 	*light = set_light(\
-		str_to_tuple(str[1], POINT), \
+		origin, \
 		rgb_scale(str_to_rgb(str[3]), ft_atod(str[2])));
 	return (light);
 }
