@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 22:17:34 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/13 17:53:22 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/16 12:48:35 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static t_shape_type	get_type(t_id id)
 int	init_shapes(t_world *world, t_list *token_list)
 {
 	t_list	*shape_token;
+	t_token	*token;
 	t_shape	*new_shape;
 
 	shape_token = get_next_shape(token_list);
@@ -45,10 +46,16 @@ int	init_shapes(t_world *world, t_list *token_list)
 		return (print_error("init_shapes", "no shapes in list"));
 	while (shape_token)
 	{
-		(void)new_shape;
-		(void)world;
+		token = (t_token *)shape_token->content;
 		ft_printf("Placeholder for add_new_shape_to_world(%d)\n", \
-			get_type(((t_token *)shape_token->content)->identifier));
+			get_type(token->identifier));
+		new_shape = add_new_shape_to_world(world, get_type(token->identifier));
+		if (!new_shape)
+			return (1);
+		if (new_shape->type == SPHERE)
+			set_sphere(new_shape, token->args);
+		if (new_shape->type == PLANE)
+			set_plane(new_shape, token->args);
 		shape_token = get_next_shape(shape_token->next);
 	}
 	return (0);
