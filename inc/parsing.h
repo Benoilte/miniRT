@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/13 17:49:27 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/17 22:13:01 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@
 # define ERRMSG_RANGE_EXCESS 	"Value exceeds permitted range"
 # define ERRMSG_ARG_MISSING 	"Missing parameter(s) for element"
 # define ERRMSG_ARG_EXCESS		 "Too many parameters for element"
+# define ERRMSG_VECTOR_ZERO		"Invalid vector: all zero values"
 
 # define RANGE_MIN			-1000
 # define RANGE_MAX			1000
@@ -121,6 +122,7 @@ typedef enum e_error_code
 	ERR_RANGE_LIMIT,
 	ERR_ARG_MISSING,
 	ERR_ARG_EXCESS,
+	ERR_VECTOR_ZERO,
 	ERR_CODE_LIMIT
 }	t_error_code;
 

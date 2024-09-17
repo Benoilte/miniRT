@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 17:11:10 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 22:00:04 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/17 22:17:13 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	validate_vector(const char *str, int line, t_list **errors)
 	if (args[i])
 		return (free_args(&args), log_error(errors, ERR_ARG_EXCESS, line));
 	free_args(&args);
+	if (equalf(tp_magnitude(str_to_tuple((char *)str, VECTOR)), 0))
+		return (log_error(errors, ERR_VECTOR_ZERO, line));
 	return (0);
 }
 
