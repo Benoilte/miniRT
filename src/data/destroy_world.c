@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   destroy_world.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 14:52:19 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/02 16:11:55 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/17 16:32:20 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,6 @@ void	destroy_world(t_world *world)
 		return ;
 	ft_lstclear(&world->shapes, destroy_shape);
 	destroy_light(world->light);
+	destroy_light(world->ambiant_light);
 	free(world);
 }
