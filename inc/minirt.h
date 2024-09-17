@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/16 17:04:29 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/17 16:08:35 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@
 //	OS specifics
 # ifdef __APPLE__
 #  include "macos_keycodes.h"
-#  define WIN_WIDTH 1800
-#  define WIN_HEIGHT 1200
-#  define WIN_MID_X 800
-#  define WIN_MID_Y 600
+#  define WIN_WIDTH 900
+#  define WIN_HEIGHT 600
+#  define WIN_MID_X 450
+#  define WIN_MID_Y 300
 #  define LINUX 0
 # endif
 

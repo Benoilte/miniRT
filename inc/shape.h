@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:54:18 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/13 17:53:55 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/17 15:36:29 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,12 @@ typedef bool		(*t_vintersect)(t_ray *ray, \
 									t_shape *shape, \
 									t_report *report);
 typedef t_vector	(*t_vnormal)(t_shape *shape, t_point *object_point);
+typedef int			(*t_vset)(t_shape *self, char **args);
 
 typedef struct s_vtable
 {
 	t_vset_default	set_default_shape;
+	t_vset			set;
 	t_vdestroy		destroy;
 	t_vintersect	intersect;
 	t_vnormal		normal;
@@ -130,21 +132,25 @@ void			update_inverse(t_shape *shape);
 void			set_default_material(t_material *m);
 t_vector		get_normal(t_shape *shape, t_point world_point);
 t_list			*get_next_shape(t_list *tokens);
+int				init_shapes(t_world *world, t_list *token_list);
+t_m4x4			rotate_y_to(t_vector to);
 
 //	PROTOTYPES SPHERE
-int				init_shapes(t_world *world, t_list *token_list);
+int				set_sphere(t_shape *self, char **args);
 void			set_default_sphere(t_shape *self);
 const t_vtable	*get_sphere_vtable(void);
 bool			intersect_sphere(t_ray *r, t_shape *shape, t_report *report);
 t_vector		normal_sphere(t_shape *shape, t_point *object_point);
 
 //	PROTOTYPES PLANE
+int				set_plane(t_shape *self, char **args);
 void			set_default_plane(t_shape *self);
 const t_vtable	*get_plane_vtable(void);
 bool			intersect_plane(t_ray *r, t_shape *shape, t_report *report);
 t_vector		normal_plane(t_shape *shape, t_point *object_point);
 
 //	PROTOTYPES CYLINDER
+int				set_cylinder(t_shape *self, char **args);
 void			set_default_cylinder(t_shape *self);
 const t_vtable	*get_cylinder_vtable(void);
 bool			intersect_cylinder(t_ray *ray, t_shape *cl, t_report *report);
