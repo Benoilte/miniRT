@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:54:18 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/17 14:56:24 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/17 15:19:01 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,7 @@ bool			intersect_plane(t_ray *r, t_shape *shape, t_report *report);
 t_vector		normal_plane(t_shape *shape, t_point *object_point);
 
 //	PROTOTYPES CYLINDER
+int				set_cylinder(t_shape *self, char **args);
 void			set_default_cylinder(t_shape *self);
 const t_vtable	*get_cylinder_vtable(void);
 bool			intersect_cylinder(t_ray *ray, t_shape *cl, t_report *report);
