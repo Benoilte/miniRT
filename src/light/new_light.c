@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_light.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:52:39 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/16 18:10:09 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/17 16:47:48 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 t_light	*init_light(char **str, t_id id)
 {
 	t_light	*light;
-	t_point	origin;
+	t_point	position;
+	t_color	intensity;
 
 	if (!str)
 		return (NULL);
@@ -23,12 +24,16 @@ t_light	*init_light(char **str, t_id id)
 	if (!light)
 		return (NULL);
 	if (id == ID_AMBIENT)
-		origin = point(0,0,0);
+	{
+		position = point(0,0,0);
+		intensity = rgb_scale(str_to_rgb(str[2]), ft_atod(str[1]));
+	}
 	else
-		origin = str_to_tuple(str[1], POINT);
-	*light = set_light(\
-		origin, \
-		rgb_scale(str_to_rgb(str[3]), ft_atod(str[2])));
+	{
+		position = str_to_tuple(str[1], POINT);
+		intensity = rgb_scale(str_to_rgb(str[3]), ft_atod(str[2]));
+	}
+	*light = set_light(position, intensity);
 	return (light);
 }
 
