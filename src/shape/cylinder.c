@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 12:08:50 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/17 15:30:23 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/17 15:38:58 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	set_default_cylinder(t_shape *self)
 const t_vtable	*get_cylinder_vtable(void)
 {
 	static const t_vtable	cylinder_vtable = {\
-		set_default_cylinder, destroy_shape, \
+		set_default_cylinder, set_cylinder, destroy_shape, \
 		intersect_cylinder, normal_cylinder};
 
 	return (&cylinder_vtable);
