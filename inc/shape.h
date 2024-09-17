@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:54:18 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/16 12:47:49 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/17 14:56:24 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,7 @@ void			set_default_material(t_material *m);
 t_vector		get_normal(t_shape *shape, t_point world_point);
 t_list			*get_next_shape(t_list *tokens);
 int				init_shapes(t_world *world, t_list *token_list);
+t_m4x4			rotate_y_to(t_vector to);
 
 //	PROTOTYPES SPHERE
 int				set_sphere(t_shape *self, char **args);
