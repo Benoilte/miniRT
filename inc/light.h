@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:34:41 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/12 22:12:39 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/17 20:57:55 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include "minirt.h"
 
 // DEFINES
+
+# define BIAS	0.001
 
 # define LIGHT_INVALID_POINTER "invalid (null) light pointer"
 
@@ -38,10 +40,10 @@ typedef struct s_light
 
 // PROTOTYPES
 
-t_light	*init_light(char **str);
+t_light	*init_light(char **str, t_id id);
 t_light	*new_light(void);
 t_light	set_light(t_point position, t_color intensity);
 void	destroy_light(t_light *light);
-t_color	lighting(t_details *details, t_light *light);
+t_color	lighting(t_details *details, t_light *light, t_light *ambiant_light);
 
 #endif
