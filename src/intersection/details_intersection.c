@@ -3,16 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   details_intersection.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:30:29 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/09 18:28:48 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/17 21:11:49 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "intersection.h"
 
-int	is_shadowed(t_world *world, t_point point)
+static void	set_first_hit_valid(t_shape *self, t_intersect_list **first_hit)
+{
+	t_intersection	*hit;
+
+	if (!*first_hit)
+		return ;
+	hit = ((t_intersection *)((*first_hit)->content));
+	if ((hit->shape == self) && lower_or_equalf(hit->t, BIAS))
+		*first_hit = (*first_hit)->next;
+}
+
+int	is_shadowed(t_shape *self, t_world *world, t_point point)
 {
 	t_intersect_list	*intersects;
 	t_intersect_list	*first_hit;
@@ -27,8 +38,9 @@ int	is_shadowed(t_world *world, t_point point)
 	if (intersect_world(&intersects, &r1, world) != 0)
 		return (-1);
 	first_hit = get_first_hit(&intersects);
-	if (first_hit && (((t_intersection *)(first_hit->content))->t < distance
-		|| equalf(((t_intersection *)(first_hit->content))->t, distance)))
+	set_first_hit_valid(self, &first_hit);
+	if (first_hit
+		&& lower_or_equalf(((t_intersection *)(first_hit->content))->t, distance))
 	{
 		dbl_lstclear(&intersects, clear_intersection);
 		return (1);
@@ -61,7 +73,7 @@ int	compute_details(t_details *details, \
 		details->inside = 0;
 	details->over_point = \
 		tp_add(details->position, tp_multiply(details->normalv, EPSILON));
-	details->in_shadow = is_shadowed(world, details->over_point);
+	details->in_shadow = is_shadowed(details->shape, world, details->over_point);
 	if (details->in_shadow == -1)
 		return (2);
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 12:34:41 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/16 18:10:48 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/17 20:57:55 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include "minirt.h"
 
 // DEFINES
+
+# define BIAS	0.001
 
 # define LIGHT_INVALID_POINTER "invalid (null) light pointer"
 
