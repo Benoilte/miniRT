@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:03:03 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 11:34:33 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/18 09:35:50 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static t_id	set_identifier(char *str)
 	i = 0;
 	while (i < ID_VALID_COUNT)
 	{
-		if (ft_strncmp(str, identifiers[i], ft_strlen(str)) == 0)
+		if (ft_strncmp(str, identifiers[i], ft_strlen(str) + 1) == 0)
 			return (i);
 		i++;
 	}
