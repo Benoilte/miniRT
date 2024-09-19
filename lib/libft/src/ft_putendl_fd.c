@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 10:05:27 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/02 10:06:05 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/19 14:21:52 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,14 @@
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+int	ft_putendl_fd(char *s, int fd)
 {
 	while (*s)
-		write(fd, s++, 1);
-	write(fd, "\n", 1);
+	{
+		if (write(fd, s++, 1) == -1)
+			return (-1);
+	}
+	if (write(fd, "\n", 1) == -1)
+		return (-1);
+	return (0);
 }

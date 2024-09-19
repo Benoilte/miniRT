@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 10:32:15 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/02 10:06:05 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/19 14:16:12 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 int	i_put_char(char c)
 {
-	write(1, &c, 1);
-	return (1);
+	return (write(1, &c, 1));
 }
 
 int	i_put_conversion(va_list args, const char *f_string)

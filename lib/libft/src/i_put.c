@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 11:25:25 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/02 10:06:05 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/19 14:17:40 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ int	i_put_str(char *s)
 	if (s == NULL)
 		return (i_put_str("(null)"));
 	while (s[n])
-		write(1, &s[n++], 1);
+	{
+		if (write(1, &s[n++], 1) == -1)
+			return (-1);
+	}
 	return (n);
 }
 
@@ -46,7 +49,8 @@ int	i_put_hex(unsigned long n, int case_select)
 	}
 	else
 	{
-		write(1, &hex[n], 1);
+		if (write(1, &hex[n], 1) == -1)
+			return (-1);
 		return (1);
 	}
 	return (count);

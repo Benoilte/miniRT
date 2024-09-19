@@ -6,7 +6,7 @@
 #    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/24 11:39:18 by bgolding          #+#    #+#              #
-#    Updated: 2024/09/02 10:06:30 by bgolding         ###   ########.fr        #
+#    Updated: 2024/09/19 14:18:01 by bgolding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,7 @@ SRCS	=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_F)))
 OBJS	=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_F)))
 
 CC		=	gcc
-CFLAGS	=	-Wall -Wextra -Werror
+CFLAGS	=	-Wall -Wextra -Werror -O2
 RM		=	rm -f
 AR		=	ar -rc
 
