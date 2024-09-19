@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 17:48:01 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/20 11:06:38 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/19 14:25:49 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ bool	add_new_before_lst(t_dbl_lst *new, t_dbl_lst *lst)
 
 	new_i = ((t_intersection *)new->content)->t;
 	cur_i = ((t_intersection *)lst->content)->t;
+	prev_i = 0;
 	if (lst->prev)
 		prev_i = ((t_intersection *)lst->prev->content)->t;
 	return (((new_i < cur_i) || equalf(new_i, cur_i))
