@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:30:29 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/17 21:11:49 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/19 15:52:47 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int	is_shadowed(t_shape *self, t_world *world, t_point point)
 		return (-1);
 	first_hit = get_first_hit(&intersects);
 	set_first_hit_valid(self, &first_hit);
-	if (first_hit
-		&& lower_or_equalf(((t_intersection *)(first_hit->content))->t, distance))
+	if (first_hit && \
+		lower_or_equalf(((t_intersection *)(first_hit->content))->t, distance))
 	{
 		dbl_lstclear(&intersects, clear_intersection);
 		return (1);
@@ -73,7 +73,8 @@ int	compute_details(t_details *details, \
 		details->inside = 0;
 	details->over_point = \
 		tp_add(details->position, tp_multiply(details->normalv, EPSILON));
-	details->in_shadow = is_shadowed(details->shape, world, details->over_point);
+	details->in_shadow = \
+		is_shadowed(details->shape, world, details->over_point);
 	if (details->in_shadow == -1)
 		return (2);
 	return (0);

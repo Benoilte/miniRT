@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:52:39 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/17 16:47:48 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/19 15:50:20 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_light	*init_light(char **str, t_id id)
 		return (NULL);
 	if (id == ID_AMBIENT)
 	{
-		position = point(0,0,0);
+		position = point(0, 0, 0);
 		intensity = rgb_scale(str_to_rgb(str[2]), ft_atod(str[1]));
 	}
 	else

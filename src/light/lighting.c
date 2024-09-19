@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lighting.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 13:41:06 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/16 17:09:41 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/19 15:47:50 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ t_color	lighting(t_details *details, t_light *light, t_light *ambiant_light)
 
 	lightv = tp_normalize(tp_subtract(light->position, details->position));
 	effective = rgb_mult(details->shape->material.color, light->intensity);
-	ambient = rgb_add(compute_ambient(details, effective), ambiant_light->intensity);
+	ambient = rgb_add(compute_ambient(details, effective), \
+												ambiant_light->intensity);
 	diffuse = compute_diffuse(details, effective, lightv);
 	specular = compute_specular(details, light, lightv);
 	if (details->in_shadow)
