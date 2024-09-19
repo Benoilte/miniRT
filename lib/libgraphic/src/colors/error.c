@@ -3,28 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:57:04 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/27 16:00:14 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/19 14:33:37 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "colors.h"
 
-static	int	str_len(const char *str)
+static int	ft_putstr_fd(const char *s, int fd)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	while (*s)
+	{
+		if (write(fd, s++, 1) == -1)
+			return (-1);
+	}
+	return (0);
 }
 
 static void	separator(void)
 {
-	write(STDERR_FILENO, ": ", 2);
+	ft_putstr_fd(": ", STDERR_FILENO);
 }
 
 void	rgb_error(const char *source, const char *msg)
@@ -33,16 +33,16 @@ void	rgb_error(const char *source, const char *msg)
 	const char	unknown_source[] = "unknown source";
 	const char	unknown_error[] = "unknown error";
 
-	write(STDERR_FILENO, warning, str_len(warning));
+	ft_putstr_fd(warning, STDERR_FILENO);
 	separator();
 	if (source)
-		write(STDERR_FILENO, source, str_len(source));
+		ft_putstr_fd(source, STDERR_FILENO);
 	else
-		write(STDERR_FILENO, unknown_source, str_len(unknown_source));
+		ft_putstr_fd(unknown_source, STDERR_FILENO);
 	separator();
 	if (msg)
-		write(STDERR_FILENO, msg, str_len(msg));
+		ft_putstr_fd(msg, STDERR_FILENO);
 	else
-		write(STDERR_FILENO, unknown_error, str_len(unknown_error));
-	write(STDERR_FILENO, "\n", 1);
+		ft_putstr_fd(unknown_error, STDERR_FILENO);
+	ft_putstr_fd("\n", STDERR_FILENO);
 }
