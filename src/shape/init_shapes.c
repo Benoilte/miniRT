@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 22:17:34 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/17 15:39:25 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/19 10:45:36 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ int	init_shapes(t_world *world, t_list *token_list)
 	while (shape_token)
 	{
 		token = (t_token *)shape_token->content;
-		ft_printf("Placeholder for add_new_shape_to_world(%d)\n", \
-			get_type(token->identifier));
 		new_shape = add_new_shape_to_world(world, get_type(token->identifier));
 		if (!new_shape)
 			return (1);
