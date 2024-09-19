@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:05:56 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/22 09:31:47 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/19 14:13:57 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	dbl_lstadd_ordered(t_dbl_lst **dlst, \
 	if (!dlst || !new || !f)
 		return ;
 	tmp = *dlst;
+	prev = tmp;
 	while (tmp)
 	{
 		if (f(new, tmp))
