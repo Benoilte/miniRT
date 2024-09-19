@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:49:38 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/13 15:51:44 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/19 14:44:04 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ int	print_error(const char *source, const char *msg)
 
 	ft_putendl_fd("Error", STDERR_FILENO);
 	if (source)
-		write(STDERR_FILENO, source, ft_strlen(source));
+		ft_putstr_fd((char *)source, STDERR_FILENO);
 	else
-		write(STDERR_FILENO, unknown_source, ft_strlen(unknown_source));
+		ft_putstr_fd((char *)unknown_source, STDERR_FILENO);
 	ft_putstr_fd(": ", STDERR_FILENO);
 	if (msg)
-		write(STDERR_FILENO, msg, ft_strlen(msg));
+		ft_putstr_fd((char *)msg, STDERR_FILENO);
 	else
-		write(STDERR_FILENO, unknown_error, ft_strlen(unknown_error));
-	write(STDERR_FILENO, "\n", 1);
+		ft_putstr_fd((char *)unknown_error, STDERR_FILENO);
+	ft_putchar_fd('\n', STDERR_FILENO);
 	return (1);
 }
 

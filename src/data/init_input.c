@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 14:12:51 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 16:50:48 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/19 14:44:52 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	print_args(char **args)
 	i = 0;
 	while (args[i])
 		ft_printf("[%s] ", args[i++]);
-	write(STDOUT_FILENO, "\n", 1);
+	ft_putchar_fd('\n', STDOUT_FILENO);
 }
 
 // FOR TESTING PURPOSES

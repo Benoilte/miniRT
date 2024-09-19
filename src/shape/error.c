@@ -6,25 +6,15 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:03:17 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/16 17:06:14 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/19 14:53:10 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shape.h"
 
-static	int	str_len(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
 static void	separator(void)
 {
-	write(STDERR_FILENO, ": ", 2);
+	ft_putstr_fd(": ", STDERR_FILENO);
 }
 
 void	shape_error(const char *source, const char *msg)
@@ -33,16 +23,16 @@ void	shape_error(const char *source, const char *msg)
 	const char	unknown_source[] = "unknown source";
 	const char	unknown_error[] = "unknown error";
 
-	write(STDERR_FILENO, error, str_len(error));
+	ft_putstr_fd((char *)error, STDERR_FILENO);
 	separator();
 	if (source)
-		write(STDERR_FILENO, source, str_len(source));
+		ft_putstr_fd((char *)source, STDERR_FILENO);
 	else
-		write(STDERR_FILENO, unknown_source, str_len(unknown_source));
+		ft_putstr_fd((char *)unknown_source, STDERR_FILENO);
 	separator();
 	if (msg)
-		write(STDERR_FILENO, msg, str_len(msg));
+		ft_putstr_fd((char *)msg, STDERR_FILENO);
 	else
-		write(STDERR_FILENO, unknown_error, str_len(unknown_error));
-	write(STDERR_FILENO, "\n", 1);
+		ft_putstr_fd((char *)unknown_error, STDERR_FILENO);
+	ft_putchar_fd('\n', STDERR_FILENO);
 }
