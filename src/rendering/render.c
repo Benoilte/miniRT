@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 12:57:38 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/19 15:22:57 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/19 16:09:11 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	update_progress(int x)
 {
-	if (x == 1)
+	if (x == 0)
 		ft_printf("Rendering...\n");
-	if (x == WIN_WIDTH)
+	if (x == WIN_WIDTH - 1)
 		ft_printf("\rRender complete!\n");
 	else
 		ft_printf("\r%i %%", (x * 100) / WIN_WIDTH);
