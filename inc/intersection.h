@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 16:01:08 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/17 18:18:46 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/23 17:58:38 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ bool			is_hit_positive(t_dbl_lst *intersection);
 void			clear_intersection(void *intersection);
 int				compute_details(t_details *details, t_intersection *hit, \
 								t_ray ray, t_world *world);
-int				is_shadowed(t_shape *self, t_world *world, t_point point);
+int				is_shadowed(t_shape *self, t_world *world, t_point point, \
+								t_details *details);
 t_dbl_lst		*get_first_hit(t_dbl_lst **dlist);
 
 #endif
