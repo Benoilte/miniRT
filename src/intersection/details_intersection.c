@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:30:29 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/19 15:52:47 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/21 08:41:00 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	is_shadowed(t_shape *self, t_world *world, t_point point)
 	float				distance;
 
 	lightv = tp_subtract(world->light->position, point);
-	distance = tp_magnitude(lightv);
+	distance = tp_magnitude(lightv) - BIAS;
 	r1 = ray(point, tp_normalize(lightv));
 	intersects = NULL;
 	if (intersect_world(&intersects, &r1, world) != 0)
