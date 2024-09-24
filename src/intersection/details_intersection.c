@@ -6,7 +6,7 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:30:29 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/23 19:16:50 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/24 15:04:43 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,6 @@ static void	set_first_hit_valid(t_shape *self, t_intersect_list **first_hit)
 		*first_hit = (*first_hit)->next;
 }
 
-/*
-​ 	​if​ dot(comps.normalv, comps.eyev) < 0
-​ 	  comps.inside ← true
-​ 	  comps.normalv ← -comps.normalv
-​ 	​else​
-​ 	  comps.inside ← false
-​ 	​end​ ​if
-*/
-
 int	is_shadowed(t_shape *self, \
 				t_world *world, \
 				t_point point, \
@@ -46,7 +37,7 @@ int	is_shadowed(t_shape *self, \
 	lightv = tp_subtract(world->light->position, point);
 	if (tp_dot_product(details->normalv, lightv) < 0)
 		return (1);
-	distance = tp_magnitude(lightv) - BIAS;
+	distance = tp_magnitude(lightv);
 	r1 = ray(point, tp_normalize(lightv));
 	intersects = NULL;
 	if (intersect_world(&intersects, &r1, world) != 0)
