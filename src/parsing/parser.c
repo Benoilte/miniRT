@@ -6,18 +6,11 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:20:21 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/13 18:00:36 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/25 10:59:14 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-static int	validate_id(t_token *token, t_list **errors)
-{
-	if (token->identifier < 0 || token->identifier >= ID_VALID_COUNT)
-		return (log_error(errors, ERR_INVALID_ID, token->line));
-	return (0);
-}
 
 static int	validate_token(t_token *token, t_list **errors)
 {
@@ -25,8 +18,8 @@ static int	validate_token(t_token *token, t_list **errors)
 	validate_ambient, validate_camera, validate_light, \
 	validate_sphere, validate_plane, validate_cylinder};
 
-	if (validate_id(token, errors) != 0)
-		return (1);
+	if (token->identifier < 0 || token->identifier >= ID_VALID_COUNT)
+		return (log_error(errors, ERR_INVALID_ID, token->line));
 	return (validate[token->identifier](token, errors));
 }
 
@@ -46,15 +39,25 @@ static int	validate_syntax(t_input_data *input)
 	return (0);
 }
 
-static int	validate_world(t_input_data *input)
+static int	total_shape_count(int count[ID_VALID_COUNT])
+{
+	int		shape_count;
+	t_id	id;
+
+	shape_count = 0;
+	id = ID_SPHERE;
+	while (id < ID_VALID_COUNT)
+		shape_count += count[id++];
+	return (shape_count);
+}
+
+static int	validate_world(t_list *tokens)
 {
 	int		count[ID_VALID_COUNT];
-	t_list	*tokens;
 	t_id	id;
 	int		errors;
 
 	ft_bzero(&count, sizeof(count));
-	tokens = input->token_list;
 	while (tokens)
 	{
 		id = ((t_token *)tokens->content)->identifier;
@@ -68,8 +71,10 @@ static int	validate_world(t_input_data *input)
 		errors += print_error("validate_world", WORLD_ERROR_CAM);
 	if (count[ID_LIGHT] < 1)
 		errors += print_error("validate_world", WORLD_ERROR_LIGHT);
-	if (!get_next_shape(input->token_list))
+	if (total_shape_count(count) < 1)
 		errors += print_error("validate_world", WORLD_ERROR_SHAPE);
+	if (total_shape_count(count) > WORLD_SHAPE_LIMIT)
+		errors += print_error("validate_world", WORLD_ERROR_LIMIT);
 	return (errors);
 }
 
@@ -79,7 +84,7 @@ int	parser(t_input_data *input)
 		return (input_error(input, "parser", SYN_CHK_INCOMPLETE));
 	if (input->errors)
 		return (input_error(input, "parser", SYN_CHK_ERROR));
-	if (validate_world(input) != 0)
+	if (validate_world(input->token_list) != 0)
 		return (1);
 	return (0);
 }
