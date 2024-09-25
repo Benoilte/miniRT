@@ -3,16 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
+#    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/09/19 14:40:24 by bgolding         ###   ########.fr        #
+#    Updated: 2024/09/24 16:59:09 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	miniRT
-
-NAME_TEST		=	test_miniRT
 
 LIB				=	lib/
 INC				=	inc/
@@ -25,9 +23,6 @@ LIBGRAPHIC_DIR	=	$(LIB)libgraphic/
 LIBDLIST		=	$(LIB)libdlist/
 
 MAIN_FILES		=	main
-TEST_FILES		=	test print default_world first_scene plane_scene \
-					shadow plane cylinder cylinder_scene utils add_wall \
-					cylinder_utils
 ERROR_FILES		=	error input_error
 PARSING_FILES	=	file_validation lexer tokenize token_utils parser validate_single_element \
 					validate_shape validate_info_1 validate_info_2 validate_utils
@@ -69,7 +64,8 @@ INC_PATHS		=	$(addprefix -I, $(INC_DIR) \
 									$(LIBGRAPHIC_DIR)inc \
 									$(LIBDLIST)inc)
 
-SRC_FILES		=	$(addprefix error/, $(ERROR_FILES)) \
+SRC_FILES		=	$(addprefix main/, $(MAIN_FILES)) \
+					$(addprefix error/, $(ERROR_FILES)) \
 					$(addprefix parsing/, $(PARSING_FILES)) \
 					$(addprefix data/, $(DATA_FILES)) \
 					$(addprefix window/, $(WINDOW_FILES)) \
@@ -80,15 +76,8 @@ SRC_FILES		=	$(addprefix error/, $(ERROR_FILES)) \
 					$(addprefix shape/, $(SHAPE_FILES)) \
 					$(addprefix light/, $(LIGHT_FILES))
 
-SRC_MAIN		=	$(addprefix main/, $(MAIN_FILES))
-
-SRC_TEST		=	$(addprefix test/, $(TEST_FILES))
-
-
-SRCS			=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES) $(SRC_MAIN) $(SRC_TEST)))
+SRCS			=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJS			=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
-OBJS_MAIN		=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_MAIN)))
-OBJS_TEST		=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_TEST)))
 
 LIB_LINK		=	-L$(LIBFT_DIR) -lft -L$(MINILIBX_DIR) -lmlx -L$(LIBGRAPHIC_DIR) -lgraphic -L$(LIBDLIST) -ldlist $(OS_FLAGS)
 
@@ -111,8 +100,6 @@ COMPILED_COUNT	=	0
 
 all:			$(STATIC_LIBS) $(NAME)
 
-test:			$(STATIC_LIBS) $(NAME_TEST)
-
 $(STATIC_LIBS):
 				@echo "$(YELLOW)Compiling static libraries...$(DEF_COLOR)"
 				@make -C $(MINILIBX_DIR)
@@ -121,15 +108,10 @@ $(STATIC_LIBS):
 				@make -C $(LIBDLIST)
 				@echo "$(GREEN)All static libraries compiled$(DEF_COLOR)"
 
-$(NAME):		$(OBJS) $(OBJS_MAIN) $(STATIC_LIBS)
-				@$(CC) $(CFLAGS) $(OBJS) $(OBJS_MAIN) $(LIB_LINK) -o $@
+$(NAME):		$(OBJS) $(STATIC_LIBS)
+				@$(CC) $(CFLAGS) $(OBJS) $(LIB_LINK) -o $@
 				@printf "$(CLEAR_LINE)"
 				@echo "\r$(GREEN)Successfully created executable: $(NAME) $(DEF_COLOR)"
-
-$(NAME_TEST):	$(OBJS) $(OBJS_TEST) $(STATIC_LIBS)
-				@$(CC) $(CFLAGS) $(OBJS) $(OBJS_TEST) $(LIB_LINK) -o $@
-				@printf "$(CLEAR_LINE)"
-				@echo "\r$(GREEN)Successfully created executable: $(NAME_TEST) $(DEF_COLOR)"
 
 $(OBJ_DIR)%.o:	$(SRC_DIR)%.c
 				@mkdir -p $(dir $@)
@@ -138,7 +120,7 @@ $(OBJ_DIR)%.o:	$(SRC_DIR)%.c
 				@$(CC) $(CFLAGS) $(INC_PATHS) -c $< -o $@
 
 clean:
-				@$(RM) -rf $(OBJ_DIR)
+					@$(RM) -rf $(OBJ_DIR)
 				@make clean -C $(LIBFT_DIR)
 				@make clean -C $(LIBGRAPHIC_DIR)
 				@make clean -C $(LIBDLIST)
@@ -157,8 +139,6 @@ fcleanlibs:
 
 re:				fclean all
 
-retest:			re test
-
 libft:
 				@make -C $(LIBFT_DIR)
 
@@ -171,4 +151,4 @@ libdlist:
 mlx:
 				@make -C $(MINILIBX_DIR)
 
-.PHONY:			all clean fclean re fcleanlibs test retest libft libgraphic libdlist mlx
+.PHONY:			all clean fclean re fcleanlibs libft libgraphic libdlist mlx
