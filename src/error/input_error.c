@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 13:16:41 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/17 22:13:20 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/24 19:08:10 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	report_error(void *error_node)
 	ERRMSG_RANGE_EXCESS, ERRMSG_ARG_MISSING, ERRMSG_ARG_EXCESS, \
 	ERRMSG_VECTOR_ZERO};
 	t_error		*error;
+	static int	count = 0;
 
 	if (!error_node)
 		return ;
@@ -29,6 +30,8 @@ static void	report_error(void *error_node)
 		ft_printf("%s\n", msg[error->error_type]);
 	else
 		ft_printf("unknown error code\n");
+	if (++count >= INPUT_ERROR_REPORT_LIMIT)
+		ft_printf("\tSyntax error limit reached\n");	
 }
 
 int	input_error(t_input_data *input, const char *source, const char *msg)
@@ -41,9 +44,12 @@ int	input_error(t_input_data *input, const char *source, const char *msg)
 
 int	log_error(t_list **errors, int type, int line)
 {
-	t_error	*new;
-	t_list	*node;
+	t_error		*new;
+	t_list		*node;
+	static int	count = 0;
 
+	if (count >= INPUT_ERROR_REPORT_LIMIT)
+		return (1);
 	if (!errors)
 		return (-1);
 	new = ft_calloc(1, sizeof(t_error));
@@ -58,5 +64,6 @@ int	log_error(t_list **errors, int type, int line)
 		return (-1);
 	}
 	ft_lstadd_back(errors, node);
+	count++;
 	return (1);
 }

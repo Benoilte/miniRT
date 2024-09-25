@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   details_intersection.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:30:29 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/19 15:52:47 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/24 15:04:43 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ static void	set_first_hit_valid(t_shape *self, t_intersect_list **first_hit)
 		*first_hit = (*first_hit)->next;
 }
 
-int	is_shadowed(t_shape *self, t_world *world, t_point point)
+int	is_shadowed(t_shape *self, \
+				t_world *world, \
+				t_point point, \
+				t_details *details)
 {
 	t_intersect_list	*intersects;
 	t_intersect_list	*first_hit;
@@ -32,6 +35,8 @@ int	is_shadowed(t_shape *self, t_world *world, t_point point)
 	float				distance;
 
 	lightv = tp_subtract(world->light->position, point);
+	if (tp_dot_product(details->normalv, lightv) < 0)
+		return (1);
 	distance = tp_magnitude(lightv);
 	r1 = ray(point, tp_normalize(lightv));
 	intersects = NULL;
@@ -74,7 +79,7 @@ int	compute_details(t_details *details, \
 	details->over_point = \
 		tp_add(details->position, tp_multiply(details->normalv, EPSILON));
 	details->in_shadow = \
-		is_shadowed(details->shape, world, details->over_point);
+		is_shadowed(details->shape, world, details->over_point, details);
 	if (details->in_shadow == -1)
 		return (2);
 	return (0);
