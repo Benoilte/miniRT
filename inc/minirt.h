@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/09/25 11:11:28 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/25 11:25:22 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@
 #  include "linux_keycodes.h"
 #  include <X11/X.h>
 #  define LINUX 1
-#  define WIN_WIDTH 20 //2400
-#  define WIN_HEIGHT 20 //1600
+#  define WIN_WIDTH 2400
+#  define WIN_HEIGHT 1600
 #  define WIN_MID_X 1200
 #  define WIN_MID_Y 800
 # endif
