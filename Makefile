@@ -6,7 +6,7 @@
 #    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/09/24 16:59:09 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/09/25 12:00:41 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SHAPE_FILES		=	init_shapes shape error material normal \
 					plane plane_intersect plane_normal \
 					cylinder cylinder_intersect cylinder_normal
 LIGHT_FILES		=	new_light destroy_light lighting
+TEST_FILES		=	print time
 
 # OS specific settings
 UNAME_S			=	$(shell uname -s)
@@ -74,7 +75,8 @@ SRC_FILES		=	$(addprefix main/, $(MAIN_FILES)) \
 					$(addprefix intersection/, $(INTERSECT_FILES)) \
 					$(addprefix ray/, $(RAY_FILES)) \
 					$(addprefix shape/, $(SHAPE_FILES)) \
-					$(addprefix light/, $(LIGHT_FILES))
+					$(addprefix light/, $(LIGHT_FILES)) \
+					$(addprefix test/, $(TEST_FILES))
 
 SRCS			=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJS			=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
