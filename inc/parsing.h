@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/17 22:13:01 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/25 11:02:40 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 
 //	DEFINES
 
-# define LX_SUFFIX ".rt"
-# define LX_SUFFIX_LEN 3
+# define LX_SUFFIX 		".rt"
+# define LX_SUFFIX_LEN 	3
 
 # define INPUT_ERR_USAGE	"Invalid input. Usage: ./miniRT <filename>"
 # define INPUT_ERR_FILENAME "Invalid filename. Expected format: *.rt"
@@ -33,6 +33,7 @@
 # define WORLD_ERROR_CAM	"Missing Camera element (C)"
 # define WORLD_ERROR_LIGHT	"Missing Light element (L)"
 # define WORLD_ERROR_SHAPE	"No shapes in world: must have at least 1"
+# define WORLD_ERROR_LIMIT	"Too many shapes in world"
 
 # define STR_AMBIENT	"A"
 # define STR_CAMERA		"C"
@@ -49,7 +50,8 @@
 # define PLANE_PARAMS 		3
 # define CYLINDER_PARAMS	5
 
-# define INPUT_ERROR_REPORT_LIMIT 50
+# define WORLD_SHAPE_LIMIT			50
+# define INPUT_ERROR_REPORT_LIMIT	50
 
 # define ERRMSG_INVALID_ID 		"Invalid identifier"
 # define ERRMSG_REAL_NUM 		"Invalid number format detected"
@@ -61,7 +63,7 @@
 # define ERRMSG_VECTOR_RANGE	"Invalid vector element range [-1 .. 1]"
 # define ERRMSG_RANGE_EXCESS 	"Value exceeds permitted range"
 # define ERRMSG_ARG_MISSING 	"Missing parameter(s) for element"
-# define ERRMSG_ARG_EXCESS		 "Too many parameters for element"
+# define ERRMSG_ARG_EXCESS		"Too many parameters for element"
 # define ERRMSG_VECTOR_ZERO		"Invalid vector: all zero values"
 
 # define RANGE_MIN			-1000
