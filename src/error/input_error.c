@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 13:16:41 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/24 19:08:10 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/25 12:09:31 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	report_error(void *error_node)
 	else
 		ft_printf("unknown error code\n");
 	if (++count >= INPUT_ERROR_REPORT_LIMIT)
-		ft_printf("\tSyntax error limit reached\n");	
+		ft_printf("\tSyntax error limit reached\n");
 }
 
 int	input_error(t_input_data *input, const char *source, const char *msg)

@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 11:53:13 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/25 11:53:45 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/25 12:08:48 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,3 @@ void	timed_render(t_data *data)
 	end = (double)(clock() - start) / CLOCKS_PER_SEC;
 	printf("Render time: %.2f seconds\n", end);
 }
-
