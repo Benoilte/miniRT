@@ -3,12 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
+#    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/25 14:03:36 by bebrandt          #+#    #+#              #
-#    Updated: 2024/09/25 14:28:48 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/09/26 16:02:16 by bgolding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+NAME			=	miniRT
+NAME_BONUS		=	miniRT_bonus
 
 MANDATORY_DIR	=	mandatory/
 BONUS_DIR		=	bonus/
@@ -19,9 +22,21 @@ MINILIBX_DIR	=	$(LIB)mlx/
 LIBGRAPHIC_DIR	=	$(LIB)libgraphic/
 LIBDLIST		=	$(LIB)libdlist/
 
+UNAME_S			=	$(shell uname -s)
+ifeq ($(UNAME_S), Linux)
+	MINILIBX_DIR	:=	$(addsuffix Linux/, $(MINILIBX_DIR))
+else ifeq ($(UNAME_S), Darwin)
+	MINILIBX_DIR	:=	$(addsuffix MacOS/, $(MINILIBX_DIR))
+else
+	$(error OS not supported)
+	exit 1
+endif
+
 # Mandatory rules
 
-all:
+$(NAME):		mandatory
+
+mandatory:		
 				@make all -C $(MANDATORY_DIR) --no-print-directory
 
 clean:
@@ -30,9 +45,11 @@ clean:
 fclean:
 				@make fclean -C $(MANDATORY_DIR) --no-print-directory
 
-re:				fclean all
+re:				fclean mandatory
 
 # bonus rules
+
+$(NAME_BONUS):	bonus
 
 bonus:
 				@make all -C $(BONUS_DIR) --no-print-directory
@@ -46,6 +63,14 @@ fcleanbonus:
 rebonus:		fcleanbonus bonus
 
 # Common rules
+
+all:			$(NAME) $(NAME_BONUS)
+
+cleanall:		clean cleanbonus
+
+fcleanall:		fclean fcleanbonus
+
+reall:			fcleanall all
 
 fcleanlibs:
 				@make clean -C $(MINILIBX_DIR) --no-print-directory
@@ -66,5 +91,7 @@ libdlist:
 mlx:
 				@make -C $(MINILIBX_DIR) --no-print-directory
 
-.PHONY:			all clean fclean re bonus cleanbonus fcleanbonus rebonus \
+.PHONY:			mandatory clean fclean re \
+				bonus cleanbonus fcleanbonus rebonus \
+				all cleanall fcleanall reall \
 				fcleanlibs libft libgraphic libdlist mlx

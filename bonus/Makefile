@@ -3,14 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
+#    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/09/25 14:13:35 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/09/26 15:24:09 by bgolding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			=	../miniRT_bonus
+TRUE_NAME		=	miniRT_bonus
+NAME			=	$(addprefix ../, $(TRUE_NAME))
 
 LIB				=	../lib/
 SRC_DIR			=	src/
@@ -111,19 +112,19 @@ $(STATIC_LIBS):
 				@make -C $(LIBDLIST)
 				@echo "$(GREEN)All static libraries compiled$(DEF_COLOR)"
 
-$(NAME):		$(OBJS) $(STATIC_LIBS)
+$(NAME):		$(STATIC_LIBS) $(OBJS)
 				@$(CC) $(CFLAGS) $(OBJS) $(LIB_LINK) -o $@
 				@printf "$(CLEAR_LINE)"
-				@echo "\r$(GREEN)Successfully created executable: $(NAME) $(DEF_COLOR)"
+				@echo "\r$(GREEN)Successfully created executable: $(TRUE_NAME) $(DEF_COLOR)"
 
 $(OBJ_DIR)%.o:	$(SRC_DIR)%.c
 				@mkdir -p $(dir $@)
 				@$(eval COMPILED_COUNT=$(shell echo $$(($(COMPILED_COUNT) + 1))))
-				@printf "\r$(YELLOW)[$(COMPILED_COUNT)/$(TOTAL_FILES)] Compiling $(NAME) files$(DEF_COLOR)"
+				@printf "\r$(YELLOW)[$(COMPILED_COUNT)/$(TOTAL_FILES)] Compiling $(TRUE_NAME) files$(DEF_COLOR)"
 				@$(CC) $(CFLAGS) $(INC_PATHS) -c $< -o $@
 
 clean:
-					@$(RM) -rf $(OBJ_DIR)
+				@$(RM) -rf $(OBJ_DIR)
 				@make clean -C $(LIBFT_DIR)
 				@make clean -C $(LIBGRAPHIC_DIR)
 				@make clean -C $(LIBDLIST)
@@ -131,7 +132,6 @@ clean:
 
 fclean:			clean fcleanlibs
 				@$(RM) $(NAME)
-				@$(RM) $(NAME_TEST)
 				@echo "$(YELLOW)fclean complete $(DEF_COLOR)"
 
 fcleanlibs:
