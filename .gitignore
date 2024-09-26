@@ -5,11 +5,11 @@
 lib/mlx/Linux/test/mlx-test
 miniRT
 miniRT_bonus
-test_miniRT
 
 # test_file
 
 bebrandt_test/*
+test_miniRT
 
 # unwanted file 
 
