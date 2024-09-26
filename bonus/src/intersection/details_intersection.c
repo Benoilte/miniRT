@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   details_intersection.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:30:29 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/24 15:04:43 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/25 14:33:17 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
