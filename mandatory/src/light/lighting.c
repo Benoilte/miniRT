@@ -3,20 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   lighting.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 13:41:06 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/23 19:32:34 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/26 17:37:01 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "light.h"
-
-static t_color	compute_ambient(	t_details *details, \
-									t_color effective)
-{
-	return (rgb_scale(effective, details->shape->material.ambient));
-}
 
 static t_color	compute_diffuse(	t_details *details, \
 									t_color effective, \
@@ -62,12 +56,12 @@ t_color	lighting(t_details *details, t_light *light, t_light *ambiant_light)
 	t_color		specular;
 	t_vector	lightv;
 
-	lightv = tp_normalize(tp_subtract(light->position, details->position));
-	effective = rgb_mult(details->shape->material.color, light->intensity);
-	ambient = rgb_add(compute_ambient(details, effective), \
-												ambiant_light->intensity);
+	ambient = rgb_mult(details->shape->material.color, \
+						ambiant_light->intensity);
 	if (details->in_shadow)
 		return (ambient);
+	lightv = tp_normalize(tp_subtract(light->position, details->position));
+	effective = rgb_mult(details->shape->material.color, light->intensity);
 	diffuse = compute_diffuse(details, effective, lightv);
 	specular = compute_specular(details, light, lightv);
 	return (rgb_add(rgb_add(ambient, diffuse), specular));
