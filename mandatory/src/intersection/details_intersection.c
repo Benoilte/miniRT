@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   details_intersection.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:30:29 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/25 20:50:40 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/26 14:44:54 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	set_first_hit_valid(t_shape *self, t_intersect_list **first_hit)
 	if (!*first_hit)
 		return ;
 	hit = ((t_intersection *)((*first_hit)->content));
-	if ((hit->shape == self) && lower_or_equalf(hit->t, BIAS))
+	if (hit->shape == self)
 		*first_hit = (*first_hit)->next;
 }
 
@@ -60,10 +60,7 @@ int	compute_details(t_details *details, \
 					t_world *world)
 {
 	if (!details || !hit || !world)
-	{
-		print_error("compute_details", INVALID_POINTER);
-		return (1);
-	}
+		return (print_error("compute_details", INVALID_POINTER));
 	details->shape = hit->shape;
 	details->t = hit->t;
 	details->position = ray_position(ray, hit->t);
