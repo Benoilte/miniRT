@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/25 12:13:31 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/27 11:54:29 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ void				destroy_world(t_world *world);
 void				destroy_camera(t_camera *camera);
 t_shape				*add_new_shape_to_world(t_world *world, t_shape_type type);
 char				**get_element(t_list *token_list, t_id id);
+float				rt_roundf(float val);
 t_tuple				str_to_tuple(char *str, int type);
 t_color				str_to_rgb(char *str);
 
