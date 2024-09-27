@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 14:28:47 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/17 15:37:47 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/27 16:22:30 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ const t_vtable	*get_plane_vtable(void)
 	return (&plane_vtable);
 }
 
-int	set_plane(t_shape *self, char **args)
+int	set_plane(t_shape *self, char **args, t_color ambient)
 {
 	t_point		origin;
 	t_vector	normal;
@@ -41,5 +41,6 @@ int	set_plane(t_shape *self, char **args)
 											origin.x, origin.y, origin.z);
 	self->inverse = mx_inversion(self->transform);
 	self->material.color = str_to_rgb(args[3]);
+	self->material.ambient = rgb_mult(self->material.color, ambient);
 	return (0);
 }

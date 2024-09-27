@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 12:08:50 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/27 13:43:16 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/27 16:22:19 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ const t_vtable	*get_cylinder_vtable(void)
 	return (&cylinder_vtable);
 }
 
-int	set_cylinder(t_shape *self, char **args)
+int	set_cylinder(t_shape *self, char **args, t_color ambient)
 {
 	t_point		origin;
 	t_vector	normal;
@@ -49,5 +49,6 @@ int	set_cylinder(t_shape *self, char **args)
 											origin.x, origin.y, origin.z);
 	self->inverse = mx_inversion(self->transform);
 	self->material.color = str_to_rgb(args[5]);
+	self->material.ambient = rgb_mult(self->material.color, ambient);
 	return (0);
 }

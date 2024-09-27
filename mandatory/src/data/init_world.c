@@ -6,7 +6,7 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 14:49:42 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/16 18:11:01 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/27 16:26:19 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ t_world	*init_world(t_list *token_list)
 	if (!world->light)
 		return (destroy_world(world), NULL);
 	element = get_element(token_list, ID_AMBIENT);
-	world->ambiant_light = init_light(element, ID_AMBIENT);
-	if (!world->ambiant_light)
+	world->ambient = init_light(element, ID_AMBIENT);
+	if (!world->ambient)
 		return (destroy_world(world), NULL);
 	if (init_shapes(world, token_list) != 0)
 		return (destroy_world(world), NULL);

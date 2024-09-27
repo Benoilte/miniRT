@@ -6,7 +6,7 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:38:39 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/16 17:07:54 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/27 15:12:26 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	color_at(t_color *color, t_ray *ray, t_world *world)
 			dbl_lstclear(&intersects, clear_intersection);
 			return (3);
 		}
-		*color = lighting(&details, world->light, world->ambiant_light);
+		*color = lighting(&details, world->light);
 	}
 	dbl_lstclear(&intersects, clear_intersection);
 	return (0);
