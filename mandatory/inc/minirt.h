@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/27 17:05:03 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/27 18:24:46 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,16 @@
 #  define WIN_HEIGHT 600
 #  define WIN_MID_X 450
 #  define WIN_MID_Y 300
-#  define LINUX 0
 # endif
 
 # ifdef __linux__
 #  include "linux_keycodes.h"
 #  include <X11/X.h>
-#  define LINUX 1
 #  define WIN_WIDTH 2400
 #  define WIN_HEIGHT 1600
 #  define WIN_MID_X 1200
 #  define WIN_MID_Y 800
 # endif
-
-# define CAMERA_DEFAULT_FOV 90
 
 // 	TYPEDEFS
 
