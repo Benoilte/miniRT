@@ -6,11 +6,16 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 16:53:50 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 17:32:40 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/27 11:55:28 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+float	rt_roundf(float val)
+{
+	return (round(val / EPSILON) * EPSILON);
+}
 
 char	**get_element(t_list *token_list, t_id id)
 {
@@ -36,11 +41,11 @@ t_tuple	str_to_tuple(char *str, int type)
 	float	z;
 	char	*next_value;
 
-	x = ft_atod(str);
+	x = rt_roundf(ft_atod(str));
 	next_value = ft_strchr(str, ',') + 1;
-	y = ft_atod(next_value);
+	y = rt_roundf(ft_atod(next_value));
 	next_value = ft_strchr(next_value, ',') + 1;
-	z = ft_atod(next_value);
+	z = rt_roundf(ft_atod(next_value));
 	if (type == VECTOR)
 		return (vector(x, y, z));
 	else

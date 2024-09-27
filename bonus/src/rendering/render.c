@@ -6,22 +6,16 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 12:57:38 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/25 13:07:09 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/19 16:09:11 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void	update_progress(t_data *data, int x)
+static void	update_progress(int x)
 {
-	const char	msg[] = "Rendering...";
-
 	if (x == 0)
-	{
 		ft_printf("Rendering...\n");
-		mlx_string_put(data->mlx->xvar, data->mlx->win, \
-			WIN_MID_X, WIN_MID_Y, 0xFFFFFF, (char *)msg);
-	}
 	if (x == WIN_WIDTH - 1)
 		ft_printf("\rRender complete!\n");
 	else
@@ -51,7 +45,7 @@ static int	generate_image(t_data *data)
 			if (color_int != 0)
 				set_pixel_color(data, x, y, color_int);
 		}
-		update_progress(data, x);
+		update_progress(x);
 	}
 	return (0);
 }

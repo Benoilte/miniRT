@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:31:00 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/17 15:37:26 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/27 13:39:55 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	set_sphere(t_shape *self, char **args)
 	if (!self || !args)
 		return (print_error("set_sphere", INVALID_POINTER));
 	origin = str_to_tuple(args[1], POINT);
-	radius = ft_atod(args[2]) / 2;
+	radius = rt_roundf(ft_atod(args[2]) / 2);
 	self->transform = mx_add_scaling(self->transform, radius, radius, radius);
 	self->transform = mx_add_translation(self->transform, \
 											origin.x, origin.y, origin.z);

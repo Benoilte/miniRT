@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 12:08:50 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/17 15:38:58 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/27 13:43:16 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ int	set_cylinder(t_shape *self, char **args)
 		return (print_error("set_cylinder", INVALID_POINTER));
 	origin = str_to_tuple(args[1], POINT);
 	normal = tp_normalize(str_to_tuple(args[2], VECTOR));
-	radius = ft_atod(args[3]) / 2;
-	self->transform = mx_add_scaling(self->transform, \
-										radius, ft_atod(args[4]) / 2, radius);
+	radius = rt_roundf(ft_atod(args[3]) / 2);
+	self->transform = mx_add_scaling(self->transform, radius, \
+									rt_roundf(ft_atod(args[4]) / 2), radius);
 	self->transform = mx_mult(rotate_y_to(normal), self->transform);
 	self->transform = mx_add_translation(self->transform, \
 											origin.x, origin.y, origin.z);

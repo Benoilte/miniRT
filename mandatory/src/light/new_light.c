@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_light.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:52:39 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/19 15:50:20 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/27 11:56:10 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ t_light	*init_light(char **str, t_id id)
 	if (id == ID_AMBIENT)
 	{
 		position = point(0, 0, 0);
-		intensity = rgb_scale(str_to_rgb(str[2]), ft_atod(str[1]));
+		intensity = rgb_scale(str_to_rgb(str[2]), rt_roundf(ft_atod(str[1])));
 	}
 	else
 	{
 		position = str_to_tuple(str[1], POINT);
-		intensity = rgb_scale(str_to_rgb(str[3]), ft_atod(str[2]));
+		intensity = rgb_scale(str_to_rgb(str[3]), rt_roundf(ft_atod(str[2])));
 	}
 	*light = set_light(position, intensity);
 	return (light);
