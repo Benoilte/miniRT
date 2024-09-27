@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder_intersect_caps.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 09:32:29 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/27 11:54:15 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/27 13:49:25 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,28 @@ static bool	check_cap(t_ray *ray, float *t, float *radius)
 	return ((*radius < 1) || equalf(*radius, 1));
 }
 
-// static void set_unintersect_capped_cylinder(t_report *report,
-// float *t_min, float *t_max)
-// {
-// 	report->t[0] = *t_min;
-// 	report->t[1] = *t_max;
-// 	report->count = 2;
-// }
+/*
+	If function intersect_cylinder() get only one valid intersection
+    after checking the caps intersection of a capped cylinder.
+	it means that we face the edge case where the intersection
+	happenned exactly in the corner of the cylinder.
+	(jonction between cap and cylinder body)
+	
+    In this case we set the missing intersection
+	to the value with the smallest radius computed
+*/
 
-static float get_edge_case(float *t_min, float *t_max, float *rad_min, float *rad_max)
+static float	get_edge_case(	float *t_min, \
+								float *t_max, \
+								float *rad_min, \
+								float *rad_max)
 {
 	if (rad_min < rad_max)
 		return (*t_min);
 	else
 		return (*t_max);
 }
+
 /*
 ​ 	  ​# caps only matter if the cylinder is closed, and might possibly be​
 ​ 	  ​# intersected by the ray.​
@@ -59,26 +66,27 @@ bool	intersect_caps(t_ray *ray, t_shape *cl, t_report *report)
 {
 	float	t_min;
 	float	t_max;
-	float	radius_min;
-	float	radius_max;
+	float	rad_min;
+	float	rad_max;
 
 	if (!cl->cylinder.closed || equalf(ray->direction.y, 0))
 		return (report->count > 0);
 	t_min = (cl->cylinder.min - ray->origin.y) / ray->direction.y;
-	if (check_cap(ray, &t_min, &radius_min))
+	if (check_cap(ray, &t_min, &rad_min))
 	{
 		report->t[report->count] = t_min;
 		report->count++;
 	}
 	t_max = (cl->cylinder.max - ray->origin.y) / ray->direction.y;
-	if (check_cap(ray, &t_max, &radius_max))
+	if (check_cap(ray, &t_max, &rad_max))
 	{
 		report->t[report->count] = t_max;
 		report->count++;
 	}
-	// if (report->count == 0)
-	// 	set_unintersect_capped_cylinder(report, &t_min, &t_max);
 	if (report->count == 1)
-		report->t[report->count++] = get_edge_case(&t_min, &t_max, &radius_min, &radius_max);
+	{
+		report->t[1] = get_edge_case(&t_min, &t_max, &rad_min, &rad_max);
+		report->count = 2;
+	}
 	return (true);
 }
