@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+         #
+#    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/09/27 14:29:53 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/09/27 18:26:57 by bgolding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,6 @@ SHAPE_FILES		=	init_shapes shape error material normal \
 					plane plane_intersect plane_normal \
 					cylinder cylinder_intersect cylinder_normal cylinder_intersect_caps
 LIGHT_FILES		=	new_light destroy_light lighting
-TEST_FILES		=	print time
 
 # OS specific settings
 UNAME_S			=	$(shell uname -s)
@@ -77,8 +76,7 @@ SRC_FILES		=	$(addprefix main/, $(MAIN_FILES)) \
 					$(addprefix intersection/, $(INTERSECT_FILES)) \
 					$(addprefix ray/, $(RAY_FILES)) \
 					$(addprefix shape/, $(SHAPE_FILES)) \
-					$(addprefix light/, $(LIGHT_FILES)) \
-					$(addprefix test/, $(TEST_FILES))
+					$(addprefix light/, $(LIGHT_FILES))
 
 SRCS			=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJS			=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
