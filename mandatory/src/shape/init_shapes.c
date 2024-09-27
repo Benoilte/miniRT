@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_shapes.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 22:17:34 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/27 16:26:19 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/27 16:55:28 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	init_shapes(t_world *world, t_list *token_list)
 		new_shape = add_new_shape_to_world(world, get_type(token->identifier));
 		if (!new_shape)
 			return (1);
-		new_shape->f->set(new_shape, token->args, world->ambient->intensity);
+		new_shape->f->set(new_shape, token->args, world->ambient);
 		shape_token = get_next_shape(shape_token->next);
 	}
 	return (0);

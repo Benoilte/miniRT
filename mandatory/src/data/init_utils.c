@@ -6,11 +6,16 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 16:53:50 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/27 11:55:28 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/27 17:04:39 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+t_color	get_ambient(char **str)
+{
+	return (rgb_scale(str_to_rgb(str[2]), rt_roundf(ft_atod(str[1]))));
+}
 
 float	rt_roundf(float val)
 {

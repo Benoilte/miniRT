@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/27 16:26:19 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/27 17:05:03 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ typedef struct s_world
 {
 	t_shape_list	*shapes;
 	t_light			*light;
-	t_light			*ambient;
+	t_color			ambient;
 }					t_world;
 
 typedef struct s_camera
@@ -127,6 +127,7 @@ char				**get_element(t_list *token_list, t_id id);
 float				rt_roundf(float val);
 t_tuple				str_to_tuple(char *str, int type);
 t_color				str_to_rgb(char *str);
+t_color				get_ambient(char **str);
 
 	//	WINDOW (MLX)
 
