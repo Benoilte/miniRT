@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
+#    By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/09/26 15:24:09 by bgolding         ###   ########.fr        #
+#    Updated: 2024/09/27 14:29:53 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ RAY_FILES		=	ray position transform
 SHAPE_FILES		=	init_shapes shape error material normal \
 					sphere sphere_intersect sphere_normal \
 					plane plane_intersect plane_normal \
-					cylinder cylinder_intersect cylinder_normal
+					cylinder cylinder_intersect cylinder_normal cylinder_intersect_caps
 LIGHT_FILES		=	new_light destroy_light lighting
 TEST_FILES		=	print time
 
