@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:49:38 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/19 14:44:04 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/27 18:00:53 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	exit_error(t_data *data, char *message)
 		perror(message);
 	else
 		ft_putendl_fd(message, STDERR_FILENO);
+	ft_putendl_fd("Exiting program...", STDERR_FILENO);
 	destroy_data(data);
 	exit(EXIT_FAILURE);
 }
