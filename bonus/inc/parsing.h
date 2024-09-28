@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/25 11:02:40 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/28 15:55:12 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@
 # define PLANE_PARAMS 		3
 # define CYLINDER_PARAMS	5
 
-# define WORLD_SHAPE_LIMIT			50
+# define WORLD_SHAPE_LIMIT			70
 # define INPUT_ERROR_REPORT_LIMIT	50
 
 # define ERRMSG_INVALID_ID 		"Invalid identifier"
