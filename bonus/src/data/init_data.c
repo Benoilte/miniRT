@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:53:19 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 17:04:16 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/30 12:27:20 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ t_data	*init_data(int argc, char **argv)
 	data->mlx = init_mlx();
 	if (!data->mlx)
 		exit_error(data, "Failed to initialize mlx data");
+	data->render.lines_to_render = WIN_HEIGHT / THREAD_COUNT;
 	return (data);
 }

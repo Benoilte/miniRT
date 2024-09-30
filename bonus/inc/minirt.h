@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/30 12:16:54 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/30 12:26:48 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@
 #  define WIN_MID_Y 768
 # endif
 
+# define THREAD_COUNT 6
+
 // 	TYPEDEFS
 
 typedef struct s_mlx
@@ -90,12 +92,19 @@ typedef struct s_camera
 	float	half_height;
 }			t_camera;
 
+typedef struct s_render_info
+{
+	int	lines_to_render;
+	int	start_line;
+}		t_render_info;
+
 typedef struct s_data
 {
 	t_input_data	input;
 	t_mlx			*mlx;
 	t_world			*world;
 	t_camera		*camera;
+	t_render_info	render;
 }					t_data;
 
 //	PROTOTYPES
