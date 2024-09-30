@@ -6,7 +6,7 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/30 17:01:33 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/30 17:39:56 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@
 #  define WIN_MID_Y 768
 # endif
 
-# define THREAD_COUNT 6
+# define THREAD_COUNT		6
+# define REFLECTIVE_DEPTH	10
 
 // 	TYPEDEFS
 
@@ -79,7 +80,6 @@ typedef struct s_world
 	t_shape_list	*shapes;
 	t_light			*light;
 	t_color			ambient;
-	int				reflective_depth;
 }					t_world;
 
 typedef struct s_camera
@@ -100,6 +100,7 @@ typedef struct s_render_info
 	t_data	*data;
 	int		start_line;
 	int		stop_line;
+	int		reflective_depth;
 }			t_render_info;
 
 typedef struct s_data
@@ -173,11 +174,11 @@ t_camera			camera(size_t hsize, size_t vsize, float fov);
 t_ray				ray_for_pixel(t_camera camera, size_t px, size_t py);
 int					intersect_world(t_intersect_list **list, t_ray *ray, \
 									t_world *world);
-int					color_at(t_color *color, t_ray *ray, t_world *world);
-int					reflected_color(t_color *color, t_world *world, \
+int					color_at(t_color *color, t_ray *ray, t_render_info *info);
+int					reflected_color(t_color *color, t_render_info *info, \
 									t_details *details);
-int					compute_rendering_color(t_color *color, t_details *details, \
-									t_world *world);
+int					compute_final_color(t_color *color, t_details *details, \
+									t_render_info *info);
 
 	// TEST
 

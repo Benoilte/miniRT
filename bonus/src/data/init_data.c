@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:53:19 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/30 16:29:17 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/30 17:07:33 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static int	set_render_info(t_data *data)
 		data->render[i].data = data;
 		data->render[i].start_line = i * slice_size;
 		data->render[i].stop_line = data->render[i].start_line + slice_size;
+		data->render[i].reflective_depth = REFLECTIVE_DEPTH;
 		i ++;
 	}
 	return (0);
