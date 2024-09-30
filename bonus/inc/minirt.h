@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/30 12:26:48 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/30 16:22:38 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # include <errno.h>
 # include <string.h>
 # include <stdio.h>
+# include <pthread.h>
 
 //	DEFINES
 # define WINDOW_NAME "miniRT"
@@ -94,9 +95,11 @@ typedef struct s_camera
 
 typedef struct s_render_info
 {
-	int	lines_to_render;
-	int	start_line;
-}		t_render_info;
+	int		thread_id;
+	t_data	*data;
+	int		start_line;
+	int		stop_line;
+}			t_render_info;
 
 typedef struct s_data
 {
@@ -104,8 +107,15 @@ typedef struct s_data
 	t_mlx			*mlx;
 	t_world			*world;
 	t_camera		*camera;
-	t_render_info	render;
+	t_render_info	render[THREAD_COUNT];
+	pthread_t		threads[THREAD_COUNT];
 }					t_data;
+
+typedef struct s_pixel
+{
+	int	x;
+	int	y;
+}		t_pixel;
 
 //	PROTOTYPES
 
