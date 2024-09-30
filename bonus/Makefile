@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+         #
+#    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/09/27 14:29:53 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/09/30 10:19:12 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ PARSING_FILES	=	file_validation lexer tokenize token_utils parser validate_singl
 DATA_FILES		=	init_data destroy_data init_world destroy_world init_input destroy_input init_utils
 WINDOW_FILES	=	init_mlx
 HOOKS_FILES		=	hooks keypress mouse
-RENDERING_FILES	=	render draw_utils view_transform camera intersect_world color_at
+RENDERING_FILES	=	render draw_utils view_transform camera intersect_world color_at reflection
 INTERSECT_FILES	=	clear_intersection hit_intersection new_intersection details_intersection utils
 RAY_FILES		=	ray position transform
 SHAPE_FILES		=	init_shapes shape error material normal \
@@ -38,7 +38,7 @@ SHAPE_FILES		=	init_shapes shape error material normal \
 					plane plane_intersect plane_normal \
 					cylinder cylinder_intersect cylinder_normal cylinder_intersect_caps
 LIGHT_FILES		=	new_light destroy_light lighting
-TEST_FILES		=	print time
+TEST_FILES		=	print time reflection_and_refraction
 
 # OS specific settings
 UNAME_S			=	$(shell uname -s)

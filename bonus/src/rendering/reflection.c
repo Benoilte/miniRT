@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   material.c                                         :+:      :+:    :+:   */
+/*   reflection.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 16:39:19 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/28 16:26:05 by bebrandt         ###   ########.fr       */
+/*   Created: 2024/09/30 10:18:57 by bebrandt          #+#    #+#             */
+/*   Updated: 2024/09/30 11:13:35 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shape.h"
+#include "minirt.h"
 
-void	set_default_material(t_material *m)
+t_color	reflected_color(t_world *world, t_details *details)
 {
-	if (!m)
-		return (shape_error("set_default_material", MATERIAL_INVALID_POINTER));
-	m->color = rgb_itos(SH_DEFAULT_COLOR);
-	m->ambient = m->color;
-	m->diffuse = 0.9;
-	m->specular = 0.9;
-	m->shininess = 200.0;
-	m->reflective = 0.0;
+	(void)world;
+	if (equalf(details->shape->material.reflective, 0))
+		return (rgb_set(0, 0, 0));
+	else
+		return (rgb_set(1, 1, 1));
 }

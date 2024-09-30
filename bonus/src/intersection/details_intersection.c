@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   details_intersection.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:30:29 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/26 14:44:54 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/30 10:05:31 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int	compute_details(t_details *details, \
 	}
 	else
 		details->inside = 0;
+	details->reflectv = tp_reflect(ray.direction, details->normalv);
 	details->over_point = \
 		tp_add(details->position, tp_multiply(details->normalv, EPSILON));
 	details->over_point = \

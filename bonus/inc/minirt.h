@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/27 18:24:57 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/30 11:12:41 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,7 @@ t_ray				ray_for_pixel(t_camera camera, size_t px, size_t py);
 int					intersect_world(t_intersect_list **list, t_ray *ray, \
 									t_world *world);
 int					color_at(t_color *color, t_ray *ray, t_world *world);
+t_color				reflected_color(t_world *world, t_details *details);
 
 	// TEST
 
