@@ -6,7 +6,7 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:38:39 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/27 15:12:26 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/30 16:49:11 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,20 @@ static t_color	no_color(void)
 	const t_color	black = rgb_set(0, 0, 0);
 
 	return (black);
+}
+
+int	compute_rendering_color(t_color *color, t_details *details, t_world *world)
+{
+	t_color	surface;
+	t_color	reflected;
+
+	if (!color || !details || !world)
+		return (print_error("compute_rendering_color", INVALID_POINTER));
+	surface = lighting(details, world->light);
+	if (reflected_color(&reflected, world, details) != 0)
+		return (1);
+	*color = rgb_add(surface, reflected);
+	return (0);
 }
 
 int	color_at(t_color *color, t_ray *ray, t_world *world)
@@ -36,12 +50,12 @@ int	color_at(t_color *color, t_ray *ray, t_world *world)
 		*color = no_color();
 	else
 	{
-		if (compute_details(&details, first_hit->content, *ray, world) != 0)
+		if ((compute_details(&details, first_hit->content, *ray, world) != 0)
+			|| (compute_rendering_color(color, &details, world) != 0))
 		{
 			dbl_lstclear(&intersects, clear_intersection);
 			return (3);
 		}
-		*color = lighting(&details, world->light);
 	}
 	dbl_lstclear(&intersects, clear_intersection);
 	return (0);

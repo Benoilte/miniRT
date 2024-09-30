@@ -3,20 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   reflection.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:18:57 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/30 11:13:35 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/30 16:50:21 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_color	reflected_color(t_world *world, t_details *details)
+int	reflected_color(t_color *color, t_world *world, t_details *details)
 {
-	(void)world;
-	if (equalf(details->shape->material.reflective, 0))
-		return (rgb_set(0, 0, 0));
-	else
-		return (rgb_set(1, 1, 1));
+	t_ray	reflect_ray;
+
+	if (equalf(details->shape->material.reflective, 0)
+		|| (world->reflective_depth <= 0))
+	{
+		*color = rgb_set(0, 0, 0);
+		return (0);
+	}
+	reflect_ray = ray(details->over_point, details->reflectv);
+	world->reflective_depth--;
+	if (color_at(color, &reflect_ray, world) != 0)
+		return (1);
+	*color = rgb_scale(*color, details->shape->material.reflective);
+	return (0);
 }
