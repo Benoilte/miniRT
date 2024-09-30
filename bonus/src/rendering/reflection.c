@@ -6,7 +6,7 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:18:57 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/30 17:17:02 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/30 18:06:09 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	reflected_color(t_color *color, t_render_info *info, t_details *details)
 	}
 	reflect_ray = ray(details->over_point, details->reflectv);
 	info->reflective_depth--;
-	if (color_at(color, &reflect_ray, info) != 0)
+	if (color_at(color, details->shape, &reflect_ray, info) != 0)
 		return (1);
 	*color = rgb_scale(*color, details->shape->material.reflective);
 	return (0);

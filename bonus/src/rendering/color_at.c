@@ -6,7 +6,7 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:38:39 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/30 17:28:32 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/30 18:30:05 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	compute_final_color(t_color *color, t_details *details, t_render_info *info)
 	return (0);
 }
 
-int	color_at(t_color *color, t_ray *ray, t_render_info *info)
+int	color_at(t_color *color, t_shape *self, t_ray *ray, t_render_info *info)
 {
 	t_intersect_list	*intersects;
 	t_intersect_list	*hit;
@@ -46,16 +46,15 @@ int	color_at(t_color *color, t_ray *ray, t_render_info *info)
 	if (intersect_world(&intersects, ray, info->data->world) != 0)
 		return (2);
 	hit = get_first_hit(&intersects);
+	if (self != NULL)
+		set_first_hit_valid(self, &hit);
 	if (!hit)
 		*color = no_color();
 	else
 	{
 		if ((compute_details(&details, hit->content, *ray, info->data->world))
 			|| (compute_final_color(color, &details, info)))
-		{
-			dbl_lstclear(&intersects, clear_intersection);
-			return (3);
-		}
+			return (dbl_lstclear(&intersects, clear_intersection), 3);
 	}
 	dbl_lstclear(&intersects, clear_intersection);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/30 17:39:56 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/30 18:27:53 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@
 # endif
 
 # define THREAD_COUNT		6
-# define REFLECTIVE_DEPTH	10
+# define REFLECTIVE_DEPTH	5
 
 // 	TYPEDEFS
 
@@ -174,7 +174,8 @@ t_camera			camera(size_t hsize, size_t vsize, float fov);
 t_ray				ray_for_pixel(t_camera camera, size_t px, size_t py);
 int					intersect_world(t_intersect_list **list, t_ray *ray, \
 									t_world *world);
-int					color_at(t_color *color, t_ray *ray, t_render_info *info);
+int					color_at(t_color *color, t_shape *self, t_ray *ray, \
+									t_render_info *info);
 int					reflected_color(t_color *color, t_render_info *info, \
 									t_details *details);
 int					compute_final_color(t_color *color, t_details *details, \

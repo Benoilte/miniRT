@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   details_intersection.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:30:29 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/30 10:05:31 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/30 18:02:07 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "intersection.h"
 
-static void	set_first_hit_valid(t_shape *self, t_intersect_list **first_hit)
+void	set_first_hit_valid(t_shape *self, t_intersect_list **first_hit)
 {
 	t_intersection	*hit;
 

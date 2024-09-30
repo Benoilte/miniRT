@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 16:01:08 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/30 09:49:10 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/30 18:04:11 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,7 @@ int				compute_details(t_details *details, t_intersection *hit, \
 int				is_shadowed(t_shape *self, t_world *world, t_point point, \
 								t_details *details);
 t_dbl_lst		*get_first_hit(t_dbl_lst **dlist);
+void			set_first_hit_valid(t_shape *self, \
+								t_intersect_list **first_hit);
 
 #endif
