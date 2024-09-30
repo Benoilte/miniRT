@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/30 16:22:38 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/30 16:28:59 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ typedef struct s_data
 	t_camera		*camera;
 	t_render_info	render[THREAD_COUNT];
 	pthread_t		threads[THREAD_COUNT];
+	pthread_mutex_t	print_lock;
 }					t_data;
 
 typedef struct s_pixel

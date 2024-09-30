@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:53:19 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/30 16:04:58 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/30 16:29:17 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ t_data	*init_data(int argc, char **argv)
 		exit_error(data, "Failed to initialize mlx data");
 	if (set_render_info(data) != 0)
 		exit_error(data, "Failed to set render info");
+	pthread_mutex_init(&data->print_lock, NULL);
 	return (data);
 }

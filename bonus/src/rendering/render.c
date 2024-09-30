@@ -6,21 +6,32 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 12:57:38 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/30 16:23:59 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/30 16:37:29 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-// static void	update_progress(int x)
-// {
-// 	if (x == 0)
-// 		ft_printf("Rendering...\n");
-// 	if (x == WIN_WIDTH - 1)
-// 		ft_printf("\rRender complete!\n");
-// 	else
-// 		ft_printf("\r%i %%", (x * 100) / WIN_WIDTH);
-// }
+static void	update_progress(t_data *data, int line_finished)
+{
+	static int	line_count = 0;
+
+	pthread_mutex_lock(&data->print_lock);
+	if (line_finished == 0)
+	{
+		line_count = 0;
+		ft_printf("Rendering...\n");
+	}
+	else
+	{
+		line_count++;
+		if (line_count == WIN_HEIGHT)
+			ft_printf("\rRender complete!\n");
+		else
+			ft_printf("\r%i %%", (line_count * 100) / WIN_HEIGHT);
+	}
+	pthread_mutex_unlock(&data->print_lock);
+}
 
 static void	*render_strip(void *arg)
 {
@@ -44,6 +55,7 @@ static void	*render_strip(void *arg)
 			if (color_int != 0)
 				set_pixel_color(info->data, pixel.x, pixel.y, color_int);
 		}
+		update_progress(info->data, 1);
 		pixel.y++;
 	}
 	return (NULL);
@@ -59,6 +71,7 @@ void	render(t_data *data)
 		return ;
 	}
 	reset_image(data);
+	update_progress(data, 0);
 	i = 0;
 	while (i < THREAD_COUNT)
 	{
