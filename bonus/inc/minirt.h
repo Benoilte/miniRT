@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/27 18:24:57 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/30 12:16:54 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,19 @@
 //	OS specifics
 # ifdef __APPLE__
 #  include "macos_keycodes.h"
-#  define WIN_WIDTH 900
-#  define WIN_HEIGHT 600
-#  define WIN_MID_X 450
-#  define WIN_MID_Y 300
+#  define WIN_WIDTH 960
+#  define WIN_HEIGHT 720
+#  define WIN_MID_X 480
+#  define WIN_MID_Y 360
 # endif
 
 # ifdef __linux__
 #  include "linux_keycodes.h"
 #  include <X11/X.h>
-#  define WIN_WIDTH 2400
-#  define WIN_HEIGHT 1600
-#  define WIN_MID_X 1200
-#  define WIN_MID_Y 800
+#  define WIN_WIDTH 2048
+#  define WIN_HEIGHT 1536
+#  define WIN_MID_X 1024
+#  define WIN_MID_Y 768
 # endif
 
 // 	TYPEDEFS
