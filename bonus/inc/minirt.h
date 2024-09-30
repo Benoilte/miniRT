@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/30 16:28:59 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/09/30 19:00:07 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 # include <string.h>
 # include <stdio.h>
 # include <pthread.h>
+# include <sys/time.h>
 
 //	DEFINES
 # define WINDOW_NAME "miniRT"
@@ -177,5 +178,6 @@ int					color_at(t_color *color, t_ray *ray, t_world *world);
 	// TEST
 
 void				print_color(t_color c, char *msg);
+void				timed_render(t_data *data);
 
 #endif
