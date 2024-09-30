@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/30 18:27:53 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/30 19:02:42 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 # include <string.h>
 # include <stdio.h>
 # include <pthread.h>
+# include <sys/time.h>
 
 //	DEFINES
 # define WINDOW_NAME "miniRT"
@@ -184,5 +185,6 @@ int					compute_final_color(t_color *color, t_details *details, \
 	// TEST
 
 void				print_color(t_color c, char *msg);
+void				timed_render(t_data *data);
 
 #endif
