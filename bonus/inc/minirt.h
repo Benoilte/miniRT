@@ -6,7 +6,7 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/30 16:22:37 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/09/30 17:01:33 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # include <errno.h>
 # include <string.h>
 # include <stdio.h>
+# include <pthread.h>
 
 //	DEFINES
 # define WINDOW_NAME "miniRT"
@@ -41,20 +42,22 @@
 //	OS specifics
 # ifdef __APPLE__
 #  include "macos_keycodes.h"
-#  define WIN_WIDTH 900
-#  define WIN_HEIGHT 600
-#  define WIN_MID_X 450
-#  define WIN_MID_Y 300
+#  define WIN_WIDTH 960
+#  define WIN_HEIGHT 720
+#  define WIN_MID_X 480
+#  define WIN_MID_Y 360
 # endif
 
 # ifdef __linux__
 #  include "linux_keycodes.h"
 #  include <X11/X.h>
-#  define WIN_WIDTH 2400
-#  define WIN_HEIGHT 1600
-#  define WIN_MID_X 1200
-#  define WIN_MID_Y 800
+#  define WIN_WIDTH 2048
+#  define WIN_HEIGHT 1536
+#  define WIN_MID_X 1024
+#  define WIN_MID_Y 768
 # endif
+
+# define THREAD_COUNT 6
 
 // 	TYPEDEFS
 
@@ -91,13 +94,30 @@ typedef struct s_camera
 	float	half_height;
 }			t_camera;
 
+typedef struct s_render_info
+{
+	int		thread_id;
+	t_data	*data;
+	int		start_line;
+	int		stop_line;
+}			t_render_info;
+
 typedef struct s_data
 {
 	t_input_data	input;
 	t_mlx			*mlx;
 	t_world			*world;
 	t_camera		*camera;
+	t_render_info	render[THREAD_COUNT];
+	pthread_t		threads[THREAD_COUNT];
+	pthread_mutex_t	print_lock;
 }					t_data;
+
+typedef struct s_pixel
+{
+	int	x;
+	int	y;
+}		t_pixel;
 
 //	PROTOTYPES
 
