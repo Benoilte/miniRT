@@ -5,11 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/09/30 19:03:20 by bgolding         ###   ########.fr       */
+/*   Created: 2024/09/30 19:05:00 by bgolding          #+#    #+#             */
+/*   Updated: 2024/09/30 19:05:03 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "minirt.h"
 
