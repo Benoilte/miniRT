@@ -6,7 +6,7 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:38:39 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/30 18:30:05 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/01 15:02:29 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@ int	compute_final_color(t_color *color, t_details *details, t_render_info *info)
 
 	if (!color || !details || !info)
 		return (print_error("compute_final_color", INVALID_POINTER));
+	if (set_shadow(info->data->world, details) != 0)
+		return (1);
 	surface = lighting(details, info->data->world->light);
 	if (reflected_color(&reflected, info, details) != 0)
-		return (1);
+		return (2);
 	*color = rgb_add(surface, reflected);
 	return (0);
 }
@@ -52,7 +54,7 @@ int	color_at(t_color *color, t_shape *self, t_ray *ray, t_render_info *info)
 		*color = no_color();
 	else
 	{
-		if ((compute_details(&details, hit->content, *ray, info->data->world))
+		if ((compute_details(&details, hit->content, *ray))
 			|| (compute_final_color(color, &details, info)))
 			return (dbl_lstclear(&intersects, clear_intersection), 3);
 	}

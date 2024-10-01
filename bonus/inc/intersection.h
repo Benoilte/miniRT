@@ -6,7 +6,7 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 16:01:08 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/30 18:04:11 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/01 15:01:31 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,7 @@ bool			add_new_before_lst(t_dbl_lst *new, t_dbl_lst *lst);
 bool			is_hit_positive(t_dbl_lst *intersection);
 void			clear_intersection(void *intersection);
 int				compute_details(t_details *details, t_intersection *hit, \
-								t_ray ray, t_world *world);
-int				is_shadowed(t_shape *self, t_world *world, t_point point, \
-								t_details *details);
+								t_ray ray);
 t_dbl_lst		*get_first_hit(t_dbl_lst **dlist);
 void			set_first_hit_valid(t_shape *self, \
 								t_intersect_list **first_hit);

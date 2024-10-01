@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/30 19:02:42 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/01 14:55:17 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,6 +177,9 @@ int					intersect_world(t_intersect_list **list, t_ray *ray, \
 									t_world *world);
 int					color_at(t_color *color, t_shape *self, t_ray *ray, \
 									t_render_info *info);
+int					is_shadowed(t_shape *self, t_world *world, t_point point, \
+								t_details *details);
+int					set_shadow(t_world *world, t_details *details);
 int					reflected_color(t_color *color, t_render_info *info, \
 									t_details *details);
 int					compute_final_color(t_color *color, t_details *details, \

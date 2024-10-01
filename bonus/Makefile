@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
+#    By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/10/01 13:39:59 by bgolding         ###   ########.fr        #
+#    Updated: 2024/10/01 14:49:30 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ PARSING_FILES	=	file_validation lexer tokenize token_utils parser validate_singl
 DATA_FILES		=	init_data destroy_data init_world destroy_world init_input destroy_input init_utils
 WINDOW_FILES	=	init_mlx
 HOOKS_FILES		=	hooks keypress mouse
-RENDERING_FILES	=	render draw_utils view_transform camera intersect_world color_at reflection
+RENDERING_FILES	=	render draw_utils view_transform camera intersect_world color_at reflection shadow
 INTERSECT_FILES	=	clear_intersection hit_intersection new_intersection details_intersection utils
 RAY_FILES		=	ray position transform
 SHAPE_FILES		=	init_shapes shape error material normal shape_bonus \

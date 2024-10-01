@@ -6,7 +6,7 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 16:28:44 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/01 13:50:01 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/01 14:11:04 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,20 @@ void	test_refraction_index(t_world *world)
 {
 	t_ray				r1;
 	t_intersect_list	*intersects;
-	t_intersect_list	*hit;
+	t_intersect_list	*tmp;
 	t_details			details;
 	
 	r1 = ray(point(0, 0, -4), vector(0, 0, 1));
 
-	if (!ray || !info)
-		return (print_error("color_at", INVALID_POINTER));
 	ft_bzero(&details, sizeof(details));
 	intersects = NULL;
-	if (intersect_world(&intersects, ray, world) != 0)
-		return (2);
+	if (intersect_world(&intersects, &r1, world) != 0)
+		return ;
+	tmp = intersects;
+	while (tmp)
+	{
+		printf("%p: %.5f\n", ((t_intersection *)tmp->content)->shape, ((t_intersection *)tmp->content)->t);
+		tmp = tmp->next;
+	}
+	dbl_lstclear(&intersects, clear_intersection);
 }
