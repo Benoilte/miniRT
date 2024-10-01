@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/01 10:29:57 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/01 11:56:47 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@
 # define PLANE_PARAMS 		3
 # define CYLINDER_PARAMS	5
 
-# define SHAPE_BONUS_PARAMS	1
+# define SHAPE_BONUS_PARAMS	4
 
 # define WORLD_SHAPE_LIMIT			70
 # define INPUT_ERROR_REPORT_LIMIT	50
@@ -68,6 +68,7 @@
 # define ERRMSG_ARG_EXCESS		"Too many parameters for element"
 # define ERRMSG_VECTOR_ZERO		"Invalid vector: all zero values"
 # define ERRMSG_B_ARG_MISSING	"Missing paremeter(s) for element (bonus)"
+# define ERRMSG_B_SHINE_RANGE	"Invalid shininess range [10 .. 200]"
 
 # define RANGE_MIN			-1000
 # define RANGE_MAX			1000
@@ -79,6 +80,10 @@
 # define SHAPE_SIZE_MAX		1000
 # define COLOR_MIN			0
 # define COLOR_MAX			255
+# define RATIO_MIN			0
+# define RATIO_MAX			1
+# define SHININESS_MIN		10
+# define SHININESS_MAX		200
 
 //	TYPEDEFS
 
@@ -90,6 +95,9 @@ typedef enum e_info
 	INFO_VECTOR,
 	INFO_FOV,
 	INFO_SIZE,
+	INFO_DIFFUSE,
+	INFO_SPECULAR,
+	INFO_SHININESS,
 	INFO_REFLECTIVE,
 	INFO_COUNT
 }	t_info;
@@ -130,6 +138,7 @@ typedef enum e_error_code
 	ERR_ARG_EXCESS,
 	ERR_VECTOR_ZERO,
 	ERR_B_ARG_MISSING,
+	ERR_B_SHINE_RANGE,
 	ERR_CODE_LIMIT
 }	t_error_code;
 
@@ -205,6 +214,9 @@ int		count_args(const char **args);
 int		validate_shape_bonus_parameters(char **args, int line, t_list **errors);
 
 //	validate_bonus_info_1.c
+int		validate_diffuse(const char *str, int line, t_list **errors);
+int		validate_specular(const char *str, int line, t_list **errors);
+int		validate_shininess(const char *str, int line, t_list **errors);
 int		validate_reflective(const char *str, int line, t_list **errors);
 
 #endif
