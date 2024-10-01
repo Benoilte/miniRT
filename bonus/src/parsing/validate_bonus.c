@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 09:36:07 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/01 10:34:02 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/01 10:42:49 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	validate_shape_bonus_parameters(char **args, int line, t_list **errors)
 	while (i < SHAPE_BONUS_PARAMS)
 	{
 		if (!args[i])
-			return(log_error(errors, ERR_B_ARG_MISSING, line));
+			return (log_error(errors, ERR_B_ARG_MISSING, line));
 		if (validate_info(args[i], line, info[i], errors) == -1)
 			return (-1);
 		i++;

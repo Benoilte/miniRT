@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shape.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:54:18 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/28 16:25:09 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/01 10:42:31 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,5 +157,8 @@ const t_vtable	*get_cylinder_vtable(void);
 bool			intersect_cylinder(t_ray *ray, t_shape *cl, t_report *report);
 bool			intersect_caps(t_ray *ray, t_shape *cl, t_report *report);
 t_vector		normal_cylinder(t_shape *shape, t_point *object_point);
+
+//	PROTOTYPES BONUS
+void			set_shape_bonus(t_shape *self, char **args);
 
 #endif
