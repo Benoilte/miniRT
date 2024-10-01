@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 13:16:41 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/25 12:09:31 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/01 09:50:50 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	report_error(void *error_node)
 	ERRMSG_INVALID_ID, ERRMSG_REAL_NUM, ERRMSG_RATIO, ERRMSG_POS_NUM, \
 	ERRMSG_COLOR, ERRMSG_FOV, ERRMSG_DUPLICATE, ERRMSG_VECTOR_RANGE, \
 	ERRMSG_RANGE_EXCESS, ERRMSG_ARG_MISSING, ERRMSG_ARG_EXCESS, \
-	ERRMSG_VECTOR_ZERO};
+	ERRMSG_VECTOR_ZERO, ERRMSG_BONUS_COUNT};
 	t_error		*error;
 	static int	count = 0;
 

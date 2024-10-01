@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/28 15:55:12 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/01 09:59:13 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@
 # define PLANE_PARAMS 		3
 # define CYLINDER_PARAMS	5
 
+# define SHAPE_BONUS_PARAMS	3
+
 # define WORLD_SHAPE_LIMIT			70
 # define INPUT_ERROR_REPORT_LIMIT	50
 
@@ -65,6 +67,7 @@
 # define ERRMSG_ARG_MISSING 	"Missing parameter(s) for element"
 # define ERRMSG_ARG_EXCESS		"Too many parameters for element"
 # define ERRMSG_VECTOR_ZERO		"Invalid vector: all zero values"
+# define ERRMSG_BONUS_COUNT		"Invalid number of Bonus parameters"
 
 # define RANGE_MIN			-1000
 # define RANGE_MAX			1000
@@ -125,6 +128,7 @@ typedef enum e_error_code
 	ERR_ARG_MISSING,
 	ERR_ARG_EXCESS,
 	ERR_VECTOR_ZERO,
+	ERR_BONUS_COUNT,
 	ERR_CODE_LIMIT
 }	t_error_code;
 
@@ -195,5 +199,8 @@ int		only_digits(const char *str);
 int		in_range(float num, float min, float max);
 int		validate_info(const char *str, int line, t_info info, t_list **errors);
 int		count_args(const char **args);
+
+//	validate_bonus.c
+int		validate_shape_bonus_parameters(char **args, int line, t_list **errors);
 
 #endif

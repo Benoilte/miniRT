@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 19:49:36 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 13:40:38 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/01 09:58:50 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	validate_sphere(t_token *token, t_list **errors)
 		i++;
 	}
 	if (args[i])
-		return (log_error(errors, ERR_ARG_EXCESS, token->line));
+		return (validate_shape_bonus_parameters(&args[i], token->line, errors));
 	return (0);
 }
 
