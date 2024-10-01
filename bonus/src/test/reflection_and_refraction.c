@@ -6,7 +6,7 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 16:28:44 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/01 12:15:36 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/01 13:50:01 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,21 @@ void	test_refraction_value(t_world *world, float value)
 		printf("\033[0;32mTRUE\033[0m\n");
 	else
 		printf("\033[0;31mFALSE\033[0m\n");
+}
+
+void	test_refraction_index(t_world *world)
+{
+	t_ray				r1;
+	t_intersect_list	*intersects;
+	t_intersect_list	*hit;
+	t_details			details;
+	
+	r1 = ray(point(0, 0, -4), vector(0, 0, 1));
+
+	if (!ray || !info)
+		return (print_error("color_at", INVALID_POINTER));
+	ft_bzero(&details, sizeof(details));
+	intersects = NULL;
+	if (intersect_world(&intersects, ray, world) != 0)
+		return (2);
 }
