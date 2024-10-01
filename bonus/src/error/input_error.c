@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 13:16:41 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/01 11:57:14 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/01 13:31:43 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ static void	report_error(void *error_node)
 	ERRMSG_INVALID_ID, ERRMSG_REAL_NUM, ERRMSG_RATIO, ERRMSG_POS_NUM, \
 	ERRMSG_COLOR, ERRMSG_FOV, ERRMSG_DUPLICATE, ERRMSG_VECTOR_RANGE, \
 	ERRMSG_RANGE_EXCESS, ERRMSG_ARG_MISSING, ERRMSG_ARG_EXCESS, \
-	ERRMSG_VECTOR_ZERO, ERRMSG_B_ARG_MISSING, ERRMSG_B_SHINE_RANGE};
+	ERRMSG_VECTOR_ZERO, ERRMSG_B_ARG_MISSING, ERRMSG_B_SHINE_RANGE, \
+	ERRMSG_B_REFRACT_IDX};
 	t_error		*error;
 	static int	count = 0;
 

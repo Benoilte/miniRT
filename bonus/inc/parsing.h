@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/01 11:56:47 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/01 13:35:23 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@
 # define PLANE_PARAMS 		3
 # define CYLINDER_PARAMS	5
 
-# define SHAPE_BONUS_PARAMS	4
+# define SHAPE_BONUS_PARAMS	6
 
 # define WORLD_SHAPE_LIMIT			70
 # define INPUT_ERROR_REPORT_LIMIT	50
@@ -69,6 +69,7 @@
 # define ERRMSG_VECTOR_ZERO		"Invalid vector: all zero values"
 # define ERRMSG_B_ARG_MISSING	"Missing paremeter(s) for element (bonus)"
 # define ERRMSG_B_SHINE_RANGE	"Invalid shininess range [10 .. 200]"
+# define ERRMSG_B_REFRACT_IDX	"Invalid refraction index range [1 .. 3]"
 
 # define RANGE_MIN			-1000
 # define RANGE_MAX			1000
@@ -84,6 +85,10 @@
 # define RATIO_MAX			1
 # define SHININESS_MIN		10
 # define SHININESS_MAX		200
+# define TRANSPARENCY_MIN	0
+# define TRANSPARENCY_MAX	1
+# define REFRACT_INDEX_MIN	1
+# define REFRACT_INDEX_MAX	3
 
 //	TYPEDEFS
 
@@ -99,6 +104,8 @@ typedef enum e_info
 	INFO_SPECULAR,
 	INFO_SHININESS,
 	INFO_REFLECTIVE,
+	INFO_TRANSPARENCY,
+	INFO_REFRACT_INDEX,
 	INFO_COUNT
 }	t_info;
 
@@ -139,6 +146,7 @@ typedef enum e_error_code
 	ERR_VECTOR_ZERO,
 	ERR_B_ARG_MISSING,
 	ERR_B_SHINE_RANGE,
+	ERR_B_REFRACT_IDX,
 	ERR_CODE_LIMIT
 }	t_error_code;
 
@@ -218,5 +226,9 @@ int		validate_diffuse(const char *str, int line, t_list **errors);
 int		validate_specular(const char *str, int line, t_list **errors);
 int		validate_shininess(const char *str, int line, t_list **errors);
 int		validate_reflective(const char *str, int line, t_list **errors);
+
+//	validate_bonus_info_2.c
+int		validate_transparency(const char *str, int line, t_list **errors);
+int		validate_refraction_index(const char *str, int line, t_list **errors);
 
 #endif
