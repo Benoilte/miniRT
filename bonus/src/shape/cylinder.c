@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 12:08:50 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/01 12:06:49 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/01 15:48:07 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	set_cylinder(t_shape *self, char **args, t_color ambient)
 	self->inverse = mx_inversion(self->transform);
 	self->material.color = str_to_rgb(args[5]);
 	self->material.ambient = rgb_mult(self->material.color, ambient);
-	if (args[4])
-		set_shape_bonus(self, &args[4]);
+	if (args[6])
+		set_shape_bonus(self, &(args[6]));
 	return (0);
 }
