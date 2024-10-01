@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 14:49:42 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/27 17:04:32 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/01 17:40:46 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ t_world	*init_world(t_list *token_list)
 		return (destroy_world(world), NULL);
 	element = get_element(token_list, ID_AMBIENT);
 	world->ambient = get_ambient(element);
+	element = get_element(token_list, ID_MATERIAL);
+	world->default_material = get_default_material(element);
 	if (init_shapes(world, token_list) != 0)
 		return (destroy_world(world), NULL);
 	return (world);

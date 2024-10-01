@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/30 19:02:42 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/01 18:31:54 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ typedef struct s_world
 	t_shape_list	*shapes;
 	t_light			*light;
 	t_color			ambient;
+	t_material		default_material;
 }					t_world;
 
 typedef struct s_camera

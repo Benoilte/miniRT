@@ -6,11 +6,11 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:03:17 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/19 14:53:10 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/01 18:04:12 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shape.h"
+#include "minirt.h"
 
 static void	separator(void)
 {

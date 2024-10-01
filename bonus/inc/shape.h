@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:36:37 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/01 13:36:39 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/01 18:02:23 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 # define SH_INVALID_TYPE "invalid shape type"
 # define SH_INVALID_POINTER "invalid (null) shape pointer"
 # define SH_VTABLE_ERROR "could not set shape vtable"
-# define SH_DEFAULT_COLOR 0xFFFFFF
 
 # define MATERIAL_INVALID_POINTER "invalid (null) material pointer"
 
@@ -53,6 +52,16 @@
 # define CL_DEFAULT_Y 0
 # define CL_DEFAULT_Z 0
 
+//	MATERIAL DEFAULTS
+
+# define MAT_DEFAULT_COLOR			0xFFFFFF
+# define MAT_DEFAULT_DIFFUSE		0.9f
+# define MAT_DEFAULT_SPECULAR		0.9f
+# define MAT_DEFAULT_SHININESS		200
+# define MAT_DEFAULT_REFLECTIVE		0
+# define MAT_DEFAULT_TRANSPARENCY	0
+# define MAT_DEFAULT_REF_INDEX		1
+
 // TYPEDEFS - MATERIAL
 
 typedef struct s_material
@@ -65,7 +74,7 @@ typedef struct s_material
 	float	reflective;
 	float	transparency;
 	float	refractive_index;
-}	t_material;
+}			t_material;
 
 //	TYPEDEFS - SHPERE
 
@@ -100,7 +109,7 @@ typedef bool		(*t_vintersect)(t_ray *ray, \
 									t_shape *shape, \
 									t_report *report);
 typedef t_vector	(*t_vnormal)(t_shape *shape, t_point *object_point);
-typedef int			(*t_vset)(t_shape *self, char **args, t_color ambient);
+typedef int			(*t_vset)(t_shape *self, char **args, t_world *world);
 
 typedef struct s_vtable
 {
@@ -132,28 +141,28 @@ void			shape_error(const char *source, const char *msg);
 bool			invalid_shape_type(t_shape_type type);
 void			destroy_shape(void *self);
 void			update_inverse(t_shape *shape);
-void			set_default_material(t_material *m);
+t_material		get_default_material(char **args);
 t_vector		get_normal(t_shape *shape, t_point world_point);
 t_list			*get_next_shape(t_list *tokens);
 int				init_shapes(t_world *world, t_list *token_list);
 t_m4x4			rotate_y_to(t_vector to);
 
 //	PROTOTYPES SPHERE
-int				set_sphere(t_shape *self, char **args, t_color ambient);
+int				set_sphere(t_shape *self, char **args, t_world *world);
 void			set_default_sphere(t_shape *self);
 const t_vtable	*get_sphere_vtable(void);
 bool			intersect_sphere(t_ray *r, t_shape *shape, t_report *report);
 t_vector		normal_sphere(t_shape *shape, t_point *object_point);
 
 //	PROTOTYPES PLANE
-int				set_plane(t_shape *self, char **args, t_color ambient);
+int				set_plane(t_shape *self, char **args, t_world *world);
 void			set_default_plane(t_shape *self);
 const t_vtable	*get_plane_vtable(void);
 bool			intersect_plane(t_ray *r, t_shape *shape, t_report *report);
 t_vector		normal_plane(t_shape *shape, t_point *object_point);
 
 //	PROTOTYPES CYLINDER
-int				set_cylinder(t_shape *self, char **args, t_color ambient);
+int				set_cylinder(t_shape *self, char **args, t_world *world);
 void			set_default_cylinder(t_shape *self);
 const t_vtable	*get_cylinder_vtable(void);
 bool			intersect_cylinder(t_ray *ray, t_shape *cl, t_report *report);

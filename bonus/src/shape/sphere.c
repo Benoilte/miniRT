@@ -6,11 +6,11 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:31:00 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/01 10:43:39 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/01 18:05:42 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shape.h"
+#include "minirt.h"
 
 void	set_default_sphere(t_shape *self)
 {
@@ -29,12 +29,12 @@ const t_vtable	*get_sphere_vtable(void)
 	return (&sphere_vtable);
 }
 
-int	set_sphere(t_shape *self, char **args, t_color ambient)
+int	set_sphere(t_shape *self, char **args, t_world *world)
 {
 	t_point	origin;
 	float	radius;
 
-	if (!self || !args)
+	if (!self || !args || !world)
 		return (print_error("set_sphere", INVALID_POINTER));
 	origin = str_to_tuple(args[1], POINT);
 	radius = rt_roundf(ft_atod(args[2]) / 2);
@@ -42,8 +42,9 @@ int	set_sphere(t_shape *self, char **args, t_color ambient)
 	self->transform = mx_add_translation(self->transform, \
 											origin.x, origin.y, origin.z);
 	self->inverse = mx_inversion(self->transform);
+	self->material = world->default_material;
 	self->material.color = str_to_rgb(args[3]);
-	self->material.ambient = rgb_mult(self->material.color, ambient);
+	self->material.ambient = rgb_mult(self->material.color, world->ambient);
 	if (args[4])
 		set_shape_bonus(self, &args[4]);
 	return (0);

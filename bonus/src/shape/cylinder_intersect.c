@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder_intersect.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 12:08:41 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/27 09:32:27 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/01 18:09:50 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shape.h"
+#include "minirt.h"
 
 static void	ft_swap(float *a, float *b)
 {
