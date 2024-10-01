@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 09:36:07 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/01 11:41:07 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/01 13:36:06 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	validate_shape_bonus_parameters(char **args, int line, t_list **errors)
 {
-	const t_info	info[SHAPE_BONUS_PARAMS] = \
-		{INFO_DIFFUSE, INFO_SPECULAR, INFO_SHININESS, INFO_REFLECTIVE};
+	const t_info	info[SHAPE_BONUS_PARAMS] = {INFO_DIFFUSE, INFO_SPECULAR, \
+		INFO_SHININESS, INFO_REFLECTIVE, INFO_TRANSPARENCY, INFO_REFRACT_INDEX};
 	int				i;
 
 	if (!args || !errors)

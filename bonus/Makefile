@@ -6,7 +6,7 @@
 #    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/10/01 11:53:33 by bgolding         ###   ########.fr        #
+#    Updated: 2024/10/01 13:39:59 by bgolding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ MAIN_FILES		=	main
 ERROR_FILES		=	error input_error
 PARSING_FILES	=	file_validation lexer tokenize token_utils parser validate_single_element \
 					validate_shape validate_info_1 validate_info_2 validate_utils validate_bonus \
-					validate_bonus_info_1
+					validate_bonus_info_1 validate_bonus_info_2
 DATA_FILES		=	init_data destroy_data init_world destroy_world init_input destroy_input init_utils
 WINDOW_FILES	=	init_mlx
 HOOKS_FILES		=	hooks keypress mouse

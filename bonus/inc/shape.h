@@ -5,11 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2024/10/01 12:14:31 by bgolding         ###   ########.fr       */
+/*   Created: 2024/10/01 13:36:37 by bgolding          #+#    #+#             */
+/*   Updated: 2024/10/01 13:36:39 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef SHAPE_H
 # define SHAPE_H
