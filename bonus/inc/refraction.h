@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   refraction.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 23:15:26 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/04 09:07:39 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/04 12:05:43 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 
 //	PROTOTYPES
 
+int		refracted_color(t_color *color, t_render_info *info, \
+						t_details *details, t_dbl_lst *intersects);
 void	compute_refraction_indices(t_dbl_lst *intersects, \
 									t_details *details, t_dbl_lst *containers);
 
