@@ -6,7 +6,7 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:30:29 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/04 11:18:58 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/04 12:00:46 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,5 @@ int	compute_details(t_details *details, \
 		details->inside = 0;
 	details->reflectv = tp_reflect(ray.direction, details->normalv);
 	set_over_point(details);
-	set_under_point(details);
 	return (0);
 }
