@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
+#    By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/06 12:49:52 by bgolding          #+#    #+#              #
-#    Updated: 2024/10/04 08:48:19 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/10/04 16:16:49 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRCS		=	$(addprefix $(SRC_DIR)dbl_list/, $(addsuffix .c, $(DBL_LST_SRC)))
 OBJS		=	$(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS))
 
 CC			=	gcc
-CFLAGS		=	-Wall -Wextra -Werror -g
+CFLAGS		=	-Wall -Wextra -Werror -O2
 RM			=	rm -f
 AR			=	ar -rc
 
