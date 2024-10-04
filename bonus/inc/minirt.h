@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/01 14:55:17 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/04 09:41:19 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include "intersection.h"
 # include "shape.h"
 # include "light.h"
+# include "refraction.h"
 
 //	STANDARD LIBRARIES
 # include <errno.h>
@@ -97,12 +98,13 @@ typedef struct s_camera
 
 typedef struct s_render_info
 {
-	int		thread_id;
-	t_data	*data;
-	int		start_line;
-	int		stop_line;
-	int		reflective_depth;
-}			t_render_info;
+	int			thread_id;
+	t_data		*data;
+	int			start_line;
+	int			stop_line;
+	int			reflective_depth;
+	t_dbl_lst	*shape_container;
+}				t_render_info;
 
 typedef struct s_data
 {
