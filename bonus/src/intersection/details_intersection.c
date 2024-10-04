@@ -6,18 +6,26 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:30:29 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/01 15:01:20 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/04 11:18:58 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "intersection.h"
 
-static void	set_over_point(t_details *details)
+void	set_over_point(t_details *details)
 {
 	details->over_point = \
 		tp_add(details->position, tp_multiply(details->normalv, EPSILON));
 	details->over_point = \
 		tp_add(details->over_point, tp_multiply(details->eyev, EPSILON));
+}
+
+void	set_under_point(t_details *details)
+{
+	details->under_point = \
+		tp_subtract(details->position, tp_multiply(details->normalv, EPSILON));
+	details->under_point = \
+		tp_subtract(details->under_point, tp_multiply(details->eyev, EPSILON));
 }
 
 int	compute_details(t_details *details, \
@@ -40,5 +48,6 @@ int	compute_details(t_details *details, \
 		details->inside = 0;
 	details->reflectv = tp_reflect(ray.direction, details->normalv);
 	set_over_point(details);
+	set_under_point(details);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 16:01:08 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/03 17:39:29 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/04 11:19:34 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_intersect_details
 	bool		inside;
 	int			in_shadow;
 	t_point		over_point;
+	t_point		under_point;
 	float		n1;
 	float		n2;
 }	t_intersect_details;
@@ -71,5 +72,7 @@ int				compute_details(t_details *details, t_intersection *hit, \
 t_dbl_lst		*get_first_hit(t_dbl_lst **dlist);
 void			set_first_hit_valid(t_shape *self, \
 								t_intersect_list **first_hit);
+void			set_over_point(t_details *details);
+void			set_under_point(t_details *details);
 
 #endif
