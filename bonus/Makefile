@@ -6,40 +6,42 @@
 #    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/10/01 17:45:47 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/10/04 00:12:10 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-TRUE_NAME		=	miniRT_bonus
-NAME			=	$(addprefix ../, $(TRUE_NAME))
+TRUE_NAME			=	miniRT_bonus
+NAME				=	$(addprefix ../, $(TRUE_NAME))
 
-LIB				=	../lib/
-SRC_DIR			=	src/
-OBJ_DIR			=	obj/
-INC_DIR			=	inc/
-COMMON_INC_DIR	=	../inc/
-LIBFT_DIR 		=	$(LIB)libft/
-MINILIBX_DIR	=	$(LIB)mlx/
-LIBGRAPHIC_DIR	=	$(LIB)libgraphic/
-LIBDLIST		=	$(LIB)libdlist/
+LIB					=	../lib/
+SRC_DIR				=	src/
+OBJ_DIR				=	obj/
+INC_DIR				=	inc/
+COMMON_INC_DIR		=	../inc/
+LIBFT_DIR 			=	$(LIB)libft/
+MINILIBX_DIR		=	$(LIB)mlx/
+LIBGRAPHIC_DIR		=	$(LIB)libgraphic/
+LIBDLIST			=	$(LIB)libdlist/
 
-MAIN_FILES		=	main
-ERROR_FILES		=	error input_error
-PARSING_FILES	=	file_validation lexer tokenize token_utils parser validate_single_element \
-					validate_shape validate_info_1 validate_info_2 validate_utils validate_bonus \
-					validate_bonus_info_1 validate_bonus_info_2
-DATA_FILES		=	init_data destroy_data init_world destroy_world init_input destroy_input init_utils
-WINDOW_FILES	=	init_mlx
-HOOKS_FILES		=	hooks keypress mouse
-RENDERING_FILES	=	render draw_utils view_transform camera intersect_world color_at reflection shadow
-INTERSECT_FILES	=	clear_intersection hit_intersection new_intersection details_intersection utils
-RAY_FILES		=	ray position transform
-SHAPE_FILES		=	init_shapes shape error material normal shape_bonus \
-					sphere sphere_intersect sphere_normal \
-					plane plane_intersect plane_normal \
-					cylinder cylinder_intersect cylinder_normal cylinder_intersect_caps
-LIGHT_FILES		=	new_light destroy_light lighting
-TEST_FILES		=	print time reflection_and_refraction
+MAIN_FILES			=	main
+ERROR_FILES			=	error input_error
+PARSING_FILES		=	file_validation lexer tokenize token_utils parser validate_single_element \
+						validate_shape validate_info_1 validate_info_2 validate_utils validate_bonus \
+						validate_bonus_info_1 validate_bonus_info_2
+DATA_FILES			=	init_data destroy_data init_world destroy_world init_input destroy_input init_utils
+WINDOW_FILES		=	init_mlx
+HOOKS_FILES			=	hooks keypress mouse
+REFRACTION_FILES	=	refraction shape_containers_utils init_shape_containers destroy_shape_containers \
+						reset_shape_containers
+RENDERING_FILES		=	render draw_utils view_transform camera intersect_world color_at reflection shadow
+INTERSECT_FILES		=	clear_intersection hit_intersection new_intersection details_intersection utils
+RAY_FILES			=	ray position transform
+SHAPE_FILES			=	init_shapes shape error material normal shape_bonus \
+						sphere sphere_intersect sphere_normal \
+						plane plane_intersect plane_normal \
+						cylinder cylinder_intersect cylinder_normal cylinder_intersect_caps
+LIGHT_FILES			=	new_light destroy_light lighting
+TEST_FILES			=	print time reflection_and_refraction
 
 # OS specific settings
 UNAME_S			=	$(shell uname -s)
@@ -74,6 +76,7 @@ SRC_FILES		=	$(addprefix main/, $(MAIN_FILES)) \
 					$(addprefix data/, $(DATA_FILES)) \
 					$(addprefix window/, $(WINDOW_FILES)) \
 					$(addprefix hooks/, $(HOOKS_FILES)) \
+					$(addprefix refraction/, $(REFRACTION_FILES)) \
 					$(addprefix rendering/, $(RENDERING_FILES)) \
 					$(addprefix intersection/, $(INTERSECT_FILES)) \
 					$(addprefix ray/, $(RAY_FILES)) \
@@ -87,7 +90,7 @@ OBJS			=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 LIB_LINK		=	-L$(LIBFT_DIR) -lft -L$(MINILIBX_DIR) -lmlx -L$(LIBGRAPHIC_DIR) -lgraphic -L$(LIBDLIST) -ldlist $(OS_FLAGS)
 
 CC				=	gcc
-CFLAGS			=	-Wall -Wextra -Werror -pthread -O2
+CFLAGS			=	-Wall -Wextra -Werror -pthread -g
 RM				=	rm -f
 AR				=	ar -r
 
