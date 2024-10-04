@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:53:19 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/04 00:41:43 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/04 12:11:18 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static int	set_render_info(t_data *data)
 		data->render[i].start_line = i * slice_size;
 		data->render[i].stop_line = data->render[i].start_line + slice_size;
 		data->render[i].reflective_depth = REFLECTIVE_DEPTH;
+		data->render[i].refractive_depth = REFRACTIVE_DEPTH;
 		if (init_shape_container(ft_lstsize(data->world->shapes), \
 			&(data->render[i].shape_container)) != 0)
 			return (1);

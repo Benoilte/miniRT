@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/04 09:41:19 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/04 12:10:58 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@
 
 # define THREAD_COUNT		6
 # define REFLECTIVE_DEPTH	5
+# define REFRACTIVE_DEPTH	5
 
 // 	TYPEDEFS
 
@@ -103,6 +104,7 @@ typedef struct s_render_info
 	int			start_line;
 	int			stop_line;
 	int			reflective_depth;
+	int			refractive_depth;
 	t_dbl_lst	*shape_container;
 }				t_render_info;
 
@@ -185,7 +187,7 @@ int					set_shadow(t_world *world, t_details *details);
 int					reflected_color(t_color *color, t_render_info *info, \
 									t_details *details);
 int					compute_final_color(t_color *color, t_details *details, \
-									t_render_info *info);
+									t_render_info *info, t_dbl_lst *intersects);
 
 	// TEST
 
