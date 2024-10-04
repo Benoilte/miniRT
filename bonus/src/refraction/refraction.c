@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 09:17:18 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/04 01:18:00 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/04 09:07:17 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,24 +52,5 @@ void	compute_refraction_indices(	t_dbl_lst *intersects, \
 		else
 			move_shape(((t_intersection *)tmp->content)->shape, &containers);
 		tmp = tmp->next;
-	}
-}
-
-void	print_n1_and_n2(t_dbl_lst *intersects, t_ray *ray, t_dbl_lst *containers)
-{
-	t_dbl_lst	*tmp;
-	t_details	details;
-	int			i;
-
-	i = 0;
-	tmp = intersects;
-	printf("| i |\t|   n1    |\t|   n2    |\n");
-	while (tmp)
-	{
-		compute_details(&details, ((t_intersection *)tmp->content), *ray);
-		compute_refraction_indices(intersects, &details, containers);
-		printf("| %d |\t| %.5f |\t| %.5f |\n", i, details.n1, details.n2);
-		tmp = tmp->next;
-		i++;
 	}
 }

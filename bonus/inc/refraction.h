@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 23:15:26 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/04 01:17:21 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/04 09:07:39 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 
 void	compute_refraction_indices(t_dbl_lst *intersects, \
 									t_details *details, t_dbl_lst *containers);
-void	print_n1_and_n2(t_dbl_lst *intersects, t_ray *ray, t_dbl_lst *containers);
 
 int		init_shape_container(size_t size, t_dbl_lst **containers);
 void	destroy_shape_container(t_dbl_lst **containers);
