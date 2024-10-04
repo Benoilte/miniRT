@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 10:52:33 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/22 09:31:19 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/04 08:48:50 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ void		dbl_lstadd_ordered(t_dbl_lst **dlst, t_dbl_lst *new,
 void		dbl_lstadd_before(t_dbl_lst **dlst, t_dbl_lst *new, t_dbl_lst *el);
 void		dbl_lstadd_after(t_dbl_lst **dlst, t_dbl_lst *new, t_dbl_lst *el);
 int			dbl_lstsize(t_dbl_lst *dlst);
+void		dbl_lstmove_back(t_dbl_lst **dlst, t_dbl_lst *to_move);
 
 #endif
