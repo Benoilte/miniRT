@@ -6,11 +6,24 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 14:50:29 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/01 15:02:05 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/04 16:46:12 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+static void set_first_hit_opaque(t_intersect_list **first_hit)
+{
+	if (!*first_hit)
+		return ;
+	while (*first_hit)
+	{
+		if (((t_intersection *)(*first_hit)->content)->shape->material.transparency > 0.5)
+			*first_hit = (*first_hit)->next;
+		else
+			break ;
+	}
+}
 
 int	is_shadowed(t_shape *self, \
 				t_world *world, \
@@ -33,6 +46,7 @@ int	is_shadowed(t_shape *self, \
 		return (-1);
 	first_hit = get_first_hit(&intersects);
 	set_first_hit_valid(self, &first_hit);
+	set_first_hit_opaque(&first_hit);
 	if (first_hit && \
 		lower_or_equalf(((t_intersection *)(first_hit->content))->t, distance))
 	{
