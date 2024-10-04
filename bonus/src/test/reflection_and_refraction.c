@@ -6,7 +6,7 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 16:28:44 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/04 11:29:37 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/04 11:58:23 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,25 +70,5 @@ void	test_refraction_index(t_data *data)
 		tmp = tmp->next;
 	}
 	print_n1_and_n2(intersects, &r1, data->render[0].shape_container);
-	dbl_lstclear(&intersects, clear_intersection);
-}
-
-void	test_details_under_point(t_data *data)
-{
-	t_ray				r1;
-	t_intersect_list	*intersects;
-	t_details			details;
-
-	r1 = ray(point(0, 0, -5), vector(0, 0, 1));
-	ft_bzero(&details, sizeof(details));
-	intersects = NULL;
-	if (intersect_world(&intersects, &r1, data->world) != 0)
-		return ;
-	compute_details(&details, get_first_hit(&intersects)->content, r1);
-	printf("check if The under point is offset below the surface\n");
-	if (details.under_point.z > (EPSILON / 2) && details.position.z < details.under_point.z)
-		printf("\033[0;32mTRUE\033[0m\n");
-	else
-		printf("\033[0;31mFALSE\033[0m\n");
 	dbl_lstclear(&intersects, clear_intersection);
 }
