@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 12:57:38 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/30 18:05:04 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/05 14:08:32 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	update_progress(t_data *data, int line_finished)
 {
 	static int	line_count = 0;
 
-	pthread_mutex_lock(&data->print_lock);
+	pthread_mutex_lock(&data->render.print_lock);
 	if (line_finished == 0)
 	{
 		line_count = 0;
@@ -30,7 +30,7 @@ static void	update_progress(t_data *data, int line_finished)
 		else
 			ft_printf("\r%i %%", (line_count * 100) / WIN_HEIGHT);
 	}
-	pthread_mutex_unlock(&data->print_lock);
+	pthread_mutex_unlock(&data->render.print_lock);
 }
 
 static void	*render_strip(void *arg)
@@ -71,19 +71,20 @@ void	render(t_data *data)
 		print_error("render", INVALID_POINTER);
 		return ;
 	}
+	ft_printf("Render with %d threads\n", data->render.thread_count);
 	reset_image(data);
 	update_progress(data, 0);
 	i = 0;
-	while (i < THREAD_COUNT)
+	while (i < data->render.thread_count)
 	{
-		if (pthread_create(&data->threads[i], NULL, render_strip, \
-							&data->render[i]))
+		if (pthread_create(&data->render.threads[i], NULL, render_strip, \
+							&data->render.blocks[i]))
 			exit_error(data, "pthread creation error");
 		i++;
 	}
 	i = 0;
-	while (i < THREAD_COUNT)
-		if (pthread_join(data->threads[i++], NULL))
+	while (i < data->render.thread_count)
+		if (pthread_join(data->render.threads[i++], NULL))
 			exit_error(data, "pthread join error");
 	mlx_put_image_to_window(data->mlx->xvar, data->mlx->win, \
 							data->mlx->img, 0, 0);

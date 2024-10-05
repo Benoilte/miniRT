@@ -6,7 +6,7 @@
 #    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/10/01 18:14:36 by bgolding         ###   ########.fr        #
+#    Updated: 2024/10/05 13:55:29 by bgolding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,10 +28,12 @@ ERROR_FILES		=	error input_error
 PARSING_FILES	=	file_validation lexer tokenize token_utils parser validate_single_element \
 					validate_shape validate_info_1 validate_info_2 validate_utils validate_bonus \
 					validate_bonus_info_1 validate_bonus_info_2
-DATA_FILES		=	init_data destroy_data init_world destroy_world init_input destroy_input init_utils
+DATA_FILES		=	init_data destroy_data init_world destroy_world init_input destroy_input init_utils \
+					init_render destroy_render
 WINDOW_FILES	=	init_mlx
 HOOKS_FILES		=	hooks keypress mouse
-RENDERING_FILES	=	render draw_utils view_transform camera intersect_world color_at reflection
+RENDERING_FILES	=	render draw_utils view_transform camera intersect_world color_at reflection \
+					multi_threading_utils
 INTERSECT_FILES	=	clear_intersection hit_intersection new_intersection details_intersection utils
 RAY_FILES		=	ray position transform
 SHAPE_FILES		=	init_shapes shape error material normal shape_bonus \

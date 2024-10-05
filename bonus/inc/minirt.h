@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/01 18:31:54 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/05 15:42:40 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@
 #  define WIN_MID_Y 768
 # endif
 
-# define THREAD_COUNT		6
 # define REFLECTIVE_DEPTH	5
 
 // 	TYPEDEFS
@@ -105,15 +104,21 @@ typedef struct s_render_info
 	int		reflective_depth;
 }			t_render_info;
 
+typedef struct s_render
+{
+	t_render_info	*blocks;
+	pthread_t		*threads;
+	int				thread_count;
+	pthread_mutex_t	print_lock;
+}					t_render;
+
 typedef struct s_data
 {
 	t_input_data	input;
 	t_mlx			*mlx;
 	t_world			*world;
 	t_camera		*camera;
-	t_render_info	render[THREAD_COUNT];
-	pthread_t		threads[THREAD_COUNT];
-	pthread_mutex_t	print_lock;
+	t_render		render;
 }					t_data;
 
 typedef struct s_pixel
@@ -138,10 +143,12 @@ int					init_input(t_input_data *input, int argc, char **argv);
 t_data				*init_data(int argc, char **argv);
 t_world				*init_world(t_list *token_list);
 t_camera			*init_camera(char **str);
+int					init_render_settings(t_data *data, t_render *render);
 void				destroy_input(t_input_data *input);
 void				destroy_data(t_data *data);
 void				destroy_world(t_world *world);
 void				destroy_camera(t_camera *camera);
+void				destroy_render_settings(t_render *render);
 t_shape				*add_new_shape_to_world(t_world *world, t_shape_type type);
 char				**get_element(t_list *token_list, t_id id);
 float				rt_roundf(float val);
@@ -182,6 +189,9 @@ int					reflected_color(t_color *color, t_render_info *info, \
 									t_details *details);
 int					compute_final_color(t_color *color, t_details *details, \
 									t_render_info *info);
+
+	//	MULTI-THREADING
+int					get_available_core_count(void);
 
 	// TEST
 
