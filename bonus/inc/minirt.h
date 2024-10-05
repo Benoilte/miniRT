@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/05 15:42:40 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/05 16:02:31 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,6 +178,7 @@ void				set_pixel_color(t_data *data, int x, int y, int color);
 	//	RENDER
 
 void				render(t_data *data);
+void				*render_strip(void *arg);
 t_m4x4				view_transform(t_point from, t_vector forward, t_vector up);
 t_camera			camera(size_t hsize, size_t vsize, float fov);
 t_ray				ray_for_pixel(t_camera camera, size_t px, size_t py);
@@ -192,6 +193,8 @@ int					compute_final_color(t_color *color, t_details *details, \
 
 	//	MULTI-THREADING
 int					get_available_core_count(void);
+void				create_threads(t_data *data);
+void				join_threads(t_data *data);
 
 	// TEST
 

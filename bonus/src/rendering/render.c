@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 12:57:38 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/05 14:08:32 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/05 16:01:02 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	update_progress(t_data *data, int line_finished)
 	pthread_mutex_unlock(&data->render.print_lock);
 }
 
-static void	*render_strip(void *arg)
+void	*render_strip(void *arg)
 {
 	t_render_info	*info;
 	t_pixel			pixel;
@@ -64,8 +64,6 @@ static void	*render_strip(void *arg)
 
 void	render(t_data *data)
 {
-	int			i;
-
 	if (!data)
 	{
 		print_error("render", INVALID_POINTER);
@@ -74,18 +72,8 @@ void	render(t_data *data)
 	ft_printf("Render with %d threads\n", data->render.thread_count);
 	reset_image(data);
 	update_progress(data, 0);
-	i = 0;
-	while (i < data->render.thread_count)
-	{
-		if (pthread_create(&data->render.threads[i], NULL, render_strip, \
-							&data->render.blocks[i]))
-			exit_error(data, "pthread creation error");
-		i++;
-	}
-	i = 0;
-	while (i < data->render.thread_count)
-		if (pthread_join(data->render.threads[i++], NULL))
-			exit_error(data, "pthread join error");
+	create_threads(data);
+	join_threads(data);
 	mlx_put_image_to_window(data->mlx->xvar, data->mlx->win, \
 							data->mlx->img, 0, 0);
 }

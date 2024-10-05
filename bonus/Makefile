@@ -6,7 +6,7 @@
 #    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/10/05 13:55:29 by bgolding         ###   ########.fr        #
+#    Updated: 2024/10/05 15:59:56 by bgolding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ DATA_FILES		=	init_data destroy_data init_world destroy_world init_input destroy
 WINDOW_FILES	=	init_mlx
 HOOKS_FILES		=	hooks keypress mouse
 RENDERING_FILES	=	render draw_utils view_transform camera intersect_world color_at reflection \
-					multi_threading_utils
+					multi_threading multi_threading_utils
 INTERSECT_FILES	=	clear_intersection hit_intersection new_intersection details_intersection utils
 RAY_FILES		=	ray position transform
 SHAPE_FILES		=	init_shapes shape error material normal shape_bonus \
