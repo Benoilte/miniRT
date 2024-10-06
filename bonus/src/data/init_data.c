@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:53:19 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/06 11:26:27 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/06 11:35:48 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static int	set_render_info(t_data *data)
 	if (WIN_HEIGHT % THREAD_COUNT != 0)
 		ft_printf("Warning: WIN_HEIGHT not optimal for multi-thread rendering");
 	i = 0;
-	// ft_memset(data->render, 0, sizeof(data->render) * THREAD_COUNT);
 	while (i < THREAD_COUNT)
 	{
 		data->render[i].thread_id = i;
