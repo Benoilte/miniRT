@@ -6,11 +6,11 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 14:48:51 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/09 18:30:23 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/01 18:09:13 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shape.h"
+#include "minirt.h"
 
 /*
 ​ 	​function​ local_intersect(ray, plane)

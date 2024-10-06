@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/01 13:35:23 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/01 15:43:50 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,10 @@
 # define WORLD_ERROR_SHAPE	"No shapes in world: must have at least 1"
 # define WORLD_ERROR_LIMIT	"Too many shapes in world"
 
-# define STR_AMBIENT	"A"
-# define STR_CAMERA		"C"
-# define STR_LIGHT		"L"
+# define STR_AMBIENT			"A"
+# define STR_CAMERA				"C"
+# define STR_LIGHT				"L"
+# define STR_DEFAULT_MATERIAL	"M"
 
 # define STR_SPHERE		"sp"
 # define STR_PLANE		"pl"
@@ -46,6 +47,7 @@
 # define AMBIENT_PARAMS		2
 # define CAMERA_PARAMS 		3
 # define LIGHT_PARAMS 		3
+# define MATERIAL_PARAMS	6
 # define SPHERE_PARAMS 		3
 # define PLANE_PARAMS 		3
 # define CYLINDER_PARAMS	5
@@ -67,7 +69,7 @@
 # define ERRMSG_ARG_MISSING 	"Missing parameter(s) for element"
 # define ERRMSG_ARG_EXCESS		"Too many parameters for element"
 # define ERRMSG_VECTOR_ZERO		"Invalid vector: all zero values"
-# define ERRMSG_B_ARG_MISSING	"Missing paremeter(s) for element (bonus)"
+# define ERRMSG_B_MAT_ARG_MISS	"Missing paremeter(s) for material (bonus)"
 # define ERRMSG_B_SHINE_RANGE	"Invalid shininess range [10 .. 200]"
 # define ERRMSG_B_REFRACT_IDX	"Invalid refraction index range [1 .. 3]"
 
@@ -115,6 +117,7 @@ typedef enum e_id
 	ID_AMBIENT,
 	ID_CAMERA,
 	ID_LIGHT,
+	ID_MATERIAL,
 	ID_SPHERE,
 	ID_PLANE,
 	ID_CYLINDER,
@@ -144,7 +147,7 @@ typedef enum e_error_code
 	ERR_ARG_MISSING,
 	ERR_ARG_EXCESS,
 	ERR_VECTOR_ZERO,
-	ERR_B_ARG_MISSING,
+	ERR_MAT_ARG_MISSING,
 	ERR_B_SHINE_RANGE,
 	ERR_B_REFRACT_IDX,
 	ERR_CODE_LIMIT
@@ -197,6 +200,7 @@ int		parser(t_input_data *input);
 int		validate_ambient(t_token *token, t_list **errors);
 int		validate_camera(t_token *token, t_list **errors);
 int		validate_light(t_token *token, t_list **errors);
+int		validate_default_material(t_token *token, t_list **errors);
 
 //	validate_shape.c
 int		validate_sphere(t_token *token, t_list **errors);
@@ -219,7 +223,7 @@ int		validate_info(const char *str, int line, t_info info, t_list **errors);
 int		count_args(const char **args);
 
 //	validate_bonus.c
-int		validate_shape_bonus_parameters(char **args, int line, t_list **errors);
+int		validate_material_parameters(char **args, int line, t_list **errors);
 
 //	validate_bonus_info_1.c
 int		validate_diffuse(const char *str, int line, t_list **errors);

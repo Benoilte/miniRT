@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 22:17:34 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/27 16:55:28 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/01 17:58:09 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	init_shapes(t_world *world, t_list *token_list)
 		new_shape = add_new_shape_to_world(world, get_type(token->identifier));
 		if (!new_shape)
 			return (1);
-		new_shape->f->set(new_shape, token->args, world->ambient);
+		new_shape->f->set(new_shape, token->args, world);
 		shape_token = get_next_shape(shape_token->next);
 	}
 	return (0);

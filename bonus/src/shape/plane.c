@@ -6,11 +6,11 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 14:28:47 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/01 12:06:40 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/01 18:09:02 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shape.h"
+#include "minirt.h"
 
 void	set_default_plane(t_shape *self)
 {
@@ -27,12 +27,12 @@ const t_vtable	*get_plane_vtable(void)
 	return (&plane_vtable);
 }
 
-int	set_plane(t_shape *self, char **args, t_color ambient)
+int	set_plane(t_shape *self, char **args, t_world *world)
 {
 	t_point		origin;
 	t_vector	normal;
 
-	if (!self || !args)
+	if (!self || !args || !world)
 		return (print_error("set_plane", INVALID_POINTER));
 	origin = str_to_tuple(args[1], POINT);
 	normal = tp_normalize(str_to_tuple(args[2], VECTOR));
@@ -40,8 +40,9 @@ int	set_plane(t_shape *self, char **args, t_color ambient)
 	self->transform = mx_add_translation(self->transform, \
 											origin.x, origin.y, origin.z);
 	self->inverse = mx_inversion(self->transform);
+	self->material = world->default_material;
 	self->material.color = str_to_rgb(args[3]);
-	self->material.ambient = rgb_mult(self->material.color, ambient);
+	self->material.ambient = rgb_mult(self->material.color, world->ambient);
 	if (args[4])
 		set_shape_bonus(self, &args[4]);
 	return (0);

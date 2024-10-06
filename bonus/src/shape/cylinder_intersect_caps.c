@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder_intersect_caps.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 09:32:29 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/27 13:49:25 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/01 18:10:10 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shape.h"
+#include "minirt.h"
 
 /*
 ​ 	​# a helper function to reduce duplication.​

@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 19:49:36 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/01 12:05:01 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/01 15:42:50 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	validate_sphere(t_token *token, t_list **errors)
 		i++;
 	}
 	if (args[i])
-		return (validate_shape_bonus_parameters(&args[i], token->line, errors));
+		return (validate_material_parameters(&args[i], token->line, errors));
 	return (0);
 }
 
@@ -54,7 +54,7 @@ int	validate_plane(t_token *token, t_list **errors)
 		i++;
 	}
 	if (args[i])
-		return (validate_shape_bonus_parameters(&args[i], token->line, errors));
+		return (validate_material_parameters(&args[i], token->line, errors));
 	return (0);
 }
 
@@ -78,6 +78,6 @@ int	validate_cylinder(t_token *token, t_list **errors)
 		i++;
 	}
 	if (args[i])
-		return (validate_shape_bonus_parameters(&args[i], token->line, errors));
+		return (validate_material_parameters(&args[i], token->line, errors));
 	return (0);
 }

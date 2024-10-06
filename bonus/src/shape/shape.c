@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   shape.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:54:15 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/10 13:25:12 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/01 18:03:53 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shape.h"
+#include "minirt.h"
 
 bool	invalid_shape_type(t_shape_type type)
 {
@@ -62,7 +62,6 @@ t_shape	*create_new_shape(t_shape_type type)
 		return (NULL);
 	}
 	new->f->set_default_shape(new);
-	set_default_material(&new->material);
 	return (new);
 }
 
