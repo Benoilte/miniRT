@@ -6,13 +6,15 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 09:05:55 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/04 09:06:19 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/06 08:56:38 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	print_n1_and_n2(t_dbl_lst *intersects, t_ray *ray, t_dbl_lst *containers)
+void	print_n1_and_n2(t_dbl_lst *intersects, \
+						t_ray *ray, \
+						t_dbl_lst *containers)
 {
 	t_dbl_lst	*tmp;
 	t_details	details;

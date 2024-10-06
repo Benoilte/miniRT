@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   shadow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 14:50:29 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/04 16:46:12 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/06 08:52:42 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void set_first_hit_opaque(t_intersect_list **first_hit)
+static void	set_first_hit_opaque(t_intersect_list **first_hit)
 {
 	if (!*first_hit)
 		return ;
@@ -57,11 +57,11 @@ int	is_shadowed(t_shape *self, \
 	return (0);
 }
 
-int set_shadow(t_world *world, t_details *details)
+int	set_shadow(t_world *world, t_details *details)
 {
-    details->in_shadow = \
+	details->in_shadow = \
 		is_shadowed(details->shape, world, details->over_point, details);
 	if (details->in_shadow == -1)
 		return (2);
-    return (0);
+	return (0);
 }

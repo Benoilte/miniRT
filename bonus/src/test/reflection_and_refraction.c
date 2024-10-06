@@ -3,17 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   reflection_and_refraction.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 16:28:44 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/04 11:58:23 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/06 08:59:27 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 void	print_color(t_color c, char *msg);
-void	print_n1_and_n2(t_dbl_lst *intersects, t_ray *ray, t_dbl_lst *containers);
+void	print_n1_and_n2(t_dbl_lst *intersects, \
+						t_ray *ray, \
+						t_dbl_lst *containers);
 
 void	test_reflective_value(t_world *world, float value)
 {
@@ -66,7 +68,10 @@ void	test_refraction_index(t_data *data)
 	tmp = intersects;
 	while (tmp)
 	{
-		printf("%p: %.5f - %.5f\n", ((t_intersection *)tmp->content)->shape, ((t_intersection *)tmp->content)->t, ((t_intersection *)tmp->content)->shape->material.refractive_index);
+		printf("%p: %.5f - %.5f\n", \
+			((t_intersection *)tmp->content)->shape, \
+			((t_intersection *)tmp->content)->t, \
+			((t_intersection *)tmp->content)->shape->material.refractive_index);
 		tmp = tmp->next;
 	}
 	print_n1_and_n2(intersects, &r1, data->render[0].shape_container);

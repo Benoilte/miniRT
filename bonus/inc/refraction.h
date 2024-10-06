@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   refraction.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 23:15:26 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/04 12:05:43 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/06 08:47:51 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include "minirt.h"
 
 //	TYPEDEFS
-
 
 //	PROTOTYPES
 

@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 12:08:50 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/06 08:34:09 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/06 11:22:50 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	set_cylinder(t_shape *self, char **args, t_world *world)
 	self->inverse = mx_inversion(self->transform);
 	self->material = world->default_material;
 	self->material.color = str_to_rgb(args[5]);
-	self->material.ambient = rgb_mult(self->material.color, ambient);
+	self->material.ambient = rgb_mult(self->material.color, world->ambient);
 	if (args[6])
 		set_shape_bonus(self, &(args[6]));
 	return (0);

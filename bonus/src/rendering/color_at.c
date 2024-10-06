@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color_at.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:38:39 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/04 15:01:58 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/06 08:53:07 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ static t_color	no_color(void)
 	return (black);
 }
 
-int	compute_final_color(t_color *color, t_details *details, t_render_info *info, t_dbl_lst *intersects)
+int	compute_final_color(t_color *color, \
+						t_details *details, \
+						t_render_info *info, \
+						t_dbl_lst *intersects)
 {
 	t_color	surface;
 	t_color	reflected;
