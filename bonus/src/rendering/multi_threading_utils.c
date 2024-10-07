@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 13:22:21 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/05 13:25:33 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/07 12:49:41 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	get_available_core_count(void)
 {
-	const int	default_cores = 4;
+	const int	default_cores = DEFAULT_THREAD_COUNT;
 	int			online_cores;
 
 	online_cores = sysconf(_SC_NPROCESSORS_ONLN);

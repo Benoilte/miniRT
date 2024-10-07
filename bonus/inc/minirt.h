@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/07 12:21:24 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/07 12:51:32 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,15 @@
 # ifdef __linux__
 #  include "linux_keycodes.h"
 #  include <X11/X.h>
-#  define WIN_WIDTH 1024
-#  define WIN_HEIGHT 768
+#  define WIN_WIDTH 2048
+#  define WIN_HEIGHT 1536
 #  define WIN_MID_X 1024
 #  define WIN_MID_Y 768
 # endif
 
-# define THREAD_COUNT		12
-# define REFLECTIVE_DEPTH	5
-# define REFRACTIVE_DEPTH	5
+# define DEFAULT_THREAD_COUNT	4
+# define REFLECTIVE_DEPTH		5
+# define REFRACTIVE_DEPTH		5
 
 // 	TYPEDEFS
 
