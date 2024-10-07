@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shadow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 14:50:29 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/06 08:52:42 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/07 13:20:09 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 
 static void	set_first_hit_opaque(t_intersect_list **first_hit)
 {
+	t_shape	*shape;
+
 	if (!*first_hit)
 		return ;
 	while (*first_hit)
 	{
-		if (((t_intersection *)(*first_hit)->content)->shape->material.transparency > 0.5)
+		shape = ((t_intersection *)(*first_hit)->content)->shape;
+		if (shape->material.transparency > 0.5)
 			*first_hit = (*first_hit)->next;
 		else
 			break ;
