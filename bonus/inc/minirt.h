@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/07 15:11:37 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/07 15:48:32 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include "forward_declarations.h"
 # include "hex_colors.h"
 # include "parsing.h"
+# include "render.h"
 # include "ray.h"
 # include "intersection.h"
 # include "shape.h"
@@ -33,16 +34,11 @@
 # include <errno.h>
 # include <string.h>
 # include <stdio.h>
-# include <pthread.h>
-# include <sys/time.h>
 
 //	DEFINES
 # define WINDOW_NAME "miniRT"
 
 # define INVALID_POINTER "invalid (null) pointer passed as argument"
-
-# define CORE_COUNT_ERROR \
-"Unable to detect online cpu cores : using default setting"
 
 //	OS specifics
 # ifdef __APPLE__
@@ -62,10 +58,6 @@
 #  define WIN_MID_Y 768
 # endif
 
-# define DEFAULT_THREAD_COUNT	4
-# define REFLECTIVE_DEPTH		5
-# define REFRACTIVE_DEPTH		5
-
 // 	TYPEDEFS
 
 typedef struct s_mlx
@@ -78,8 +70,6 @@ typedef struct s_mlx
 	int		line_len;
 	int		endian;
 }			t_mlx;
-
-typedef t_list					t_shape_list;
 
 typedef struct s_world
 {
@@ -101,25 +91,6 @@ typedef struct s_camera
 	float	half_height;
 }			t_camera;
 
-typedef struct s_render_info
-{
-	int			thread_id;
-	t_data		*data;
-	int			start_line;
-	int			stop_line;
-	int			reflective_depth;
-	int			refractive_depth;
-	t_dbl_lst	*shape_container;
-}				t_render_info;
-
-typedef struct s_render
-{
-	t_render_info	*blocks;
-	pthread_t		*threads;
-	int				thread_count;
-	pthread_mutex_t	print_lock;
-}					t_render;
-
 typedef struct s_data
 {
 	t_input_data	input;
@@ -128,12 +99,6 @@ typedef struct s_data
 	t_camera		*camera;
 	t_render		render;
 }					t_data;
-
-typedef struct s_pixel
-{
-	int	x;
-	int	y;
-}		t_pixel;
 
 //	PROTOTYPES
 
@@ -179,37 +144,8 @@ int					mouse_down(int keycode, t_data *data);
 int					mouse_up(int keycode, t_data *data);
 int					mouse_move(int x, int y, t_data *data);
 
-	//	DRAW_UTILS
-
-void				set_pixel_color(t_data *data, int x, int y, int color);
-
-	//	RENDER
-
-void				render(t_data *data);
-void				*render_strip(void *arg);
-t_m4x4				view_transform(t_point from, t_vector forward, t_vector up);
-t_camera			camera(size_t hsize, size_t vsize, float fov);
-t_ray				ray_for_pixel(t_camera camera, size_t px, size_t py);
-int					intersect_world(t_intersect_list **list, t_ray *ray, \
-									t_world *world);
-int					color_at(t_color *color, t_shape *self, t_ray *ray, \
-									t_render_info *info);
-int					is_shadowed(t_shape *self, t_world *world, t_point point, \
-								t_details *details);
-int					set_shadow(t_world *world, t_details *details);
-int					reflected_color(t_color *color, t_render_info info, \
-									t_details *details);
-int					compute_final_color(t_color *color, t_details *details, \
-									t_render_info info, t_dbl_lst *intersects);
-
-	//	MULTI-THREADING
-int					get_available_core_count(void);
-void				create_threads(t_data *data);
-void				join_threads(t_data *data);
-
 	// TEST
 
 void				print_color(t_color c, char *msg);
-void				timed_render(t_data *data);
 
 #endif
