@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   refraction.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 09:17:18 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/06 09:17:57 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/07 10:29:23 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static t_ray	compute_refracted_ray(t_details *details, \
 }
 
 int	refracted_color(t_color *color, \
-					t_render_info *info, \
+					t_render_info info, \
 					t_details *details, \
 					t_dbl_lst *intersects)
 {
@@ -98,20 +98,20 @@ int	refracted_color(t_color *color, \
 	float		cos_t;
 
 	if (equalf(details->shape->material.transparency, 0)
-		|| (info->refractive_depth <= 0))
+		|| (info.refractive_depth <= 0))
 	{
 		*color = rgb_set(0, 0, 0);
 		return (0);
 	}
-	compute_refraction_indices(intersects, details, info->shape_container);
+	compute_refraction_indices(intersects, details, info.shape_container);
 	if (compute_snell_law(details, &n_ratio, &cos_i, &cos_t) == 0)
 	{
 		*color = rgb_set(0, 0, 0);
 		return (0);
 	}
 	refracted_ray = compute_refracted_ray(details, n_ratio, cos_i, cos_t);
-	info->refractive_depth--;
-	if (color_at(color, NULL, &refracted_ray, info) != 0)
+	info.refractive_depth--;
+	if (color_at(color, NULL, &refracted_ray, &info) != 0)
 		return (1);
 	*color = rgb_scale(*color, details->shape->material.transparency);
 	return (0);

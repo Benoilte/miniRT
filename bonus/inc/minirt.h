@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/07 09:07:31 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/07 10:34:50 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,13 @@
 # ifdef __linux__
 #  include "linux_keycodes.h"
 #  include <X11/X.h>
-#  define WIN_WIDTH 2048
-#  define WIN_HEIGHT 1536
+#  define WIN_WIDTH 1024
+#  define WIN_HEIGHT 768
 #  define WIN_MID_X 1024
 #  define WIN_MID_Y 768
 # endif
 
-# define THREAD_COUNT		6
+# define THREAD_COUNT		12
 # define REFLECTIVE_DEPTH	5
 # define REFRACTIVE_DEPTH	5
 
@@ -185,10 +185,10 @@ int					color_at(t_color *color, t_shape *self, t_ray *ray, \
 int					is_shadowed(t_shape *self, t_world *world, t_point point, \
 								t_details *details);
 int					set_shadow(t_world *world, t_details *details);
-int					reflected_color(t_color *color, t_render_info *info, \
+int					reflected_color(t_color *color, t_render_info info, \
 									t_details *details);
 int					compute_final_color(t_color *color, t_details *details, \
-									t_render_info *info, t_dbl_lst *intersects);
+									t_render_info info, t_dbl_lst *intersects);
 
 	// TEST
 
