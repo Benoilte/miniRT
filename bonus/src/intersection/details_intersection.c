@@ -6,11 +6,11 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:30:29 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/04 12:00:46 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/07 14:47:46 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "intersection.h"
+#include "minirt.h"
 
 void	set_over_point(t_details *details)
 {
@@ -22,10 +22,17 @@ void	set_over_point(t_details *details)
 
 void	set_under_point(t_details *details)
 {
+	const float	default_inside_offset[SHAPE_COUNT] = {\
+													SP_INSIDE_DEFAULT_OFSSET, \
+													PL_INSIDE_DEFAULT_OFSSET, \
+													CL_INSIDE_DEFAULT_OFSSET};
+	float		offset;
+
+	offset = default_inside_offset[details->shape->type];
 	details->under_point = \
-		tp_subtract(details->position, tp_multiply(details->normalv, EPSILON));
+		tp_subtract(details->position, tp_multiply(details->normalv, offset));
 	details->under_point = \
-		tp_subtract(details->under_point, tp_multiply(details->eyev, EPSILON));
+		tp_subtract(details->under_point, tp_multiply(details->eyev, offset));
 }
 
 int	compute_details(t_details *details, \
