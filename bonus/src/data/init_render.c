@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 13:55:02 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/05 13:59:18 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/07 12:12:00 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ int	init_render_settings(t_data *data, t_render *render)
 		render->blocks[i].start_line = i * slice_size;
 		render->blocks[i].stop_line = render->blocks[i].start_line + slice_size;
 		render->blocks[i].reflective_depth = REFLECTIVE_DEPTH;
+		data->render[i].refractive_depth = REFRACTIVE_DEPTH;
+		if (init_shape_container(ft_lstsize(data->world->shapes), \
+			&(data->render[i].shape_container)) != 0)
+			return (1);
 		i ++;
 	}
 	pthread_mutex_init(&render->print_lock, NULL);
