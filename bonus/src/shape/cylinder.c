@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 12:08:50 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/01 18:09:38 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/06 11:22:50 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	set_cylinder(t_shape *self, char **args, t_world *world)
 	self->material = world->default_material;
 	self->material.color = str_to_rgb(args[5]);
 	self->material.ambient = rgb_mult(self->material.color, world->ambient);
-	if (args[4])
-		set_shape_bonus(self, &args[4]);
+	if (args[6])
+		set_shape_bonus(self, &(args[6]));
 	return (0);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
+#    By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/06 12:49:52 by bgolding          #+#    #+#              #
-#    Updated: 2024/09/19 14:40:09 by bgolding         ###   ########.fr        #
+#    Updated: 2024/10/04 16:16:49 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ INC_DIR		=	inc/
 DBL_LST_SRC	=	dbl_lstnew dbl_lstiter dbl_lstclear dbl_lstdelone \
 				dbl_lstadd_back dbl_lstadd_front dbl_lstadd_ordered \
 				dbl_lstadd_before dbl_lstadd_after dbl_lstlast \
-				dbl_lstsize dbl_lstgetone
+				dbl_lstsize dbl_lstgetone dbl_lstmove_back
 
 SRCS		=	$(addprefix $(SRC_DIR)dbl_list/, $(addsuffix .c, $(DBL_LST_SRC)))
 

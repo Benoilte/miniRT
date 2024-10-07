@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_shape_containers.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/30 19:05:00 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/04 16:21:47 by bebrandt         ###   ########.fr       */
+/*   Created: 2024/10/03 23:39:30 by bebrandt          #+#    #+#             */
+/*   Updated: 2024/10/04 00:41:33 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	main(int argc, char **argv)
-{
-	t_data				*data;
+void	print_container(t_dbl_lst *containers);
 
-	data = init_data(argc, argv);
-	set_hooks(data);
-	timed_render(data);
-	mlx_loop(data->mlx->xvar);
-	destroy_data(data);
+int	init_shape_container(size_t size, t_dbl_lst **containers)
+{
+	t_dbl_lst	*new;
+
+	*containers = NULL;
+	while (size > 0)
+	{
+		new = dbl_lstnew(NULL);
+		if (!new)
+			return (1);
+		dbl_lstadd_back(containers, new);
+		size--;
+	}
 	return (0);
 }

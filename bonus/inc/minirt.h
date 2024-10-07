@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/05 16:02:31 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/07 12:21:24 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include "intersection.h"
 # include "shape.h"
 # include "light.h"
+# include "refraction.h"
 
 //	STANDARD LIBRARIES
 # include <errno.h>
@@ -52,13 +53,15 @@
 # ifdef __linux__
 #  include "linux_keycodes.h"
 #  include <X11/X.h>
-#  define WIN_WIDTH 2048
-#  define WIN_HEIGHT 1536
+#  define WIN_WIDTH 1024
+#  define WIN_HEIGHT 768
 #  define WIN_MID_X 1024
 #  define WIN_MID_Y 768
 # endif
 
+# define THREAD_COUNT		12
 # define REFLECTIVE_DEPTH	5
+# define REFRACTIVE_DEPTH	5
 
 // 	TYPEDEFS
 
@@ -97,12 +100,14 @@ typedef struct s_camera
 
 typedef struct s_render_info
 {
-	int		thread_id;
-	t_data	*data;
-	int		start_line;
-	int		stop_line;
-	int		reflective_depth;
-}			t_render_info;
+	int			thread_id;
+	t_data		*data;
+	int			start_line;
+	int			stop_line;
+	int			reflective_depth;
+	int			refractive_depth;
+	t_dbl_lst	*shape_container;
+}				t_render_info;
 
 typedef struct s_render
 {
@@ -186,10 +191,13 @@ int					intersect_world(t_intersect_list **list, t_ray *ray, \
 									t_world *world);
 int					color_at(t_color *color, t_shape *self, t_ray *ray, \
 									t_render_info *info);
-int					reflected_color(t_color *color, t_render_info *info, \
+int					is_shadowed(t_shape *self, t_world *world, t_point point, \
+								t_details *details);
+int					set_shadow(t_world *world, t_details *details);
+int					reflected_color(t_color *color, t_render_info info, \
 									t_details *details);
 int					compute_final_color(t_color *color, t_details *details, \
-									t_render_info *info);
+									t_render_info info, t_dbl_lst *intersects);
 
 	//	MULTI-THREADING
 int					get_available_core_count(void);

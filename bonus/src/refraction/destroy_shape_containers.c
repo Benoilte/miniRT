@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   destroy_shape_containers.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/30 19:05:00 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/04 16:21:47 by bebrandt         ###   ########.fr       */
+/*   Created: 2024/10/03 23:41:49 by bebrandt          #+#    #+#             */
+/*   Updated: 2024/10/04 00:16:51 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	main(int argc, char **argv)
+void	destroy_shape_container(t_dbl_lst **containers)
 {
-	t_data				*data;
+	t_dbl_lst	*tmp;
+	t_dbl_lst	*next;
 
-	data = init_data(argc, argv);
-	set_hooks(data);
-	timed_render(data);
-	mlx_loop(data->mlx->xvar);
-	destroy_data(data);
-	return (0);
+	tmp = *containers;
+	*containers = NULL;
+	while (tmp)
+	{
+		next = tmp->next;
+		free(tmp);
+		tmp = next;
+	}
 }

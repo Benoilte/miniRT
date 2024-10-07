@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color_at.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:38:39 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/30 18:30:05 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/07 10:27:54 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,25 @@ static t_color	no_color(void)
 	return (black);
 }
 
-int	compute_final_color(t_color *color, t_details *details, t_render_info *info)
+int	compute_final_color(t_color *color, \
+						t_details *details, \
+						t_render_info info, \
+						t_dbl_lst *intersects)
 {
 	t_color	surface;
 	t_color	reflected;
+	t_color	refracted;
 
-	if (!color || !details || !info)
+	if (!color || !details)
 		return (print_error("compute_final_color", INVALID_POINTER));
-	surface = lighting(details, info->data->world->light);
-	if (reflected_color(&reflected, info, details) != 0)
+	if (set_shadow(info.data->world, details) != 0)
 		return (1);
-	*color = rgb_add(surface, reflected);
+	surface = lighting(details, info.data->world->light);
+	if (refracted_color(&refracted, info, details, intersects) != 0)
+		return (2);
+	if (reflected_color(&reflected, info, details) != 0)
+		return (2);
+	*color = rgb_add(rgb_add(surface, reflected), refracted);
 	return (0);
 }
 
@@ -52,8 +60,8 @@ int	color_at(t_color *color, t_shape *self, t_ray *ray, t_render_info *info)
 		*color = no_color();
 	else
 	{
-		if ((compute_details(&details, hit->content, *ray, info->data->world))
-			|| (compute_final_color(color, &details, info)))
+		if ((compute_details(&details, hit->content, *ray))
+			|| (compute_final_color(color, &details, *info, intersects)))
 			return (dbl_lstclear(&intersects, clear_intersection), 3);
 	}
 	dbl_lstclear(&intersects, clear_intersection);

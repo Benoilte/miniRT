@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 15:06:53 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/25 11:28:52 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/03 22:51:51 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,19 @@ void	print_token(void *content)
 	print_args(token->args);
 	ft_printf("line:\t\t%d\n", token->line);
 	ft_printf("=== <END> ===\n\n");
+}
+
+void	print_container(t_dbl_lst *containers)
+{
+	t_dbl_lst	*tmp;
+	int			i;
+
+	i = 0;
+	tmp = containers;
+	while (tmp)
+	{
+		printf("%d : %p\n", i, tmp->content);
+		tmp = tmp->next;
+		i++;
+	}
 }

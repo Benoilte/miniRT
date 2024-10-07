@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   forward_declarations.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 16:21:39 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/06 16:46:51 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/06 08:47:37 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ typedef struct s_intersect_report	t_intersect_report;
 typedef t_dbl_lst					t_intersect_list;
 typedef t_intersect_report			t_report;
 typedef t_intersect_details			t_details;
+typedef struct s_render_info		t_render_info;
 
 #endif
