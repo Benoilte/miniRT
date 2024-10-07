@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/07 15:48:32 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/07 15:55:53 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 //	LOCAL HEADERS
 # include "forward_declarations.h"
 # include "hex_colors.h"
+# include "error_handling.h"
 # include "parsing.h"
 # include "render.h"
 # include "ray.h"
@@ -37,8 +38,6 @@
 
 //	DEFINES
 # define WINDOW_NAME "miniRT"
-
-# define INVALID_POINTER "invalid (null) pointer passed as argument"
 
 //	OS specifics
 # ifdef __APPLE__
@@ -101,14 +100,6 @@ typedef struct s_data
 }					t_data;
 
 //	PROTOTYPES
-
-	//	ERROR HANDLING
-
-int					input_error(t_input_data *input, const char *source, \
-															const char *msg);
-int					log_error(t_list **errors, int type, int line);
-void				exit_error(t_data *data, char *message);
-int					print_error(const char *source, const char *msg);
 
 	//	DATA
 

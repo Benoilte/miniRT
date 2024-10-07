@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:34:54 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/07 15:50:17 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/07 15:56:11 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@
 # include <sys/time.h>
 
 //	DEFINES
-
-# define CORE_COUNT_ERROR \
-"Unable to detect online cpu cores : using default setting"
 
 # define DEFAULT_THREAD_COUNT	4
 # define REFLECTIVE_DEPTH		5
