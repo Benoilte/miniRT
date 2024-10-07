@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 12:57:38 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/07 12:14:05 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/07 13:06:47 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ void	*render_strip(void *arg)
 		while (++(pixel.x) < WIN_WIDTH)
 		{
 			ray = ray_for_pixel(*(info->data->camera), pixel.x, pixel.y);
-			info->reflective_depth = REFLECTIVE_DEPTH;
-			info->refractive_depth = REFRACTIVE_DEPTH;
 			if (color_at(&color, NULL, &ray, info) != 0)
 				return (print_error("render_strip", "aborting thread"), NULL);
 			color_int = rgb_stoi(color);
