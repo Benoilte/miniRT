@@ -6,7 +6,7 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 16:01:08 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/04 11:19:34 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/07 17:44:27 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 //	INCLUDES
 
 # include "minirt.h"
+# include "intersect_list.h"
 # include <stdlib.h>
 # include <stdio.h>
 # include <stdbool.h>
@@ -27,12 +28,6 @@
 # define INTERSECT_INCOMPLETE "unable to compute intersections"
 
 //	TYPEDEFS
-
-typedef struct s_intersection
-{
-	t_shape	*shape;
-	float	t;
-}	t_intersection;
 
 typedef struct s_intersect_details
 {

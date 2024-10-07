@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
+#    By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/10/07 12:19:18 by bgolding         ###   ########.fr        #
+#    Updated: 2024/10/07 17:41:43 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,9 @@ REFRACTION_FILES	=	refraction shape_containers_utils init_shape_containers destr
 RENDERING_FILES		=	render draw_utils view_transform camera intersect_world color_at reflection \
 						multi_threading multi_threading_utils shadow
 INTERSECT_FILES		=	clear_intersection hit_intersection new_intersection details_intersection utils
+INTER_LST_FILES		=	inter_lstnew inter_lstiter inter_lstclear inter_lstdelone inter_lstadd_back \
+						inter_lstadd_front inter_lstadd_ordered inter_lstadd_before inter_lstadd_after \
+						inter_lstlast inter_lstsize inter_lstgetone inter_lstmove_back
 RAY_FILES			=	ray position transform
 SHAPE_FILES			=	init_shapes shape error material normal shape_bonus \
 						sphere sphere_intersect sphere_normal \
@@ -81,6 +84,7 @@ SRC_FILES		=	$(addprefix main/, $(MAIN_FILES)) \
 					$(addprefix refraction/, $(REFRACTION_FILES)) \
 					$(addprefix rendering/, $(RENDERING_FILES)) \
 					$(addprefix intersection/, $(INTERSECT_FILES)) \
+					$(addprefix intersect_list/, $(INTER_LST_FILES)) \
 					$(addprefix ray/, $(RAY_FILES)) \
 					$(addprefix shape/, $(SHAPE_FILES)) \
 					$(addprefix light/, $(LIGHT_FILES)) \
