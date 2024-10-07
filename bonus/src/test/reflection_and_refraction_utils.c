@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 11:41:27 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/07 10:32:06 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/07 12:35:48 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	test_refracted_color_return_black(t_data *data)
 	if (intersect_world(&intersects, &r1, data->world) != 0)
 		return ;
 	compute_details(&details, get_first_hit(&intersects)->content, r1);
-	refracted_color(&color, data->render[0], &details, intersects);
+	refracted_color(&color, data->render.blocks[0], &details, intersects);
 	printf("check if The refracted color with an opaque surface\n");
 	if (rgb_equal(color, rgb_set(0, 0, 0)))
 		printf("\033[0;32mTRUE\033[0m\n");
@@ -74,7 +74,7 @@ void	test_refracted_under_total_internal_reflection(t_data *data)
 	if (intersect_world(&intersects, &r1, data->world) != 0)
 		return ;
 	compute_details(&details, get_first_hit(&intersects)->content, r1);
-	refracted_color(&color, data->render[0], &details, intersects);
+	refracted_color(&color, data->render.blocks[0], &details, intersects);
 	printf("check, refracted color under total internal reflection is black\n");
 	if (rgb_equal(color, rgb_set(0, 0, 0)))
 		printf("\033[0;32mTRUE\033[0m\n");

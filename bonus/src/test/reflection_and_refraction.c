@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reflection_and_refraction.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 16:28:44 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/06 08:59:27 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/07 12:35:18 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,6 @@ void	test_refraction_index(t_data *data)
 			((t_intersection *)tmp->content)->shape->material.refractive_index);
 		tmp = tmp->next;
 	}
-	print_n1_and_n2(intersects, &r1, data->render[0].shape_container);
+	print_n1_and_n2(intersects, &r1, data->render.blocks[0].shape_container);
 	dbl_lstclear(&intersects, clear_intersection);
 }
