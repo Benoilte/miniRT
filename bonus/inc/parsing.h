@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/07 15:59:40 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/07 21:51:02 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@
 # define STR_AMBIENT			"A"
 # define STR_CAMERA				"C"
 # define STR_LIGHT				"L"
+
 # define STR_DEFAULT_MATERIAL	"M"
+# define STR_RESOLUTION			"R"
 
 # define STR_SPHERE		"sp"
 # define STR_PLANE		"pl"
@@ -38,11 +40,10 @@
 # define CAMERA_PARAMS 		3
 # define LIGHT_PARAMS 		3
 # define MATERIAL_PARAMS	6
+# define RESOLUTION_PARAMS	2
 # define SPHERE_PARAMS 		3
 # define PLANE_PARAMS 		3
 # define CYLINDER_PARAMS	5
-
-# define SHAPE_BONUS_PARAMS	6
 
 # define WORLD_SHAPE_LIMIT			70
 # define INPUT_ERROR_REPORT_LIMIT	50
@@ -65,6 +66,10 @@
 # define TRANSPARENCY_MAX	1
 # define REFRACT_INDEX_MIN	1
 # define REFRACT_INDEX_MAX	3
+# define RES_RANGE_W_MIN	640
+# define RES_RANGE_W_MAX	2048
+# define RES_RANGE_H_MIN	480
+# define RES_RANGE_H_MAX	1536
 
 //	TYPEDEFS
 
@@ -82,6 +87,8 @@ typedef enum e_info
 	INFO_REFLECTIVE,
 	INFO_TRANSPARENCY,
 	INFO_REFRACT_INDEX,
+	INFO_WIN_WIDTH,
+	INFO_WIN_HEIGHT,
 	INFO_COUNT
 }	t_info;
 
@@ -92,6 +99,7 @@ typedef enum e_id
 	ID_CAMERA,
 	ID_LIGHT,
 	ID_MATERIAL,
+	ID_RESOLUTION,
 	ID_SPHERE,
 	ID_PLANE,
 	ID_CYLINDER,
@@ -144,11 +152,14 @@ void	free_args(char ***args);
 //	parser.c
 int		parser(t_input_data *input);
 
-//	validate_single_element.c
+//	validate_single_element_1.c
 int		validate_ambient(t_token *token, t_list **errors);
 int		validate_camera(t_token *token, t_list **errors);
 int		validate_light(t_token *token, t_list **errors);
+
+//	validate_single_element_2.c
 int		validate_default_material(t_token *token, t_list **errors);
+int		validate_resolution(t_token *token, t_list **errors);
 
 //	validate_shape.c
 int		validate_sphere(t_token *token, t_list **errors);
@@ -172,6 +183,7 @@ int		count_args(const char **args);
 
 //	validate_bonus.c
 int		validate_material_parameters(char **args, int line, t_list **errors);
+int		validate_resolution_parameters(char **args, int line, t_list **errors);
 
 //	validate_bonus_info_1.c
 int		validate_diffuse(const char *str, int line, t_list **errors);
@@ -182,5 +194,7 @@ int		validate_reflective(const char *str, int line, t_list **errors);
 //	validate_bonus_info_2.c
 int		validate_transparency(const char *str, int line, t_list **errors);
 int		validate_refraction_index(const char *str, int line, t_list **errors);
+int		validate_window_width(const char *str, int line, t_list **errors);
+int		validate_window_height(const char *str, int line, t_list **errors);
 
 #endif

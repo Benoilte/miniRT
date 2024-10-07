@@ -6,7 +6,7 @@
 #    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/10/07 12:19:18 by bgolding         ###   ########.fr        #
+#    Updated: 2024/10/07 17:41:41 by bgolding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,9 +25,9 @@ LIBDLIST			=	$(LIB)libdlist/
 
 MAIN_FILES			=	main
 ERROR_FILES			=	error input_error
-PARSING_FILES		=	file_validation lexer tokenize token_utils parser validate_single_element \
+PARSING_FILES		=	file_validation lexer tokenize token_utils parser validate_single_element_1 \
 						validate_shape validate_info_1 validate_info_2 validate_utils validate_bonus \
-						validate_bonus_info_1 validate_bonus_info_2
+						validate_bonus_info_1 validate_bonus_info_2 validate_single_element_2
 DATA_FILES			=	init_data destroy_data init_world destroy_world init_input destroy_input init_utils \
 						init_render destroy_render
 WINDOW_FILES		=	init_mlx
