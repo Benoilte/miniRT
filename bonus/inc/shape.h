@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shape.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:36:37 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/01 18:02:23 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/07 14:47:24 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@
 # define SH_VTABLE_ERROR "could not set shape vtable"
 
 # define MATERIAL_INVALID_POINTER "invalid (null) material pointer"
+
+# define SP_INSIDE_DEFAULT_OFSSET	0.00004f
+# define PL_INSIDE_DEFAULT_OFSSET	0.00001f
+# define CL_INSIDE_DEFAULT_OFSSET	0.00004f
 
 // SPHERE CENTER DEFAULT
 
