@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 12:57:38 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/07 13:06:47 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/07 15:07:20 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void	render(t_data *data)
 		print_error("render", INVALID_POINTER);
 		return ;
 	}
-	ft_printf("Render with %d threads\n", data->render.thread_count);
 	reset_image(data);
 	update_progress(data, 0);
 	create_threads(data);

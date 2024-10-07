@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/07 15:03:58 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/07 15:11:37 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@
 # define WINDOW_NAME "miniRT"
 
 # define INVALID_POINTER "invalid (null) pointer passed as argument"
+
+# define CORE_COUNT_ERROR \
+"Unable to detect online cpu cores : using default setting"
 
 //	OS specifics
 # ifdef __APPLE__
