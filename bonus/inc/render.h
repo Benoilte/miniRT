@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:34:54 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/07 15:56:11 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/07 16:41:15 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,29 +55,45 @@ typedef struct s_render
 
 //	PROTOTYPES
 
+//	draw_utils.c
 void		set_pixel_color(t_data *data, int x, int y, int color);
 
+//	render.c
 void		render(t_data *data);
 void		*render_strip(void *arg);
-t_m4x4		view_transform(t_point from, t_vector forward, t_vector up);
+
+//	camera.c
 t_camera	camera(size_t hsize, size_t vsize, float fov);
 t_ray		ray_for_pixel(t_camera camera, size_t px, size_t py);
+
+//	view_transform.c
+t_m4x4		view_transform(t_point from, t_vector forward, t_vector up);
+
+//	intersect_world.c
 int			intersect_world(t_intersect_list **list, t_ray *ray, \
 							t_world *world);
+
+//	color_at.c
 int			color_at(t_color *color, t_shape *self, t_ray *ray, \
 							t_render_info *info);
-int			is_shadowed(t_shape *self, t_world *world, t_point point, \
-							t_details *details);
-int			set_shadow(t_world *world, t_details *details);
-int			reflected_color(t_color *color, t_render_info info, \
-							t_details *details);
 int			compute_final_color(t_color *color, t_details *details, \
 									t_render_info info, t_dbl_lst *intersects);
 
-	//	MULTI-THREADING
-int			get_available_core_count(void);
+//	shadow.c
+int			is_shadowed(t_shape *self, t_world *world, t_point point, \
+							t_details *details);
+int			set_shadow(t_world *world, t_details *details);
+
+//	reflection.c
+int			reflected_color(t_color *color, t_render_info info, \
+							t_details *details);
+
+//	multi_threading.c
 void		create_threads(t_data *data);
 void		join_threads(t_data *data);
+
+//	multi_threading_utils.c
+int			get_available_core_count(void);
 
 void		timed_render(t_data *data);
 

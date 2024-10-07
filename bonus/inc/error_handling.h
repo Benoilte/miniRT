@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:52:04 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/07 16:00:24 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/07 16:30:45 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,11 @@ typedef struct t_error
 
 //	PROTOTYPES
 
-//	error/error.c
+//	error.c
 int		print_error(const char *source, const char *msg);
 void	exit_error(t_data *data, char *message);
 
-//	error/input_error.c
+//	input_error.c
 int		input_error(t_input_data *input, const char *source, const char *msg);
 int		log_error(t_list **errors, int type, int line);
 

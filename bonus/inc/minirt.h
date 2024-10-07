@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/07 15:55:53 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/07 16:41:28 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,44 +99,68 @@ typedef struct s_data
 	t_render		render;
 }					t_data;
 
-//	PROTOTYPES
+//	PROTOTYPES - DATA
 
-	//	DATA
+//	init_data.c
+t_data		*init_data(int argc, char **argv);
 
-int					init_input(t_input_data *input, int argc, char **argv);
-t_data				*init_data(int argc, char **argv);
-t_world				*init_world(t_list *token_list);
-t_camera			*init_camera(char **str);
-int					init_render_settings(t_data *data, t_render *render);
-void				destroy_input(t_input_data *input);
-void				destroy_data(t_data *data);
-void				destroy_world(t_world *world);
-void				destroy_camera(t_camera *camera);
-void				destroy_render_settings(t_render *render);
-t_shape				*add_new_shape_to_world(t_world *world, t_shape_type type);
-char				**get_element(t_list *token_list, t_id id);
-float				rt_roundf(float val);
-t_tuple				str_to_tuple(char *str, int type);
-t_color				str_to_rgb(char *str);
-t_color				get_ambient(char **str);
+//	init_world.c
+t_world		*init_world(t_list *token_list);
+t_shape		*add_new_shape_to_world(t_world *world, t_shape_type type);
 
-	//	WINDOW (MLX)
+//	init_input.c
+int			init_input(t_input_data *input, int argc, char **argv);
 
-t_mlx				*init_mlx(void);
-void				destroy_mlx(t_mlx *mlx);
-int					close_minirt(t_data *data);
-void				reset_image(t_data *data);
+//	init_render.c
+int			init_render_settings(t_data *data, t_render *render);
 
-	//	HOOKS
+//	init_utils.c
+char		**get_element(t_list *token_list, t_id id);
+float		rt_roundf(float val);
+t_tuple		str_to_tuple(char *str, int type);
+t_color		str_to_rgb(char *str);
+t_color		get_ambient(char **str);
 
-void				set_hooks(t_data *data);
-int					keypress(int keycode, t_data *data);
-int					mouse_down(int keycode, t_data *data);
-int					mouse_up(int keycode, t_data *data);
-int					mouse_move(int x, int y, t_data *data);
+//	destroy_data.c
+void		destroy_data(t_data *data);
 
-	// TEST
+//	destroy_world.c
+void		destroy_world(t_world *world);
 
-void				print_color(t_color c, char *msg);
+//	destroy_input.c
+void		destroy_input(t_input_data *input);
+
+//	destroy_render.c
+void		destroy_render_settings(t_render *render);
+
+//	render/camera.c
+t_camera	*init_camera(char **str);
+void		destroy_camera(t_camera *camera);
+
+//	PROTOTYPES - WINDOW (MLX)
+
+//	init_mlx.c
+t_mlx		*init_mlx(void);
+void		reset_image(t_data *data);
+
+//	destroy_mlx_[linux|macos].c
+void		destroy_mlx(t_mlx *mlx);
+//	close_[linux|macos].c
+int			close_minirt(t_data *data);
+
+//	PROTOTYPES - HOOKS (MLX)
+
+//	hooks.c
+void		set_hooks(t_data *data);
+//	keypress.c
+int			keypress(int keycode, t_data *data);
+//	mouse.c
+int			mouse_down(int keycode, t_data *data);
+int			mouse_up(int keycode, t_data *data);
+int			mouse_move(int x, int y, t_data *data);
+
+//	PROTOTYPES - TESTS
+
+void		print_color(t_color c, char *msg);
 
 #endif
