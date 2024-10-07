@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   reflection_and_refraction.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 16:28:44 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/07 12:35:18 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/07 18:45:27 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 void	print_color(t_color c, char *msg);
-void	print_n1_and_n2(t_dbl_lst *intersects, \
+void	print_n1_and_n2(t_inter_lst *intersects, \
 						t_ray *ray, \
 						t_dbl_lst *containers);
 
@@ -69,11 +69,11 @@ void	test_refraction_index(t_data *data)
 	while (tmp)
 	{
 		printf("%p: %.5f - %.5f\n", \
-			((t_intersection *)tmp->content)->shape, \
-			((t_intersection *)tmp->content)->t, \
-			((t_intersection *)tmp->content)->shape->material.refractive_index);
+			tmp->intersect.shape, \
+			tmp->intersect.t, \
+			tmp->intersect.shape->material.refractive_index);
 		tmp = tmp->next;
 	}
 	print_n1_and_n2(intersects, &r1, data->render.blocks[0].shape_container);
-	dbl_lstclear(&intersects, clear_intersection);
+	inter_lstclear(&intersects);
 }

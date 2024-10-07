@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shadow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 14:50:29 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/07 13:20:09 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/07 18:40:45 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,11 @@
 
 static void	set_first_hit_opaque(t_intersect_list **first_hit)
 {
-	t_shape	*shape;
-
 	if (!*first_hit)
 		return ;
 	while (*first_hit)
 	{
-		shape = ((t_intersection *)(*first_hit)->content)->shape;
-		if (shape->material.transparency > 0.5)
+		if ((*first_hit)->intersect.shape->material.transparency > 0.5)
 			*first_hit = (*first_hit)->next;
 		else
 			break ;
@@ -50,13 +47,12 @@ int	is_shadowed(t_shape *self, \
 	first_hit = get_first_hit(&intersects);
 	set_first_hit_valid(self, &first_hit);
 	set_first_hit_opaque(&first_hit);
-	if (first_hit && \
-		lower_or_equalf(((t_intersection *)(first_hit->content))->t, distance))
+	if (first_hit && lower_or_equalf(first_hit->intersect.t, distance))
 	{
-		dbl_lstclear(&intersects, clear_intersection);
+		inter_lstclear(&intersects);
 		return (1);
 	}
-	dbl_lstclear(&intersects, clear_intersection);
+	inter_lstclear(&intersects);
 	return (0);
 }
 

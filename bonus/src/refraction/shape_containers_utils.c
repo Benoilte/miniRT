@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shape_containers_utils.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 23:09:41 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/04 08:51:45 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/07 18:29:19 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

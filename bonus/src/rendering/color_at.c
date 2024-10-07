@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color_at.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:38:39 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/07 10:27:54 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/07 18:37:20 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static t_color	no_color(void)
 int	compute_final_color(t_color *color, \
 						t_details *details, \
 						t_render_info info, \
-						t_dbl_lst *intersects)
+						t_inter_lst *intersects)
 {
 	t_color	surface;
 	t_color	reflected;
@@ -60,10 +60,10 @@ int	color_at(t_color *color, t_shape *self, t_ray *ray, t_render_info *info)
 		*color = no_color();
 	else
 	{
-		if ((compute_details(&details, hit->content, *ray))
+		if ((compute_details(&details, &hit->intersect, *ray))
 			|| (compute_final_color(color, &details, *info, intersects)))
-			return (dbl_lstclear(&intersects, clear_intersection), 3);
+			return (inter_lstclear(&intersects), 3);
 	}
-	dbl_lstclear(&intersects, clear_intersection);
+	inter_lstclear(&intersects);
 	return (0);
 }

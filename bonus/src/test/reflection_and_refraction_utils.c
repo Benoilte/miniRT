@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reflection_and_refraction_utils.c                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 11:41:27 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/07 12:35:48 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/07 18:47:52 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ void	test_refracted_color_return_black(t_data *data)
 	intersects = NULL;
 	if (intersect_world(&intersects, &r1, data->world) != 0)
 		return ;
-	compute_details(&details, get_first_hit(&intersects)->content, r1);
+	compute_details(&details, &get_first_hit(&intersects)->intersect, r1);
 	refracted_color(&color, data->render.blocks[0], &details, intersects);
 	printf("check if The refracted color with an opaque surface\n");
 	if (rgb_equal(color, rgb_set(0, 0, 0)))
 		printf("\033[0;32mTRUE\033[0m\n");
 	else
 		printf("\033[0;31mFALSE\033[0m\n");
-	dbl_lstclear(&intersects, clear_intersection);
+	inter_lstclear(&intersects);
 }
 
 /*
@@ -73,12 +73,12 @@ void	test_refracted_under_total_internal_reflection(t_data *data)
 	intersects = NULL;
 	if (intersect_world(&intersects, &r1, data->world) != 0)
 		return ;
-	compute_details(&details, get_first_hit(&intersects)->content, r1);
+	compute_details(&details, &get_first_hit(&intersects)->intersect, r1);
 	refracted_color(&color, data->render.blocks[0], &details, intersects);
 	printf("check, refracted color under total internal reflection is black\n");
 	if (rgb_equal(color, rgb_set(0, 0, 0)))
 		printf("\033[0;32mTRUE\033[0m\n");
 	else
 		printf("\033[0;31mFALSE\033[0m\n");
-	dbl_lstclear(&intersects, clear_intersection);
+	inter_lstclear(&intersects);
 }

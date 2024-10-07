@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   forward_declarations.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 16:21:39 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/07 16:12:28 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/07 19:07:48 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ typedef struct s_light				t_light;
 typedef struct s_intersection		t_intersection;
 typedef struct s_intersect_details	t_intersect_details;
 typedef struct s_intersect_report	t_intersect_report;
-typedef t_dbl_lst					t_intersect_list;
+typedef struct s_intersect_list		t_intersect_list;
+typedef t_intersect_list			t_inter_lst;
 typedef t_intersect_report			t_report;
 typedef t_intersect_details			t_details;
 typedef struct s_render_info		t_render_info;

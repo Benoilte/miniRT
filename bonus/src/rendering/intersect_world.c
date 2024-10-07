@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect_world.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 13:28:49 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/09 18:27:18 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/07 18:34:40 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,27 +23,19 @@ static int	add_intersects_to_list(	t_intersect_list **list, \
 									t_report *report, \
 									t_shape *shape)
 {
-	t_intersection		*new_intersect;
-	t_intersect_list	*new_node;
+	t_intersect_list	*new_intersect;
 
 	if (!list || !report || !shape)
 		return (print_error("add_intersects_to_list", INVALID_POINTER), 1);
 	while (report->count--)
 	{
-		new_intersect = new_intersection(shape, report->t[report->count]);
+		new_intersect = inter_lstnew(shape, report->t[report->count]);
 		if (!new_intersect)
 		{
 			print_error("add_intersects_to_list", strerror(errno));
 			return (2);
 		}
-		new_node = dbl_lstnew(new_intersect);
-		if (!new_node)
-		{
-			free(new_intersect);
-			print_error("add_intersects_to_list", strerror(errno));
-			return (3);
-		}
-		dbl_lstadd_ordered(list, new_node, add_new_before_lst);
+		inter_lstadd_ordered(list, new_intersect, add_new_before_lst);
 	}
 	return (0);
 }

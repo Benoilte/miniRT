@@ -6,7 +6,7 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 16:01:08 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/07 17:44:27 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/07 18:46:09 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,22 +51,17 @@ typedef struct s_intersect_report
 	float	t[REPORT_BUFFER_SIZE];
 }			t_intersect_report;
 
-typedef t_dbl_lst			t_intersect_list;
-typedef t_intersect_report	t_report;
-typedef t_intersect_details	t_details;
-
 // PROTOTYPES
 
 t_intersection	set_intersection(t_shape *shape, float t);
 t_intersection	*new_intersection(t_shape *shape, float t);
-bool			add_new_before_lst(t_dbl_lst *new, t_dbl_lst *lst);
-bool			is_hit_positive(t_dbl_lst *intersection);
+bool			add_new_before_lst(t_inter_lst *new, t_inter_lst *lst);
+bool			is_hit_positive(t_inter_lst *intersection);
 void			clear_intersection(void *intersection);
 int				compute_details(t_details *details, t_intersection *hit, \
 								t_ray ray);
-t_dbl_lst		*get_first_hit(t_dbl_lst **dlist);
-void			set_first_hit_valid(t_shape *self, \
-								t_intersect_list **first_hit);
+t_inter_lst		*get_first_hit(t_inter_lst **lst);
+void			set_first_hit_valid(t_shape *self, t_inter_lst **first_hit);
 void			set_over_point(t_details *details);
 void			set_under_point(t_details *details);
 

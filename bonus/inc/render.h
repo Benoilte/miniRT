@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:34:54 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/07 16:41:15 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/07 18:21:47 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int			intersect_world(t_intersect_list **list, t_ray *ray, \
 int			color_at(t_color *color, t_shape *self, t_ray *ray, \
 							t_render_info *info);
 int			compute_final_color(t_color *color, t_details *details, \
-									t_render_info info, t_dbl_lst *intersects);
+									t_render_info info, t_inter_lst *intersects);
 
 //	shadow.c
 int			is_shadowed(t_shape *self, t_world *world, t_point point, \

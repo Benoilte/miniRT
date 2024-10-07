@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   refraction.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 09:17:18 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/07 10:29:23 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/07 18:25:12 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static t_ray	compute_refracted_ray(t_details *details, \
 int	refracted_color(t_color *color, \
 					t_render_info info, \
 					t_details *details, \
-					t_dbl_lst *intersects)
+					t_inter_lst *intersects)
 {
 	t_ray		refracted_ray;
 	float		n_ratio;
@@ -117,25 +117,25 @@ int	refracted_color(t_color *color, \
 	return (0);
 }
 
-void	compute_refraction_indices(	t_dbl_lst *intersects, \
+void	compute_refraction_indices(	t_inter_lst *intersects, \
 									t_details *details, \
 									t_dbl_lst *containers)
 {
-	t_dbl_lst	*tmp;
+	t_inter_lst	*tmp;
 
 	tmp = intersects;
 	reset_shape_container(containers);
 	while (tmp)
 	{
-		if (equalf(((t_intersection *)tmp->content)->t, details->t))
+		if (equalf(tmp->intersect.t, details->t))
 		{
 			details->n1 = get_last_refraction_index(containers);
-			move_shape(((t_intersection *)tmp->content)->shape, &containers);
+			move_shape(tmp->intersect.shape, &containers);
 			details->n2 = get_last_refraction_index(containers);
 			break ;
 		}
 		else
-			move_shape(((t_intersection *)tmp->content)->shape, &containers);
+			move_shape(tmp->intersect.shape, &containers);
 		tmp = tmp->next;
 	}
 }
