@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shape.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:36:37 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/07 14:47:24 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/08 14:16:59 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@
 
 # define MATERIAL_INVALID_POINTER "invalid (null) material pointer"
 
-# define SP_INSIDE_DEFAULT_OFSSET	0.00004f
 # define PL_INSIDE_DEFAULT_OFSSET	0.00001f
+# define CU_INSIDE_DEFAULT_OFSSET	0.00001f
+
+# define SP_INSIDE_DEFAULT_OFSSET	0.00004f
 # define CL_INSIDE_DEFAULT_OFSSET	0.00004f
 
 // SPHERE CENTER DEFAULT
@@ -55,6 +57,12 @@
 # define CL_DEFAULT_X 0
 # define CL_DEFAULT_Y 0
 # define CL_DEFAULT_Z 0
+
+// CUBE CENTER DEFAULT
+
+# define CU_DEFAULT_X 0
+# define CU_DEFAULT_Y 0
+# define CU_DEFAULT_Z 0
 
 //	MATERIAL DEFAULTS
 
@@ -104,8 +112,15 @@ typedef enum e_shape_type
 	SPHERE,
 	PLANE,
 	CYLINDER,
+	CUBE,
 	SHAPE_COUNT
 }	t_shape_type;
+
+typedef enum e_MIN_MAX
+{
+	MIN,
+	MAX,
+}	t_MIN_MAX;
 
 typedef void		(*t_vset_default)(t_shape *self);
 typedef void		(*t_vdestroy)(void *self);
@@ -172,6 +187,20 @@ const t_vtable	*get_cylinder_vtable(void);
 bool			intersect_cylinder(t_ray *ray, t_shape *cl, t_report *report);
 bool			intersect_caps(t_ray *ray, t_shape *cl, t_report *report);
 t_vector		normal_cylinder(t_shape *shape, t_point *object_point);
+
+//	PROTOTYPES CUBE
+int				set_cube(t_shape *self, char **args, t_world *world);
+void			set_default_cube(t_shape *self);
+const t_vtable	*get_cube_vtable(void);
+bool			intersect_cube(t_ray *r, t_shape *shape, t_report *report);
+t_vector		normal_cube(t_shape *shape, t_point *object_point);
+float			ft_get_min_or_max_f(float a);
+
+// PROTOTYPE INTERSECT SHAPE UTILS
+
+void			ft_swap(float *a, float *b);
+float			ft_get_max_f(float x, float y, float z);
+float			ft_get_min_f(float x, float y, float z);
 
 //	PROTOTYPES BONUS
 void			set_shape_bonus(t_shape *self, char **args);

@@ -1,25 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   intersect_shape_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/30 19:05:00 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/08 14:45:43 by bebrandt         ###   ########.fr       */
+/*   Created: 2024/10/08 10:58:24 by bebrandt          #+#    #+#             */
+/*   Updated: 2024/10/08 13:30:05 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
-
-int	main(int argc, char **argv)
+void	ft_swap(float *a, float *b)
 {
-	t_data				*data;
+	float	tmp;
 
-	data = init_data(argc, argv);
-	set_hooks(data);
-	timed_render(data);
-	mlx_loop(data->mlx->xvar);
-	destroy_data(data);
-	return (0);
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
+float	ft_get_max_f(float x, float y, float z)
+{
+	if ((x > y) && (x > z))
+		return (x);
+	if ((y > x) && (y > z))
+		return (y);
+	else
+		return (z);
+}
+
+float	ft_get_min_f(float x, float y, float z)
+{
+	if ((x < y) && (x < z))
+		return (x);
+	if ((y < x) && (y < z))
+		return (y);
+	else
+		return (z);
 }

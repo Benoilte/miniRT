@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shape.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:54:15 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/01 18:03:53 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/08 09:33:19 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int	set_shape_vtable(t_shape *new, t_shape_type type)
 		new->f = get_plane_vtable();
 	if (type == CYLINDER)
 		new->f = get_cylinder_vtable();
+	if (type == CUBE)
+		new->f = get_cube_vtable();
 	return (0);
 }
 
