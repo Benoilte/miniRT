@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/08 15:08:58 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/08 15:22:39 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@
 # define SPHERE_PARAMS 		3
 # define PLANE_PARAMS 		3
 # define CYLINDER_PARAMS	5
-# define CUBE_PARAMS		5
+# define CUBE_PARAMS		6
 
 # define WORLD_SHAPE_LIMIT			70
 # define INPUT_ERROR_REPORT_LIMIT	50

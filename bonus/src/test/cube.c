@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 08:48:12 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/08 14:45:30 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/08 15:18:02 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	test_intersect_cube(t_data *data)
 	t_shape	*cube;
 
 	cube = add_new_shape_to_world(data->world, CUBE);
+	(void)cube;
 	test_inter_cube(data->world, ray(point(5, 0.5, 0), vector(-1, 0, 0)), 4, 6);
 	test_inter_cube(data->world, ray(point(-5, 0.5, 0), vector(1, 0, 0)), 4, 6);
 	test_inter_cube(data->world, ray(point(0.5, 5, 0), vector(0, -1, 0)), 4, 6);

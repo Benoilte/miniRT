@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 19:49:36 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/08 13:16:04 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/08 15:23:20 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	validate_cylinder(t_token *token, t_list **errors)
 int	validate_cube(t_token *token, t_list **errors)
 {
 	const t_info	info[CUBE_PARAMS] = {\
-	INFO_COORD, INFO_VECTOR, INFO_SIZE, INFO_SIZE, INFO_COLOR};
+	INFO_COORD, INFO_VECTOR, INFO_SIZE, INFO_SIZE, INFO_SIZE, INFO_COLOR};
 	int				i;
 	char			**args;
 
