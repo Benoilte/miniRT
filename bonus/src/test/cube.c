@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 08:48:12 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/08 09:45:21 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/08 11:58:09 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ void	check_intersects_cube(t_inter_lst *intersects, float t1, float t2)
 	}
 }
 
-void	test_inter_cube(t_world *world, t_ray r, float expect_t1, float expect_t2)
+void	test_inter_cube(t_world *world, \
+						t_ray r, \
+						float expect_t1, \
+						float expect_t2)
 {
 	t_inter_lst	*intersects;
 
@@ -37,6 +40,21 @@ void	test_inter_cube(t_world *world, t_ray r, float expect_t1, float expect_t2)
 	if (intersect_world(&intersects, &r, world) != 0)
 		return ;
 	check_intersects_cube(intersects, expect_t1, expect_t2);
+	inter_lstclear(&intersects);
+}
+
+void	test_ray_missing_cube(t_world *world, t_ray r)
+{
+	t_inter_lst	*intersects;
+
+	intersects = NULL;
+	if (intersect_world(&intersects, &r, world) != 0)
+		return ;
+	printf("\ncheck if ray missing cube\n");
+	if (intersects == NULL)
+		printf("\033[0;32mTRUE\033[0m\n");
+	else
+		printf("\033[0;31mFALSE\033[0m\n");
 	inter_lstclear(&intersects);
 }
 
@@ -60,6 +78,15 @@ void	test_inter_cube(t_world *world, t_ray r, float expect_t1, float expect_t2)
 ​ 	    | inside | point(0, 0.5, 0)  | vector(0, 0, 1)  | -1 |  1 |
 */
 
+/*
+​ 	    | origin           | direction                      |
+​ 	    | point(-2, 0, 0)  | vector(0.2673, 0.5345, 0.8018) |
+​ 	    | point(0, -2, 0)  | vector(0.8018, 0.2673, 0.5345) |
+​ 	    | point(0, 0, -2)  | vector(0.5345, 0.8018, 0.2673) |
+​ 	    | point(2, 0, 2)   | vector(0, 0, -1)               |
+​ 	    | point(0, 2, 2)   | vector(0, -1, 0)               |
+​ 	    | point(2, 2, 0)   | vector(-1, 0, 0)               |
+*/
 void	test_intersect_cube(t_data *data)
 {
 	add_new_shape_to_world(data->world, CUBE);
@@ -70,4 +97,14 @@ void	test_intersect_cube(t_data *data)
 	test_inter_cube(data->world, ray(point(0.5, 0, 5), vector(0, 0, -1)), 4, 6);
 	test_inter_cube(data->world, ray(point(0.5, 0, -5), vector(0, 0, 1)), 4, 6);
 	test_inter_cube(data->world, ray(point(0, 0.5, 0), vector(0, 0, 1)), -1, 1);
+
+	test_ray_missing_cube(data->world, \
+						ray(point(-2, 0, 0), vector(0.2673, 0.5345, 0.8018)));
+	test_ray_missing_cube(data->world, \
+						ray(point(0, -2, 0), vector(0.8018, 0.2673, 0.5345)));
+	test_ray_missing_cube(data->world, \
+						ray(point(0, 0, -2), vector(0.5345, 0.8018, 0.2673)));
+	test_ray_missing_cube(data->world, ray(point(2, 0, 2), vector(0, 0, -1)));
+	test_ray_missing_cube(data->world, ray(point(0, 2, 2), vector(0, -1, 0)));
+	test_ray_missing_cube(data->world, ray(point(2, 2, 0), vector(-1, 0, 0)));
 }
