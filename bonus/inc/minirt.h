@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/07 16:41:28 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/08 09:09:56 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,15 @@
 //	OS specifics
 # ifdef __APPLE__
 #  include "macos_keycodes.h"
-#  define WIN_WIDTH 960
-#  define WIN_HEIGHT 720
-#  define WIN_MID_X 480
-#  define WIN_MID_Y 360
+#  define DEFAULT_WIN_WIDTH 960
+#  define DEFAULT_WIN_HEIGHT 720
 # endif
 
 # ifdef __linux__
 #  include "linux_keycodes.h"
 #  include <X11/X.h>
-#  define WIN_WIDTH 2048
-#  define WIN_HEIGHT 1536
-#  define WIN_MID_X 1024
-#  define WIN_MID_Y 768
+#  define DEFAULT_WIN_WIDTH 2048
+#  define DEFAULT_WIN_HEIGHT 1536
 # endif
 
 // 	TYPEDEFS
@@ -97,6 +93,7 @@ typedef struct s_data
 	t_world			*world;
 	t_camera		*camera;
 	t_render		render;
+	t_pixel			resolution;
 }					t_data;
 
 //	PROTOTYPES - DATA
@@ -134,13 +131,13 @@ void		destroy_input(t_input_data *input);
 void		destroy_render_settings(t_render *render);
 
 //	render/camera.c
-t_camera	*init_camera(char **str);
+t_camera	*init_camera(t_data *data);
 void		destroy_camera(t_camera *camera);
 
 //	PROTOTYPES - WINDOW (MLX)
 
 //	init_mlx.c
-t_mlx		*init_mlx(void);
+t_mlx		*init_mlx(t_pixel resolution);
 void		reset_image(t_data *data);
 
 //	destroy_mlx_[linux|macos].c

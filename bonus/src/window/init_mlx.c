@@ -6,13 +6,13 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:33:44 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/23 16:29:11 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/08 09:12:17 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_mlx	*init_mlx(void)
+t_mlx	*init_mlx(t_pixel resolution)
 {
 	t_mlx	*mlx;
 
@@ -22,14 +22,15 @@ t_mlx	*init_mlx(void)
 	mlx->xvar = mlx_init();
 	if (!mlx->xvar)
 		return (NULL);
-	mlx->win = mlx_new_window(mlx->xvar, WIN_WIDTH, WIN_HEIGHT, WINDOW_NAME);
+	mlx->win = mlx_new_window(mlx->xvar, resolution.x, resolution.y, \
+								WINDOW_NAME);
 	if (!mlx->win)
 		return (NULL);
-	mlx->img = mlx_new_image(mlx->xvar, WIN_WIDTH, WIN_HEIGHT);
+	mlx->img = mlx_new_image(mlx->xvar, resolution.x, resolution.y);
 	if (!mlx->img)
 		return (NULL);
 	mlx->img_data = mlx_get_data_addr(mlx->img, &mlx->bpp, \
-									&mlx->line_len, &mlx->endian);
+										&mlx->line_len, &mlx->endian);
 	return (mlx);
 }
 
@@ -37,7 +38,8 @@ void	reset_image(t_data *data)
 {
 	void	*new_img;
 
-	new_img = mlx_new_image(data->mlx->xvar, WIN_WIDTH, WIN_HEIGHT);
+	new_img = mlx_new_image(data->mlx->xvar, data->resolution.x, \
+								data->resolution.y);
 	if (!new_img)
 	{
 		perror("unable to reset image for render");

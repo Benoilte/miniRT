@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_single_element.c                          :+:      :+:    :+:   */
+/*   validate_single_element_1.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 19:39:32 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/01 15:42:50 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/07 17:42:34 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,16 +92,4 @@ int	validate_light(t_token *token, t_list **errors)
 	if (args[i])
 		return (log_error(errors, ERR_ARG_EXCESS, token->line));
 	return (0);
-}
-
-int	validate_default_material(t_token *token, t_list **errors)
-{
-	static int		default_material_exists = 0;
-
-	if (!token || !token->args || !errors)
-		return (-1);
-	if (default_material_exists)
-		return (log_error(errors, ERR_DUPLICATE, token->line));
-	default_material_exists = 1;
-	return (validate_material_parameters(&token->args[1], token->line, errors));
 }
