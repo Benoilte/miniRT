@@ -6,7 +6,7 @@
 #    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/10/08 11:36:52 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/10/08 13:00:17 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ SHAPE_FILES			=	init_shapes shape error material normal shape_bonus \
 						intersect_shape_utils
 LIGHT_FILES			=	new_light destroy_light lighting
 TEST_FILES			=	print print_utils time reflection_and_refraction reflection_and_refraction_utils \
-						cube
+						cube cube_utils
 
 # OS specific settings
 UNAME_S			=	$(shell uname -s)

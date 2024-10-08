@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   details_intersection.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:30:29 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/07 14:47:46 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/08 14:00:00 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	set_under_point(t_details *details)
 	const float	default_inside_offset[SHAPE_COUNT] = {\
 													SP_INSIDE_DEFAULT_OFSSET, \
 													PL_INSIDE_DEFAULT_OFSSET, \
-													CL_INSIDE_DEFAULT_OFSSET};
+													CL_INSIDE_DEFAULT_OFSSET, \
+													CU_INSIDE_DEFAULT_OFSSET};
 	float		offset;
 
 	offset = default_inside_offset[details->shape->type];

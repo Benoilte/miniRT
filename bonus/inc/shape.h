@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:36:37 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/08 11:33:01 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/08 14:16:59 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,11 +194,13 @@ void			set_default_cube(t_shape *self);
 const t_vtable	*get_cube_vtable(void);
 bool			intersect_cube(t_ray *r, t_shape *shape, t_report *report);
 t_vector		normal_cube(t_shape *shape, t_point *object_point);
-float			ft_get_min_or_max_float(float a);
+float			ft_get_min_or_max_f(float a);
 
 // PROTOTYPE INTERSECT SHAPE UTILS
 
 void			ft_swap(float *a, float *b);
+float			ft_get_max_f(float x, float y, float z);
+float			ft_get_min_f(float x, float y, float z);
 
 //	PROTOTYPES BONUS
 void			set_shape_bonus(t_shape *self, char **args);

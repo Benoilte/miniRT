@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 21:42:29 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/07 21:45:20 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/08 14:15:47 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,25 +30,8 @@ const t_vtable	*get_cube_vtable(void)
 
 int	set_cube(t_shape *self, char **args, t_world *world)
 {
-	t_point		origin;
-	t_vector	normal;
-	float		radius;
-
-	if (!self || !args || !world)
-		return (print_error("set_cube", INVALID_POINTER));
-	origin = str_to_tuple(args[1], POINT);
-	normal = tp_normalize(str_to_tuple(args[2], VECTOR));
-	radius = rt_roundf(ft_atod(args[3]) / 2);
-	self->transform = mx_add_scaling(self->transform, radius, \
-									rt_roundf(ft_atod(args[4]) / 2), radius);
-	self->transform = mx_mult(rotate_y_to(normal), self->transform);
-	self->transform = mx_add_translation(self->transform, \
-											origin.x, origin.y, origin.z);
-	self->inverse = mx_inversion(self->transform);
-	self->material = world->default_material;
-	self->material.color = str_to_rgb(args[5]);
-	self->material.ambient = rgb_mult(self->material.color, world->ambient);
-	if (args[6])
-		set_shape_bonus(self, &(args[6]));
+	(void)self;
+	(void)args;
+	(void)world;
 	return (0);
 }
