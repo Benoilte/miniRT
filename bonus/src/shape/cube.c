@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 21:42:29 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/08 14:15:47 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/08 15:41:55 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,23 @@ const t_vtable	*get_cube_vtable(void)
 
 int	set_cube(t_shape *self, char **args, t_world *world)
 {
-	(void)self;
-	(void)args;
-	(void)world;
+	t_point		origin;
+	t_vector	normal;
+
+	if (!self || !args || !world)
+		return (print_error("set_cube", INVALID_POINTER));
+	origin = str_to_tuple(args[1], POINT);
+	normal = tp_normalize(str_to_tuple(args[2], VECTOR));
+	self->transform = mx_add_scaling(self->transform, ft_atoi(args[3]), \
+										ft_atoi(args[4]), ft_atoi(args[5]));
+	self->transform = mx_mult(rotate_y_to(normal), self->transform);
+	self->transform = mx_add_translation(self->transform, \
+											origin.x, origin.y, origin.z);
+	self->inverse = mx_inversion(self->transform);
+	self->material = world->default_material;
+	self->material.color = str_to_rgb(args[6]);
+	self->material.ambient = rgb_mult(self->material.color, world->ambient);
+	if (args[7])
+		set_shape_bonus(self, &(args[7]));
 	return (0);
 }
