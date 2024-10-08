@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:34:54 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/07 16:41:15 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/08 09:06:44 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void		render(t_data *data);
 void		*render_strip(void *arg);
 
 //	camera.c
-t_camera	camera(size_t hsize, size_t vsize, float fov);
+t_camera	camera(t_pixel resolution, float fov);
 t_ray		ray_for_pixel(t_camera camera, size_t px, size_t py);
 
 //	view_transform.c

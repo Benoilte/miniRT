@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 12:57:38 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/07 15:07:20 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/08 09:14:37 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ static void	update_progress(t_data *data, int line_finished)
 	else
 	{
 		line_count++;
-		if (line_count == WIN_HEIGHT)
+		if (line_count == data->resolution.y)
 			ft_printf("\rRender complete!\n");
 		else
-			ft_printf("\r%i %%", (line_count * 100) / WIN_HEIGHT);
+			ft_printf("\r%i %%", (line_count * 100) / data->resolution.y);
 	}
 	pthread_mutex_unlock(&data->render.print_lock);
 }
@@ -46,7 +46,7 @@ void	*render_strip(void *arg)
 	while (pixel.y < info->stop_line)
 	{
 		pixel.x = -1;
-		while (++(pixel.x) < WIN_WIDTH)
+		while (++(pixel.x) < info->data->resolution.x)
 		{
 			ray = ray_for_pixel(*(info->data->camera), pixel.x, pixel.y);
 			if (color_at(&color, NULL, &ray, info) != 0)

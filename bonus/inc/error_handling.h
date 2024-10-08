@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:52:04 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/07 18:40:07 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/08 09:18:05 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 
 # define CORE_COUNT_ERROR \
 "Unable to detect online cpu cores : using default setting"
+
+# define RES_RENDER_WARN	"Warning: Resolution height not optimal"
 
 # define INPUT_ERR_USAGE	"Invalid input. Usage: ./miniRT <filename>"
 # define INPUT_ERR_FILENAME "Invalid filename. Expected format: *.rt"
