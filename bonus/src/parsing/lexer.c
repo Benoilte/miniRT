@@ -6,11 +6,13 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 09:31:49 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/09 16:00:37 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/08 13:18:44 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+void	print_token(void *content);
 
 int	lexer(t_input_data *input)
 {
@@ -30,5 +32,6 @@ int	lexer(t_input_data *input)
 		free(line);
 		line = get_next_line(input->fd);
 	}
+	ft_lstiter(input->token_list, print_token);
 	return (0);
 }

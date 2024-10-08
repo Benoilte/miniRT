@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 18:20:21 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/07 21:50:31 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/08 13:16:43 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ static int	validate_token(t_token *token, t_list **errors)
 {
 	const t_validate_token	validate[ID_VALID_COUNT] = {validate_ambient, \
 	validate_camera, validate_light, validate_default_material, \
-	validate_resolution, validate_sphere, validate_plane, validate_cylinder};
+	validate_resolution, validate_sphere, validate_plane, validate_cylinder, \
+	validate_cube};
 
 	if (token->identifier < 0 || token->identifier >= ID_VALID_COUNT)
 		return (log_error(errors, ERR_INVALID_ID, token->line));
