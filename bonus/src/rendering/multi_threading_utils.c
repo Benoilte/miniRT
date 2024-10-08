@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 13:22:21 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/07 15:06:54 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/08 08:49:52 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	get_available_core_count(void)
 		ft_putendl_fd(CORE_COUNT_ERROR, STDERR_FILENO);
 		return (default_cores);
 	}
-	ft_printf("Online CPU cores detected: %d\n", online_cores);
+	else
+		ft_printf("Online CPU cores detected: %d\n", online_cores);
 	return (online_cores);
 }
