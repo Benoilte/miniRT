@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:36:37 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/07 21:44:34 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/08 11:33:01 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,12 @@ typedef enum e_shape_type
 	SHAPE_COUNT
 }	t_shape_type;
 
+typedef enum e_MIN_MAX
+{
+	MIN,
+	MAX,
+}	t_MIN_MAX;
+
 typedef void		(*t_vset_default)(t_shape *self);
 typedef void		(*t_vdestroy)(void *self);
 typedef bool		(*t_vintersect)(t_ray *ray, \
@@ -182,14 +188,19 @@ bool			intersect_cylinder(t_ray *ray, t_shape *cl, t_report *report);
 bool			intersect_caps(t_ray *ray, t_shape *cl, t_report *report);
 t_vector		normal_cylinder(t_shape *shape, t_point *object_point);
 
-//	PROTOTYPES BONUS
-void			set_shape_bonus(t_shape *self, char **args);
-
 //	PROTOTYPES CUBE
 int				set_cube(t_shape *self, char **args, t_world *world);
 void			set_default_cube(t_shape *self);
 const t_vtable	*get_cube_vtable(void);
 bool			intersect_cube(t_ray *r, t_shape *shape, t_report *report);
 t_vector		normal_cube(t_shape *shape, t_point *object_point);
+float			ft_get_min_or_max_float(float a);
+
+// PROTOTYPE INTERSECT SHAPE UTILS
+
+void			ft_swap(float *a, float *b);
+
+//	PROTOTYPES BONUS
+void			set_shape_bonus(t_shape *self, char **args);
 
 #endif
