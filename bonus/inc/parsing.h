@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/08 09:19:34 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/08 09:45:33 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@
 # define REFRACT_INDEX_MIN	1
 # define REFRACT_INDEX_MAX	3
 # define RES_RANGE_W_MIN	640
-# define RES_RANGE_W_MAX	2048
+# define RES_RANGE_W_MAX	3200
 # define RES_RANGE_H_MIN	480
-# define RES_RANGE_H_MAX	1536
+# define RES_RANGE_H_MAX	1800
 
 //	TYPEDEFS
 

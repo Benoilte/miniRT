@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:52:04 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/08 09:18:05 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/08 09:45:43 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@
 # define ERRMSG_B_SHINE_RANGE	"Invalid shininess range [10 .. 200]"
 # define ERRMSG_B_REFRACT_IDX	"Invalid refraction index range [1 .. 3]"
 # define ERRMSG_RES_FORMAT		"Invalid resolution format detected"
-# define ERRMSG_RES_WIDTH		"Invalid resolution width [640 .. 2048]"
-# define ERRMSG_RES_HEIGHT		"Invalid resolution height [480 .. 1536]"
+# define ERRMSG_RES_WIDTH		"Invalid resolution width [640 .. 3200]"
+# define ERRMSG_RES_HEIGHT		"Invalid resolution height [480 .. 1800]"
 
 //	TYPEDEFS
 
