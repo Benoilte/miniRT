@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:03:03 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/01 15:47:57 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/07 21:37:28 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	delete_token(void *content)
 static t_id	set_identifier(char *str)
 {
 	const char	*identifiers[ID_VALID_COUNT] = {\
-	STR_AMBIENT, STR_CAMERA, STR_LIGHT, STR_DEFAULT_MATERIAL, \
+	STR_AMBIENT, STR_CAMERA, STR_LIGHT, STR_DEFAULT_MATERIAL, STR_RESOLUTION, \
 	STR_SPHERE, STR_PLANE, STR_CYLINDER};
 	int			i;
 

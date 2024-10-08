@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 13:55:02 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/07 14:57:57 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/08 09:37:24 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ static int	init_render_blocks(t_data *data, t_render *render)
 	int	slice_size;
 	int	i;
 
-	if (WIN_HEIGHT % render->thread_count != 0)
-		ft_printf("Warning: WIN_HEIGHT not optimal for multi-thread rendering");
-	slice_size = WIN_HEIGHT / render->thread_count;
+	if (data->resolution.y % render->thread_count != 0)
+		ft_putendl_fd(RES_RENDER_WARN, STDERR_FILENO);
+	slice_size = data->resolution.y / render->thread_count;
 	render->blocks = ft_calloc(render->thread_count, sizeof(t_render_info));
 	if (!render->blocks)
 		return (1);
@@ -37,6 +37,7 @@ static int	init_render_blocks(t_data *data, t_render *render)
 			return (1);
 		i ++;
 	}
+	render->blocks[i - 1].stop_line = data->resolution.y;
 	return (0);
 }
 

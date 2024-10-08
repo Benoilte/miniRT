@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:52:04 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/07 16:30:45 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/08 09:45:43 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 
 # define CORE_COUNT_ERROR \
 "Unable to detect online cpu cores : using default setting"
+
+# define RES_RENDER_WARN	"Warning: Resolution height not optimal"
 
 # define INPUT_ERR_USAGE	"Invalid input. Usage: ./miniRT <filename>"
 # define INPUT_ERR_FILENAME "Invalid filename. Expected format: *.rt"
@@ -51,6 +53,9 @@
 # define ERRMSG_B_MAT_ARG_MISS	"Missing paremeter(s) for material (bonus)"
 # define ERRMSG_B_SHINE_RANGE	"Invalid shininess range [10 .. 200]"
 # define ERRMSG_B_REFRACT_IDX	"Invalid refraction index range [1 .. 3]"
+# define ERRMSG_RES_FORMAT		"Invalid resolution format detected"
+# define ERRMSG_RES_WIDTH		"Invalid resolution width [640 .. 3200]"
+# define ERRMSG_RES_HEIGHT		"Invalid resolution height [480 .. 1800]"
 
 //	TYPEDEFS
 
@@ -71,6 +76,9 @@ typedef enum e_error_code
 	ERR_MAT_ARG_MISSING,
 	ERR_B_SHINE_RANGE,
 	ERR_B_REFRACT_IDX,
+	ERR_RES_FORMAT,
+	ERR_RES_WIDTH,
+	ERR_RES_HEIGHT,
 	ERR_CODE_LIMIT
 }	t_error_code;
 
