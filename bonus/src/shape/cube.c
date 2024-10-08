@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 21:42:29 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/08 15:41:55 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/08 15:53:08 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ int	set_cube(t_shape *self, char **args, t_world *world)
 		return (print_error("set_cube", INVALID_POINTER));
 	origin = str_to_tuple(args[1], POINT);
 	normal = tp_normalize(str_to_tuple(args[2], VECTOR));
-	self->transform = mx_add_scaling(self->transform, ft_atoi(args[3]), \
-										ft_atoi(args[4]), ft_atoi(args[5]));
+	self->transform = mx_add_scaling(self->transform, \
+										rt_roundf(ft_atod(args[3])), \
+										rt_roundf(ft_atod(args[4])), \
+										rt_roundf(ft_atod(args[5])));
 	self->transform = mx_mult(rotate_y_to(normal), self->transform);
 	self->transform = mx_add_translation(self->transform, \
 											origin.x, origin.y, origin.z);
