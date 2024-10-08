@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 13:55:02 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/08 09:18:02 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/08 09:37:24 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static int	init_render_blocks(t_data *data, t_render *render)
 			return (1);
 		i ++;
 	}
+	render->blocks[i - 1].stop_line = data->resolution.y;
 	return (0);
 }
 
