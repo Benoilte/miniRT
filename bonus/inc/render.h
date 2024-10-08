@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:34:54 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/08 09:47:54 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/08 16:54:43 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 
 //	DEFINES
 
-# define DEFAULT_THREAD_COUNT	4
-# define REFLECTIVE_DEPTH		5
-# define REFRACTIVE_DEPTH		5
+# define DEFAULT_THREAD_COUNT		4
+# define DEFAULT_REFLECTIVE_DEPTH	5
+# define DEFAULT_REFRACTIVE_DEPTH	5
 
 //	TYPEDEFS
 
@@ -51,6 +51,8 @@ typedef struct s_render
 	pthread_t		*threads;
 	int				thread_count;
 	pthread_mutex_t	print_lock;
+	int				master_reflective_depth;
+	int				master_refractive_depth;
 }					t_render;
 
 //	PROTOTYPES

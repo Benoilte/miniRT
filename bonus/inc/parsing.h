@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/08 15:22:39 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/08 17:13:31 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@
 # define RES_RANGE_H_MIN	480
 # define RES_RANGE_H_MAX	1800
 # define DEPTH_RANGE_MIN	1
-# define DEPTH_RANGE_MAX	10
+# define DEPTH_RANGE_MAX	20
 
 //	TYPEDEFS
 
