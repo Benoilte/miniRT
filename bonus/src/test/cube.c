@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 08:48:12 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/08 11:58:09 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/08 14:45:30 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,38 +58,11 @@ void	test_ray_missing_cube(t_world *world, t_ray r)
 	inter_lstclear(&intersects);
 }
 
-/*
-​ 	​Scenario Outline​: A ray intersects a cube
-​ 	  ​Given​ c ← cube()
-​ 	    ​And​ r ← ray(<origin>, <direction>)
-​ 	  ​When​ xs ← local_intersect(c, r)
-​ 	  ​Then​ xs.count = 2
-​ 	    ​And​ xs[0].t = <t1>
-​ 	    ​And​ xs[1].t = <t2>
-​
-​ 	  ​Examples​:
-​ 	    |        | origin            | direction        | t1 | t2 |
-​ 	    | +x     | point(5, 0.5, 0)  | vector(-1, 0, 0) |  4 |  6 |
-​ 	    | -x     | point(-5, 0.5, 0) | vector(1, 0, 0)  |  4 |  6 |
-​ 	    | +y     | point(0.5, 5, 0)  | vector(0, -1, 0) |  4 |  6 |
-​ 	    | -y     | point(0.5, -5, 0) | vector(0, 1, 0)  |  4 |  6 |
-​ 	    | +z     | point(0.5, 0, 5)  | vector(0, 0, -1) |  4 |  6 |
-​ 	    | -z     | point(0.5, 0, -5) | vector(0, 0, 1)  |  4 |  6 |
-​ 	    | inside | point(0, 0.5, 0)  | vector(0, 0, 1)  | -1 |  1 |
-*/
-
-/*
-​ 	    | origin           | direction                      |
-​ 	    | point(-2, 0, 0)  | vector(0.2673, 0.5345, 0.8018) |
-​ 	    | point(0, -2, 0)  | vector(0.8018, 0.2673, 0.5345) |
-​ 	    | point(0, 0, -2)  | vector(0.5345, 0.8018, 0.2673) |
-​ 	    | point(2, 0, 2)   | vector(0, 0, -1)               |
-​ 	    | point(0, 2, 2)   | vector(0, -1, 0)               |
-​ 	    | point(2, 2, 0)   | vector(-1, 0, 0)               |
-*/
 void	test_intersect_cube(t_data *data)
 {
-	add_new_shape_to_world(data->world, CUBE);
+	t_shape	*cube;
+
+	cube = add_new_shape_to_world(data->world, CUBE);
 	test_inter_cube(data->world, ray(point(5, 0.5, 0), vector(-1, 0, 0)), 4, 6);
 	test_inter_cube(data->world, ray(point(-5, 0.5, 0), vector(1, 0, 0)), 4, 6);
 	test_inter_cube(data->world, ray(point(0.5, 5, 0), vector(0, -1, 0)), 4, 6);
@@ -97,7 +70,6 @@ void	test_intersect_cube(t_data *data)
 	test_inter_cube(data->world, ray(point(0.5, 0, 5), vector(0, 0, -1)), 4, 6);
 	test_inter_cube(data->world, ray(point(0.5, 0, -5), vector(0, 0, 1)), 4, 6);
 	test_inter_cube(data->world, ray(point(0, 0.5, 0), vector(0, 0, 1)), -1, 1);
-
 	test_ray_missing_cube(data->world, \
 						ray(point(-2, 0, 0), vector(0.2673, 0.5345, 0.8018)));
 	test_ray_missing_cube(data->world, \
