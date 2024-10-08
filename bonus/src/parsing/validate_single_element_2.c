@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 17:42:41 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/07 21:54:45 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/08 13:52:08 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,16 @@ int	validate_resolution(t_token *token, t_list **errors)
 	resolution_exists = 1;
 	return (validate_resolution_parameters(&token->args[1], token->line, \
 											errors));
+}
+
+int	validate_depth(t_token *token, t_list **errors)
+{
+	static int	depth_exists = 0;
+
+	if (!token || !token->args || !errors)
+		return (-1);
+	if (depth_exists)
+		return (log_error(errors, ERR_DUPLICATE, token->line));
+	depth_exists = 1;
+	return (validate_depth_parameters(&token->args[1], token->line, errors));
 }

@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:03:03 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/08 13:14:58 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/08 13:49:17 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static t_id	set_identifier(char *str)
 {
 	const char	*identifiers[ID_VALID_COUNT] = {\
 	STR_AMBIENT, STR_CAMERA, STR_LIGHT, STR_DEFAULT_MATERIAL, STR_RESOLUTION, \
-	STR_SPHERE, STR_PLANE, STR_CYLINDER, STR_CUBE};
+	STR_DEPTH, STR_SPHERE, STR_PLANE, STR_CYLINDER, STR_CUBE};
 	int			i;
 
 	if (!str)

@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/08 13:16:31 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/08 15:08:58 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 
 # define STR_DEFAULT_MATERIAL	"M"
 # define STR_RESOLUTION			"R"
+# define STR_DEPTH				"D"
 
 # define STR_SPHERE		"sp"
 # define STR_PLANE		"pl"
@@ -40,8 +41,11 @@
 # define AMBIENT_PARAMS		2
 # define CAMERA_PARAMS 		3
 # define LIGHT_PARAMS 		3
+
 # define MATERIAL_PARAMS	6
 # define RESOLUTION_PARAMS	2
+# define DEPTH_PARAMS		2
+
 # define SPHERE_PARAMS 		3
 # define PLANE_PARAMS 		3
 # define CYLINDER_PARAMS	5
@@ -72,6 +76,8 @@
 # define RES_RANGE_W_MAX	3200
 # define RES_RANGE_H_MIN	480
 # define RES_RANGE_H_MAX	1800
+# define DEPTH_RANGE_MIN	1
+# define DEPTH_RANGE_MAX	10
 
 //	TYPEDEFS
 
@@ -91,6 +97,7 @@ typedef enum e_info
 	INFO_REFRACT_INDEX,
 	INFO_WIN_WIDTH,
 	INFO_WIN_HEIGHT,
+	INFO_DEPTH,
 	INFO_COUNT
 }	t_info;
 
@@ -102,6 +109,7 @@ typedef enum e_id
 	ID_LIGHT,
 	ID_MATERIAL,
 	ID_RESOLUTION,
+	ID_DEPTH,
 	ID_SPHERE,
 	ID_PLANE,
 	ID_CYLINDER,
@@ -163,6 +171,7 @@ int		validate_light(t_token *token, t_list **errors);
 //	validate_single_element_2.c
 int		validate_default_material(t_token *token, t_list **errors);
 int		validate_resolution(t_token *token, t_list **errors);
+int		validate_depth(t_token *token, t_list **errors);
 
 //	validate_shape.c
 int		validate_sphere(t_token *token, t_list **errors);
@@ -188,6 +197,7 @@ int		count_args(const char **args);
 //	validate_bonus.c
 int		validate_material_parameters(char **args, int line, t_list **errors);
 int		validate_resolution_parameters(char **args, int line, t_list **errors);
+int		validate_depth_parameters(char **args, int line, t_list **errors);
 
 //	validate_bonus_info_1.c
 int		validate_diffuse(const char *str, int line, t_list **errors);
@@ -200,5 +210,6 @@ int		validate_transparency(const char *str, int line, t_list **errors);
 int		validate_refraction_index(const char *str, int line, t_list **errors);
 int		validate_window_width(const char *str, int line, t_list **errors);
 int		validate_window_height(const char *str, int line, t_list **errors);
+int		validate_depth_value(const char *str, int line, t_list **errors);
 
 #endif

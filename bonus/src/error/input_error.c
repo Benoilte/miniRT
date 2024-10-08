@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 13:16:41 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/07 21:46:37 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/08 15:05:19 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	report_error(void *error_node)
 	ERRMSG_RANGE_EXCESS, ERRMSG_ARG_MISSING, ERRMSG_ARG_EXCESS, \
 	ERRMSG_VECTOR_ZERO, ERRMSG_B_MAT_ARG_MISS, ERRMSG_B_SHINE_RANGE, \
 	ERRMSG_B_REFRACT_IDX, ERRMSG_RES_FORMAT, ERRMSG_RES_WIDTH, \
-	ERRMSG_RES_HEIGHT};
+	ERRMSG_RES_HEIGHT, ERRMSG_DEPTH};
 	t_error		*error;
 	static int	count = 0;
 
