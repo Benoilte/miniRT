@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+         #
+#    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/10/07 17:41:43 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/10/08 09:36:29 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,9 +44,11 @@ RAY_FILES			=	ray position transform
 SHAPE_FILES			=	init_shapes shape error material normal shape_bonus \
 						sphere sphere_intersect sphere_normal \
 						plane plane_intersect plane_normal \
-						cylinder cylinder_intersect cylinder_normal cylinder_intersect_caps
+						cylinder cylinder_intersect cylinder_normal cylinder_intersect_caps \
+						cube cube_intersect cube_normal
 LIGHT_FILES			=	new_light destroy_light lighting
-TEST_FILES			=	print print_utils time reflection_and_refraction reflection_and_refraction_utils
+TEST_FILES			=	print print_utils time reflection_and_refraction reflection_and_refraction_utils \
+						cube
 
 # OS specific settings
 UNAME_S			=	$(shell uname -s)
