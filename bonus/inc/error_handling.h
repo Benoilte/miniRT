@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:52:04 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/08 13:56:55 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/09 10:23:05 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,24 @@
 
 //	DEFINES
 
-# define INVALID_POINTER "invalid (null) pointer passed as argument"
+//	Error messages - general
+# define EXIT_ERR_MSG		"Exiting program..."
+# define INVALID_POINTER	"invalid (null) pointer passed as argument"
 
+//	Error messages - data initialization
+# define INIT_DATA_ERR		"Unable to allocate memory for primary data"
+# define INIT_INPUT_ERR		"Input error detected"
+# define INIT_WORLD_ERR		"Error during world initialization"
+# define INIT_CAMERA_ERR	"Error during camera initialization"
+# define INIT_MLX_ERR		"Error during MLX initialization"
+# define INIT_RENDER_ERR	"Error during render settings initialization"
+
+//	Error messages - multi-threading
 # define CORE_COUNT_ERROR \
 "Unable to detect online cpu cores : using default setting"
-
 # define RES_RENDER_WARN	"Warning: Resolution height not optimal"
 
+//	Error messages - Lexer/Parser
 # define INPUT_ERR_USAGE	"Invalid input. Usage: ./miniRT <filename>"
 # define INPUT_ERR_FILENAME "Invalid filename. Expected format: *.rt"
 # define LX_INCOMPLETE 		"Unable to complete lexical analysis"
@@ -38,6 +49,7 @@
 # define WORLD_ERROR_SHAPE	"No shapes in world: must have at least 1"
 # define WORLD_ERROR_LIMIT	"Too many shapes in world"
 
+//	Error messages - Parser line by line feedback
 # define ERRMSG_INVALID_ID 		"Invalid identifier"
 # define ERRMSG_REAL_NUM 		"Invalid number format detected"
 # define ERRMSG_RATIO 			"Invalid ratio [0.0 .. 1.0]"

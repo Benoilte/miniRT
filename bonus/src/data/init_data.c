@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:53:19 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/08 16:49:20 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/09 10:20:28 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,20 @@ t_data	*init_data(int argc, char **argv)
 
 	data = ft_calloc(1, sizeof(t_data));
 	if (!data)
-		exit_error(data, "Failed to allocate memory for data");
+		exit_error(data, INIT_DATA_ERR);
 	if (init_input(&data->input, argc, argv) != 0)
-		exit_error(data, "Failed to initialize input data");
+		exit_error(data, INIT_INPUT_ERR);
 	data->resolution = get_resolution(data->input.token_list);
 	data->world = init_world(data->input.token_list);
 	if (!data->world)
-		exit_error(data, "Failed to initialize world");
+		exit_error(data, INIT_WORLD_ERR);
 	data->camera = init_camera(data);
 	if (!data->camera)
-		exit_error(data, "Failed to allocate memory for camera");
+		exit_error(data, INIT_CAMERA_ERR);
 	data->mlx = init_mlx(data->resolution);
 	if (!data->mlx)
-		exit_error(data, "Failed to initialize mlx data");
+		exit_error(data, INIT_MLX_ERR);
 	if (init_render_settings(data, &data->render) != 0)
-		exit_error(data, "Failed to initialize render settings");
+		exit_error(data, INIT_RENDER_ERR);
 	return (data);
 }
