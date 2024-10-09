@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:52:04 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/09 10:23:05 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/09 16:18:37 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 //	DEFINES
 
 //	Error messages - general
-# define EXIT_ERR_MSG		"Exiting program..."
+# define EXIT_ERR_MSG		"\rError\nExiting program..."
 # define INVALID_POINTER	"invalid (null) pointer passed as argument"
 
 //	Error messages - data initialization
@@ -36,6 +36,7 @@
 # define CORE_COUNT_ERROR \
 "Unable to detect online cpu cores : using default setting"
 # define RES_RENDER_WARN	"Warning: Resolution height not optimal"
+# define THREAD_ERROR		"Critical thread error(s) detected"
 
 //	Error messages - Lexer/Parser
 # define INPUT_ERR_USAGE	"Invalid input. Usage: ./miniRT <filename>"
@@ -102,9 +103,19 @@ typedef struct t_error
 	int		line;
 }			t_error;
 
+typedef enum e_mutex_type
+{
+	PRINT_MTX_INIT,
+	PRINT_MTX_DESTROY,
+	PRINT_MTX_LOCK,
+	PRINT_MTX_UNLOCK,
+	PRINT_MTX_LIMIT
+}	t_mutex_type;
+
 //	PROTOTYPES
 
 //	error.c
+int		print_mutex(t_mutex_type type);
 int		print_error(const char *source, const char *msg);
 void	exit_error(t_data *data, char *message);
 

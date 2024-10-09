@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect_list.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:49:09 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/07 17:31:52 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/09 15:17:04 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdbool.h>
 
 # include "forward_declarations.h"
+# include "error_handling.h"
 
 //	TYPEDEFS
 

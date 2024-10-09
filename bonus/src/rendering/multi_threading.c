@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 13:05:11 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/05 16:05:32 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/09 16:08:44 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	create_threads(t_data *data)
 {
 	int	i;
 
+	if (print_mutex(PRINT_MTX_INIT) != 0)
+		exit_error(data, "Unable to initialize print_error mutex");
 	i = 0;
 	while (i < data->render.thread_count)
 	{
@@ -26,12 +28,25 @@ void	create_threads(t_data *data)
 	}
 }
 
-void	join_threads(t_data *data)
+int	join_threads(t_data *data)
 {
-	int	i;
+	int		i;
+	void	*ret;
+	int		thread_error_count;
 
+	thread_error_count = 0;
 	i = 0;
 	while (i < data->render.thread_count)
-		if (pthread_join(data->render.threads[i++], NULL))
+	{
+		if (pthread_join(data->render.threads[i++], &ret))
 			exit_error(data, "pthread join error");
+		if (ret)
+		{
+			thread_error_count++;
+			ret = NULL;
+		}
+	}
+	if (print_mutex(PRINT_MTX_DESTROY) != 0)
+		exit_error(data, "Unable to destroy print_error mutex");
+	return (thread_error_count);
 }

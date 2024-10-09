@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 13:56:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/07 12:34:14 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/09 16:13:25 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,4 @@ void	destroy_render_settings(t_render *render)
 		free(render->threads);
 		render->threads = NULL;
 	}
-	pthread_mutex_destroy(&render->print_lock);
 }

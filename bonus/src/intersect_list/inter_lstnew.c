@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inter_lstnew.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 17:35:36 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/07 17:36:40 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/09 15:17:39 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_inter_lst	*inter_lstnew(t_shape *shape, float t)
 	new = (t_inter_lst *)malloc(sizeof(t_inter_lst));
 	if (!new)
 	{
-		perror("dbl_lst_new allocation memory");
+		print_error("inter_lstnew", strerror(errno));
 		return (NULL);
 	}
 	new->intersect.shape = shape;

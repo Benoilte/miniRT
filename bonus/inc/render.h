@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:34:54 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/09 10:01:37 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/09 16:13:03 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ typedef struct s_render
 	t_render_info	*blocks;
 	pthread_t		*threads;
 	int				thread_count;
-	pthread_mutex_t	print_lock;
 	int				master_reflective_depth;
 	int				master_refractive_depth;
 }					t_render;
@@ -92,7 +91,7 @@ int			reflected_color(t_color *color, t_render_info info, \
 
 //	multi_threading.c
 void		create_threads(t_data *data);
-void		join_threads(t_data *data);
+int			join_threads(t_data *data);
 
 //	multi_threading_utils.c
 int			get_available_core_count(void);

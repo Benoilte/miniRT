@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 12:57:38 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/08 09:14:37 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/09 16:26:18 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@ static void	update_progress(t_data *data, int line_finished)
 {
 	static int	line_count = 0;
 
-	pthread_mutex_lock(&data->render.print_lock);
+	if (print_mutex(PRINT_MTX_LOCK) != 0)
+	{
+		ft_printf("\r\r\r");
+		return ;
+	}
 	if (line_finished == 0)
 	{
 		line_count = 0;
@@ -30,7 +34,7 @@ static void	update_progress(t_data *data, int line_finished)
 		else
 			ft_printf("\r%i %%", (line_count * 100) / data->resolution.y);
 	}
-	pthread_mutex_unlock(&data->render.print_lock);
+	print_mutex(PRINT_MTX_UNLOCK);
 }
 
 void	*render_strip(void *arg)
@@ -50,7 +54,7 @@ void	*render_strip(void *arg)
 		{
 			ray = ray_for_pixel(*(info->data->camera), pixel.x, pixel.y);
 			if (color_at(&color, NULL, &ray, info) != 0)
-				return (print_error("render_strip", "aborting thread"), NULL);
+				return (print_error("render_strip", "aborting thread"), arg);
 			color_int = rgb_stoi(color);
 			if (color_int != 0)
 				set_pixel_color(info->data, pixel.x, pixel.y, color_int);
@@ -71,7 +75,9 @@ void	render(t_data *data)
 	reset_image(data);
 	update_progress(data, 0);
 	create_threads(data);
-	join_threads(data);
-	mlx_put_image_to_window(data->mlx->xvar, data->mlx->win, \
-							data->mlx->img, 0, 0);
+	if (join_threads(data) != 0)
+		exit_error(data, NULL);
+	else
+		mlx_put_image_to_window(data->mlx->xvar, data->mlx->win, \
+								data->mlx->img, 0, 0);
 }

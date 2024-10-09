@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 13:55:02 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/08 16:57:24 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/09 16:13:15 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,5 @@ int	init_render_settings(t_data *data, t_render *render)
 	set_render_depth(render, get_element(data->input.token_list, ID_DEPTH));
 	if (init_render_blocks(data, render) != 0)
 		return (2);
-	pthread_mutex_init(&render->print_lock, NULL);
 	return (0);
 }
