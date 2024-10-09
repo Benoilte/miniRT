@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:34:54 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/08 16:54:43 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/09 10:01:37 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int			intersect_world(t_intersect_list **list, t_ray *ray, \
 int			color_at(t_color *color, t_shape *self, t_ray *ray, \
 							t_render_info *info);
 int			compute_final_color(t_color *color, t_details *details, \
-									t_render_info info, t_inter_lst *intersects);
+								t_render_info info, t_inter_lst *intersects);
 
 //	shadow.c
 int			is_shadowed(t_shape *self, t_world *world, t_point point, \
