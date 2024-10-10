@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:52:04 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/09 16:18:37 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/10 14:52:23 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 //	DEFINES
 
 //	Error messages - general
-# define EXIT_ERR_MSG		"\rError\nExiting program..."
+# define EXIT_ERR_MSG		"\rExiting program..."
 # define INVALID_POINTER	"invalid (null) pointer passed as argument"
 
 //	Error messages - data initialization
