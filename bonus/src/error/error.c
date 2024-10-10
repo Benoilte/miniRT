@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:49:38 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/10 14:45:55 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/10 16:02:07 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,28 +36,23 @@ int	print_mutex(t_mutex_type type)
 		if (type == PRINT_MTX_LOCK && pthread_mutex_lock(&print_mutex))
 			return (3);
 		if (type == PRINT_MTX_UNLOCK && pthread_mutex_unlock(&print_mutex))
-			return (4);	
+			return (4);
 	}
 	return (0);
 }
 
 int	print_error(const char *source, const char *msg)
 {
-	const char	unknown_source[] = "unknown source";
-	const char	unknown_error[] = "unknown error";
-
 	if (print_mutex(PRINT_MTX_LOCK) != 0)
 		return (-1);
 	ft_putendl_fd("Error", STDERR_FILENO);
 	if (source)
+	{
 		ft_putstr_fd((char *)source, STDERR_FILENO);
-	else
-		ft_putstr_fd((char *)unknown_source, STDERR_FILENO);
-	ft_putstr_fd(": ", STDERR_FILENO);
+		ft_putstr_fd(": ", STDERR_FILENO);
+	}
 	if (msg)
 		ft_putstr_fd((char *)msg, STDERR_FILENO);
-	else
-		ft_putstr_fd((char *)unknown_error, STDERR_FILENO);
 	ft_putchar_fd('\n', STDERR_FILENO);
 	if (print_mutex(PRINT_MTX_UNLOCK) != 0)
 		return (-1);
