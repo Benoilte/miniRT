@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 13:05:11 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/09 16:08:44 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/10 19:14:39 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@ void	create_threads(t_data *data)
 {
 	int	i;
 
+	data->errlog = freopen("err.log", "a", stderr);
+	if (!data->errlog)
+		exit_error(data, "Unable to redirect stderr for multi-threading");
 	if (print_mutex(PRINT_MTX_INIT) != 0)
 		exit_error(data, "Unable to initialize print_error mutex");
 	i = 0;

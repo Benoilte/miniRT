@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/08 09:09:56 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/10 19:10:32 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ typedef struct s_data
 	t_camera		*camera;
 	t_render		render;
 	t_pixel			resolution;
+	FILE			*errlog;
 }					t_data;
 
 //	PROTOTYPES - DATA

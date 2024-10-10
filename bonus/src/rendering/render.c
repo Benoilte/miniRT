@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 12:57:38 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/09 16:26:18 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/10 18:18:38 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	render(t_data *data)
 	update_progress(data, 0);
 	create_threads(data);
 	if (join_threads(data) != 0)
-		exit_error(data, NULL);
+		exit_error(data, "Thread error (aborting render)");
 	else
 		mlx_put_image_to_window(data->mlx->xvar, data->mlx->win, \
 								data->mlx->img, 0, 0);
