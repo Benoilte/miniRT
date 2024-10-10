@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
+#    By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/10/08 13:00:17 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/10/10 15:19:33 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ SHAPE_FILES			=	init_shapes shape error material normal shape_bonus \
 						intersect_shape_utils
 LIGHT_FILES			=	new_light destroy_light lighting
 TEST_FILES			=	print print_utils time reflection_and_refraction reflection_and_refraction_utils \
-						cube cube_utils
+						cube cube_utils fresnel_effect
 
 # OS specific settings
 UNAME_S			=	$(shell uname -s)
@@ -99,7 +99,7 @@ OBJS			=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 LIB_LINK		=	-L$(LIBFT_DIR) -lft -L$(MINILIBX_DIR) -lmlx -L$(LIBGRAPHIC_DIR) -lgraphic -L$(LIBDLIST) -ldlist $(OS_FLAGS)
 
 CC				=	gcc
-CFLAGS			=	-Wall -Wextra -Werror -pthread -O2
+CFLAGS			=	-Wall -Wextra -Werror -pthread -g
 RM				=	rm -f
 AR				=	ar -r
 

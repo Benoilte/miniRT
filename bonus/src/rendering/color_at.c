@@ -6,7 +6,7 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:38:39 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/07 18:37:20 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/10 18:24:53 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,31 @@ static t_color	no_color(void)
 	return (black);
 }
 
+/*
+»	  reflected ← reflected_color(world, comps, remaining)
+»	  refracted ← refracted_color(world, comps, remaining)
+»	
+»	  material ← comps.object.material
+»	  ​if​ material.reflective > 0 ​&&​ material.transparency > 0
+»	    reflectance ← schlick(comps)
+»	    ​return​ surface + reflected * reflectance +
+»	                     refracted * (1 - reflectance)
+»	  ​else​
+»	    ​return​ surface + reflected + refracted
+»	  ​end​
+​ 	​end​ ​function
+*/
+
 int	compute_final_color(t_color *color, \
 						t_details *details, \
 						t_render_info info, \
 						t_inter_lst *intersects)
 {
-	t_color	surface;
-	t_color	reflected;
-	t_color	refracted;
+	t_color		surface;
+	t_color		reflected;
+	t_color		refracted;
+	t_material	material;
+	float		reflectance;
 
 	if (!color || !details)
 		return (print_error("compute_final_color", INVALID_POINTER));
@@ -37,7 +54,14 @@ int	compute_final_color(t_color *color, \
 		return (2);
 	if (reflected_color(&reflected, info, details) != 0)
 		return (2);
-	*color = rgb_add(rgb_add(surface, reflected), refracted);
+	material = details->shape->material;
+	if ((material.reflective > 0) && (material.transparency > 0))
+	{
+		reflectance = schlick_approximation(details);
+		*color = rgb_add(rgb_add(surface, rgb_scale(reflected, reflectance)), rgb_scale(refracted, 1 - reflectance));
+	}
+	else
+		*color = rgb_add(rgb_add(surface, reflected), refracted);
 	return (0);
 }
 

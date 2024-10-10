@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:34:54 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/09 16:13:03 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/10 18:16:22 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int			set_shadow(t_world *world, t_details *details);
 //	reflection.c
 int			reflected_color(t_color *color, t_render_info info, \
 							t_details *details);
+float		schlick_approximation(t_details *details);
 
 //	multi_threading.c
 void		create_threads(t_data *data);
