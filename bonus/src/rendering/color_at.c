@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color_at.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:38:39 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/10 18:24:53 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/11 12:28:51 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static t_color	no_color(void)
 /*
 »	  reflected ← reflected_color(world, comps, remaining)
 »	  refracted ← refracted_color(world, comps, remaining)
-»	
+»
 »	  material ← comps.object.material
 »	  ​if​ material.reflective > 0 ​&&​ material.transparency > 0
 »	    reflectance ← schlick(comps)
@@ -55,7 +55,7 @@ int	compute_final_color(t_color *color, \
 	if (reflected_color(&reflected, info, details) != 0)
 		return (2);
 	material = details->shape->material;
-	if ((material.reflective > 0) && (material.transparency > 0))
+	if ((material.reflective > 0) && (material.transparency > 0) && (info.depth == 0))
 	{
 		reflectance = schlick_approximation(details);
 		*color = rgb_add(rgb_add(surface, rgb_scale(reflected, reflectance)), rgb_scale(refracted, 1 - reflectance));

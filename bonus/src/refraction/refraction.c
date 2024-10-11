@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   refraction.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 09:17:18 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/07 18:25:12 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/11 12:28:07 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ int	refracted_color(t_color *color, \
 	}
 	refracted_ray = compute_refracted_ray(details, n_ratio, cos_i, cos_t);
 	info.refractive_depth--;
+	info.depth++;
 	if (color_at(color, NULL, &refracted_ray, &info) != 0)
 		return (1);
 	*color = rgb_scale(*color, details->shape->material.transparency);
