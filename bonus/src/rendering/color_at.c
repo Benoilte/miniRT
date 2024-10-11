@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:38:39 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/11 14:36:13 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/11 14:45:31 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,6 @@ static t_color	no_color(void)
 
 	return (black);
 }
-
-/*
-»	  reflected ← reflected_color(world, comps, remaining)
-»	  refracted ← refracted_color(world, comps, remaining)
-»
-»	  material ← comps.object.material
-»	  ​if​ material.reflective > 0 ​&&​ material.transparency > 0
-»	    reflectance ← schlick(comps)
-»	    ​return​ surface + reflected * reflectance +
-»	                     refracted * (1 - reflectance)
-»	  ​else​
-»	    ​return​ surface + reflected + refracted
-»	  ​end​
-​ 	​end​ ​function
-*/
 
 int	compute_final_color(t_color *color, \
 						t_details *details, \
