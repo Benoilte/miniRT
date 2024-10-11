@@ -6,11 +6,23 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:49:38 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/10 19:26:36 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/11 17:07:27 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+void	print_timestamp(void)
+{
+	char		buffer[100];
+	time_t		temp;
+	struct tm	*timeptr;
+
+	temp = time(NULL);
+	timeptr = localtime(&temp);
+	strftime(buffer, sizeof(buffer), "[ %d/%m/%y | %T ] ", timeptr);
+	ft_putstr_fd(buffer, STDERR_FILENO);
+}
 
 int	print_mutex(t_mutex_type type)
 {
@@ -45,7 +57,7 @@ int	print_error(const char *source, const char *msg)
 {
 	if (print_mutex(PRINT_MTX_LOCK) != 0)
 		return (-1);
-	ft_putendl_fd("Error", STDERR_FILENO);
+	print_timestamp();
 	if (source)
 	{
 		ft_putstr_fd((char *)source, STDERR_FILENO);
@@ -61,14 +73,17 @@ int	print_error(const char *source, const char *msg)
 
 void	exit_error(t_data *data, char *message)
 {
-	if (message)
+	if (message && data->errlog)
 	{
 		if (errno)
 			perror(message);
 		else
 			ft_putendl_fd(message, STDERR_FILENO);
 	}
-	printf("\n%s\n%s\n", message, EXIT_ERR_MSG);
+	printf("%s\n", message);
+	if (data->errlog)
+		printf("%s : %s\n", ERR_LOG_INFO, ERR_LOG_FILE);
+	printf("%s\n", EXIT_ERR_MSG);
 	destroy_data(data);
 	exit(EXIT_FAILURE);
 }

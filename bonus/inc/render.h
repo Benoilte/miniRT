@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:34:54 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/09 16:13:03 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/11 16:28:29 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,12 +90,15 @@ int			reflected_color(t_color *color, t_render_info info, \
 							t_details *details);
 
 //	multi_threading.c
-void		create_threads(t_data *data);
+int			create_threads(t_data *data);
 int			join_threads(t_data *data);
 
 //	multi_threading_utils.c
 int			get_available_core_count(void);
+int			report_threads_created(int created, int total);
+int			report_threads_failed(int thread_error_count);
 
+//	test/time.c
 void		timed_render(t_data *data);
 
 #endif

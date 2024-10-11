@@ -6,11 +6,43 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 13:22:21 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/08 08:49:52 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/11 16:48:32 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+int	report_threads_created(int created, int total)
+{
+	if (print_mutex(PRINT_MTX_LOCK) != 0)
+		return (-1);
+	ft_putstr_fd("Threads created: ", STDERR_FILENO);
+	ft_putnbr_fd(created, STDERR_FILENO);
+	ft_putchar_fd('/', STDERR_FILENO);
+	ft_putnbr_fd(total, STDERR_FILENO);
+	ft_putendl_fd("", STDERR_FILENO);
+	if (print_mutex(PRINT_MTX_UNLOCK) != 0)
+		return (-1);
+	return (0);
+}
+
+int	report_threads_failed(int thread_error_count)
+{
+	if (print_mutex(PRINT_MTX_LOCK) != 0)
+		return (-1);
+	ft_putstr_fd("Threads aborted: ", STDERR_FILENO);
+	ft_putnbr_fd(thread_error_count, STDERR_FILENO);
+	ft_putchar_fd('\n', STDERR_FILENO);
+	if (print_mutex(PRINT_MTX_UNLOCK) != 0)
+		return (-1);
+	return (0);
+}
+
+int	print_thread_report(t_thread_info thread)
+{
+	return (report_threads_created(thread.created, thread.count) | \
+			report_threads_failed(thread.errors));
+}
 
 int	get_available_core_count(void)
 {

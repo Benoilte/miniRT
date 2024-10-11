@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 13:16:41 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/08 15:05:19 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/11 17:26:04 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,15 @@ static void	report_error(void *error_node)
 
 int	input_error(t_input_data *input, const char *source, const char *msg)
 {
-	print_error(source, msg);
+	ft_putendl_fd("Error", STDERR_FILENO);
+	if (source)
+	{
+		ft_putstr_fd((char *)source, STDERR_FILENO);
+		ft_putstr_fd(": ", STDERR_FILENO);
+	}
+	if (msg)
+		ft_putstr_fd((char *)msg, STDERR_FILENO);
+	ft_putchar_fd('\n', STDERR_FILENO);
 	if (input)
 		ft_lstiter(input->errors, report_error);
 	return (1);

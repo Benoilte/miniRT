@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 12:57:38 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/10 18:18:38 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/11 16:50:13 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,12 @@ static void	update_progress(t_data *data, int line_finished)
 		return ;
 	}
 	if (line_finished == 0)
-	{
 		line_count = 0;
-		ft_printf("Rendering...\n");
-	}
 	else
 	{
 		line_count++;
 		if (line_count == data->resolution.y)
-			ft_printf("\rRender complete!\n");
+			ft_printf("\rRender complete!");
 		else
 			ft_printf("\r%i %%", (line_count * 100) / data->resolution.y);
 	}
@@ -54,7 +51,7 @@ void	*render_strip(void *arg)
 		{
 			ray = ray_for_pixel(*(info->data->camera), pixel.x, pixel.y);
 			if (color_at(&color, NULL, &ray, info) != 0)
-				return (print_error("render_strip", "aborting thread"), arg);
+				return (print_error("render_strip", THREAD_ERROR), (void *)1);
 			color_int = rgb_stoi(color);
 			if (color_int != 0)
 				set_pixel_color(info->data, pixel.x, pixel.y, color_int);
@@ -62,21 +59,33 @@ void	*render_strip(void *arg)
 		update_progress(info->data, 1);
 		pixel.y++;
 	}
-	return (NULL);
+	return ((void *)0);
 }
 
 void	render(t_data *data)
 {
+	static t_thread_info	thread;
+
 	if (!data)
 	{
 		print_error("render", INVALID_POINTER);
 		return ;
 	}
 	reset_image(data);
-	update_progress(data, 0);
-	create_threads(data);
-	if (join_threads(data) != 0)
-		exit_error(data, "Thread error (aborting render)");
+	ft_printf("Rendering...\n");
+	thread.count = data->render.thread_count;
+	thread.created = create_threads(data);
+	if (!thread.created)
+		exit_error(data, NO_THREAD_ERROR);
+	thread.errors = join_threads(data);
+	ft_printf("\n");
+	if (thread.created != thread.count || thread.errors)
+		report_threads_created(thread.created, thread.count);
+	if (thread.errors)
+	{
+		report_threads_failed(thread.errors);
+		exit_error(data, INCOMPLETE_RENDER);
+	}
 	else
 		mlx_put_image_to_window(data->mlx->xvar, data->mlx->win, \
 								data->mlx->img, 0, 0);
