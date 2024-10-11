@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 13:05:11 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/10 19:14:39 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/11 09:44:52 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	join_threads(t_data *data)
 	while (i < data->render.thread_count)
 	{
 		if (pthread_join(data->render.threads[i++], &ret))
-			exit_error(data, "pthread join error");
+			print_error("join_threads", strerror(errno));
 		if (ret)
 		{
 			thread_error_count++;
