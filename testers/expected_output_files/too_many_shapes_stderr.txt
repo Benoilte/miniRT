@@ -1,0 +1,2 @@
+Error
+Too many shapes in world

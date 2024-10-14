@@ -9,6 +9,7 @@ TESTS=(
     "no_ambient" "scenes/no_ambient.rt"
     "no_light" "scenes/no_light.rt"
     "no_shape" "scenes/no_shape.rt"
+    "too_many_shapes" "scenes/too_many_shapes.rt"
 )
 
 
