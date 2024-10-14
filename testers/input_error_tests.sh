@@ -14,6 +14,8 @@ TESTS=(
 
 RED="\033[0;31m"
 GREEN="\033[0;32m"
+YELLOW="\033[0;33m"
+BLUE="\033[0;34m"
 RST="\033[0;0m"
 
 OUTPUT_FILE="output.txt"
@@ -24,33 +26,41 @@ STDERR_DIFF="stderr.diff"
 
 chmod -r scenes/no_rights.rt
 
-for ((i = 0; i < ${#TESTS[@]}; i += 2)); do
-    TESTNAME=$EXPECTED_DIR${TESTS[$i]}
-    ARGS=${TESTS[$i + 1]}
+EXECUTABLES=("miniRT" "miniRT_bonus")
+
+for EXEC in ${EXECUTABLES[@]}; do
+
+    echo -e "${BLUE}Running tests for $EXEC${RST}"
+
+    for ((i = 0; i < ${#TESTS[@]}; i += 2)); do
+
+        TESTNAME=$EXPECTED_DIR${TESTS[$i]}
     
-    ../miniRT_bonus $ARGS 1> $OUTPUT_FILE 2> $ERROR_FILE
+        ARGS=${TESTS[$i + 1]}
+        
+        ../$EXEC $ARGS 1> $OUTPUT_FILE 2> $ERROR_FILE
 
-    echo "Testing: "${TESTS[$i]}
+        echo -e "Testing: ${YELLOW}"${TESTS[$i]}"${RST}"
 
-    echo -n "STDOUT: "
-    if diff $OUTPUT_FILE "${TESTNAME}_stdout.txt" > $STDOUT_DIFF
-    then
-        echo -e "${GREEN}OK"
-    else
-        echo -e "${RED}KO" ; cat $STDOUT_DIFF
-    fi
-    echo -en "${RST}"
+        echo -n "STDOUT: "
+        if diff $OUTPUT_FILE "${TESTNAME}_stdout.txt" > $STDOUT_DIFF
+        then
+            echo -e "${GREEN}OK"
+        else
+            echo -e "${RED}KO" ; cat $STDOUT_DIFF
+        fi
+        echo -en "${RST}"
 
-    echo -n "STDERR: "
-    if diff $ERROR_FILE "${TESTNAME}_stderr.txt" > $STDERR_DIFF
-    then
-        echo -e "${GREEN}OK"
-    else
-        echo -e "${RED}KO" ; cat $STDERR_DIFF
-    fi
-    echo -en "${RST}"
+        echo -n "STDERR: "
+        if diff $ERROR_FILE "${TESTNAME}_stderr.txt" > $STDERR_DIFF
+        then
+            echo -e "${GREEN}OK"
+        else
+            echo -e "${RED}KO" ; cat $STDERR_DIFF
+        fi
+        echo -en "${RST}"
 
-    rm $OUTPUT_FILE $ERROR_FILE $STDERR_DIFF $STDOUT_DIFF
+    done
 done
-
+rm $OUTPUT_FILE $ERROR_FILE $STDERR_DIFF $STDOUT_DIFF
 chmod +r scenes/no_rights.rt

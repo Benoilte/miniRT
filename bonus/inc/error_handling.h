@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:52:04 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/11 16:58:37 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/14 13:45:46 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@
 # define ERR_LOG_INFO			"Consult error log file for details"
 
 //	Error messages - Lexer/Parser
-# define INPUT_ERR_USAGE	"Invalid input. Usage: ./miniRT <filename>"
+# define INPUT_ERR_USAGE	"Invalid argument count. Usage: ./miniRT <filename>"
 # define INPUT_ERR_FILENAME "Invalid filename. Expected format: *.rt"
 # define LX_INCOMPLETE 		"Unable to complete lexical analysis"
 # define SYN_CHK_INCOMPLETE	"Unable to complete syntax check"

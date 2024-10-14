@@ -1,2 +1,2 @@
 Error
-init_input: Invalid input. Usage: ./miniRT <filename>
+Invalid argument count. Usage: ./miniRT <filename>
