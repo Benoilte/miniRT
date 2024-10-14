@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 13:26:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/08 09:23:05 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/14 20:17:12 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,15 +76,15 @@ void	destroy_camera(t_camera *camera)
 		free(camera);
 }
 
-t_ray	ray_for_pixel(t_camera c, size_t px, size_t py)
+t_ray	ray_for_pixel(t_camera c, size_t px, size_t py, float x_offset, float y_offset)
 {
 	t_point	world;
 	t_point	pixel;
 	t_ray	ray;
 
 	world = point(\
-		c.half_width - ((px + 0.5f) * c.pixel_size), \
-		c.half_height - ((py + 0.5f) * c.pixel_size), -1);
+		c.half_width - ((px + x_offset) * c.pixel_size), \
+		c.half_height - ((py + y_offset) * c.pixel_size), -1);
 	pixel = mx_mult_tuple(c.transform_inverse, world);
 	ray.origin = mx_mult_tuple(c.transform_inverse, point(0, 0, 0));
 	ray.direction = tp_normalize(tp_subtract(pixel, ray.origin));

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:34:54 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/14 15:47:36 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/14 20:17:32 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_pixel
 {
 	int	x;
 	int	y;
+	float	x_offset;
+	float	y_offset;
 }		t_pixel;
 
 typedef struct s_render_info
@@ -64,10 +66,12 @@ void		set_pixel_color(t_data *data, int x, int y, int color);
 void		render(t_data *data);
 void		*render_strip(void *arg);
 
+// render_pixel.c
+int			render_pixel(t_color *color, t_render_info *info, t_pixel pixel, size_t res);
+
 //	camera.c
 t_camera	camera(t_pixel resolution, float fov);
-t_ray		ray_for_pixel(t_camera camera, size_t px, size_t py);
-
+t_ray		ray_for_pixel(t_camera c, size_t px, size_t py, float x_offset, float y_offset);
 //	view_transform.c
 t_m4x4		view_transform(t_point from, t_vector forward, t_vector up);
 
