@@ -11,6 +11,7 @@ miniRT_bonus
 
 bebrandt_test/*
 test_miniRT
+!testers/*.sh
 
 # unwanted file 
 

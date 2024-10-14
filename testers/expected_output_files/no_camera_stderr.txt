@@ -1,0 +1,2 @@
+Error
+Missing Camera element (C)

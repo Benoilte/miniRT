@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/28 15:52:43 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/14 14:30:22 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define LX_SUFFIX 		".rt"
 # define LX_SUFFIX_LEN 	3
 
-# define INPUT_ERR_USAGE	"Invalid input. Usage: ./miniRT <filename>"
+# define INPUT_ERR_USAGE	"Invalid argument count. Usage: ./miniRT <filename>"
 # define INPUT_ERR_FILENAME "Invalid filename. Expected format: *.rt"
 # define LX_INCOMPLETE 		"Unable to complete lexical analysis"
 # define SYN_CHK_INCOMPLETE	"Unable to complete syntax check"

@@ -1,0 +1,2 @@
+Error
+Invalid argument count. Usage: ./miniRT <filename>

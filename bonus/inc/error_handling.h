@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:52:04 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/09 16:18:37 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/14 13:45:46 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@
 
 //	DEFINES
 
+# define ERR_LOG_FILE	"err.log"
+
 //	Error messages - general
-# define EXIT_ERR_MSG		"\rError\nExiting program..."
+# define EXIT_ERR_MSG		"Exiting program..."
 # define INVALID_POINTER	"invalid (null) pointer passed as argument"
 
 //	Error messages - data initialization
@@ -35,11 +37,17 @@
 //	Error messages - multi-threading
 # define CORE_COUNT_ERROR \
 "Unable to detect online cpu cores : using default setting"
-# define RES_RENDER_WARN	"Warning: Resolution height not optimal"
-# define THREAD_ERROR		"Critical thread error(s) detected"
+# define RES_RENDER_WARN		"Warning: Resolution height not optimal"
+# define THREAD_ERROR			"Thread error detected : aborting render"
+# define NO_THREAD_ERROR		"No threads could be created: aborting render"
+# define PRINT_MUTEX_INIT_ERR	"Unable to initialize print mutex"
+# define PRINT_MUTEX_DEST_ERR	"Unable to destroy print mutex"
+# define REDIR_STDERR_ERR		"Unable to redirect stderr for multi-threading"
+# define INCOMPLETE_RENDER		"Unable to complete render"
+# define ERR_LOG_INFO			"Consult error log file for details"
 
 //	Error messages - Lexer/Parser
-# define INPUT_ERR_USAGE	"Invalid input. Usage: ./miniRT <filename>"
+# define INPUT_ERR_USAGE	"Invalid argument count. Usage: ./miniRT <filename>"
 # define INPUT_ERR_FILENAME "Invalid filename. Expected format: *.rt"
 # define LX_INCOMPLETE 		"Unable to complete lexical analysis"
 # define SYN_CHK_INCOMPLETE	"Unable to complete syntax check"
@@ -112,9 +120,17 @@ typedef enum e_mutex_type
 	PRINT_MTX_LIMIT
 }	t_mutex_type;
 
+typedef struct s_thread_info
+{
+	int	count;
+	int	created;
+	int	errors;
+}		t_thread_info;
+
 //	PROTOTYPES
 
 //	error.c
+void	print_timestamp(void);
 int		print_mutex(t_mutex_type type);
 int		print_error(const char *source, const char *msg);
 void	exit_error(t_data *data, char *message);
