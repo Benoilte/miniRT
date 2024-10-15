@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 13:22:21 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/11 16:48:32 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/15 17:22:33 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,16 @@ int	report_threads_failed(int thread_error_count)
 	return (0);
 }
 
-int	print_thread_report(t_thread_info thread)
+int	handle_any_thread_errors(t_data *data, t_thread_info thread)
 {
-	return (report_threads_created(thread.created, thread.count) | \
-			report_threads_failed(thread.errors));
+	if (thread.created != thread.count || thread.errors)
+		report_threads_created(thread.created, thread.count);
+	if (thread.errors)
+	{
+		report_threads_failed(thread.errors);
+		exit_error(data, INCOMPLETE_RENDER);
+	}
+	return (0);
 }
 
 int	get_available_core_count(void)

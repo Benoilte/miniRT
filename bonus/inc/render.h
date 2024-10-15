@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:34:54 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/14 15:47:36 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/15 22:40:32 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@
 # define DEFAULT_THREAD_COUNT		4
 # define DEFAULT_REFLECTIVE_DEPTH	5
 # define DEFAULT_REFRACTIVE_DEPTH	5
+
+# define TILE_WIDTH		32
+# define TILE_HEIGHT	24
 
 //	TYPEDEFS
 

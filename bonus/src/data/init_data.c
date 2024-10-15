@@ -6,11 +6,25 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:53:19 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/09 10:20:28 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/15 22:41:46 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+static void	round_resolution_for_rendering(t_pixel *res)
+{
+	if (res->x % TILE_WIDTH)
+	{
+		res->x = (res->x + TILE_WIDTH / 2) / TILE_WIDTH * TILE_WIDTH;
+		ft_printf("Resolution width adjusted for rendering purposes\n");
+	}
+	if (res->y % TILE_HEIGHT)
+	{
+		res->y = (res->y + TILE_HEIGHT / 2) / TILE_HEIGHT * TILE_HEIGHT;
+		ft_printf("Resolution height adjusted for rendering purposes\n");
+	}
+}
 
 static t_pixel	get_resolution(t_list *token_list)
 {
@@ -28,6 +42,7 @@ static t_pixel	get_resolution(t_list *token_list)
 		resolution.x = DEFAULT_WIN_WIDTH;
 		resolution.y = DEFAULT_WIN_HEIGHT;
 	}
+	round_resolution_for_rendering(&resolution);
 	ft_printf("Resolution set to: %d x %d\n", resolution.x, resolution.y);
 	return (resolution);
 }

@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:52:04 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/14 13:45:46 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/15 22:40:09 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@
 # define REDIR_STDERR_ERR		"Unable to redirect stderr for multi-threading"
 # define INCOMPLETE_RENDER		"Unable to complete render"
 # define ERR_LOG_INFO			"Consult error log file for details"
+# define TILE_ERROR				"Unable to create render tiles: aborting render"
 
 //	Error messages - Lexer/Parser
 # define INPUT_ERR_USAGE	"Invalid argument count. Usage: ./miniRT <filename>"
@@ -138,5 +139,8 @@ void	exit_error(t_data *data, char *message);
 //	input_error.c
 int		input_error(t_input_data *input, const char *source, const char *msg);
 int		log_error(t_list **errors, int type, int line);
+
+//	rendering/multi_threading_utils.c
+int		handle_any_thread_errors(t_data *data, t_thread_info thread);
 
 #endif

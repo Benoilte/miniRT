@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 12:57:38 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/11 16:50:13 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/15 22:23:49 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,10 @@ void	*render_strip(void *arg)
 
 void	render(t_data *data)
 {
-	static t_thread_info	thread;
+	t_thread_info	thread;
 
 	if (!data)
-	{
-		print_error("render", INVALID_POINTER);
 		return ;
-	}
 	reset_image(data);
 	ft_printf("Rendering...\n");
 	thread.count = data->render.thread_count;
@@ -79,14 +76,7 @@ void	render(t_data *data)
 		exit_error(data, NO_THREAD_ERROR);
 	thread.errors = join_threads(data);
 	ft_printf("\n");
-	if (thread.created != thread.count || thread.errors)
-		report_threads_created(thread.created, thread.count);
-	if (thread.errors)
-	{
-		report_threads_failed(thread.errors);
-		exit_error(data, INCOMPLETE_RENDER);
-	}
-	else
-		mlx_put_image_to_window(data->mlx->xvar, data->mlx->win, \
-								data->mlx->img, 0, 0);
+	handle_any_thread_errors(data, thread);
+	mlx_put_image_to_window(data->mlx->xvar, data->mlx->win, \
+							data->mlx->img, 0, 0);
 }
