@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 13:55:02 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/15 22:46:10 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/15 23:32:55 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	set_render_block(	t_data *data, \
 	render->blocks[id].stop_line = render->blocks[id].start_line + slice_size;
 	render->blocks[id].reflective_depth = render->master_reflective_depth;
 	render->blocks[id].refractive_depth = render->master_refractive_depth;
-	render->blocks[id].aa_sample_precision = AA_ADAPTIVE_SAMPLE;
+	render->blocks[id].aa_sample_precision = AA_ONE_SAMPLE;
 	if (init_shape_container(ft_lstsize(data->world->shapes), \
 		&(render->blocks[id].shape_container)) != 0)
 		return (1);
