@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:06:32 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/19 14:22:56 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/15 15:29:06 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,6 @@ char	*ft_strcpy(char *dest, char *src);
 int		ft_isspace(int c);
 int		ft_atoi_base(char *str, char *base);
 double	ft_atod(const char *str);
+t_list	*lstpop_top(t_list **list);
 
 #endif

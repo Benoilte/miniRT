@@ -6,7 +6,7 @@
 #    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/24 11:39:18 by bgolding          #+#    #+#              #
-#    Updated: 2024/09/19 14:18:01 by bgolding         ###   ########.fr        #
+#    Updated: 2024/10/15 15:29:55 by bgolding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,8 @@ SRC_F	=	ft_isalpha \
 			get_next_line_utils_bonus \
 			ft_isspace \
 			ft_atoi_base \
-			ft_atod
+			ft_atod \
+			ft_lstpop_top
 			
 SRCS	=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_F)))
 OBJS	=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_F)))
