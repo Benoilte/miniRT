@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 12:57:38 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/14 20:26:25 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/15 14:34:27 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	*render_strip(void *arg)
 		pixel.x = -1;
 		while (++(pixel.x) < info->data->resolution.x)
 		{
-			if (render_pixel(&color, info, pixel, 3) != 0)
+			if (render_pixel(&color, info, &pixel) != 0)
 				return (print_error("render_strip", THREAD_ERROR), (void *)1);
 			color_int = rgb_stoi(color);
 			if (color_int != 0)
