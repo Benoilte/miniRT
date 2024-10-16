@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:28:57 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/15 15:28:58 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/16 13:44:29 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 	Returns NULL if the list is empty or invalid.
 */
 
-t_list	*lstpop_top(t_list **list)
+t_list	*ft_lstpop_top(t_list **list)
 {
 	t_list	*popped_node;
 
