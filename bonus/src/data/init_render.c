@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 13:55:02 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/11 12:27:28 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/15 23:42:26 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,24 @@ static void	set_render_depth(t_render *render, char **element)
 	ft_printf("Refractive depth set to: %d\n", render->master_refractive_depth);
 }
 
+static int	set_render_block(	t_data *data, \
+								t_render *render, \
+								int id, \
+								int slice_size)
+{
+	render->blocks[id].thread_id = id;
+	render->blocks[id].data = data;
+	render->blocks[id].start_line = id * slice_size;
+	render->blocks[id].stop_line = render->blocks[id].start_line + slice_size;
+	render->blocks[id].reflective_depth = render->master_reflective_depth;
+	render->blocks[id].refractive_depth = render->master_refractive_depth;
+	render->blocks[id].aa_sample_precision = AA_ONE_SAMPLE;
+	if (init_shape_container(ft_lstsize(data->world->shapes), \
+		&(render->blocks[id].shape_container)) != 0)
+		return (1);
+	return (0);
+}
+
 static int	init_render_blocks(t_data *data, t_render *render)
 {
 	int	slice_size;
@@ -42,15 +60,8 @@ static int	init_render_blocks(t_data *data, t_render *render)
 	i = 0;
 	while (i < render->thread_count)
 	{
-		render->blocks[i].thread_id = i;
-		render->blocks[i].data = data;
-		render->blocks[i].start_line = i * slice_size;
-		render->blocks[i].stop_line = render->blocks[i].start_line + slice_size;
-		render->blocks[i].reflective_depth = render->master_reflective_depth;
-		render->blocks[i].refractive_depth = render->master_refractive_depth;
-		if (init_shape_container(ft_lstsize(data->world->shapes), \
-			&(render->blocks[i].shape_container)) != 0)
-			return (1);
+		if (set_render_block(data, render, i, slice_size) != 0)
+			return (2);
 		i ++;
 	}
 	render->blocks[i - 1].stop_line = data->resolution.y;

@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:34:54 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/15 22:40:32 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/16 12:17:21 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@
 # define DEFAULT_REFLECTIVE_DEPTH	5
 # define DEFAULT_REFRACTIVE_DEPTH	5
 
+# define AA_ONE_SAMPLE			1
+# define AA_MEDIUM_SAMPLE		2
+# define AA_ADAPTIVE_SAMPLE		3
+
 # define TILE_WIDTH		32
 # define TILE_HEIGHT	24
 
@@ -35,6 +39,8 @@ typedef struct s_pixel
 {
 	int	x;
 	int	y;
+	float	x_offset;
+	float	y_offset;
 }		t_pixel;
 
 typedef struct s_render_info
@@ -46,6 +52,7 @@ typedef struct s_render_info
 	int			reflective_depth;
 	int			refractive_depth;
 	int			depth;
+	int			aa_sample_precision;
 	t_dbl_lst	*shape_container;
 }				t_render_info;
 
@@ -67,10 +74,12 @@ void		set_pixel_color(t_data *data, int x, int y, int color);
 void		render(t_data *data);
 void		*render_strip(void *arg);
 
+// render_pixel.c
+int			render_pixel(t_color *color, t_render_info *info, t_pixel *pixel);
+
 //	camera.c
 t_camera	camera(t_pixel resolution, float fov);
-t_ray		ray_for_pixel(t_camera camera, size_t px, size_t py);
-
+t_ray		ray_for_pixel(t_camera c, t_pixel *pixel);
 //	view_transform.c
 t_m4x4		view_transform(t_point from, t_vector forward, t_vector up);
 

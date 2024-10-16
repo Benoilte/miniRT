@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 12:57:38 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/15 22:23:49 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/16 12:17:50 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	*render_strip(void *arg)
 {
 	t_render_info	*info;
 	t_pixel			pixel;
-	t_ray			ray;
 	t_color			color;
 	int				color_int;
 
@@ -49,8 +48,7 @@ void	*render_strip(void *arg)
 		pixel.x = -1;
 		while (++(pixel.x) < info->data->resolution.x)
 		{
-			ray = ray_for_pixel(*(info->data->camera), pixel.x, pixel.y);
-			if (color_at(&color, NULL, &ray, info) != 0)
+			if (render_pixel(&color, info, &pixel) != 0)
 				return (print_error("render_strip", THREAD_ERROR), (void *)1);
 			color_int = rgb_stoi(color);
 			if (color_int != 0)
