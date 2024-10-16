@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 12:43:13 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/16 16:14:22 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/16 22:20:39 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ int	init_tile_stack(t_list **tile_stack, t_pixel end)
 
 	if (!tile_stack)
 		return (print_error("init_tile_stack", INVALID_POINTER));
-	start.y = end.y - TILE_HEIGHT + 1;
+	start.y = end.y - TILE_HEIGHT;
 	while (start.y >= 0)
 	{
-		start.x = end.x - TILE_WIDTH + 1;
+		start.x = end.x - TILE_WIDTH;
 		while (start.x >= 0)
 		{
 			tile_node = init_tile_node(start);
