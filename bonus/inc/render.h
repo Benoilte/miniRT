@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:34:54 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/16 12:17:21 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/16 15:29:02 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,22 @@
 
 typedef struct s_pixel
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
 	float	x_offset;
 	float	y_offset;
 }		t_pixel;
+
+typedef struct s_tile
+{
+	t_pixel	start;
+	t_pixel	end;
+}			t_tile;
 
 typedef struct s_render_info
 {
 	int			thread_id;
 	t_data		*data;
-	int			start_line;
-	int			stop_line;
 	int			reflective_depth;
 	int			refractive_depth;
 	int			depth;
@@ -58,6 +62,7 @@ typedef struct s_render_info
 
 typedef struct s_render
 {
+	t_list			*tile_stack;
 	t_render_info	*blocks;
 	pthread_t		*threads;
 	int				thread_count;
@@ -111,6 +116,12 @@ int			join_threads(t_data *data);
 int			get_available_core_count(void);
 int			report_threads_created(int created, int total);
 int			report_threads_failed(int thread_error_count);
+int			tile_stack_mutex(t_mutex_type type);
+
+//	tiling.c
+int			init_tile_stack(t_list **tile_stack, t_pixel end);
+t_tile		*get_next_tile(t_list **tile_stack);
+void		destroy_tile(void *content);
 
 //	test/time.c
 void		timed_render(t_data *data);

@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 13:05:11 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/11 16:53:36 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/16 15:39:32 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ int	create_threads(t_data *data)
 
 	data->errlog = freopen(ERR_LOG_FILE, "w", stderr);
 	if (!data->errlog)
-		exit_error(data, REDIR_STDERR_ERR);
-	if (print_mutex(PRINT_MTX_INIT) != 0)
-		exit_error(data, PRINT_MUTEX_INIT_ERR);
+		return (print_error("create_threads", REDIR_STDERR_ERR));
 	i = 0;
 	threads_created = 0;
 	while (i < data->render.thread_count)
@@ -53,7 +51,5 @@ int	join_threads(t_data *data)
 		else if (ret == (void *)1)
 			thread_error_count++;
 	}
-	if (print_mutex(PRINT_MTX_DESTROY) != 0)
-		print_error("join_threads", PRINT_MUTEX_DEST_ERR);
 	return (thread_error_count);
 }

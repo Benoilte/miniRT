@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:52:04 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/15 22:40:09 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/16 15:32:15 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@
 # define INCOMPLETE_RENDER		"Unable to complete render"
 # define ERR_LOG_INFO			"Consult error log file for details"
 # define TILE_ERROR				"Unable to create render tiles: aborting render"
+# define TILE_MUTEX_INIT_ERR	"Unable to initialize tile stack mutex"
+# define TILE_MUTEX_DEST_ERR	"Unable to destroy tile stack mutex"
 
 //	Error messages - Lexer/Parser
 # define INPUT_ERR_USAGE	"Invalid argument count. Usage: ./miniRT <filename>"
@@ -114,11 +116,11 @@ typedef struct t_error
 
 typedef enum e_mutex_type
 {
-	PRINT_MTX_INIT,
-	PRINT_MTX_DESTROY,
-	PRINT_MTX_LOCK,
-	PRINT_MTX_UNLOCK,
-	PRINT_MTX_LIMIT
+	MTX_INIT,
+	MTX_DESTROY,
+	MTX_LOCK,
+	MTX_UNLOCK,
+	MTX_LIMIT
 }	t_mutex_type;
 
 typedef struct s_thread_info

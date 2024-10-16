@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:49:38 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/11 17:07:27 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/16 15:34:57 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@ int	print_mutex(t_mutex_type type)
 	static bool				mutex_active = false;
 	static pthread_mutex_t	print_mutex;
 
-	if (type < 0 || type >= PRINT_MTX_LIMIT)
+	if (type < 0 || type >= MTX_LIMIT)
 		return (-1);
-	if (type == PRINT_MTX_INIT)
+	if (type == MTX_INIT && !mutex_active)
 	{
 		if (pthread_mutex_init(&print_mutex, NULL))
 			return (1);
 		mutex_active = true;
 	}
-	else if (type == PRINT_MTX_DESTROY)
+	else if (type == MTX_DESTROY && mutex_active)
 	{
 		if (pthread_mutex_destroy(&print_mutex))
 			return (2);
@@ -45,9 +45,9 @@ int	print_mutex(t_mutex_type type)
 	}
 	else if (mutex_active)
 	{
-		if (type == PRINT_MTX_LOCK && pthread_mutex_lock(&print_mutex))
+		if (type == MTX_LOCK && pthread_mutex_lock(&print_mutex))
 			return (3);
-		if (type == PRINT_MTX_UNLOCK && pthread_mutex_unlock(&print_mutex))
+		if (type == MTX_UNLOCK && pthread_mutex_unlock(&print_mutex))
 			return (4);
 	}
 	return (0);
@@ -55,7 +55,7 @@ int	print_mutex(t_mutex_type type)
 
 int	print_error(const char *source, const char *msg)
 {
-	if (print_mutex(PRINT_MTX_LOCK) != 0)
+	if (print_mutex(MTX_LOCK) != 0)
 		return (-1);
 	print_timestamp();
 	if (source)
@@ -66,7 +66,7 @@ int	print_error(const char *source, const char *msg)
 	if (msg)
 		ft_putstr_fd((char *)msg, STDERR_FILENO);
 	ft_putchar_fd('\n', STDERR_FILENO);
-	if (print_mutex(PRINT_MTX_UNLOCK) != 0)
+	if (print_mutex(MTX_UNLOCK) != 0)
 		return (-1);
 	return (1);
 }

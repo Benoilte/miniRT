@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   init_render.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 13:55:02 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/15 23:42:26 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:13:10 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+static int	init_all_mutexes(void)
+{
+	if (print_mutex(MTX_INIT) != 0)
+		return (print_error("create_threads", PRINT_MUTEX_INIT_ERR));
+	if (tile_stack_mutex(MTX_INIT) != 0)
+		return (print_error("create_threads", TILE_MUTEX_INIT_ERR));
+	return (0);
+}
 
 static void	set_render_depth(t_render *render, char **element)
 {
@@ -28,43 +37,26 @@ static void	set_render_depth(t_render *render, char **element)
 	ft_printf("Refractive depth set to: %d\n", render->master_refractive_depth);
 }
 
-static int	set_render_block(	t_data *data, \
-								t_render *render, \
-								int id, \
-								int slice_size)
-{
-	render->blocks[id].thread_id = id;
-	render->blocks[id].data = data;
-	render->blocks[id].start_line = id * slice_size;
-	render->blocks[id].stop_line = render->blocks[id].start_line + slice_size;
-	render->blocks[id].reflective_depth = render->master_reflective_depth;
-	render->blocks[id].refractive_depth = render->master_refractive_depth;
-	render->blocks[id].aa_sample_precision = AA_ONE_SAMPLE;
-	if (init_shape_container(ft_lstsize(data->world->shapes), \
-		&(render->blocks[id].shape_container)) != 0)
-		return (1);
-	return (0);
-}
-
 static int	init_render_blocks(t_data *data, t_render *render)
 {
-	int	slice_size;
 	int	i;
 
-	if (data->resolution.y % render->thread_count != 0)
-		ft_putendl_fd(RES_RENDER_WARN, STDERR_FILENO);
-	slice_size = data->resolution.y / render->thread_count;
 	render->blocks = ft_calloc(render->thread_count, sizeof(t_render_info));
 	if (!render->blocks)
 		return (1);
 	i = 0;
 	while (i < render->thread_count)
 	{
-		if (set_render_block(data, render, i, slice_size) != 0)
-			return (2);
+		render->blocks[i].thread_id = i;
+		render->blocks[i].data = data;
+		render->blocks[i].reflective_depth = render->master_reflective_depth;
+		render->blocks[i].refractive_depth = render->master_refractive_depth;
+		render->blocks[i].aa_sample_precision = AA_ONE_SAMPLE;
+		if (init_shape_container(ft_lstsize(data->world->shapes), \
+			&(render->blocks[i].shape_container)) != 0)
+			return (1);
 		i ++;
 	}
-	render->blocks[i - 1].stop_line = data->resolution.y;
 	return (0);
 }
 
@@ -77,5 +69,7 @@ int	init_render_settings(t_data *data, t_render *render)
 	set_render_depth(render, get_element(data->input.token_list, ID_DEPTH));
 	if (init_render_blocks(data, render) != 0)
 		return (2);
+	if (init_all_mutexes() != 0)
+		return (3);
 	return (0);
 }

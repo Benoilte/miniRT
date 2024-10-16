@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 13:22:21 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/15 17:22:33 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:19:49 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 int	report_threads_created(int created, int total)
 {
-	if (print_mutex(PRINT_MTX_LOCK) != 0)
+	if (print_mutex(MTX_LOCK) != 0)
 		return (-1);
 	ft_putstr_fd("Threads created: ", STDERR_FILENO);
 	ft_putnbr_fd(created, STDERR_FILENO);
 	ft_putchar_fd('/', STDERR_FILENO);
 	ft_putnbr_fd(total, STDERR_FILENO);
 	ft_putendl_fd("", STDERR_FILENO);
-	if (print_mutex(PRINT_MTX_UNLOCK) != 0)
+	if (print_mutex(MTX_UNLOCK) != 0)
 		return (-1);
 	return (0);
 }
 
 int	report_threads_failed(int thread_error_count)
 {
-	if (print_mutex(PRINT_MTX_LOCK) != 0)
+	if (print_mutex(MTX_LOCK) != 0)
 		return (-1);
 	ft_putstr_fd("Threads aborted: ", STDERR_FILENO);
 	ft_putnbr_fd(thread_error_count, STDERR_FILENO);
 	ft_putchar_fd('\n', STDERR_FILENO);
-	if (print_mutex(PRINT_MTX_UNLOCK) != 0)
+	if (print_mutex(MTX_UNLOCK) != 0)
 		return (-1);
 	return (0);
 }
@@ -65,4 +65,33 @@ int	get_available_core_count(void)
 	else
 		ft_printf("Online CPU cores detected: %d\n", online_cores);
 	return (online_cores);
+}
+
+int	tile_stack_mutex(t_mutex_type type)
+{
+	static bool				mutex_active = false;
+	static pthread_mutex_t	tile_mutex;
+
+	if (type < 0 || type >= MTX_LIMIT)
+		return (-1);
+	if (type == MTX_INIT && !mutex_active)
+	{
+		if (pthread_mutex_init(&tile_mutex, NULL))
+			return (1);
+		mutex_active = true;
+	}
+	else if (type == MTX_DESTROY && mutex_active)
+	{
+		if (pthread_mutex_destroy(&tile_mutex))
+			return (2);
+		mutex_active = false;
+	}
+	else if (mutex_active)
+	{
+		if (type == MTX_LOCK && pthread_mutex_lock(&tile_mutex))
+			return (3);
+		if (type == MTX_UNLOCK && pthread_mutex_unlock(&tile_mutex))
+			return (4);
+	}
+	return (0);
 }

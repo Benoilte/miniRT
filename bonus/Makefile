@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+         #
+#    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/10/14 17:26:00 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/10/16 16:14:53 by bgolding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ HOOKS_FILES			=	hooks keypress mouse
 REFRACTION_FILES	=	refraction shape_containers_utils init_shape_containers destroy_shape_containers \
 						reset_shape_containers
 RENDERING_FILES		=	render draw_utils view_transform camera intersect_world color_at reflection \
-						multi_threading multi_threading_utils shadow render_pixel
+						multi_threading multi_threading_utils shadow render_pixel tiling
 INTERSECT_FILES		=	clear_intersection hit_intersection new_intersection details_intersection utils
 INTER_LST_FILES		=	inter_lstnew inter_lstiter inter_lstclear inter_lstdelone inter_lstadd_back \
 						inter_lstadd_front inter_lstadd_ordered inter_lstadd_before inter_lstadd_after \
@@ -99,7 +99,7 @@ OBJS			=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 LIB_LINK		=	-L$(LIBFT_DIR) -lft -L$(MINILIBX_DIR) -lmlx -L$(LIBGRAPHIC_DIR) -lgraphic -L$(LIBDLIST) -ldlist $(OS_FLAGS)
 
 CC				=	gcc
-CFLAGS			=	-Wall -Wextra -Werror -pthread -g
+CFLAGS			=	-Wall -Wextra -Werror -pthread -O2
 RM				=	rm -f
 AR				=	ar -r
 
