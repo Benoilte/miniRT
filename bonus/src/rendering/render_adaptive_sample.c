@@ -6,13 +6,16 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 10:56:14 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/17 11:35:29 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/17 12:17:39 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static int	set_random_sample(t_color *color, t_render_info *info, t_pixel *px, float offset)
+static int	set_random_sample(	t_color *color, \
+								t_render_info *info, \
+								t_pixel *px, \
+								float offset)
 {
 	int		i;
 	int		j;
@@ -59,13 +62,14 @@ static float	get_variance(t_color *avg_color, t_color *color_samples)
 	return (var / AA_SAMPLE_SIZE);
 }
 
-static t_color	get_avg_color(t_color *color, t_color *sampled_color, int iteration)
+static t_color	get_avg_color(	t_color *color, \
+								t_color *sampled_color, \
+								int iteration)
 {
 	if (!iteration)
 		return (*sampled_color);
 	else
 		return (rgb_divide(rgb_add(*color, *sampled_color), 2));
-
 }
 
 int	set_px_adaptive_sample(t_color *color, t_render_info *info, t_pixel *px)
