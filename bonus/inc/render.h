@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:34:54 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/16 15:29:02 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/17 12:01:52 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,14 @@
 # define DEFAULT_REFLECTIVE_DEPTH	5
 # define DEFAULT_REFRACTIVE_DEPTH	5
 
-# define AA_ONE_SAMPLE			1
-# define AA_MEDIUM_SAMPLE		2
-# define AA_ADAPTIVE_SAMPLE		3
+# define AA_ONE_SAMPLE				1
+# define AA_MEDIUM_SAMPLE			2
+# define AA_ADAPTIVE_SAMPLE			3
+
+# define AA_SAMPLE_SIZE				4
+# define AA_HALF_SAMPLE_SIZE		2
+# define AA_DEPTH					4
+# define AA_VARIANCE_TRESHOLD		0.0001
 
 # define TILE_WIDTH		32
 # define TILE_HEIGHT	24
@@ -81,7 +86,11 @@ void		*render_strip(void *arg);
 
 // render_pixel.c
 int			render_pixel(t_color *color, t_render_info *info, t_pixel *pixel);
+int			set_px_one_sample(t_color *color, t_render_info *info, t_pixel *px);
 
+// render_adaptive_sample.c
+int			set_px_adaptive_sample(t_color *color, t_render_info *info, \
+																t_pixel *px);
 //	camera.c
 t_camera	camera(t_pixel resolution, float fov);
 t_ray		ray_for_pixel(t_camera c, t_pixel *pixel);
