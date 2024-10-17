@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:34:54 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/17 12:01:52 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/17 15:34:25 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@
 # define DEFAULT_REFLECTIVE_DEPTH	5
 # define DEFAULT_REFRACTIVE_DEPTH	5
 
-# define AA_ONE_SAMPLE				1
-# define AA_MEDIUM_SAMPLE			2
-# define AA_ADAPTIVE_SAMPLE			3
+# define AA_ONE_SAMPLE				0
+# define AA_MEDIUM_SAMPLE			1
+# define AA_ADAPTIVE_SAMPLE			2
 
 # define AA_SAMPLE_SIZE				4
 # define AA_HALF_SAMPLE_SIZE		2
@@ -73,6 +73,7 @@ typedef struct s_render
 	int				thread_count;
 	int				master_reflective_depth;
 	int				master_refractive_depth;
+	int				master_aa_precision;
 }					t_render;
 
 //	PROTOTYPES
