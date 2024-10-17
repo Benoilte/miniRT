@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:34:54 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/16 11:01:36 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/17 11:35:56 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,14 @@
 # define DEFAULT_REFLECTIVE_DEPTH	5
 # define DEFAULT_REFRACTIVE_DEPTH	5
 
-# define AA_ONE_SAMPLE			1
-# define AA_MEDIUM_SAMPLE		2
-# define AA_ADAPTIVE_SAMPLE		3
+# define AA_ONE_SAMPLE				1
+# define AA_MEDIUM_SAMPLE			2
+# define AA_ADAPTIVE_SAMPLE			3
+
+# define AA_SAMPLE_SIZE				4
+# define AA_HALF_SAMPLE_SIZE		2
+# define AA_DEPTH					4
+# define AA_VARIANCE_TRESHOLD		0.0001
 
 //	TYPEDEFS
 
