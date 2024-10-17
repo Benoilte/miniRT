@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:53:19 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/15 22:41:46 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/17 12:04:27 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ static t_pixel	get_resolution(t_list *token_list)
 		resolution.x = DEFAULT_WIN_WIDTH;
 		resolution.y = DEFAULT_WIN_HEIGHT;
 	}
+	resolution.x_offset = 0;
+	resolution.y_offset = 0;
 	round_resolution_for_rendering(&resolution);
 	ft_printf("Resolution set to: %d x %d\n", resolution.x, resolution.y);
 	return (resolution);
