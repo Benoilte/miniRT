@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:34:54 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/15 22:36:03 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/16 11:01:36 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,11 @@ void		*render_strip(void *arg);
 
 // render_pixel.c
 int			render_pixel(t_color *color, t_render_info *info, t_pixel *pixel);
+int			set_px_one_sample(t_color *color, t_render_info *info, t_pixel *px);
 
+// render_adaptive_sample.c
+int			set_px_adaptive_sample(t_color *color, t_render_info *info, \
+																t_pixel *px);
 //	camera.c
 t_camera	camera(t_pixel resolution, float fov);
 t_ray		ray_for_pixel(t_camera c, t_pixel *pixel);
