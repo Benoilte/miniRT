@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 15:15:56 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/15 12:52:22 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/16 20:47:59 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ t_color		rgb_scale(t_color c, float s);
 t_color		rgb_mult(t_color a, t_color b);
 t_color		rgb_divide(t_color c, float d);
 t_color		rgb_blend(t_color a, t_color b, float weight);
+float		rgb_magnitude_squared(t_color c);
 void		rgb_error(const char *source, const char *msg);
 
 #endif
