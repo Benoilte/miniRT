@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 17:42:41 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/08 13:52:08 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/17 07:46:28 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,17 @@ int	validate_depth(t_token *token, t_list **errors)
 		return (log_error(errors, ERR_DUPLICATE, token->line));
 	depth_exists = 1;
 	return (validate_depth_parameters(&token->args[1], token->line, errors));
+}
+
+int	validate_a_aliasing(t_token *token, t_list **errors)
+{
+	static int	anti_aliasing_exists = 0;
+
+	if (!token || !token->args || !errors)
+		return (-1);
+	if (anti_aliasing_exists)
+		return (log_error(errors, ERR_DUPLICATE, token->line));
+	anti_aliasing_exists = 1;
+	return (validate_a_aliasing_parameters(&token->args[1], token->line, \
+											errors));
 }

@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:52:04 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/16 15:32:15 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/17 07:33:55 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@
 # define ERRMSG_RES_WIDTH		"Invalid resolution width [640 .. 3200]"
 # define ERRMSG_RES_HEIGHT		"Invalid resolution height [480 .. 1800]"
 # define ERRMSG_DEPTH			"Invalid depth parameter [1 .. 10 (int)]"
+# define ERRMSG_A_ALIASING		"Invalid anti-aliasing value [0 | 1 | 2]"
 
 //	TYPEDEFS
 
@@ -105,6 +106,7 @@ typedef enum e_error_code
 	ERR_RES_WIDTH,
 	ERR_RES_HEIGHT,
 	ERR_DEPTH,
+	ERR_A_ALIASING,
 	ERR_CODE_LIMIT
 }	t_error_code;
 

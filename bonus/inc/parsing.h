@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/08 17:13:31 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/17 07:49:30 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define STR_DEFAULT_MATERIAL	"M"
 # define STR_RESOLUTION			"R"
 # define STR_DEPTH				"D"
+# define STR_A_ALIASING			"AA"
 
 # define STR_SPHERE		"sp"
 # define STR_PLANE		"pl"
@@ -45,6 +46,7 @@
 # define MATERIAL_PARAMS	6
 # define RESOLUTION_PARAMS	2
 # define DEPTH_PARAMS		2
+# define A_ALIASING_PARAMS	1
 
 # define SPHERE_PARAMS 		3
 # define PLANE_PARAMS 		3
@@ -78,6 +80,8 @@
 # define RES_RANGE_H_MAX	1800
 # define DEPTH_RANGE_MIN	1
 # define DEPTH_RANGE_MAX	20
+# define A_A_RANGE_MIN		0
+# define A_A_RANGE_MAX		2
 
 //	TYPEDEFS
 
@@ -98,6 +102,7 @@ typedef enum e_info
 	INFO_WIN_WIDTH,
 	INFO_WIN_HEIGHT,
 	INFO_DEPTH,
+	INFO_A_ALIASING,
 	INFO_COUNT
 }	t_info;
 
@@ -110,6 +115,7 @@ typedef enum e_id
 	ID_MATERIAL,
 	ID_RESOLUTION,
 	ID_DEPTH,
+	ID_A_ALIASING,
 	ID_SPHERE,
 	ID_PLANE,
 	ID_CYLINDER,
@@ -172,6 +178,7 @@ int		validate_light(t_token *token, t_list **errors);
 int		validate_default_material(t_token *token, t_list **errors);
 int		validate_resolution(t_token *token, t_list **errors);
 int		validate_depth(t_token *token, t_list **errors);
+int		validate_a_aliasing(t_token *token, t_list **errors);
 
 //	validate_shape.c
 int		validate_sphere(t_token *token, t_list **errors);
@@ -198,12 +205,14 @@ int		count_args(const char **args);
 int		validate_material_parameters(char **args, int line, t_list **errors);
 int		validate_resolution_parameters(char **args, int line, t_list **errors);
 int		validate_depth_parameters(char **args, int line, t_list **errors);
+int		validate_a_aliasing_parameters(char **args, int line, t_list **errors);
 
 //	validate_bonus_info_1.c
 int		validate_diffuse(const char *str, int line, t_list **errors);
 int		validate_specular(const char *str, int line, t_list **errors);
 int		validate_shininess(const char *str, int line, t_list **errors);
 int		validate_reflective(const char *str, int line, t_list **errors);
+int		validate_a_aliasing_value(const char *str, int line, t_list **errors);
 
 //	validate_bonus_info_2.c
 int		validate_transparency(const char *str, int line, t_list **errors);
