@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_pixel.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 17:02:05 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/16 11:02:46 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/17 15:48:27 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static int	set_px_medium_sample(	t_color *color, \
 	int		res;
 
 	res = 5;
+	*color = rgb_set(0, 0, 0);
 	while (res > 0)
 	{
 		if (set_px_one_sample(&tmp_color, info, px) != 0)
