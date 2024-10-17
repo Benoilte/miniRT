@@ -6,21 +6,11 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 17:02:05 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/15 22:45:46 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/16 11:02:46 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-static int	set_px_one_sample(t_color *color, t_render_info *info, t_pixel *px)
-{
-	t_ray	ray;
-
-	ray = ray_for_pixel(*(info->data->camera), px);
-	if (color_at(color, NULL, &ray, info) != 0)
-		return (1);
-	return (0);
-}
 
 static int	set_px_medium_sample(	t_color *color, \
 									t_render_info *info, \
@@ -52,33 +42,13 @@ static int	set_px_medium_sample(	t_color *color, \
 	return (0);
 }
 
-static int	set_px_adaptive_sample(	t_color *color, \
-									t_render_info *info, \
-									t_pixel *px)
+int	set_px_one_sample(t_color *color, t_render_info *info, t_pixel *px)
 {
-	t_color	tmp_color;
-	int		res;
-	int		i;
-	int		j;
+	t_ray	ray;
 
-	res = 3;
-	*color = rgb_set(0, 0, 0);
-	i = 0;
-	while (i < res)
-	{
-		j = 0;
-		while (j < res)
-		{
-			px->x_offset = (i + 0.5) / res;
-			px->y_offset = (j + 0.5) / res;
-			if (set_px_one_sample(&tmp_color, info, px) != 0)
-				return (1);
-			*color = rgb_add(tmp_color, *color);
-			j++;
-		}
-		i++;
-	}
-	*color = rgb_divide(*color, (res * res));
+	ray = ray_for_pixel(*(info->data->camera), px);
+	if (color_at(color, NULL, &ray, info) != 0)
+		return (1);
 	return (0);
 }
 

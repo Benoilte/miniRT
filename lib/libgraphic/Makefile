@@ -6,7 +6,7 @@
 #    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/06 12:49:52 by bgolding          #+#    #+#              #
-#    Updated: 2024/10/15 12:54:11 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/10/16 20:49:19 by bebrandt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ TUPLE_SRC	=	error vector point equal add subtract negate multiply divide \
 				magnitude normalize dot_product cross_product reflect
 
 COLOR_SRC 	=	rgb_new rgb_equal rgb_destroy rgb_conversion rgb_add \
-				rgb_subtract rgb_scale rgb_multiply rgb_divide rgb_blend error
+				rgb_subtract rgb_scale rgb_multiply rgb_divide rgb_blend \
+				rgb_magnitude_squared error
 
 MATRIX_SRC	=	error init equal multiply identity transpose submatrix \
 				determinant cofactor inversion translation scaling reflection \
