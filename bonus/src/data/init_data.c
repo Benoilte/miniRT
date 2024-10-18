@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:53:19 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/17 12:04:27 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/18 12:21:45 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,7 @@ t_data	*init_data(int argc, char **argv)
 		exit_error(data, INIT_MLX_ERR);
 	if (init_render_settings(data, &data->render) != 0)
 		exit_error(data, INIT_RENDER_ERR);
+	data->stderr_cpy = -1;
+	data->errlog_fd = -1;
 	return (data);
 }

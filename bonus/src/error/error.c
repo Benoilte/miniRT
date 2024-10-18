@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:49:38 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/16 15:34:57 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/18 11:59:33 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	print_error(const char *source, const char *msg)
 
 void	exit_error(t_data *data, char *message)
 {
-	if (message && data->errlog)
+	if (message && data->stderr_cpy >= 0)
 	{
 		if (errno)
 			perror(message);
@@ -81,7 +81,7 @@ void	exit_error(t_data *data, char *message)
 			ft_putendl_fd(message, STDERR_FILENO);
 	}
 	printf("%s\n", message);
-	if (data->errlog)
+	if (data->stderr_cpy >= 0)
 		printf("%s : %s\n", ERR_LOG_INFO, ERR_LOG_FILE);
 	printf("%s\n", EXIT_ERR_MSG);
 	destroy_data(data);

@@ -6,20 +6,32 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 13:05:11 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/16 15:39:32 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/18 12:23:49 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+static int	redirect_stderr_to_log_file(t_data *data)
+{
+	data->errlog_fd = open(ERR_LOG_FILE, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (data->errlog_fd == -1)
+		return (perror(ERR_LOG_FILE), 1);
+	data->stderr_cpy = dup(STDERR_FILENO);
+	if (data->stderr_cpy == 2)
+		return (perror("dup"), -1);
+	if (dup2(data->errlog_fd, STDERR_FILENO) == -1)
+		return (perror("dup2"), 3);
+	return (0);
+}
 
 int	create_threads(t_data *data)
 {
 	int	i;
 	int	threads_created;
 
-	data->errlog = freopen(ERR_LOG_FILE, "w", stderr);
-	if (!data->errlog)
-		return (print_error("create_threads", REDIR_STDERR_ERR));
+	if (redirect_stderr_to_log_file(data) != 0)
+		exit_error(data, REDIR_STDERR_ERR);
 	i = 0;
 	threads_created = 0;
 	while (i < data->render.thread_count)

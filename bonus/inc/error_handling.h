@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:52:04 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/17 07:33:55 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/18 12:05:58 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 //	DEFINES
 
-# define ERR_LOG_FILE	"err.log"
+# define ERR_LOG_FILE	"render_error.log"
 
 //	Error messages - general
 # define EXIT_ERR_MSG		"Exiting program..."
@@ -42,7 +42,7 @@
 # define NO_THREAD_ERROR		"No threads could be created: aborting render"
 # define PRINT_MUTEX_INIT_ERR	"Unable to initialize print mutex"
 # define PRINT_MUTEX_DEST_ERR	"Unable to destroy print mutex"
-# define REDIR_STDERR_ERR		"Unable to redirect stderr for multi-threading"
+# define REDIR_STDERR_ERR		"Unable to redirect stderr to log file"
 # define INCOMPLETE_RENDER		"Unable to complete render"
 # define ERR_LOG_INFO			"Consult error log file for details"
 # define TILE_ERROR				"Unable to create render tiles: aborting render"
