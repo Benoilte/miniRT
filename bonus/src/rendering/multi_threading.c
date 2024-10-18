@@ -6,23 +6,41 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 13:05:11 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/18 12:23:49 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/18 14:55:22 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static int	redirect_stderr_to_log_file(t_data *data)
+void	multi_thread_render(t_data *data, t_thread_info *thread_info)
 {
-	data->errlog_fd = open(ERR_LOG_FILE, O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	if (data->errlog_fd == -1)
-		return (perror(ERR_LOG_FILE), 1);
-	data->stderr_cpy = dup(STDERR_FILENO);
-	if (data->stderr_cpy == 2)
-		return (perror("dup"), -1);
-	if (dup2(data->errlog_fd, STDERR_FILENO) == -1)
-		return (perror("dup2"), 3);
-	return (0);
+	thread_info->count = data->render.thread_count;
+	if (redirect_stderr_to_log_file(data) != 0)
+		exit_error(data, REDIR_STDERR_ERR);
+	thread_info->created = create_threads(data);
+	if (!thread_info->created)
+		exit_error(data, NO_THREAD_ERROR);
+	thread_info->errors = join_threads(data);
+	if (restore_stderr(data) != 0)
+		exit_error(data, RESTORE_STDERR_ERR);
+}
+
+void	*thread_render_routine(void *arg)
+{
+	t_render_info	*info;
+	t_tile			*tile;
+
+	info = (t_render_info *)arg;
+	tile = get_next_tile(&info->data->render.tile_stack);
+	while (tile)
+	{
+		if (render_tile(info, tile) != 0)
+			return (destroy_tile(tile), (void *)1);
+		destroy_tile(tile);
+		update_progress(info->data, 1);
+		tile = get_next_tile(&info->data->render.tile_stack);
+	}
+	return ((void *)0);
 }
 
 int	create_threads(t_data *data)
@@ -30,14 +48,12 @@ int	create_threads(t_data *data)
 	int	i;
 	int	threads_created;
 
-	if (redirect_stderr_to_log_file(data) != 0)
-		exit_error(data, REDIR_STDERR_ERR);
 	i = 0;
 	threads_created = 0;
 	while (i < data->render.thread_count)
 	{
-		if (pthread_create(&data->render.threads[i], NULL, render_strip, \
-							&data->render.blocks[i]))
+		if (pthread_create(&data->render.threads[i], NULL, \
+							thread_render_routine, &data->render.blocks[i]))
 			print_error("create_threads", strerror(errno));
 		else
 			threads_created++;

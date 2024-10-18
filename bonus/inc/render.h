@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:34:54 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/17 15:34:25 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/18 15:07:46 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void		set_pixel_color(t_data *data, int x, int y, int color);
 
 //	render.c
 void		render(t_data *data);
-void		*render_strip(void *arg);
+int			render_tile(t_render_info *info, t_tile *tile);
 
 // render_pixel.c
 int			render_pixel(t_color *color, t_render_info *info, t_pixel *pixel);
@@ -95,6 +95,7 @@ int			set_px_adaptive_sample(t_color *color, t_render_info *info, \
 //	camera.c
 t_camera	camera(t_pixel resolution, float fov);
 t_ray		ray_for_pixel(t_camera c, t_pixel *pixel);
+
 //	view_transform.c
 t_m4x4		view_transform(t_point from, t_vector forward, t_vector up);
 
@@ -119,6 +120,8 @@ int			reflected_color(t_color *color, t_render_info info, \
 float		schlick_approximation(t_details *details);
 
 //	multi_threading.c
+void		multi_thread_render(t_data *data, t_thread_info *thread_info);
+void		*thread_render_routine(void *arg);
 int			create_threads(t_data *data);
 int			join_threads(t_data *data);
 
@@ -132,6 +135,13 @@ int			tile_stack_mutex(t_mutex_type type);
 int			init_tile_stack(t_list **tile_stack, t_pixel end);
 t_tile		*get_next_tile(t_list **tile_stack);
 void		destroy_tile(void *content);
+
+//	render_utils.c
+void		initialize_render(t_data *data, t_thread_info *thread_info);
+void		update_progress(t_data *data, int tile_finished);
+int			display_rendered_image(t_data *data);
+int			redirect_stderr_to_log_file(t_data *data);
+int			restore_stderr(t_data *data);
 
 //	test/time.c
 void		timed_render(t_data *data);

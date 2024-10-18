@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 16:21:39 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/16 15:48:50 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/18 15:09:17 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ typedef struct s_render_info		t_render_info;
 typedef struct s_render				t_render;
 typedef struct s_input_data			t_input_data;
 typedef enum e_mutex_type			t_mutex_type;
+typedef struct s_thread_info		t_thread_info;
 
 #endif

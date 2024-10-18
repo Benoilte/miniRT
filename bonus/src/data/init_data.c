@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:53:19 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/18 12:21:45 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/18 13:53:15 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,13 @@ static t_pixel	get_resolution(t_list *token_list)
 	return (resolution);
 }
 
+static void	set_fds_to_minus_one(t_err_fds *fd)
+{
+	if (!fd)
+		return ;
+	ft_memset(fd, 0xFF, sizeof(t_err_fds));
+}
+
 t_data	*init_data(int argc, char **argv)
 {
 	t_data	*data;
@@ -70,7 +77,6 @@ t_data	*init_data(int argc, char **argv)
 		exit_error(data, INIT_MLX_ERR);
 	if (init_render_settings(data, &data->render) != 0)
 		exit_error(data, INIT_RENDER_ERR);
-	data->stderr_cpy = -1;
-	data->errlog_fd = -1;
+	set_fds_to_minus_one(&data->fd);
 	return (data);
 }

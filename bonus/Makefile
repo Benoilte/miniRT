@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+         #
+#    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/10/17 12:01:42 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/10/18 14:48:19 by bgolding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ REFRACTION_FILES	=	refraction shape_containers_utils init_shape_containers destr
 						reset_shape_containers
 RENDERING_FILES		=	render draw_utils view_transform camera intersect_world color_at reflection \
 						multi_threading multi_threading_utils shadow tiling \
-						render_pixel render_adaptive_sample 
+						render_pixel render_adaptive_sample render_utils
 INTERSECT_FILES		=	clear_intersection hit_intersection new_intersection details_intersection utils
 INTER_LST_FILES		=	inter_lstnew inter_lstiter inter_lstclear inter_lstdelone inter_lstadd_back \
 						inter_lstadd_front inter_lstadd_ordered inter_lstadd_before inter_lstadd_after \

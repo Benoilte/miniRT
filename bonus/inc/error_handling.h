@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:52:04 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/18 12:05:58 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/18 14:55:08 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@
 # define PRINT_MUTEX_INIT_ERR	"Unable to initialize print mutex"
 # define PRINT_MUTEX_DEST_ERR	"Unable to destroy print mutex"
 # define REDIR_STDERR_ERR		"Unable to redirect stderr to log file"
+# define RESTORE_STDERR_ERR		"Unable to restore stderr (was redirected)"
 # define INCOMPLETE_RENDER		"Unable to complete render"
 # define ERR_LOG_INFO			"Consult error log file for details"
 # define TILE_ERROR				"Unable to create render tiles: aborting render"

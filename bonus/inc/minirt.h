@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/18 12:21:10 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/18 13:36:03 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,12 @@ typedef struct s_camera
 	float	half_height;
 }			t_camera;
 
+typedef struct s_err_fds
+{
+	int	stderr_cpy;
+	int	err_log;
+}		t_err_fds;
+
 typedef struct s_data
 {
 	t_input_data	input;
@@ -94,8 +100,7 @@ typedef struct s_data
 	t_camera		*camera;
 	t_render		render;
 	t_pixel			resolution;
-	int				stderr_cpy;
-	int				errlog_fd;
+	t_err_fds		fd;
 }					t_data;
 
 //	PROTOTYPES - DATA
