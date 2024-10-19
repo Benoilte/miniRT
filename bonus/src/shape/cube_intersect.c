@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 21:49:48 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/19 21:41:45 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/19 21:56:39 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static void	check_axis(t_report *min_max, float origin, float direction)
 {
 	float	tmin_numerator;
 	float	tmax_numerator;
-
 
 	tmin_numerator = (-1 - origin);
 	tmax_numerator = (1 - origin);
@@ -33,7 +32,7 @@ static void	check_axis(t_report *min_max, float origin, float direction)
 	else
 	{
 		min_max->t[MIN] = tmax_numerator / direction;
-		min_max->t[MAX] = tmin_numerator / direction;;
+		min_max->t[MAX] = tmin_numerator / direction;
 	}
 }
 
