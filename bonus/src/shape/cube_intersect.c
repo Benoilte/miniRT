@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 21:49:48 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/08 13:28:15 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/19 21:41:45 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,24 @@ static void	check_axis(t_report *min_max, float origin, float direction)
 	float	tmin_numerator;
 	float	tmax_numerator;
 
+
 	tmin_numerator = (-1 - origin);
 	tmax_numerator = (1 - origin);
-	if (greater_or_equalf(fabsf(direction), EPSILON))
+	if (equalf(direction, 0))
+	{
+		min_max->t[MIN] = ft_get_min_or_max_f(tmin_numerator);
+		min_max->t[MAX] = ft_get_min_or_max_f(tmax_numerator);
+	}
+	else if (greater_or_equalf(direction, EPSILON))
 	{
 		min_max->t[MIN] = tmin_numerator / direction;
 		min_max->t[MAX] = tmax_numerator / direction;
 	}
 	else
 	{
-		min_max->t[MIN] = ft_get_min_or_max_f(tmin_numerator);
-		min_max->t[MAX] = ft_get_min_or_max_f(tmax_numerator);
+		min_max->t[MIN] = tmax_numerator / direction;
+		min_max->t[MAX] = tmin_numerator / direction;;
 	}
-	if (min_max->t[MIN] > min_max->t[MAX])
-		ft_swap(min_max->t, min_max->t + 1);
 }
 
 bool	intersect_cube(t_ray *ray, t_shape *shape, t_report *report)
