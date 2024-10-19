@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 08:48:12 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/08 15:18:02 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/19 21:36:45 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	check_intersects_cube(t_inter_lst *intersects, float t1, float t2)
 	float	first_intersect;
 	float	second_intersect;
 
+	if (!intersects)
+		return ;
 	first_intersect = intersects->intersect.t;
 	second_intersect = intersects->next->intersect.t;
 	printf("\ncheck if t1 == %.5f and t2 == %.5f\n", t1, t2);
@@ -60,10 +62,6 @@ void	test_ray_missing_cube(t_world *world, t_ray r)
 
 void	test_intersect_cube(t_data *data)
 {
-	t_shape	*cube;
-
-	cube = add_new_shape_to_world(data->world, CUBE);
-	(void)cube;
 	test_inter_cube(data->world, ray(point(5, 0.5, 0), vector(-1, 0, 0)), 4, 6);
 	test_inter_cube(data->world, ray(point(-5, 0.5, 0), vector(1, 0, 0)), 4, 6);
 	test_inter_cube(data->world, ray(point(0.5, 5, 0), vector(0, -1, 0)), 4, 6);
