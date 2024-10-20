@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 10:05:50 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/23 16:00:03 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/20 14:36:24 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define S_KEY 1
 # define D_KEY 2
 # define G_KEY 5
+# define C_KEY 8
 # define B_KEY 11
 # define Q_KEY 12
 # define W_KEY 13

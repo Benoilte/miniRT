@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/20 16:17:44 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/20 16:26:45 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # include "shape.h"
 # include "light.h"
 # include "refraction.h"
+# include "controls.h"
 
 //	STANDARD LIBRARIES
 # include <errno.h>
