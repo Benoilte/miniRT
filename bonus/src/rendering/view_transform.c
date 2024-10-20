@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:41:01 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/24 18:24:49 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/20 21:32:20 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,9 @@ static t_m4x4	mx_orientation(t_vector forward, t_vector up)
 		{0, 0, 0, 1}}});
 }
 
-t_m4x4	view_transform(t_point from, t_vector forward, t_vector up)
+t_m4x4	view_transform(t_camera *c)
 {
-	t_m4x4	orientation;
-
-	orientation = mx_orientation(forward, up);
-	return (mx_mult(orientation, mx_translation(-from.x, -from.y, -from.z)));
+	return (mx_mult(\
+		mx_orientation(c->forward, c->up), \
+		mx_translation(-(c->from.x), -(c->from.y), -(c->from.z))));
 }

@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 13:26:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/20 16:18:50 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/20 21:29:21 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ t_camera	*init_camera(t_data *data)
 	cam->from = str_to_tuple(element[1], POINT);
 	cam->forward = tp_normalize(str_to_tuple(element[2], VECTOR));
 	cam->up = vector(0, 1, 0);
-	cam->transform = view_transform(cam->from, cam->forward, cam->up);
+	cam->transform = view_transform(cam);
 	cam->transform_inverse = mx_inversion(cam->transform);
 	return (cam);
 }

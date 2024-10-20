@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 16:28:27 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/20 17:01:42 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/20 21:29:57 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ void	apply_camera_control(int keycode, t_camera *camera)
 		move_camera_origin(camera, FORWARD);
 	else if (keycode == S_KEY)
 		move_camera_origin(camera, BACK);
-	camera->transform = view_transform(camera->from, camera->forward, camera->up);
+	camera->transform = view_transform(camera);
 	camera->transform_inverse = mx_inversion(camera->transform);
 }
