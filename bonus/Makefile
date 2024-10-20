@@ -1,3 +1,4 @@
+
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
@@ -31,7 +32,7 @@ PARSING_FILES		=	file_validation lexer tokenize token_utils parser validate_sing
 DATA_FILES			=	init_data destroy_data init_world destroy_world init_input destroy_input init_utils \
 						init_render destroy_render
 WINDOW_FILES		=	init_mlx
-HOOKS_FILES			=	hooks keypress mouse
+HOOKS_FILES			=	hooks keypress mouse mode camera_controls
 REFRACTION_FILES	=	refraction shape_containers_utils init_shape_containers destroy_shape_containers \
 						reset_shape_containers
 RENDERING_FILES		=	render draw_utils view_transform camera intersect_world color_at reflection \
