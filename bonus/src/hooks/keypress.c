@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 13:06:46 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/20 21:49:06 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/20 22:03:34 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	apply_control(int keycode, t_data *data)
 
 	mode = get_mode();
 	if (!mode)
-		return (print_error("keypress", "no mode selected"));
+		return (ft_printf("No mode selected for movement controls\n"));
 	if (mode == MODE_CAMERA)
 		apply_camera_control(keycode, data->camera);
 	timed_render(data);
