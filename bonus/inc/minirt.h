@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/18 13:36:03 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/20 16:17:44 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,15 +76,16 @@ typedef struct s_world
 
 typedef struct s_camera
 {
-	size_t	hsize;
-	size_t	vsize;
-	float	field_of_view;
-	t_m4x4	transform;
-	t_m4x4	transform_inverse;
-	float	pixel_size;
-	float	half_width;
-	float	half_height;
-}			t_camera;
+	t_point		from;
+	t_vector	forward;
+	t_vector	up;
+	float		field_of_view;
+	t_m4x4		transform;
+	t_m4x4		transform_inverse;
+	float		pixel_size;
+	float		half_width;
+	float		half_height;
+}				t_camera;
 
 typedef struct s_err_fds
 {
