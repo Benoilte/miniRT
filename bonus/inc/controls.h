@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 14:39:06 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/21 18:58:30 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/21 21:42:57 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,35 @@ typedef enum e_camera_rotate
 	ROLL_LEFT
 }	t_camera_rotate;
 
+typedef int	(*t_camera_action)(t_camera *, int);
+
+//	hooks.c
+void		set_hooks(t_data *data);
+
+//	keypress.c
+int			keypress(int keycode, t_data *data);
+bool		is_movement_key(int key);
+bool		is_rotation_key(int key);
+bool		is_control_key(int key);
+
+//	mouse.c
+int			mouse_down(int keycode, t_data *data);
+int			mouse_up(int keycode, t_data *data);
+int			mouse_move(int x, int y, t_data *data);
+
 //	mode.c
-int		get_mode(void);
-int		toggle_mode(int toggle);
-bool	editor_is(t_editor_value value);
+int				get_mode(void);
+int				toggle_mode(int toggle);
+bool			editor_is(t_editor_value value);
 
 //	camera_controls.c
-void	apply_camera_control(int keycode, t_camera *camera);
+void			apply_camera_control(int keycode, t_camera *camera);
+
+//	key_utils.c
+bool			is_movement_key(int key);
+bool			is_rotation_key(int key);
+bool			is_control_key(int key);
+t_direction		get_direction(int keycode);
+t_camera_rotate	get_rotate_type(int keycode);
 
 #endif

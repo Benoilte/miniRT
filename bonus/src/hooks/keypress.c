@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 13:06:46 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/21 18:58:44 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/21 21:20:24 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,6 @@ static int	apply_control(int keycode, t_data *data)
 		apply_camera_control(keycode, data->camera);
 	timed_render(data);
 	return (0);
-}
-
-bool	is_control_key(int key)
-{
-	return (key == W_KEY || key == S_KEY || key == A_KEY || key == D_KEY || \
-		key == Q_KEY || key == E_KEY || key == NP_FOUR || key == NP_SIX || \
-		key == NP_EIGHT || key == NP_FIVE || key == NP_SEVEN || key == NP_NINE);
 }
 
 int	keypress(int keycode, t_data *data)
