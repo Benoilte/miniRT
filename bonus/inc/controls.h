@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 14:39:06 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/21 10:07:12 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/21 14:42:07 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 typedef enum e_control_mode
 {
 	MODE_BASE	= 0,
-	MODE_CAMERA	= 1 << 0,
-	MODE_SHAPE	= 1 << 1,
-	MODE_LIGHT	= 1 << 2
+	MODE_CAMERA,
+	MODE_SHAPE,
+	MODE_LIGHT,
 }	t_control_mode;
 
 typedef enum e_direction
