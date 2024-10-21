@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube_intersect.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 21:49:48 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/19 21:56:39 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/21 14:53:13 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,13 @@ static void	check_axis(t_report *min_max, float origin, float direction)
 		min_max->t[MAX] = tmin_numerator / direction;
 	}
 }
+/*
+	The intersection of the ray with a cube will always be those two points: 
+		the largest minimum t value and the smallest maximum t value.
+	
+	If the minimum t is bigger than the maximum t: 
+		it means the ray miss the cube
+*/
 
 bool	intersect_cube(t_ray *ray, t_shape *shape, t_report *report)
 {

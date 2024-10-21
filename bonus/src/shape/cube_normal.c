@@ -3,28 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cube_normal.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 21:48:52 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/08 13:36:18 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/21 11:52:01 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-/*
-​ 	​function​ local_normal_at(cube, point)
-​ 	  maxc ← max(abs(point.x), abs(point.y), abs(point.z))
-​
-​ 	  ​if​ maxc = abs(point.x) ​then​
-​ 	    ​return​ vector(point.x, 0, 0)
-​ 	  ​else​ ​if​ maxc = abs(point.y) ​then​
-​ 	    ​return​ vector(0, point.y, 0)
-​ 	  ​end​ ​if​
-​
-​ 	  ​return​ vector(0, 0, point.z)
-​ 	​end​ ​function
-*/
 
 t_vector	normal_cube(t_shape *shape, t_point *object_point)
 {

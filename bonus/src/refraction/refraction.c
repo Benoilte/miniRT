@@ -3,59 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   refraction.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 09:17:18 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/11 12:28:07 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/21 11:48:16 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-/*
-If the intersection is the hit, set n1 to the refractive index of the last
-object in the containers list. If that list is empty,
-then there is no containing object, and n1 should be set to 1.
-
-If the intersection’s object is already in the containers list,
-then this intersection must be exiting the object.
-Remove the object from the containers list in this case.
-Otherwise, the intersection is entering the object,
-and the object should be added to the end of the list.
-
-If the intersection is the hit, set n2 to the refractive index
-of the last object in the containers list. If that list is empty, then again,
-there is no containing object and n2 should be set to 1.
-
-If the intersection is the hit, terminate the loop here.
-*/
-
-/*
-​ 	​# Find the ratio of first index of refraction to the second.​
-​ 	​# (Yup, this is inverted from the definition of Snell's Law.)​
-​ 	n_ratio ← comps.n1 / comps.n2
-​
-​ 	​# cos(theta_i) is the same as the dot product of the two vectors​
-​ 	cos_i ← dot(comps.eyev, comps.normalv)
-​
-​ 	​# Find sin(theta_t)^2 via trigonometric identity​
-​ 	sin2_t ← n_ratio​^​2 * (1 - cos_i​^​2)
-
-​ 	​# Find cos(theta_t) via trigonometric identity​
-​ 	cos_t ← sqrt(1.0 - sin2_t)
-​
-​ 	​# Compute the direction of the refracted ray​
-​ 	direction ← comps.normalv * (n_ratio * cos_i - cos_t) -
-​ 	             comps.eyev * n_ratio
-​
-​ 	​# Create the refracted ray​
-​ 	refract_ray ← ray(comps.under_point, direction)
-​
-​ 	​# Find the color of the refracted ray, making sure to multiply​
-​ 	​# by the transparency value to account for any opacity​
-​ 	color ← color_at(world, refract_ray, remaining - 1) *
-​ 	         comps.object.material.transparency
-*/
 
 static int	compute_snell_law(t_details *details, \
 								float *n_ratio, \
