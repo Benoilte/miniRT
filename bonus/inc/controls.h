@@ -6,12 +6,14 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 14:39:06 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/21 14:42:07 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/21 18:38:08 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTROLS_H
 # define CONTROLS_H
+
+# define CAM_ROTATE_DEGREES 15
 
 typedef enum e_control_mode
 {

@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 16:28:27 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/21 15:54:46 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/21 18:46:28 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,31 +37,38 @@ static void	move_camera_origin(t_camera *camera, t_direction direction)
 	camera->from = tp_add(camera->from, movement);
 }
 
-static void	rotate_camera(t_camera *cam, t_movement movement)
+static int	tilt_camera(t_camera *cam, t_movement movement)
 {
-	const float	angle = deg_to_rad(15);
+	const float	angle = deg_to_rad(CAM_ROTATE_DEGREES);
+	t_m4x4		rotate;
+
+	if (movement == PITCH_UP)
+		rotate = mx_rodrigues_rotate(get_left(cam->forward, cam->up), angle);
+	else if (movement == PITCH_DOWN)
+		rotate = mx_rodrigues_rotate(get_left(cam->forward, cam->up), -angle);
+	else if (movement == ROLL_RIGHT)
+		rotate = mx_rodrigues_rotate(cam->forward, -angle);
+	else if (movement == ROLL_LEFT)
+		rotate = mx_rodrigues_rotate(cam->forward, angle);
+	else
+		return (print_error("rotate_camemra", "invalid movement"));
+	cam->up = tp_normalize(mx_mult_tuple(rotate, cam->up));
+	cam->forward = tp_normalize(mx_mult_tuple(rotate, cam->forward));
+}
+
+static int	spin_camera(t_camera *cam, t_movement movement)
+{
+	const float	angle = deg_to_rad(CAM_ROTATE_DEGREES);
 	t_m4x4		rotate;
 
 	if (movement == YAW_RIGHT)
 		rotate = mx_rodrigues_rotate(cam->up, angle);
 	else if (movement == YAW_LEFT)
 		rotate = mx_rodrigues_rotate(cam->up, -angle);
-	else if (movement == PITCH_UP)
-	{
-		rotate = mx_rodrigues_rotate(get_left(cam->forward, cam->up), angle);
-		cam->up = tp_normalize(mx_mult_tuple(rotate, cam->up));
-	}
-	else if (movement == PITCH_DOWN)
-	{
-		rotate = mx_rodrigues_rotate(get_left(cam->forward, cam->up), -angle);
-		cam->up = tp_normalize(mx_mult_tuple(rotate, cam->up));
-	}
 	else
-	{
-		print_error("rotate_camemra", "invalid movement");
-		return ;
-	}
+		return (print_error("rotate_camemra", "invalid movement"));
 	cam->forward = tp_normalize(mx_mult_tuple(rotate, cam->forward));
+	return (0);
 }
 
 void	apply_camera_control(int keycode, t_camera *camera)
@@ -78,14 +85,18 @@ void	apply_camera_control(int keycode, t_camera *camera)
 		move_camera_origin(camera, DOWN);
 	else if (keycode == E_KEY)
 		move_camera_origin(camera, UP);
-	else if (keycode == LEFT_KEY)
-		rotate_camera(camera, YAW_LEFT);
-	else if (keycode == RIGHT_KEY)
-		rotate_camera(camera, YAW_RIGHT);
-	else if (keycode == UP_KEY)
-		rotate_camera(camera, PITCH_UP);
-	else if (keycode == DOWN_KEY)
-		rotate_camera(camera, PITCH_DOWN);
+	else if (keycode == NP_FOUR)
+		spin_camera(camera, YAW_LEFT);
+	else if (keycode == NP_SIX)
+		spin_camera(camera, YAW_RIGHT);
+	else if (keycode == NP_EIGHT)
+		tilt_camera(camera, PITCH_UP);
+	else if (keycode == NP_FIVE)
+		tilt_camera(camera, PITCH_DOWN);
+	else if (keycode == NP_SEVEN)
+		tilt_camera(camera, ROLL_LEFT);
+	else if (keycode == NP_NINE)
+		tilt_camera(camera, ROLL_RIGHT);
 	camera->transform = view_transform(camera);
 	camera->transform_inverse = mx_inversion(camera->transform);
 }
