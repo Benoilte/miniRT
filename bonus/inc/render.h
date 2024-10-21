@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:34:54 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/20 21:26:50 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/21 15:52:21 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ t_ray		ray_for_pixel(t_camera c, t_pixel *pixel);
 
 //	view_transform.c
 t_m4x4		view_transform(t_camera *camera);
+t_vector	get_true_up(t_vector forward);
+t_vector	get_left(t_vector forward, t_vector up);
 
 //	intersect_world.c
 int			intersect_world(t_intersect_list **list, t_ray *ray, \

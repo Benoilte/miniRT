@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 13:06:46 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/21 10:11:11 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/21 14:48:53 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ static int	apply_control(int keycode, t_data *data)
 bool	is_control_key(int key)
 {
 	return (key == W_KEY || key == S_KEY || key == A_KEY || key == D_KEY || \
-		key == Q_KEY || key == E_KEY || key == LEFT_KEY || key == RIGHT_KEY);
+		key == Q_KEY || key == E_KEY || key == LEFT_KEY || key == RIGHT_KEY || \
+		key == UP_KEY || key == DOWN_KEY);
 }
 
 int	keypress(int keycode, t_data *data)
