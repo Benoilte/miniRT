@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 10:05:50 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/20 14:36:24 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/21 17:29:13 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,15 @@
 # define EQUAL_KEY 24
 # define MINUS_KEY 27
 # define ESC_KEY 53
-# define NUMPAD_ONE 83
-# define NUMPAD_TWO 84
-# define NUMPAD_THREE 85
-# define NUMPAD_FOUR 86
-# define NUMPAD_FIVE 87
-# define NUMPAD_SIX 88
+# define NP_ONE 83
+# define NP_TWO 84
+# define NP_THREE 85
+# define NP_FOUR 86
+# define NP_FIVE 87
+# define NP_SIX 88
+# define NP_SEVEN 89
+# define NP_EIGHT 91
+# define NP_NINE 92
 # define UP_KEY 126
 # define DOWN_KEY 125
 # define LEFT_KEY 123

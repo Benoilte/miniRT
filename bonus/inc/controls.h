@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   controls.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 14:39:06 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/21 16:20:36 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/21 18:58:30 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTROLS_H
 # define CONTROLS_H
+
+# define CAM_ROTATE_DEGREES 15
 
 typedef enum e_control_mode
 {
@@ -37,7 +39,7 @@ typedef enum e_direction
 	DOWN
 }	t_direction;
 
-typedef enum t_movement
+typedef enum e_camera_rotate
 {
 	PITCH_UP,
 	PITCH_DOWN,
@@ -45,7 +47,7 @@ typedef enum t_movement
 	YAW_RIGHT,
 	ROLL_RIGHT,
 	ROLL_LEFT
-}	t_movement;
+}	t_camera_rotate;
 
 //	mode.c
 int		get_mode(void);
