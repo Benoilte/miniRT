@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 15:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/30 16:49:44 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/21 09:56:45 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,9 @@ float	mx_determinant_2x2(t_m2x2 m);
 float	mx_cofactor(t_m4x4 a, int sub_row, int sub_col);
 float	mx_cofactor_3x3(t_m3x3 a, int sub_row, int sub_col);
 t_m4x4	mx_inversion(t_m4x4 m);
+t_m4x4	mx_skew_symmetric(t_vector v);
+t_m4x4	mx_add(t_m4x4 a, t_m4x4 b);
+t_m4x4	mx_mult_scalar(t_m4x4 m, float s);
 
 //		TRANSFORMATIONS
 
@@ -88,6 +91,7 @@ t_m4x4	mx_scaling(float x, float y, float z);
 t_m4x4	mx_reflection(int axis);
 t_m4x4	mx_rotation(float radians, int axis);
 t_m4x4	mx_shearing(t_shear_params shear);
+t_m4x4	mx_rodrigues_rotate(t_vector axis, float angle);
 
 //		TRANSFORMATION WRAPPERS
 

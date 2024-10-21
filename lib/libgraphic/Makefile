@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
+#    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/06 12:49:52 by bgolding          #+#    #+#              #
-#    Updated: 2024/10/16 20:49:19 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/10/21 09:02:16 by bgolding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ COLOR_SRC 	=	rgb_new rgb_equal rgb_destroy rgb_conversion rgb_add \
 
 MATRIX_SRC	=	error init equal multiply identity transpose submatrix \
 				determinant cofactor inversion translation scaling reflection \
-				rotation shearing
+				rotation shearing skew_symmetric rodrigues_rotation add
 
 MATH_SRC	=	equalf fsquaref angle_conversions
 
