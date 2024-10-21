@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 14:39:06 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/20 17:15:20 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/21 10:07:12 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,16 @@ typedef enum e_direction
 	UP,
 	DOWN
 }	t_direction;
+
+typedef enum t_movement
+{
+	PITCH_UP,
+	PITCH_DOWN,
+	YAW_LEFT,
+	YAW_RIGHT,
+	ROLL_RIGHT,
+	ROLL_LEFT
+}	t_movement;
 
 //	mode.c
 int		get_mode(void);
