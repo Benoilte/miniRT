@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mode.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:11:53 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/20 17:12:57 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/21 16:56:57 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,9 @@ int	toggle_mode(int toggle)
 		*get_mode_ptr() = toggle;
 	print_mode_toggle(toggle);
 	return (0);
+}
+
+bool	editor_is(t_editor_value value)
+{
+	return ((get_mode() && (value == ON)) || (!get_mode() && (value == OFF)));
 }

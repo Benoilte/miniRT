@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color_at.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:38:39 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/11 14:58:24 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/21 16:54:47 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,15 @@ static t_color	no_color(void)
 	return (black);
 }
 
-int	compute_final_color(t_color *color, \
+static int	compute_simple_color(t_color *color, \
+						t_details *details, \
+						t_render_info info)
+{
+	*color = lighting(details, info.data->world->light);
+	return (0);
+}
+
+static int	compute_complex_color(t_color *color, \
 						t_details *details, \
 						t_render_info info, \
 						t_inter_lst *intersects)
@@ -30,15 +38,12 @@ int	compute_final_color(t_color *color, \
 	t_material	material;
 	float		reflectance;
 
-	if (!color || !details)
-		return (print_error("compute_final_color", INVALID_POINTER));
 	if (set_shadow(info.data->world, details) != 0)
 		return (1);
-	surface = lighting(details, info.data->world->light);
 	if (reflected_color(&reflected, info, details) != 0)
 		return (2);
 	if (refracted_color(&refracted, info, details, intersects) != 0)
-		return (2);
+		return (3);
 	material = details->shape->material;
 	if ((material.reflective) && (material.transparency) && (info.depth == 0))
 	{
@@ -46,8 +51,21 @@ int	compute_final_color(t_color *color, \
 		reflected = rgb_scale(reflected, reflectance);
 		refracted = rgb_scale(refracted, 1 - reflectance);
 	}
+	surface = lighting(details, info.data->world->light);
 	*color = rgb_add(rgb_add(surface, reflected), refracted);
 	return (0);
+}
+
+int	compute_final_color(t_color *color, \
+						t_details *details, \
+						t_render_info info, \
+						t_inter_lst *intersects)
+{
+	if (!color || !details)
+		return (print_error("compute_final_color", INVALID_POINTER));
+	if (editor_is(OFF))
+		return (compute_complex_color(color, details, info, intersects));
+	return (compute_simple_color(color, details, info));
 }
 
 int	color_at(t_color *color, t_shape *self, t_ray *ray, t_render_info *info)

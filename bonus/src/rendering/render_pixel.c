@@ -6,7 +6,7 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 17:02:05 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/17 15:48:27 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/21 16:19:46 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	set_px_one_sample(t_color *color, t_render_info *info, t_pixel *px)
 
 int	render_pixel(t_color *color, t_render_info *info, t_pixel *pixel)
 {
-	if (info->aa_sample_precision == AA_ONE_SAMPLE)
+	if ((info->aa_sample_precision == AA_ONE_SAMPLE) || editor_is(ON))
 	{
 		pixel->x_offset = 0.5;
 		pixel->y_offset = 0.5;
