@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/21 21:42:39 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/22 18:58:57 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,11 @@ void		reset_image(t_data *data);
 void		destroy_mlx(t_mlx *mlx);
 //	close_[linux|macos].c
 int			close_minirt(t_data *data);
+
+//	PROTOTYPES HELPER
+
+//	helper.c
+void		helper(void);
 
 //	PROTOTYPES - TESTS
 

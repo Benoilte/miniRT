@@ -50,6 +50,7 @@ SHAPE_FILES			=	init_shapes shape error material normal shape_bonus \
 						cube cube_intersect cube_intersect_utils cube_normal \
 						intersect_shape_utils
 LIGHT_FILES			=	new_light destroy_light lighting
+HELPER_FILES		=	helper
 TEST_FILES			=	print print_utils time reflection_and_refraction reflection_and_refraction_utils \
 						cube cube_utils fresnel_effect
 
@@ -93,6 +94,7 @@ SRC_FILES		=	$(addprefix main/, $(MAIN_FILES)) \
 					$(addprefix ray/, $(RAY_FILES)) \
 					$(addprefix shape/, $(SHAPE_FILES)) \
 					$(addprefix light/, $(LIGHT_FILES)) \
+					$(addprefix helper/, $(HELPER_FILES)) \
 					$(addprefix test/, $(TEST_FILES))
 
 SRCS			=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
