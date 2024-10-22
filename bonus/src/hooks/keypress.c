@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 13:06:46 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/21 21:20:24 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/22 13:54:45 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,38 @@ static int	apply_control(int keycode, t_data *data)
 		return (ft_printf("No mode selected for movement controls\n"));
 	if (mode == MODE_CAMERA)
 		apply_camera_control(keycode, data->camera);
+	else if (mode == MODE_SHAPE_SELECT)
+		return (ft_printf("No shape movmeents added yet\n"));
 	timed_render(data);
 	return (0);
+}
+
+int	switch_editor_mode(void)
+{
+	return (toggle_mode(get_mode() ^ TOGGLE_1_2));
 }
 
 int	keypress(int keycode, t_data *data)
 {
 	if (keycode == ESC_KEY)
 		return (close_minirt(data));
-	if (keycode == C_KEY)
+	if (editor_is(ON))
+	{
+		if (is_control_key(keycode))
+			return (apply_control(keycode, data));
+		if (keycode == TAB_KEY)
+			return (switch_editor_mode());
+		if (keycode == ENTER_KEY)
+		{
+			toggle_mode(get_mode());
+			timed_render(data);
+		}
+	}
+	else if (keycode == E_KEY)
 	{
 		toggle_mode(MODE_CAMERA);
 		timed_render(data);
 		return (0);
 	}
-	if (is_control_key(keycode))
-		return (apply_control(keycode, data));
 	return (0);
 }

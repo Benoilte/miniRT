@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 10:05:50 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/22 08:43:54 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/22 13:19:27 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@
 # define LEFT_KEY 123
 # define RIGHT_KEY 124
 # define SPACE_KEY 49
+# define ENTER_KEY 36
+# define TAB_KEY 48
 
 # define MOUSE_LEFT_CLICK 1
 

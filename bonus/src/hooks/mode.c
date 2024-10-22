@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mode.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:11:53 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/21 16:56:57 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/22 14:00:57 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,32 @@ int	get_mode(void)
 	return (*get_mode_ptr());
 }
 
-static void	print_mode_toggle(t_control_mode toggle)
+static void	print_mode_toggle(void)
 {
-	const char	*control_modes[] = {"BASE", "CAMERA", "SHAPE", "LIGHT"};
+	const char	*control_modes[] = {"BASE", "CAMERA", "SHAPE SELECT", \
+		"RENDER_SETTINGS", "LIGHT"};
+	const int	mode = get_mode();
 
-	if (get_mode())
-		printf("%s mode ON\n", control_modes[toggle]);
+	if (mode)
+		printf("%s mode ON\n", control_modes[mode]);
 	else
-		printf("%s mode OFF\n", control_modes[toggle]);
+		printf("%s mode OFF\n", control_modes[mode]);
 }
 
 int	toggle_mode(int toggle)
 {
-	if (get_mode() == toggle)
+	int	mode;
+
+	mode = get_mode();
+	if (mode == toggle)
+	{
+		if (mode == MODE_SHAPE_SELECT)
+			set_selected_shape(NULL);
 		*get_mode_ptr() = MODE_BASE;
+	}
 	else
 		*get_mode_ptr() = toggle;
-	print_mode_toggle(toggle);
+	print_mode_toggle();
 	return (0);
 }
 

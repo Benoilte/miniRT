@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 14:39:06 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/22 09:38:56 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/22 13:37:54 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 # define CONTROLS_H
 
 # define CAM_ROTATE_DEGREES 15
+# define TOGGLE_1_2 3
 
 typedef enum e_control_mode
 {
 	MODE_BASE	= 0,
 	MODE_CAMERA,
-	MODE_SHAPE,
+	MODE_SHAPE_SELECT,
+	MODE_RENDER_SETTINGS,
 	MODE_LIGHT,
 }	t_control_mode;
 
