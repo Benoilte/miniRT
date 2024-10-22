@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   man_light.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/30 19:05:00 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/22 23:00:31 by bebrandt         ###   ########.fr       */
+/*   Created: 2024/10/23 00:45:18 by bebrandt          #+#    #+#             */
+/*   Updated: 2024/10/23 00:45:46 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	main(int argc, char **argv)
+void	man_light(void)
 {
-	t_data				*data;
-
-	data = init_data(argc, argv);
-	set_hooks(data);
-	timed_render(data);
-	man_minirt();
-	mlx_loop(data->mlx->xvar);
-	destroy_data(data);
-	return (0);
+	return ;
 }
