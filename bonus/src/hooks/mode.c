@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:11:53 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/22 14:00:57 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/22 23:27:56 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	get_mode(void)
 	return (*get_mode_ptr());
 }
 
-static void	print_mode_toggle(void)
+static void	print_mode_toggle(int previous_mode)
 {
 	const char	*control_modes[] = {"BASE", "CAMERA", "SHAPE SELECT", \
 		"RENDER_SETTINGS", "LIGHT"};
@@ -33,7 +33,7 @@ static void	print_mode_toggle(void)
 	if (mode)
 		printf("%s mode ON\n", control_modes[mode]);
 	else
-		printf("%s mode OFF\n", control_modes[mode]);
+		printf("%s mode OFF\n", control_modes[previous_mode]);
 }
 
 int	toggle_mode(int toggle)
@@ -49,7 +49,7 @@ int	toggle_mode(int toggle)
 	}
 	else
 		*get_mode_ptr() = toggle;
-	print_mode_toggle();
+	print_mode_toggle(mode);
 	return (0);
 }
 

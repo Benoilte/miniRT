@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 14:39:06 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/22 17:48:50 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/22 23:05:50 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,8 @@ t_shape			*get_selected_shape(void);
 
 //	shape_controls.c
 int				apply_shape_control(int keycode, t_camera *camera);
+
+//	render_settings.c
+int				apply_render_settings_control(int keycode, t_render *render);
 
 #endif
