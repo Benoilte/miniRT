@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:31:00 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/01 18:05:42 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/22 15:50:11 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	set_default_sphere(t_shape *self)
 const t_vtable	*get_sphere_vtable(void)
 {
 	static const t_vtable	sphere_vtable = {set_default_sphere, set_sphere, \
-	destroy_shape, intersect_sphere, normal_sphere};
+	destroy_shape, intersect_sphere, normal_sphere, move_shape_origin};
 
 	return (&sphere_vtable);
 }
