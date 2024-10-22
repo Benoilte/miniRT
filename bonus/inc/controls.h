@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 14:39:06 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/22 23:05:50 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/23 00:13:40 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 # define CONTROLS_H
 
 # define CAM_ROTATE_DEGREES 15
-# define TOGGLE_1_2 3
+# define TAB_MODE_COUNT 3
 
 typedef enum e_control_mode
 {
 	MODE_BASE	= 0,
 	MODE_CAMERA,
 	MODE_SHAPE_SELECT,
-	MODE_RENDER_SETTINGS,
 	MODE_LIGHT,
+	MODE_RENDER_SETTINGS,
 }	t_control_mode;
 
 typedef enum e_editor_value
@@ -86,6 +86,9 @@ t_shape			*get_selected_shape(void);
 
 //	shape_controls.c
 int				apply_shape_control(int keycode, t_camera *camera);
+
+//	light_controls.c
+void			apply_light_control(int keycode, t_light *light, t_camera *cam);
 
 //	render_settings.c
 int				apply_render_settings_control(int keycode, t_render *render);

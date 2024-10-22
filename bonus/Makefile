@@ -33,7 +33,7 @@ DATA_FILES			=	init_data destroy_data init_world destroy_world init_input destro
 						init_render destroy_render
 WINDOW_FILES		=	init_mlx
 HOOKS_FILES			=	hooks keypress mouse mode camera_controls key_utils shape_selection shape_controls \
-						render_settings
+						render_settings light_controls
 REFRACTION_FILES	=	refraction shape_containers_utils init_shape_containers destroy_shape_containers \
 						reset_shape_containers
 RENDERING_FILES		=	render draw_utils view_transform camera intersect_world color_at reflection \
