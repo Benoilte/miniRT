@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 14:39:06 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/22 13:37:54 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/22 17:48:50 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int				toggle_mode(int toggle);
 bool			editor_is(t_editor_value value);
 
 //	camera_controls.c
+t_vector		get_relative_movement(t_camera *camera, t_direction direction);
 void			apply_camera_control(int keycode, t_camera *camera);
 
 //	key_utils.c
@@ -82,5 +83,8 @@ t_camera_rotate	get_rotate_type(int keycode);
 t_shape			*select_shape(int x, int y, t_data *data);
 void			set_selected_shape(t_shape *new);
 t_shape			*get_selected_shape(void);
+
+//	shape_controls.c
+int				apply_shape_control(int keycode, t_camera *camera);
 
 #endif

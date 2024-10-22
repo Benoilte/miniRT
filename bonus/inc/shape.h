@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shape.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:36:37 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/08 14:16:59 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/22 15:50:23 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ typedef bool		(*t_vintersect)(t_ray *ray, \
 									t_report *report);
 typedef t_vector	(*t_vnormal)(t_shape *shape, t_point *object_point);
 typedef int			(*t_vset)(t_shape *self, char **args, t_world *world);
+typedef void		(*t_vmove)(t_shape *self, t_vector movement);
 
 typedef struct s_vtable
 {
@@ -137,6 +138,7 @@ typedef struct s_vtable
 	t_vdestroy		destroy;
 	t_vintersect	intersect;
 	t_vnormal		normal;
+	t_vmove			move;
 }					t_vtable;
 
 typedef struct s_shape
@@ -204,5 +206,6 @@ float			ft_get_min_f(float x, float y, float z);
 
 //	PROTOTYPES BONUS
 void			set_shape_bonus(t_shape *self, char **args);
+void			move_shape_origin(t_shape *self, t_vector move);
 
 #endif

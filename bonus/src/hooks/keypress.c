@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 13:06:46 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/22 13:54:45 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/22 15:01:19 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ static int	apply_control(int keycode, t_data *data)
 	if (mode == MODE_CAMERA)
 		apply_camera_control(keycode, data->camera);
 	else if (mode == MODE_SHAPE_SELECT)
-		return (ft_printf("No shape movmeents added yet\n"));
-	timed_render(data);
+		if (apply_shape_control(keycode, data->camera) != 0)
+			return (1);
+	render(data);
 	return (0);
 }
 
