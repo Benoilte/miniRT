@@ -6,30 +6,23 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 17:39:23 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/23 16:29:11 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/22 09:58:15 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	mouse_down(int keycode, t_data *data)
+int	mouse_down(int button, int x, int y, t_data *data)
 {
-	(void)keycode;
-	(void)data;
-	return (0);
-}
-
-int	mouse_up(int keycode, t_data *data)
-{
-	(void)keycode;
-	(void)data;
-	return (0);
-}
-
-int	mouse_move(int x, int y, t_data *data)
-{
-	(void)x;
-	(void)y;
-	(void)data;
+	if (button != MOUSE_LEFT_CLICK)
+		return (0);
+	if (select_shape(x, y, data))
+	{
+		print_selected_shape();
+		// toggle_mode(MODE_SHAPE);
+		// timed_render(data);
+	}
+	else
+		ft_printf("Click : No shape found\n");
 	return (0);
 }
