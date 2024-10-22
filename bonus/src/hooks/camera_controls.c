@@ -6,13 +6,13 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 16:28:27 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/21 21:25:26 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/22 17:47:35 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static int	move_camera_origin(t_camera *camera, t_direction direction)
+t_vector	get_relative_movement(t_camera *camera, t_direction direction)
 {
 	t_vector	movement;
 
@@ -30,8 +30,14 @@ static int	move_camera_origin(t_camera *camera, t_direction direction)
 	else if (direction == DOWN)
 		movement = tp_negate(camera->up);
 	else
-		return (print_error("move_camera_origin", "invalid direction"));
-	camera->from = tp_add(camera->from, movement);
+		print_error("move_camera_origin", "invalid direction");
+	return (movement);
+}
+
+static int	move_camera_origin(t_camera *camera, t_direction direction)
+{
+	camera->from = \
+		tp_add(camera->from, get_relative_movement(camera, direction));
 	return (0);
 }
 

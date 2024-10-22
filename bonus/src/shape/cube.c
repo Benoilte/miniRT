@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 21:42:29 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/08 15:53:08 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/22 15:49:54 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ const t_vtable	*get_cube_vtable(void)
 {
 	static const t_vtable	cube_vtable = {\
 		set_default_cube, set_cube, destroy_shape, \
-		intersect_cube, normal_cube};
+		intersect_cube, normal_cube, move_shape_origin};
 
 	return (&cube_vtable);
 }

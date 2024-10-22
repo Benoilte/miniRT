@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 14:28:47 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/01 18:09:02 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/22 15:49:45 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	set_default_plane(t_shape *self)
 const t_vtable	*get_plane_vtable(void)
 {
 	static const t_vtable	plane_vtable = {set_default_plane, set_plane, \
-	destroy_shape, intersect_plane, normal_plane};
+	destroy_shape, intersect_plane, normal_plane, move_shape_origin};
 
 	return (&plane_vtable);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 12:08:50 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/06 11:22:50 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/22 15:49:31 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ const t_vtable	*get_cylinder_vtable(void)
 {
 	static const t_vtable	cylinder_vtable = {\
 		set_default_cylinder, set_cylinder, destroy_shape, \
-		intersect_cylinder, normal_cylinder};
+		intersect_cylinder, normal_cylinder, move_shape_origin};
 
 	return (&cylinder_vtable);
 }
