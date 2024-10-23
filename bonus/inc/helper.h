@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helper.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 22:39:36 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/23 10:11:33 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/23 10:41:32 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 //	PROTOTYPES HELPER
 
 //	man_minirt.c
-void	man_minirt(void);
+int		man_minirt(void);
 void	man_exit_minirt(void);
 void	print_title(char *title);
 void	print_bold_italic(char *msg, char *bold_italic);
@@ -50,7 +50,6 @@ void	man_light_mode(void);
 
 //	man_render_settings.c
 void	man_render_settings(void);
-
 
 //	man_utils.c
 void	print_movement(char *mode);

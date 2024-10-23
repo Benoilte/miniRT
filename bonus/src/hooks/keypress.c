@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 13:06:46 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/23 00:17:51 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/23 10:40:49 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,34 +32,43 @@ static int	apply_control(int keycode, t_data *data)
 	return (0);
 }
 
-int	switch_editor_mode(void)
+static int	switch_editor_mode(void)
 {
 	return (toggle_mode(get_mode() % TAB_MODE_COUNT + 1));
+}
+
+static int	editor_keypress_handler(int keycode, t_data *data)
+{
+	if (is_control_key(keycode))
+		return (apply_control(keycode, data));
+	if (keycode == TAB_KEY)
+		return (switch_editor_mode());
+	if (keycode == ENTER_KEY)
+	{
+		toggle_mode(get_mode());
+		timed_render(data);
+	}
+	return (0);
+}
+
+static int	enter_editor_mode(t_data *data)
+{
+	toggle_mode(MODE_CAMERA);
+	timed_render(data);
+	return (0);
 }
 
 int	keypress(int keycode, t_data *data)
 {
 	if (keycode == ESC_KEY)
 		return (close_minirt(data));
+	if (keycode == H_KEY)
+		return (man_minirt());
 	if (editor_is(ON))
-	{
-		if (is_control_key(keycode))
-			return (apply_control(keycode, data));
-		if (keycode == TAB_KEY)
-			return (switch_editor_mode());
-		if (keycode == ENTER_KEY)
-		{
-			toggle_mode(get_mode());
-			timed_render(data);
-		}
-	}
-	else if (keycode == E_KEY)
-	{
-		toggle_mode(MODE_CAMERA);
-		timed_render(data);
-		return (0);
-	}
-	else if (keycode == R_KEY)
+		return (editor_keypress_handler(keycode, data));
+	if (keycode == E_KEY)
+		return (enter_editor_mode(data));
+	if (keycode == R_KEY)
 		toggle_mode(MODE_RENDER_SETTINGS);
 	return (0);
 }

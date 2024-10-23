@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   man_minirt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 13:30:41 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/23 09:40:50 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/23 10:36:38 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,11 @@ void	man_exit_minirt(void)
 	print_bold_italic(TAB_PRESS_ON, "window cross\n");
 }
 
-void	man_minirt(void)
+int	man_minirt(void)
 {
 	print_title("\n\033[0;33mHOW TO USE MINIRT PROGRAM");
 	man_editor();
 	man_render_settings();
 	man_exit_minirt();
+	return (0);
 }
