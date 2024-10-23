@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 13:06:46 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/23 10:40:49 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/23 11:00:50 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ static int	editor_keypress_handler(int keycode, t_data *data)
 
 static int	enter_editor_mode(t_data *data)
 {
+	ft_printf("Entering EDITOR mode\n");
 	toggle_mode(MODE_CAMERA);
 	timed_render(data);
 	return (0);
