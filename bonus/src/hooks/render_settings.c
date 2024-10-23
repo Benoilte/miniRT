@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_settings.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 22:48:15 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/22 23:56:23 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/23 09:57:30 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	increment_anti_aliasing(t_render *r)
 {
 	const int	wrap = A_A_RANGE_MAX + 1;
 
-	r->master_aa_precision = ++(r->master_aa_precision) % wrap;
+	r->master_aa_precision = (r->master_aa_precision + 1) % wrap;
 	ft_printf("Anti aliasing [0|1|2] set to : %d\n", r->master_aa_precision);
 }
 
@@ -24,7 +24,7 @@ static void	increment_reflective_depth(t_render *r)
 {
 	const int	wrap = DEPTH_RANGE_MAX + 1;
 
-	r->master_reflective_depth = ++(r->master_reflective_depth) % wrap;
+	r->master_reflective_depth = (r->master_reflective_depth + 1) % wrap;
 	ft_printf("Reflective depth [0..20] set to : %d\n", \
 				r->master_reflective_depth);
 }
@@ -33,7 +33,7 @@ static void	increment_refractive_depth(t_render *r)
 {
 	const int	wrap = DEPTH_RANGE_MAX + 1;
 
-	r->master_refractive_depth = ++(r->master_refractive_depth) % wrap;
+	r->master_refractive_depth = (r->master_refractive_depth + 1) % wrap;
 	ft_printf("Refractive depth [0..20] set to : %d\n", \
 				r->master_refractive_depth);
 }
