@@ -51,7 +51,7 @@ SHAPE_FILES			=	init_shapes shape error material normal shape_bonus \
 						cube cube_intersect cube_intersect_utils cube_normal \
 						intersect_shape_utils move
 LIGHT_FILES			=	new_light destroy_light lighting
-HELPER_FILES		=	helper man_editor man_render_setings man_light
+HELPER_FILES		=	man_minirt man_editor man_render_setings man_utils
 TEST_FILES			=	print print_utils time reflection_and_refraction reflection_and_refraction_utils \
 						cube cube_utils fresnel_effect
 
@@ -104,7 +104,7 @@ OBJS			=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 LIB_LINK		=	-L$(LIBFT_DIR) -lft -L$(MINILIBX_DIR) -lmlx -L$(LIBGRAPHIC_DIR) -lgraphic -L$(LIBDLIST) -ldlist $(OS_FLAGS)
 
 CC				=	gcc
-CFLAGS			=	-Wall -Wextra -Werror -pthread -O2
+CFLAGS			=	-Wall -Wextra -Werror -pthread -g
 RM				=	rm -f
 AR				=	ar -r
 
