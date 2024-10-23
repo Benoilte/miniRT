@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 13:32:48 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/08 13:57:07 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/23 11:41:23 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,5 @@ int	validate_window_height(const char *str, int line, t_list **errors)
 		return (log_error(errors, ERR_RES_FORMAT, line));
 	if (!in_range(ft_atoi(str), RES_RANGE_H_MIN, RES_RANGE_H_MAX))
 		return (log_error(errors, ERR_RES_HEIGHT, line));
-	return (0);
-}
-
-int	validate_depth_value(const char *str, int line, t_list **errors)
-{
-	if (!is_real_num(str))
-		return (log_error(errors, ERR_REAL_NUM, line));
-	if (!only_digits(str) || \
-		!(in_range(ft_atoi(str), DEPTH_RANGE_MIN, DEPTH_RANGE_MAX)))
-	{
-		return (log_error(errors, ERR_DEPTH, line));
-	}
 	return (0);
 }

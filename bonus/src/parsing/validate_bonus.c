@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 09:36:07 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/17 07:48:02 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/23 11:44:45 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ int	validate_resolution_parameters(char **args, int line, t_list **errors)
 
 int	validate_depth_parameters(char **args, int line, t_list **errors)
 {
-	const t_info	info[DEPTH_PARAMS] = {INFO_DEPTH, INFO_DEPTH};
+	const t_info	info[DEPTH_PARAMS] = \
+		{INFO_REFLECTIVE_DEPTH, INFO_REFRACTIVE_DEPTH};
 	int				i;
 
 	if (!args || !errors)

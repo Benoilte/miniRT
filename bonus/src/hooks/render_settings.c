@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_settings.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 22:48:15 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/23 09:57:30 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/23 12:02:54 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,33 @@ static void	increment_anti_aliasing(t_render *r)
 	const int	wrap = A_A_RANGE_MAX + 1;
 
 	r->master_aa_precision = (r->master_aa_precision + 1) % wrap;
-	ft_printf("Anti aliasing [0|1|2] set to : %d\n", r->master_aa_precision);
+	ft_printf("Anti aliasing [%d|%d|%d] set to : %d\n", \
+												AA_ONE_SAMPLE, \
+												AA_MEDIUM_SAMPLE, \
+												AA_ADAPTIVE_SAMPLE, \
+												r->master_aa_precision);
 }
 
 static void	increment_reflective_depth(t_render *r)
 {
-	const int	wrap = DEPTH_RANGE_MAX + 1;
+	const int	wrap = REFLECT_RANGE_MAX + 1;
 
 	r->master_reflective_depth = (r->master_reflective_depth + 1) % wrap;
-	ft_printf("Reflective depth [0..20] set to : %d\n", \
-				r->master_reflective_depth);
+	ft_printf("Reflective depth [%d .. %d] set to : %d\n", \
+												REFLECT_RANGE_MIN, \
+												REFLECT_RANGE_MAX, \
+												r->master_reflective_depth);
 }
 
 static void	increment_refractive_depth(t_render *r)
 {
-	const int	wrap = DEPTH_RANGE_MAX + 1;
+	const int	wrap = REFRACT_RANGE_MAX + 1;
 
 	r->master_refractive_depth = (r->master_refractive_depth + 1) % wrap;
-	ft_printf("Refractive depth [0..20] set to : %d\n", \
-				r->master_refractive_depth);
+	ft_printf("Refractive depth [%d .. %d] set to : %d\n", \
+												REFRACT_RANGE_MIN, \
+												REFRACT_RANGE_MAX, \
+												r->master_refractive_depth);
 }
 
 static void	update_render_blocks(t_render *render)
