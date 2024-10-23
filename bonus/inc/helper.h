@@ -6,7 +6,7 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 22:39:36 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/23 09:39:10 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/23 10:11:33 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@
 # define SHAPE_MOVE_TITLE	"\tHow to move SHAPE"
 # define LIGHT_MOVE_TITLE	"\tHow to move LIGHT"
 
-# define TAB_PRESS_KEY		"\tPress on key "
-# define TAB_TAB_PRESS_KEY	"\t\tPress on key "
-# define TAB_TAB_PRESS_NUM	"\t\tPress on numpad key "
-# define TAB_PRESS_ON		"\tPress on the "
+# define TAB_PRESS_KEY		"\tPress key "
+# define TAB_TAB_PRESS_KEY	"\t\tPress key "
+# define TAB_TAB_PRESS_NUM	"\t\tPress numpad key "
+# define TAB_PRESS_ON		"\tPress the "
 
 //	PROTOTYPES HELPER
 
