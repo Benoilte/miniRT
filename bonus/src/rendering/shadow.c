@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shadow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 14:50:29 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/07 18:40:45 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/24 07:34:05 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	is_shadowed(t_shape *self, \
 	if (intersect_world(&intersects, &r1, world) != 0)
 		return (-1);
 	first_hit = get_first_hit(&intersects);
-	set_first_hit_valid(self, &first_hit);
+	set_first_hit_valid(self, &first_hit, details->inside);
 	set_first_hit_opaque(&first_hit);
 	if (first_hit && lower_or_equalf(first_hit->intersect.t, distance))
 	{

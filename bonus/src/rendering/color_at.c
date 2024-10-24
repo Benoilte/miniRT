@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color_at.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:38:39 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/21 16:54:47 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/23 23:11:53 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,10 @@ int	compute_final_color(t_color *color, \
 	return (compute_simple_color(color, details, info));
 }
 
-int	color_at(t_color *color, t_shape *self, t_ray *ray, t_render_info *info)
+int	color_at(	t_color *color, \
+				t_details *prev_inter, \
+				t_ray *ray, \
+				t_render_info *info)
 {
 	t_intersect_list	*intersects;
 	t_intersect_list	*hit;
@@ -81,8 +84,8 @@ int	color_at(t_color *color, t_shape *self, t_ray *ray, t_render_info *info)
 	if (intersect_world(&intersects, ray, info->data->world) != 0)
 		return (2);
 	hit = get_first_hit(&intersects);
-	if (self != NULL)
-		set_first_hit_valid(self, &hit);
+	if (prev_inter != NULL)
+		set_first_hit_valid(prev_inter->shape, &hit, prev_inter->inside);
 	if (!hit)
 		*color = no_color();
 	else

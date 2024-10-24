@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 16:01:08 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/07 18:46:09 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/24 07:41:35 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ void			clear_intersection(void *intersection);
 int				compute_details(t_details *details, t_intersection *hit, \
 								t_ray ray);
 t_inter_lst		*get_first_hit(t_inter_lst **lst);
-void			set_first_hit_valid(t_shape *self, t_inter_lst **first_hit);
+void			set_first_hit_valid(t_shape *self, t_inter_lst **first_hit, \
+									bool inside);
 void			set_over_point(t_details *details);
 void			set_under_point(t_details *details);
 
