@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+         #
+#    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/09/27 11:00:11 by bebrandt         ###   ########.fr        #
+#    Updated: 2024/10/24 18:50:05 by bgolding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRC_DIR			=	src/
 OBJ_DIR			=	obj/
 INC_DIR			=	inc/
 COMMON_INC_DIR	=	../inc/
+DEP_DIR			=	dep/
 LIBFT_DIR 		=	$(LIB)libft/
 MINILIBX_DIR	=	$(LIB)mlx/
 LIBGRAPHIC_DIR	=	$(LIB)libgraphic/
@@ -83,10 +84,13 @@ SRC_FILES		=	$(addprefix main/, $(MAIN_FILES)) \
 SRCS			=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJS			=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
+DEPS			=	$(addprefix $(DEP_DIR), $(addsuffix .d, $(SRC_FILES)))
+
 LIB_LINK		=	-L$(LIBFT_DIR) -lft -L$(MINILIBX_DIR) -lmlx -L$(LIBGRAPHIC_DIR) -lgraphic -L$(LIBDLIST) -ldlist $(OS_FLAGS)
 
 CC				=	gcc
 CFLAGS			=	-Wall -Wextra -Werror -O2
+DEP_FLAGS		=	-MMD -MP -MF $(DEP_DIR)$*.d
 RM				=	rm -f
 AR				=	ar -r
 
@@ -101,6 +105,7 @@ CLEAR_LINE		=	\033[2K
 TOTAL_FILES		=	$(words $(SRCS))
 COMPILED_COUNT	=	0
 
+-include $(DEPS)
 
 all:			$(STATIC_LIBS) $(NAME)
 
@@ -121,10 +126,13 @@ $(OBJ_DIR)%.o:	$(SRC_DIR)%.c
 				@mkdir -p $(dir $@)
 				@$(eval COMPILED_COUNT=$(shell echo $$(($(COMPILED_COUNT) + 1))))
 				@printf "\r$(YELLOW)[$(COMPILED_COUNT)/$(TOTAL_FILES)] Compiling $(TRUE_NAME) files$(DEF_COLOR)"
-				@$(CC) $(CFLAGS) $(INC_PATHS) -c $< -o $@
+				@$(CC) $(CFLAGS) $(DEP_FLAGS) $(INC_PATHS) -c $< -o $@
+
+$(DEP_DIR)%.d:
+				@mkdir -p $(dir $@)
 
 clean:
-				@$(RM) -rf $(OBJ_DIR)
+				@$(RM) -rf $(OBJ_DIR) $(DEP_DIR)
 				@make clean -C $(LIBFT_DIR)
 				@make clean -C $(LIBGRAPHIC_DIR)
 				@make clean -C $(LIBDLIST)

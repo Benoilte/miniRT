@@ -2,6 +2,7 @@
 
 *.a
 *.o
+*.d
 lib/mlx/Linux/test/mlx-test
 miniRT
 miniRT_bonus
