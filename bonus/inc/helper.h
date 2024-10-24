@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helper.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 22:39:36 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/23 10:41:32 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/24 10:39:31 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@
 
 // DEFINES
 
+# define BOLD			"\033[1m"
+# define ITALIC			"\033[3m"
+# define UNDERLINE		"\033[4m"
+# define RESET_FONT		"\033[0m"
+
+# define MINIRT_TITLE		"HOW TO USE MINIRT PROGRAM"
 # define EXIT_TITLE			"How to exit program"
 # define EDITOR_TITLE		"How to use editor mode"
 # define RENDER_TITLE		"How to use render setting mode"

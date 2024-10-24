@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   man_minirt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 13:30:41 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/23 10:36:38 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/24 10:37:06 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ void	print_help_msg(void)
 
 void	print_bold_italic(char *msg, char *bold_italic)
 {
-	ft_printf("%s\033[1m\033[3m%s\033[0m\033[0m", msg, bold_italic);
+	ft_printf("%s"BOLD ITALIC"%s"RESET_FONT, msg, bold_italic);
 }
 
 void	print_title(char *title)
 {
-	ft_printf("\n\033[1m\033[4m%s\033[0m\n\n", title);
+	ft_printf("\n"BOLD UNDERLINE"%s"RESET_FONT"\n\n", title);
 }
 
 void	man_exit_minirt(void)
@@ -37,7 +37,7 @@ void	man_exit_minirt(void)
 
 int	man_minirt(void)
 {
-	print_title("\n\033[0;33mHOW TO USE MINIRT PROGRAM");
+	print_title(MINIRT_TITLE);
 	man_editor();
 	man_render_settings();
 	man_exit_minirt();
