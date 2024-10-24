@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/20 16:56:24 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/22 22:41:26 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # include "light.h"
 # include "refraction.h"
 # include "controls.h"
+# include "helper.h"
 
 //	STANDARD LIBRARIES
 # include <errno.h>
@@ -153,17 +154,6 @@ void		reset_image(t_data *data);
 void		destroy_mlx(t_mlx *mlx);
 //	close_[linux|macos].c
 int			close_minirt(t_data *data);
-
-//	PROTOTYPES - HOOKS (MLX)
-
-//	hooks.c
-void		set_hooks(t_data *data);
-//	keypress.c
-int			keypress(int keycode, t_data *data);
-//	mouse.c
-int			mouse_down(int keycode, t_data *data);
-int			mouse_up(int keycode, t_data *data);
-int			mouse_move(int x, int y, t_data *data);
 
 //	PROTOTYPES - TESTS
 

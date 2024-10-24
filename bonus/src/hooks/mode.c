@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mode.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 17:11:53 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/21 16:56:57 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/23 11:00:59 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,34 @@ int	get_mode(void)
 	return (*get_mode_ptr());
 }
 
-static void	print_mode_toggle(t_control_mode toggle)
+static void	print_mode_toggle(int previous_mode)
 {
-	const char	*control_modes[] = {"BASE", "CAMERA", "SHAPE", "LIGHT"};
+	const char	*control_modes[] = {"BASE", "CAMERA", "SHAPE SELECT", \
+		"LIGHT", "RENDER_SETTINGS"};
+	const int	new_mode = get_mode();
 
-	if (get_mode())
-		printf("%s mode ON\n", control_modes[toggle]);
+	if (new_mode == MODE_BASE)
+	{
+		printf("%s mode OFF\n", control_modes[previous_mode]);
+		if (previous_mode >= MODE_CAMERA && previous_mode <= MODE_LIGHT)
+			ft_printf("Exiting EDITOR mode\n");
+	}
 	else
-		printf("%s mode OFF\n", control_modes[toggle]);
+		printf("%s mode ON\n", control_modes[new_mode]);
 }
 
-int	toggle_mode(int toggle)
+int	toggle_mode(int new_mode)
 {
-	if (get_mode() == toggle)
+	int	previous_mode;
+
+	previous_mode = get_mode();
+	if (previous_mode == MODE_SHAPE_SELECT)
+		set_selected_shape(NULL);
+	if (previous_mode == new_mode)
 		*get_mode_ptr() = MODE_BASE;
 	else
-		*get_mode_ptr() = toggle;
-	print_mode_toggle(toggle);
+		*get_mode_ptr() = new_mode;
+	print_mode_toggle(previous_mode);
 	return (0);
 }
 

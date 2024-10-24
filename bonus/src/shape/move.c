@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time.c                                             :+:      :+:    :+:   */
+/*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/25 11:53:13 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/30 18:59:25 by bgolding         ###   ########.fr       */
+/*   Created: 2024/10/22 14:42:26 by bgolding          #+#    #+#             */
+/*   Updated: 2024/10/22 15:56:21 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	timed_render(t_data *data)
+void	move_shape_origin(t_shape *self, t_vector move)
 {
-	struct timeval	start;
-	struct timeval	end;
-	size_t			ms;
-	float			seconds;
-
-	gettimeofday(&start, NULL);
-	render(data);
-	gettimeofday(&end, NULL);
-	ms = (end.tv_sec - start.tv_sec) * 1000 \
-					+ (end.tv_usec / 1000 - start.tv_usec / 1000);
-	seconds = (float)ms / 1000;
-	printf("Render time: %.3f seconds\n", seconds);
+	self->transform = mx_add_translation(self->transform, \
+		move.x, move.y, move.z);
+	self->inverse = mx_inversion(self->transform);
 }

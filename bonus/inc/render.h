@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:34:54 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/21 15:52:21 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/24 16:02:41 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void		set_pixel_color(t_data *data, int x, int y, int color);
 //	render.c
 void		render(t_data *data);
 int			render_tile(t_render_info *info, t_tile *tile);
+void		timed_render(t_data *data);
 
 // render_pixel.c
 int			render_pixel(t_color *color, t_render_info *info, t_pixel *pixel);
@@ -106,7 +107,7 @@ int			intersect_world(t_intersect_list **list, t_ray *ray, \
 							t_world *world);
 
 //	color_at.c
-int			color_at(t_color *color, t_shape *self, t_ray *ray, \
+int			color_at(t_color *color, t_details *prev_inter, t_ray *ray, \
 							t_render_info *info);
 int			compute_final_color(t_color *color, t_details *details, \
 								t_render_info info, t_inter_lst *intersects);
@@ -144,8 +145,5 @@ void		update_progress(t_data *data, int tile_finished);
 int			display_rendered_image(t_data *data);
 int			redirect_stderr_to_log_file(t_data *data);
 int			restore_stderr(t_data *data);
-
-//	test/time.c
-void		timed_render(t_data *data);
 
 #endif

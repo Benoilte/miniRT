@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:52:04 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/18 14:55:08 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/24 16:08:11 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@
 # define INIT_RENDER_ERR	"Error during render settings initialization"
 
 //	Error messages - multi-threading
-# define CORE_COUNT_ERROR \
-"Unable to detect online cpu cores : using default setting"
+# define CORE_COUNT_ERROR 		"Detect online cpu cores failed : using default"
 # define RES_RENDER_WARN		"Warning: Resolution height not optimal"
 # define THREAD_ERROR			"Thread error detected : aborting render"
 # define NO_THREAD_ERROR		"No threads could be created: aborting render"
@@ -81,7 +80,8 @@
 # define ERRMSG_RES_FORMAT		"Invalid resolution format detected"
 # define ERRMSG_RES_WIDTH		"Invalid resolution width [640 .. 3200]"
 # define ERRMSG_RES_HEIGHT		"Invalid resolution height [480 .. 1800]"
-# define ERRMSG_DEPTH			"Invalid depth parameter [1 .. 10 (int)]"
+# define ERRMSG_REFLECT_RANGE	"Invalid reflective depth range [0 .. 20 (int)]"
+# define ERRMSG_REFRACT_RANGE	"Invalid refractive depth range [0 .. 10 (int)]"
 # define ERRMSG_A_ALIASING		"Invalid anti-aliasing value [0 | 1 | 2]"
 
 //	TYPEDEFS
@@ -106,7 +106,8 @@ typedef enum e_error_code
 	ERR_RES_FORMAT,
 	ERR_RES_WIDTH,
 	ERR_RES_HEIGHT,
-	ERR_DEPTH,
+	ERR_REFLECT_RANGE,
+	ERR_REFRACT_RANGE,
 	ERR_A_ALIASING,
 	ERR_CODE_LIMIT
 }	t_error_code;

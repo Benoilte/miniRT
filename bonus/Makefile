@@ -29,11 +29,13 @@ MAIN_FILES			=	main
 ERROR_FILES			=	error input_error
 PARSING_FILES		=	file_validation lexer tokenize token_utils parser validate_single_element_1 \
 						validate_shape validate_info_1 validate_info_2 validate_utils validate_bonus \
-						validate_bonus_info_1 validate_bonus_info_2 validate_single_element_2
+						validate_bonus_info_1 validate_bonus_info_2 validate_bonus_info_3 \
+						validate_single_element_2
 DATA_FILES			=	init_data destroy_data init_world destroy_world init_input destroy_input init_utils \
 						init_render destroy_render
 WINDOW_FILES		=	init_mlx
-HOOKS_FILES			=	hooks keypress mouse mode camera_controls
+HOOKS_FILES			=	hooks keypress mouse mode camera_controls key_utils shape_selection shape_controls \
+						render_settings light_controls
 REFRACTION_FILES	=	refraction shape_containers_utils init_shape_containers destroy_shape_containers \
 						reset_shape_containers
 RENDERING_FILES		=	render draw_utils view_transform camera intersect_world color_at reflection \
@@ -49,9 +51,10 @@ SHAPE_FILES			=	init_shapes shape error material normal shape_bonus \
 						plane plane_intersect plane_normal \
 						cylinder cylinder_intersect cylinder_normal cylinder_intersect_caps \
 						cube cube_intersect cube_intersect_utils cube_normal \
-						intersect_shape_utils
+						intersect_shape_utils move
 LIGHT_FILES			=	new_light destroy_light lighting
-TEST_FILES			=	print print_utils time reflection_and_refraction reflection_and_refraction_utils \
+HELPER_FILES		=	man_minirt man_editor man_render_setings man_utils
+TEST_FILES			=	print print_utils reflection_and_refraction reflection_and_refraction_utils \
 						cube cube_utils fresnel_effect
 
 # OS specific settings
@@ -94,6 +97,7 @@ SRC_FILES		=	$(addprefix main/, $(MAIN_FILES)) \
 					$(addprefix ray/, $(RAY_FILES)) \
 					$(addprefix shape/, $(SHAPE_FILES)) \
 					$(addprefix light/, $(LIGHT_FILES)) \
+					$(addprefix helper/, $(HELPER_FILES)) \
 					$(addprefix test/, $(TEST_FILES))
 
 SRCS			=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))

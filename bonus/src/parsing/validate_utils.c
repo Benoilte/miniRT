@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 15:49:31 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/17 07:48:36 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/23 11:42:59 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ int	validate_info(const char *str, int line, t_info info, t_list **errors)
 		validate_refraction_index,
 		validate_window_width,
 		validate_window_height,
-		validate_depth_value,
+		validate_reflective_depth,
+		validate_refractive_depth,
 		validate_a_aliasing_value
 	};
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:53:19 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/18 13:53:15 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/22 12:35:00 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ t_data	*init_data(int argc, char **argv)
 	t_data	*data;
 
 	data = ft_calloc(1, sizeof(t_data));
+	set_fds_to_minus_one(&data->fd);
 	if (!data)
 		exit_error(data, INIT_DATA_ERR);
 	if (init_input(&data->input, argc, argv) != 0)
@@ -77,6 +78,5 @@ t_data	*init_data(int argc, char **argv)
 		exit_error(data, INIT_MLX_ERR);
 	if (init_render_settings(data, &data->render) != 0)
 		exit_error(data, INIT_RENDER_ERR);
-	set_fds_to_minus_one(&data->fd);
 	return (data);
 }

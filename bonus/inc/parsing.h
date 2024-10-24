@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/17 07:49:30 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/23 11:46:03 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,10 @@
 # define RES_RANGE_W_MAX	3200
 # define RES_RANGE_H_MIN	480
 # define RES_RANGE_H_MAX	1800
-# define DEPTH_RANGE_MIN	1
-# define DEPTH_RANGE_MAX	20
+# define REFLECT_RANGE_MIN	0
+# define REFLECT_RANGE_MAX	20
+# define REFRACT_RANGE_MIN	0
+# define REFRACT_RANGE_MAX	10
 # define A_A_RANGE_MIN		0
 # define A_A_RANGE_MAX		2
 
@@ -101,7 +103,8 @@ typedef enum e_info
 	INFO_REFRACT_INDEX,
 	INFO_WIN_WIDTH,
 	INFO_WIN_HEIGHT,
-	INFO_DEPTH,
+	INFO_REFLECTIVE_DEPTH,
+	INFO_REFRACTIVE_DEPTH,
 	INFO_A_ALIASING,
 	INFO_COUNT
 }	t_info;
@@ -219,6 +222,7 @@ int		validate_transparency(const char *str, int line, t_list **errors);
 int		validate_refraction_index(const char *str, int line, t_list **errors);
 int		validate_window_width(const char *str, int line, t_list **errors);
 int		validate_window_height(const char *str, int line, t_list **errors);
-int		validate_depth_value(const char *str, int line, t_list **errors);
+int		validate_reflective_depth(const char *str, int line, t_list **errors);
+int		validate_refractive_depth(const char *str, int line, t_list **errors);
 
 #endif

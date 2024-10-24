@@ -1,0 +1,32 @@
+HOW TO WRITE A .rt FILE
+
+◦ Each type of element can be separated by one or more line break(s).
+◦ Each type of information from an element can be separated by one or more space(s).
+◦ Each type of element can be set in any order in the file.
+◦ Elements which are defined by a capital letter can only be declared once in the scene.
+◦ Each element first’s information is the type identifier (composed by one or two character(s)),
+	followed by all specific information for each object in a strict order.
+
+		ELements that should be present only once in the scene:
+
+Ambient lighting:
+
+identifier: 								A
+Ambient lighting ratio in range [0.0,1.0] : 0.2
+R,G,B colors in range [0,255] : 			255,255,255
+
+Camera:
+
+identifier: 												C
+x,y,z coordinates of the view point : 						-50.0,0,20
+3d orientation vector. In range [-1,1] for each x,y,z axis:	0.0,0.0,1.0
+Horizontal field of view in degrees in range [0,180]: 		70
+
+Light:
+
+identifier: 									L
+x,y,z coordinates of the light point: 			-40.0,50.0,0.0
+the light brightness ratio in range [0.0,1.0]:	0.6
+R,G,B colors in range [0,255]:					10, 0, 255
+
+
