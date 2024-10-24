@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:52:04 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/23 11:49:34 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/24 16:08:11 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@
 # define INIT_RENDER_ERR	"Error during render settings initialization"
 
 //	Error messages - multi-threading
-# define CORE_COUNT_ERROR \
-"Unable to detect online cpu cores : using default setting"
+# define CORE_COUNT_ERROR 		"Detect online cpu cores failed : using default"
 # define RES_RENDER_WARN		"Warning: Resolution height not optimal"
 # define THREAD_ERROR			"Thread error detected : aborting render"
 # define NO_THREAD_ERROR		"No threads could be created: aborting render"
