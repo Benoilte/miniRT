@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder_intersect_caps.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 09:32:29 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/01 18:10:10 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:32:24 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ bool	intersect_caps(t_ray *ray, t_shape *cl, t_report *report)
 		report->count++;
 	}
 	t_max = (cl->cylinder.max - ray->origin.y) / ray->direction.y;
-	if (check_cap(ray, &t_max, &rad_max))
+	if ((report->count < 2) && check_cap(ray, &t_max, &rad_max))
 	{
 		report->t[report->count] = t_max;
 		report->count++;
@@ -88,5 +88,5 @@ bool	intersect_caps(t_ray *ray, t_shape *cl, t_report *report)
 		report->t[1] = get_edge_case(&t_min, &t_max, &rad_min, &rad_max);
 		report->count = 2;
 	}
-	return (true);
+	return (report->count);
 }
