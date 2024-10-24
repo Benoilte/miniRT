@@ -105,7 +105,7 @@ OBJS			=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 LIB_LINK		=	-L$(LIBFT_DIR) -lft -L$(MINILIBX_DIR) -lmlx -L$(LIBGRAPHIC_DIR) -lgraphic -L$(LIBDLIST) -ldlist $(OS_FLAGS)
 
 CC				=	gcc
-CFLAGS			=	-Wall -Wextra -Werror -pthread -g
+CFLAGS			=	-Wall -Wextra -Werror -pthread -O2
 RM				=	rm -f
 AR				=	ar -r
 
