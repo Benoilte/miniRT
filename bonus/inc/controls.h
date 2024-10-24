@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 14:39:06 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/23 00:13:40 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/24 15:42:28 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define CONTROLS_H
 
 # define CAM_ROTATE_DEGREES 15
-# define TAB_MODE_COUNT 3
+# define TAB_MODE_COUNT 4
 
 typedef enum e_control_mode
 {
