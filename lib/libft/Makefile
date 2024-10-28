@@ -6,7 +6,7 @@
 #    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/24 11:39:18 by bgolding          #+#    #+#              #
-#    Updated: 2024/10/25 19:55:17 by bgolding         ###   ########.fr        #
+#    Updated: 2024/10/28 11:00:01 by bgolding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ NAME	=	libft.a
 SRC_DIR	=	src/
 OBJ_DIR	=	obj/
 INC_DIR	=	inc/
-DEP_FILE	=	dependencies.a
+DEP_DIR	=	dep/
+
 SRC_F	=	ft_isalpha \
 			ft_isdigit \
 			ft_isalnum \
@@ -70,13 +71,14 @@ SRC_F	=	ft_isalpha \
 
 SRCS	=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_F)))
 OBJS	=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_F)))
+DEPS	=	$(addprefix $(DEP_DIR), $(addsuffix .d, $(SRC_F)))
 
 CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror -O2
-RM			=	rm -f
-AR			=	ar -rc
-
-APPEND_DEPENDENCIES	=	-M $< -I$(INC_DIR) >> $(DEP_FILE)
+DFLAGS		:=	-MMD -MF
+DEP_FILE	=	$(DEP_DIR)$*.d
+RM			:=	rm -f
+AR			:=	ar -rc
 
 DEF_COLOR		=	\033[0;39m
 GREEN			=	\033[0;92m
@@ -88,20 +90,19 @@ COMPILED_COUNT	=	0
 
 all:		$(NAME)
 
-include $(DEP_FILE)
+-include $(DEPS)
 
 $(NAME):	$(OBJS)
 			@$(AR) $@ $(OBJS)
 			@printf "$(CLEAR_LINE)"
 			@echo "\r$(GREEN)$(NAME) ready$(DEF_COLOR)"
 
-$(OBJ_DIR)%.o:		$(SRC_DIR)%.c | $(OBJ_DIR)
+$(OBJ_DIR)%.o:		$(SRC_DIR)%.c | $(DEP_DIR) $(OBJ_DIR)
 					@$(eval COMPILED_COUNT=$(shell echo $$(($(COMPILED_COUNT) + 1))))
 					@printf "\r$(YELLOW)[$(COMPILED_COUNT)/$(TOTAL_FILES)] Compiling libft files$(DEF_COLOR)"
-					@$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
-					@$(CC) $(APPEND_DEPENDENCIES)
+					@$(CC) $(CFLAGS) $(DFLAGS) $(DEP_FILE) -I$(INC_DIR) -c $< -o $@
 
-$(OBJ_DIR):
+$(DEP_DIR) $(OBJ_DIR):
 			@mkdir -p $@
 
 clean:
@@ -110,7 +111,8 @@ clean:
 fclean:		clean
 			@$(RM) $(NAME)
 
-re:			fclean all
+re:			fclean
+			@$(MAKE) all --no-print-directory
 
 
-.PHONY:		all clean fclean re 
+.PHONY:		all clean fclean re
