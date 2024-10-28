@@ -6,13 +6,13 @@
 /*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 10:56:14 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/17 12:17:39 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/28 11:54:05 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static int	set_random_sample(	t_color *color, \
+static int	set_random_sample(	t_color *color_sample, \
 								t_render_info *info, \
 								t_pixel *px, \
 								float offset)
@@ -23,14 +23,14 @@ static int	set_random_sample(	t_color *color, \
 
 	i = -1;
 	sample_pos = 0;
-	while (++i < AA_HALF_SAMPLE_SIZE)
+	while (++i < AA_ADAPTIVE_ROOT_SAMPLE_SIZE)
 	{
 		j = -1;
-		while (++j < AA_HALF_SAMPLE_SIZE)
+		while (++j < AA_ADAPTIVE_ROOT_SAMPLE_SIZE)
 		{
-			px->x_offset = (i + offset) / AA_HALF_SAMPLE_SIZE;
-			px->y_offset = (j + offset) / AA_HALF_SAMPLE_SIZE;
-			if (set_px_one_sample(color + sample_pos, info, px) != 0)
+			px->x_offset = (i + offset) / AA_ADAPTIVE_ROOT_SAMPLE_SIZE;
+			px->y_offset = (j + offset) / AA_ADAPTIVE_ROOT_SAMPLE_SIZE;
+			if (set_px_one_sample(color_sample + sample_pos, info, px) != 0)
 				return (1);
 			sample_pos++;
 		}
@@ -45,7 +45,7 @@ static t_color	sum_color_sample(t_color *color_sample)
 
 	i = 0;
 	sum_color = rgb_set(0, 0, 0);
-	while (i < AA_SAMPLE_SIZE)
+	while (i < AA_ADAPTIVE_SAMPLE_SIZE)
 		sum_color = rgb_add(sum_color, color_sample[i++]);
 	return (sum_color);
 }
@@ -57,9 +57,9 @@ static float	get_variance(t_color *avg_color, t_color *color_samples)
 
 	i = -1;
 	var = 0;
-	while (++i < AA_SAMPLE_SIZE)
+	while (++i < AA_ADAPTIVE_SAMPLE_SIZE)
 		var += rgb_magnitude_squared(rgb_sub(color_samples[i], *avg_color));
-	return (var / AA_SAMPLE_SIZE);
+	return (var / AA_ADAPTIVE_SAMPLE_SIZE);
 }
 
 static t_color	get_avg_color(	t_color *color, \
@@ -74,7 +74,7 @@ static t_color	get_avg_color(	t_color *color, \
 
 int	set_px_adaptive_sample(t_color *color, t_render_info *info, t_pixel *px)
 {
-	t_color	color_samples[AA_SAMPLE_SIZE];
+	t_color	color_samples[AA_ADAPTIVE_SAMPLE_SIZE];
 	t_color	tmp_color;
 	float	offset;
 	int		i;
