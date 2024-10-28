@@ -54,8 +54,6 @@ SHAPE_FILES			=	init_shapes shape error material normal shape_bonus \
 						intersect_shape_utils move
 LIGHT_FILES			=	new_light destroy_light lighting
 HELPER_FILES		=	man_minirt man_editor man_render_setings man_utils
-TEST_FILES			=	print print_utils reflection_and_refraction reflection_and_refraction_utils \
-						cube cube_utils fresnel_effect
 
 # OS specific settings
 UNAME_S			=	$(shell uname -s)
@@ -97,8 +95,7 @@ SRC_FILES		=	$(addprefix main/, $(MAIN_FILES)) \
 					$(addprefix ray/, $(RAY_FILES)) \
 					$(addprefix shape/, $(SHAPE_FILES)) \
 					$(addprefix light/, $(LIGHT_FILES)) \
-					$(addprefix helper/, $(HELPER_FILES)) \
-					$(addprefix test/, $(TEST_FILES))
+					$(addprefix helper/, $(HELPER_FILES))
 
 SRCS			=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJS			=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))

@@ -1,2 +1,0 @@
-Error
-No shapes in world: must have at least 1

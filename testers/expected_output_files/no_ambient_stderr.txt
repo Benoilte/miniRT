@@ -1,2 +1,0 @@
-Error
-Missing Ambient element (A)

@@ -1,2 +1,0 @@
-Error
-Missing Light element (L)
