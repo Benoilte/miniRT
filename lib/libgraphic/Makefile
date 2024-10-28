@@ -6,7 +6,7 @@
 #    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/06 12:49:52 by bgolding          #+#    #+#              #
-#    Updated: 2024/10/21 09:02:16 by bgolding         ###   ########.fr        #
+#    Updated: 2024/10/28 11:27:54 by bgolding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME		=	libgraphic.a
 SRC_DIR		=	src/
 OBJ_DIR		=	obj/
 INC_DIR		=	inc/
+DEP_DIR		=	dep/
 
 TUPLE_SRC	=	error vector point equal add subtract negate multiply divide \
 				magnitude normalize dot_product cross_product reflect
@@ -35,11 +36,14 @@ SRCS		=	$(addprefix $(SRC_DIR)tuples/, $(addsuffix .c, $(TUPLE_SRC))) \
 				$(addprefix $(SRC_DIR)math_utils/, $(addsuffix .c, $(MATH_SRC)))
 
 OBJS		=	$(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRCS))
+DEPS		=	$(patsubst $(SRC_DIR)%.c, $(DEP_DIR)%.d, $(SRCS))
 
 CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror -O2
-RM			=	rm -f
-AR			=	ar -rc
+DFLAGS		:=	-MMD -MF
+DEP_FILE	=	$(DEP_DIR)$*.d
+RM			:=	rm -rf
+AR			:=	ar -rc
 
 DEFAULT		=	\033[0m
 RED			=	\033[0;91m
@@ -52,6 +56,8 @@ COMPILED_COUNT	=	0
 
 all:		$(NAME)
 
+-include $(DEPS)
+
 $(NAME):	$(OBJS)
 			@$(AR) $@ $(OBJS)
 			@printf "$(CLEAR_LINE)"
@@ -59,16 +65,18 @@ $(NAME):	$(OBJS)
 
 $(OBJ_DIR)%.o:	$(SRC_DIR)%.c
 				@mkdir -p $(dir $@)
+				@mkdir -p $(subst $(OBJ_DIR), $(DEP_DIR), $(dir $@))
 				@$(eval COMPILED_COUNT=$(shell echo $$(($(COMPILED_COUNT) + 1))))
 				@printf "\r$(YELLOW)[$(COMPILED_COUNT)/$(TOTAL_FILES)] Compiling libgraphic files$(DEF_COLOR)"
-				@$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
+				@$(CC) $(CFLAGS) $(DFLAGS) $(DEP_FILE) -I$(INC_DIR) -c $< -o $@
 
 clean:
-			@$(RM) -rf $(OBJ_DIR)
+			@$(RM) $(OBJ_DIR) $(DEP_DIR)
 
 fclean:		clean
 			@$(RM) $(NAME)
 
-re:			fclean all
+re:			fclean
+			@$(MAKE) all --no-print-directory
 
 .PHONY:		all clean fclean re
