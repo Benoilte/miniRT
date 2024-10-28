@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 13:05:11 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/18 14:55:22 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/28 15:15:33 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	*thread_render_routine(void *arg)
 		if (render_tile(info, tile) != 0)
 			return (destroy_tile(tile), (void *)1);
 		destroy_tile(tile);
+		reset_shape_container(info->shape_container);
 		update_progress(info->data, 1);
 		tile = get_next_tile(&info->data->render.tile_stack);
 	}
