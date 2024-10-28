@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_pixel.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 17:02:05 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/21 16:19:46 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/27 17:41:40 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,15 @@ static int	set_px_medium_sample(	t_color *color, \
 	t_color	tmp_color;
 	int		res;
 
-	res = 5;
+	res = 4;
 	*color = rgb_set(0, 0, 0);
+	px->x_offset = 0;
+	px->y_offset = 0;
 	while (res > 0)
 	{
 		if (set_px_one_sample(&tmp_color, info, px) != 0)
 			return (1);
 		*color = rgb_add(tmp_color, *color);
-		if (res == 5)
-		{
-			px->x_offset = 0;
-			px->x_offset = 0;
-		}
 		if (res == 4)
 			px->x_offset = 1.0;
 		else if (res == 3)
@@ -39,7 +36,7 @@ static int	set_px_medium_sample(	t_color *color, \
 			px->x_offset = 0.0;
 		res--;
 	}
-	*color = rgb_divide(*color, 5);
+	*color = rgb_divide(*color, 4);
 	return (0);
 }
 
@@ -64,8 +61,6 @@ int	render_pixel(t_color *color, t_render_info *info, t_pixel *pixel)
 	}
 	else if (info->aa_sample_precision == AA_MEDIUM_SAMPLE)
 	{
-		pixel->x_offset = 0.5;
-		pixel->y_offset = 0.5;
 		if (set_px_medium_sample(color, info, pixel) != 0)
 			return (2);
 	}
