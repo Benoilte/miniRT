@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_pixel.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 17:02:05 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/10/27 17:41:40 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/28 12:13:17 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,26 @@ static int	set_px_medium_sample(	t_color *color, \
 									t_pixel *px)
 {
 	t_color	tmp_color;
-	int		res;
+	int		sample_remaining;
 
-	res = 4;
+	sample_remaining = AA_MEDIUM_SAMPLE_SIZE;
 	*color = rgb_set(0, 0, 0);
 	px->x_offset = 0;
 	px->y_offset = 0;
-	while (res > 0)
+	while (sample_remaining > 0)
 	{
 		if (set_px_one_sample(&tmp_color, info, px) != 0)
 			return (1);
 		*color = rgb_add(tmp_color, *color);
-		if (res == 4)
+		if (sample_remaining == 4)
 			px->x_offset = 1.0;
-		else if (res == 3)
+		else if (sample_remaining == 3)
 			px->y_offset = 1.0;
-		else if (res == 2)
+		else if (sample_remaining == 2)
 			px->x_offset = 0.0;
-		res--;
+		sample_remaining--;
 	}
-	*color = rgb_divide(*color, 4);
+	*color = rgb_divide(*color, AA_MEDIUM_SAMPLE_SIZE);
 	return (0);
 }
 
