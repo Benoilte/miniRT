@@ -6,7 +6,7 @@
 #    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/24 11:39:18 by bgolding          #+#    #+#              #
-#    Updated: 2024/10/28 11:00:01 by bgolding         ###   ########.fr        #
+#    Updated: 2024/10/28 11:10:52 by bgolding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,7 +77,7 @@ CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror -O2
 DFLAGS		:=	-MMD -MF
 DEP_FILE	=	$(DEP_DIR)$*.d
-RM			:=	rm -f
+RM			:=	rm -rf
 AR			:=	ar -rc
 
 DEF_COLOR		=	\033[0;39m
@@ -106,7 +106,7 @@ $(DEP_DIR) $(OBJ_DIR):
 			@mkdir -p $@
 
 clean:
-			@$(RM) -rf $(OBJ_DIR) $(DEP_DIR)
+			@$(RM) $(OBJ_DIR) $(DEP_DIR)
 
 fclean:		clean
 			@$(RM) $(NAME)
