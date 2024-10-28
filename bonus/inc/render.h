@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 15:34:54 by bgolding          #+#    #+#             */
-/*   Updated: 2024/10/24 16:02:41 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/28 11:44:23 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,22 @@
 
 //	DEFINES
 
-# define DEFAULT_THREAD_COUNT		4
-# define DEFAULT_REFLECTIVE_DEPTH	5
-# define DEFAULT_REFRACTIVE_DEPTH	5
+# define DEFAULT_THREAD_COUNT			4
+# define DEFAULT_REFLECTIVE_DEPTH		5
+# define DEFAULT_REFRACTIVE_DEPTH		5
 
-# define AA_ONE_SAMPLE				0
-# define AA_MEDIUM_SAMPLE			1
-# define AA_ADAPTIVE_SAMPLE			2
+# define AA_ONE_SAMPLE					0
+# define AA_MEDIUM_SAMPLE				1
+# define AA_ADAPTIVE_SAMPLE				2
 
-# define AA_SAMPLE_SIZE				4
-# define AA_HALF_SAMPLE_SIZE		2
-# define AA_DEPTH					4
-# define AA_VARIANCE_TRESHOLD		0.0001
+# define AA_MEDIUM_SAMPLE_SIZE			4
+# define AA_ADAPTIVE_SAMPLE_SIZE		4
+# define AA_ADAPTIVE_ROOT_SAMPLE_SIZE	2
+# define AA_DEPTH						4
+# define AA_VARIANCE_TRESHOLD			0.0001
 
-# define TILE_WIDTH		32
-# define TILE_HEIGHT	24
+# define TILE_WIDTH						32
+# define TILE_HEIGHT					24
 
 //	TYPEDEFS
 
