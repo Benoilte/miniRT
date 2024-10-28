@@ -1,32 +1,88 @@
 HOW TO WRITE A .rt FILE
 
+Only one element should be defined on a line
+
 ◦ Each type of element can be separated by one or more line break(s).
-◦ Each type of information from an element can be separated by one or more space(s).
 ◦ Each type of element can be set in any order in the file.
-◦ Elements which are defined by a capital letter can only be declared once in the scene.
-◦ Each element first’s information is the type identifier (composed by one or two character(s)),
-	followed by all specific information for each object in a strict order.
+◦ Each type of information from an element can be separated by one or more space(s).
+◦ Each type of information from an element should respect its specific order.
 
-		ELements that should be present only once in the scene:
+◦ first information from an element is its identifier.
+◦ element: [identifier]	[specific_information].
 
-Ambient lighting:
+Elements [A] [C] [L] should be present once in the scene
 
-identifier: 								A
-Ambient lighting ratio in range [0.0,1.0] : 0.2
-R,G,B colors in range [0,255] : 			255,255,255
+	Ambient lighting:
 
-Camera:
+		A	[ratio]			[color]
 
-identifier: 												C
-x,y,z coordinates of the view point : 						-50.0,0,20
-3d orientation vector. In range [-1,1] for each x,y,z axis:	0.0,0.0,1.0
-Horizontal field of view in degrees in range [0,180]: 		70
+	Camera:
 
-Light:
+		C	[position]		[orientation]	[fov]
 
-identifier: 									L
-x,y,z coordinates of the light point: 			-40.0,50.0,0.0
-the light brightness ratio in range [0.0,1.0]:	0.6
-R,G,B colors in range [0,255]:					10, 0, 255
+	Light:
 
+		L	[position]		[ratio]			[color]
+
+	Sphere:
+
+		sp	[position]		[diameter]		[color]
+
+	Plane:
+
+		pl	[position]		[orientation]	[color]
+
+	Cylinder:
+
+		cy	[position]		[orientation]	[diameter]		[height]	[color]
+
+Definition:
+
+	[ratio]			=> 	[float]	in range	[0.0, 1.0]		example:	[0.2]
+	[position]		=>	[x,y,z]								example:	[0.0,0.0,0.0]
+	[orientation]	=>	[x,y,z] in range	[-1.0, 1.0]		example:	[0.0,0.0,1.0]
+	[color]			=>	[R,G,B] in range	[0, 255]		example:	[255,255,255]
+	[fov]			=>	[float]	in range	[0, 180]		example:	[90]
+	[diameter]		=>	[float]								example:	[2]
+	[height]		=>	[float]								example:	[4]
+
+Bonus part:
+
+	Resolution
+
+		R	[windo_width]		[window_height]
+
+	Reflective and refraction depth
+
+		D	[reflective_depth]	[refraction_depth]
+
+	Anti-Aliasiing precision
+
+		AA	[precision]
+
+	Material default for all shape
+
+		M	[diffuse_ratio]		[specular_ratio]	[shininess]	[reflective_ratio]	[transparency_ratio]	[refractive_index]
+
+	cube
+
+		cu	[position]			[orientation]		[width]		[height]			[length]				[color]					[material]
+
+Definition:
+
+	[windo_width]			=>	[int]							example:	[960]
+	[window_height]			=>	[int]							example:	[720]
+	[reflective_depth]		=>	[int]	in range	[0, 20]		example:	[3]
+	[refraction_depth]		=>	[int]	in range	[0, 10]		example:	[3]
+	[precision]				=>	[int]	in range	[0,2]		example:	[2]
+	[diffuse_ratio]			=>	[float]	in range 	[0.0, 1.0]	example:	[0.9]
+	[specular_ratio]		=>	[float]	in range 	[0.0, 1.0]	example:	[0.9]
+	[shininess]				=>	[float]	in range 	[10, 200]	example:	[200]
+	[reflective_ratio]		=>	[float]	in range 	[0.0, 1.0]	example:	[0.4]
+	[transparency_ratio]	=>	[float]	in range 	[0.0, 1.0]	example:	[0.7]
+	[refractive_index]		=>	[float]	in range 	[0, 3]		example:	[1.33]
+	[width]					=>	[float]							example:	[4]
+	[height]				=>	[float]							example:	[2]
+	[length]				=>	[float]							example:	[8]
+	[material]				=> 	at the end of each shape we can add the six value of material to overide material [M] default settings
 
