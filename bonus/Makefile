@@ -109,9 +109,10 @@ LIB_LINK		=	-L$(LIBFT_DIR) -lft -L$(MINILIBX_DIR) -lmlx -L$(LIBGRAPHIC_DIR) -lgr
 
 CC				=	gcc
 CFLAGS			=	-Wall -Wextra -Werror -pthread -O2
-DEP_FLAGS		=	-MMD -MP -MF $(DEP_DIR)$*.d
-RM				=	rm -f
-AR				=	ar -r
+DFLAGS			:=	-MMD -MF
+DEP_FILE		=	$(DEP_DIR)$*.d
+RM				:=	rm -rf
+AR				:=	ar -r
 
 MAKEFLAGS		=	--no-print-directory
 
@@ -124,9 +125,9 @@ CLEAR_LINE		=	\033[2K
 TOTAL_FILES		=	$(words $(SRCS))
 COMPILED_COUNT	=	0
 
--include $(DEPS)
-
 all:			$(STATIC_LIBS) $(NAME)
+
+-include $(DEPS)
 
 $(STATIC_LIBS):
 				@echo "$(YELLOW)Compiling static libraries...$(DEF_COLOR)"
@@ -143,15 +144,13 @@ $(NAME):		$(STATIC_LIBS) $(OBJS)
 
 $(OBJ_DIR)%.o:	$(SRC_DIR)%.c
 				@mkdir -p $(dir $@)
+				@mkdir -p $(subst $(OBJ_DIR), $(DEP_DIR), $(dir $@))
 				@$(eval COMPILED_COUNT=$(shell echo $$(($(COMPILED_COUNT) + 1))))
 				@printf "\r$(YELLOW)[$(COMPILED_COUNT)/$(TOTAL_FILES)] Compiling $(TRUE_NAME) files$(DEF_COLOR)"
-				@$(CC) $(CFLAGS) $(DEP_FLAGS) $(INC_PATHS) -c $< -o $@
-
-$(DEP_DIR)%.d:
-				@mkdir -p $(dir $@)
+				@$(CC) $(CFLAGS) $(DFLAGS) $(DEP_FILE) $(INC_PATHS) -c $< -o $@
 
 clean:
-				@$(RM) -rf $(OBJ_DIR) $(DEP_DIR)
+				@$(RM) $(OBJ_DIR) $(DEP_DIR)
 				@make clean -C $(LIBFT_DIR)
 				@make clean -C $(LIBGRAPHIC_DIR)
 				@make clean -C $(LIBDLIST)
@@ -167,7 +166,8 @@ fcleanlibs:
 				@make fclean -C $(LIBGRAPHIC_DIR)
 				@make fclean -C $(LIBDLIST)
 
-re:				fclean all
+re:				fclean
+				@$(MAKE) all
 
 libft:
 				@make -C $(LIBFT_DIR)
