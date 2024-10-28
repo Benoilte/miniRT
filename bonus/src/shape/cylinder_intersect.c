@@ -6,20 +6,11 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 12:08:41 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/27 09:32:27 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/08 11:02:23 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shape.h"
-
-static void	ft_swap(float *a, float *b)
-{
-	float	tmp;
-
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
-}
+#include "minirt.h"
 
 /*
 	Check If the y coordinate is between the minimum and maxmium values.

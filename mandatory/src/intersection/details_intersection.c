@@ -3,23 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   details_intersection.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 11:30:29 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/26 14:44:54 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/24 08:08:35 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "intersection.h"
 
-static void	set_first_hit_valid(t_shape *self, t_intersect_list **first_hit)
+static void	set_first_hit_valid(t_shape *self, \
+								t_intersect_list **first_hit, \
+								bool inside)
 {
 	t_intersection	*hit;
 
 	if (!*first_hit)
 		return ;
 	hit = ((t_intersection *)((*first_hit)->content));
-	if (hit->shape == self)
+	if ((hit->shape == self) && !inside)
 		*first_hit = (*first_hit)->next;
 }
 
@@ -43,7 +45,7 @@ int	is_shadowed(t_shape *self, \
 	if (intersect_world(&intersects, &r1, world) != 0)
 		return (-1);
 	first_hit = get_first_hit(&intersects);
-	set_first_hit_valid(self, &first_hit);
+	set_first_hit_valid(self, &first_hit, details->inside);
 	if (first_hit && \
 		lower_or_equalf(((t_intersection *)(first_hit->content))->t, distance))
 	{

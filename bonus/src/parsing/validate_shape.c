@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 19:49:36 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/12 13:40:38 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/08 15:23:20 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	validate_sphere(t_token *token, t_list **errors)
 		i++;
 	}
 	if (args[i])
-		return (log_error(errors, ERR_ARG_EXCESS, token->line));
+		return (validate_material_parameters(&args[i], token->line, errors));
 	return (0);
 }
 
@@ -54,7 +54,7 @@ int	validate_plane(t_token *token, t_list **errors)
 		i++;
 	}
 	if (args[i])
-		return (log_error(errors, ERR_ARG_EXCESS, token->line));
+		return (validate_material_parameters(&args[i], token->line, errors));
 	return (0);
 }
 
@@ -78,6 +78,30 @@ int	validate_cylinder(t_token *token, t_list **errors)
 		i++;
 	}
 	if (args[i])
-		return (log_error(errors, ERR_ARG_EXCESS, token->line));
+		return (validate_material_parameters(&args[i], token->line, errors));
+	return (0);
+}
+
+int	validate_cube(t_token *token, t_list **errors)
+{
+	const t_info	info[CUBE_PARAMS] = {\
+	INFO_COORD, INFO_VECTOR, INFO_SIZE, INFO_SIZE, INFO_SIZE, INFO_COLOR};
+	int				i;
+	char			**args;
+
+	if (!token || !token->args || !errors)
+		return (-1);
+	i = 0;
+	args = &token->args[1];
+	while (i < CUBE_PARAMS)
+	{
+		if (!args[i])
+			return (log_error(errors, ERR_ARG_MISSING, token->line));
+		if (validate_info(args[i], token->line, info[i], errors) == -1)
+			return (-1);
+		i++;
+	}
+	if (args[i])
+		return (validate_material_parameters(&args[i], token->line, errors));
 	return (0);
 }

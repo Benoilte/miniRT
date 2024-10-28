@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 16:53:50 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/27 17:04:39 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/07 14:57:13 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ char	**get_element(t_list *token_list, t_id id)
 			return (token->args);
 		token_list = token_list->next;
 	}
-	print_error("get_element", "could not find element in token list");
 	return (NULL);
 }
 

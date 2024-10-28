@@ -1,0 +1,152 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error_handling.h                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/07 15:52:04 by bgolding          #+#    #+#             */
+/*   Updated: 2024/10/24 16:08:11 by bgolding         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef ERROR_HANDLING_H
+# define ERROR_HANDLING_H
+
+//	INCLUDES
+
+# include "forward_declarations.h"
+# include "minirt.h"
+
+//	DEFINES
+
+# define ERR_LOG_FILE	"render_error.log"
+
+//	Error messages - general
+# define EXIT_ERR_MSG		"Exiting program..."
+# define INVALID_POINTER	"invalid (null) pointer passed as argument"
+
+//	Error messages - data initialization
+# define INIT_DATA_ERR		"Unable to allocate memory for primary data"
+# define INIT_INPUT_ERR		"Input error detected"
+# define INIT_WORLD_ERR		"Error during world initialization"
+# define INIT_CAMERA_ERR	"Error during camera initialization"
+# define INIT_MLX_ERR		"Error during MLX initialization"
+# define INIT_RENDER_ERR	"Error during render settings initialization"
+
+//	Error messages - multi-threading
+# define CORE_COUNT_ERROR 		"Detect online cpu cores failed : using default"
+# define RES_RENDER_WARN		"Warning: Resolution height not optimal"
+# define THREAD_ERROR			"Thread error detected : aborting render"
+# define NO_THREAD_ERROR		"No threads could be created: aborting render"
+# define PRINT_MUTEX_INIT_ERR	"Unable to initialize print mutex"
+# define PRINT_MUTEX_DEST_ERR	"Unable to destroy print mutex"
+# define REDIR_STDERR_ERR		"Unable to redirect stderr to log file"
+# define RESTORE_STDERR_ERR		"Unable to restore stderr (was redirected)"
+# define INCOMPLETE_RENDER		"Unable to complete render"
+# define ERR_LOG_INFO			"Consult error log file for details"
+# define TILE_ERROR				"Unable to create render tiles: aborting render"
+# define TILE_MUTEX_INIT_ERR	"Unable to initialize tile stack mutex"
+# define TILE_MUTEX_DEST_ERR	"Unable to destroy tile stack mutex"
+
+//	Error messages - Lexer/Parser
+# define INPUT_ERR_USAGE	"Invalid argument count. Usage: ./miniRT <filename>"
+# define INPUT_ERR_FILENAME "Invalid filename. Expected format: *.rt"
+# define LX_INCOMPLETE 		"Unable to complete lexical analysis"
+# define SYN_CHK_INCOMPLETE	"Unable to complete syntax check"
+# define SYN_CHK_ERROR		"Syntax error(s) detected"
+# define WORLD_ERROR_AMB	"Missing Ambient element (A)"
+# define WORLD_ERROR_CAM	"Missing Camera element (C)"
+# define WORLD_ERROR_LIGHT	"Missing Light element (L)"
+# define WORLD_ERROR_SHAPE	"No shapes in world: must have at least 1"
+# define WORLD_ERROR_LIMIT	"Too many shapes in world"
+
+//	Error messages - Parser line by line feedback
+# define ERRMSG_INVALID_ID 		"Invalid identifier"
+# define ERRMSG_REAL_NUM 		"Invalid number format detected"
+# define ERRMSG_RATIO 			"Invalid ratio [0.0 .. 1.0]"
+# define ERRMSG_POS_NUM 		"Invalid number: expected positive number"
+# define ERRMSG_COLOR 			"Invalid color [R,G,B ints in range [0 .. 255]]"
+# define ERRMSG_FOV 			"Invalid camera field of view [0 .. 180]"
+# define ERRMSG_DUPLICATE 		"Duplicate identifier (only one allowed)"
+# define ERRMSG_VECTOR_RANGE	"Invalid vector element range [-1 .. 1]"
+# define ERRMSG_RANGE_EXCESS 	"Value exceeds permitted range"
+# define ERRMSG_ARG_MISSING 	"Missing parameter(s) for element"
+# define ERRMSG_ARG_EXCESS		"Too many parameters for element"
+# define ERRMSG_VECTOR_ZERO		"Invalid vector: all zero values"
+# define ERRMSG_B_MAT_ARG_MISS	"Missing paremeter(s) for material (bonus)"
+# define ERRMSG_B_SHINE_RANGE	"Invalid shininess range [10 .. 200]"
+# define ERRMSG_B_REFRACT_IDX	"Invalid refraction index range [1 .. 3]"
+# define ERRMSG_RES_FORMAT		"Invalid resolution format detected"
+# define ERRMSG_RES_WIDTH		"Invalid resolution width [640 .. 3200]"
+# define ERRMSG_RES_HEIGHT		"Invalid resolution height [480 .. 1800]"
+# define ERRMSG_REFLECT_RANGE	"Invalid reflective depth range [0 .. 20 (int)]"
+# define ERRMSG_REFRACT_RANGE	"Invalid refractive depth range [0 .. 10 (int)]"
+# define ERRMSG_A_ALIASING		"Invalid anti-aliasing value [0 | 1 | 2]"
+
+//	TYPEDEFS
+
+typedef enum e_error_code
+{
+	ERR_INVALID_ID,
+	ERR_REAL_NUM,
+	ERR_RATIO,
+	ERR_POS_NUM,
+	ERR_COLOR,
+	ERR_FOV,
+	ERR_DUPLICATE,
+	ERR_VECTOR_RANGE,
+	ERR_RANGE_LIMIT,
+	ERR_ARG_MISSING,
+	ERR_ARG_EXCESS,
+	ERR_VECTOR_ZERO,
+	ERR_MAT_ARG_MISSING,
+	ERR_B_SHINE_RANGE,
+	ERR_B_REFRACT_IDX,
+	ERR_RES_FORMAT,
+	ERR_RES_WIDTH,
+	ERR_RES_HEIGHT,
+	ERR_REFLECT_RANGE,
+	ERR_REFRACT_RANGE,
+	ERR_A_ALIASING,
+	ERR_CODE_LIMIT
+}	t_error_code;
+
+typedef struct t_error
+{
+	int		error_type;
+	int		line;
+}			t_error;
+
+typedef enum e_mutex_type
+{
+	MTX_INIT,
+	MTX_DESTROY,
+	MTX_LOCK,
+	MTX_UNLOCK,
+	MTX_LIMIT
+}	t_mutex_type;
+
+typedef struct s_thread_info
+{
+	int	count;
+	int	created;
+	int	errors;
+}		t_thread_info;
+
+//	PROTOTYPES
+
+//	error.c
+void	print_timestamp(void);
+int		print_mutex(t_mutex_type type);
+int		print_error(const char *source, const char *msg);
+void	exit_error(t_data *data, char *message);
+
+//	input_error.c
+int		input_error(t_input_data *input, const char *source, const char *msg);
+int		log_error(t_list **errors, int type, int line);
+
+//	rendering/multi_threading_utils.c
+int		handle_any_thread_errors(t_data *data, t_thread_info thread);
+
+#endif

@@ -1,0 +1,57 @@
+HOW TO USE MINIRT PROGRAM
+
+Press key H for help
+
+How to use editor mode
+
+        Press key E to activate EDITOR and display a simple render.
+        By default, you start in CAMERA mode.
+        Press key TAB to switch between CAMERA | SHAPE | LIGHT mode
+        Press key ENTER to exit EDITOR and display a full render
+
+        Movement Key
+
+                Press key W to move object FORWARD
+                Press key S to move object BACKWARD
+                Press key D to move object RIGHT
+                Press key A to move object LEFT
+                Press key E to move object UP
+                Press key Q to move object DOWN
+
+        Rotation key
+
+                Press numpad key 4 to SPIN LEFT
+                Press numpad key 6 to SPIN RIGHT
+                Press numpad key 8 to TILT UP
+                Press numpad key 5 to TILT DOWN
+                Press numpad key 7 to TILT LEFT
+                Press numpad key 9 to TILT RIGHT
+
+        How to move CAMERA
+
+                Press key TAB and select the CAMERA mode
+                Move it according to the movement and rotation key
+
+        How to move SHAPE
+
+                Press key TAB and select the SHAPE SELECT mode
+                Click on a shape to select it and move it according to the movement key
+                Shape rotation will be implemented later
+
+        How to move LIGHT
+
+                Press key TAB and select the LIGHT mode
+                Move it according to the movement key
+
+How to use render setting mode
+
+        Press key R to activate RENDER SETTINGS mode.
+        Press key A to modify anti-aliasing precision range from 0 to 2
+        Press key Q to modify Reflective depth range from 0 to 20
+        Press key W to modify Refractive depth range from 0 to 20
+        Press key ENTER to exit RENDER SETTINGS mode and display the modification.
+
+How to exit program
+
+        Press key ESC
+        Press the window cross

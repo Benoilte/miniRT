@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dbl_lstnew.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 10:39:00 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/22 09:32:13 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/09 15:13:37 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ t_dbl_lst	*dbl_lstnew(void *content)
 
 	new = (t_dbl_lst *)malloc(sizeof(t_dbl_lst));
 	if (!new)
-	{
-		perror("dbl_lst_new allocation memory");
 		return (NULL);
-	}
 	new->content = content;
 	new->next = NULL;
 	new->prev = NULL;

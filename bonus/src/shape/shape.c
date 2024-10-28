@@ -6,11 +6,11 @@
 /*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 15:54:15 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/10 13:25:12 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/08 09:33:19 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shape.h"
+#include "minirt.h"
 
 bool	invalid_shape_type(t_shape_type type)
 {
@@ -42,6 +42,8 @@ int	set_shape_vtable(t_shape *new, t_shape_type type)
 		new->f = get_plane_vtable();
 	if (type == CYLINDER)
 		new->f = get_cylinder_vtable();
+	if (type == CUBE)
+		new->f = get_cube_vtable();
 	return (0);
 }
 
@@ -62,7 +64,6 @@ t_shape	*create_new_shape(t_shape_type type)
 		return (NULL);
 	}
 	new->f->set_default_shape(new);
-	set_default_material(&new->material);
 	return (new);
 }
 

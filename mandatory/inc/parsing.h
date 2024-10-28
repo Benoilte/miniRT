@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 11:25:52 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/25 11:02:40 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/14 14:30:22 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define LX_SUFFIX 		".rt"
 # define LX_SUFFIX_LEN 	3
 
-# define INPUT_ERR_USAGE	"Invalid input. Usage: ./miniRT <filename>"
+# define INPUT_ERR_USAGE	"Invalid argument count. Usage: ./miniRT <filename>"
 # define INPUT_ERR_FILENAME "Invalid filename. Expected format: *.rt"
 # define LX_INCOMPLETE 		"Unable to complete lexical analysis"
 # define SYN_CHK_INCOMPLETE	"Unable to complete syntax check"
@@ -50,7 +50,7 @@
 # define PLANE_PARAMS 		3
 # define CYLINDER_PARAMS	5
 
-# define WORLD_SHAPE_LIMIT			50
+# define WORLD_SHAPE_LIMIT			70
 # define INPUT_ERROR_REPORT_LIMIT	50
 
 # define ERRMSG_INVALID_ID 		"Invalid identifier"

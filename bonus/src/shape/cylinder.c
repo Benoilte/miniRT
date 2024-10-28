@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 12:08:50 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/27 16:22:19 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/22 15:49:31 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shape.h"
+#include "minirt.h"
 
 void	set_default_cylinder(t_shape *self)
 {
@@ -26,18 +26,18 @@ const t_vtable	*get_cylinder_vtable(void)
 {
 	static const t_vtable	cylinder_vtable = {\
 		set_default_cylinder, set_cylinder, destroy_shape, \
-		intersect_cylinder, normal_cylinder};
+		intersect_cylinder, normal_cylinder, move_shape_origin};
 
 	return (&cylinder_vtable);
 }
 
-int	set_cylinder(t_shape *self, char **args, t_color ambient)
+int	set_cylinder(t_shape *self, char **args, t_world *world)
 {
 	t_point		origin;
 	t_vector	normal;
 	float		radius;
 
-	if (!self || !args)
+	if (!self || !args || !world)
 		return (print_error("set_cylinder", INVALID_POINTER));
 	origin = str_to_tuple(args[1], POINT);
 	normal = tp_normalize(str_to_tuple(args[2], VECTOR));
@@ -48,7 +48,10 @@ int	set_cylinder(t_shape *self, char **args, t_color ambient)
 	self->transform = mx_add_translation(self->transform, \
 											origin.x, origin.y, origin.z);
 	self->inverse = mx_inversion(self->transform);
+	self->material = world->default_material;
 	self->material.color = str_to_rgb(args[5]);
-	self->material.ambient = rgb_mult(self->material.color, ambient);
+	self->material.ambient = rgb_mult(self->material.color, world->ambient);
+	if (args[6])
+		set_shape_bonus(self, &(args[6]));
 	return (0);
 }

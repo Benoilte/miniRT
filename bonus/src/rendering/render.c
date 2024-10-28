@@ -6,60 +6,62 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 12:57:38 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/19 16:09:11 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/24 16:00:29 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void	update_progress(int x)
+int	render_tile(t_render_info *info, t_tile *tile)
 {
-	if (x == 0)
-		ft_printf("Rendering...\n");
-	if (x == WIN_WIDTH - 1)
-		ft_printf("\rRender complete!\n");
-	else
-		ft_printf("\r%i %%", (x * 100) / WIN_WIDTH);
-}
-
-static int	generate_image(t_data *data)
-{
-	int		x;
-	int		y;
-	t_ray	ray;
+	t_pixel	pixel;
 	t_color	color;
 	int		color_int;
 
-	if (!data)
-		return (print_error("generate_image", INVALID_POINTER), 1);
-	x = -1;
-	while (++x < WIN_WIDTH)
+	if (!info || !tile)
+		return (print_error("render_tile", INVALID_POINTER), -1);
+	pixel.y = tile->start.y;
+	while (pixel.y <= tile->end.y)
 	{
-		y = -1;
-		while (++y < WIN_HEIGHT)
+		pixel.x = tile->start.x;
+		while (pixel.x <= tile->end.x)
 		{
-			ray = ray_for_pixel(*(data->camera), x, y);
-			if (color_at(&color, &ray, data->world) != 0)
-				return (1);
+			if (render_pixel(&color, info, &pixel) != 0)
+				return (print_error("render_strip", THREAD_ERROR));
 			color_int = rgb_stoi(color);
 			if (color_int != 0)
-				set_pixel_color(data, x, y, color_int);
+				set_pixel_color(info->data, pixel.x, pixel.y, color_int);
+			pixel.x++;
 		}
-		update_progress(x);
+		pixel.y++;
 	}
 	return (0);
 }
 
 void	render(t_data *data)
 {
+	t_thread_info	thread_info;
+
 	if (!data)
-	{
-		print_error("render", INVALID_POINTER);
 		return ;
-	}
-	reset_image(data);
-	if (generate_image(data) != 0)
-		exit_error(data, "unable to render image: aborting program");
-	mlx_put_image_to_window(data->mlx->xvar, data->mlx->win, \
-							data->mlx->img, 0, 0);
+	initialize_render(data, &thread_info);
+	multi_thread_render(data, &thread_info);
+	handle_any_thread_errors(data, thread_info);
+	display_rendered_image(data);
+}
+
+void	timed_render(t_data *data)
+{
+	struct timeval	start;
+	struct timeval	end;
+	size_t			ms;
+	float			seconds;
+
+	gettimeofday(&start, NULL);
+	render(data);
+	gettimeofday(&end, NULL);
+	ms = (end.tv_sec - start.tv_sec) * 1000 \
+					+ (end.tv_usec / 1000 - start.tv_usec / 1000);
+	seconds = (float)ms / 1000;
+	printf("Render time: %.3f seconds\n", seconds);
 }
