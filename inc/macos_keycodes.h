@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 10:05:50 by bgolding          #+#    #+#             */
-/*   Updated: 2024/08/23 16:00:03 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/23 10:34:31 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 # define A_KEY 0
 # define S_KEY 1
 # define D_KEY 2
+# define H_KEY 4
 # define G_KEY 5
+# define C_KEY 8
 # define B_KEY 11
 # define Q_KEY 12
 # define W_KEY 13
@@ -28,17 +30,24 @@
 # define EQUAL_KEY 24
 # define MINUS_KEY 27
 # define ESC_KEY 53
-# define NUMPAD_ONE 83
-# define NUMPAD_TWO 84
-# define NUMPAD_THREE 85
-# define NUMPAD_FOUR 86
-# define NUMPAD_FIVE 87
-# define NUMPAD_SIX 88
+# define NP_ONE 83
+# define NP_TWO 84
+# define NP_THREE 85
+# define NP_FOUR 86
+# define NP_FIVE 87
+# define NP_SIX 88
+# define NP_SEVEN 89
+# define NP_EIGHT 91
+# define NP_NINE 92
 # define UP_KEY 126
 # define DOWN_KEY 125
 # define LEFT_KEY 123
 # define RIGHT_KEY 124
 # define SPACE_KEY 49
+# define ENTER_KEY 36
+# define TAB_KEY 48
+
+# define MOUSE_LEFT_CLICK 1
 
 # define DESTROYNOTIFY 17
 # define KEYPRESS 2

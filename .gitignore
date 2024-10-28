@@ -2,15 +2,20 @@
 
 *.a
 *.o
+*.d
 lib/mlx/Linux/test/mlx-test
 miniRT
 miniRT_bonus
+*.sh
 
 # test_file
 
 bebrandt_test/*
 test_miniRT
+!testers/*.sh
 
 # unwanted file 
 
 .vscode/
+*.log
+

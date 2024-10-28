@@ -6,7 +6,7 @@
 #    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:21:21 by bgolding          #+#    #+#              #
-#    Updated: 2024/09/27 18:26:18 by bgolding         ###   ########.fr        #
+#    Updated: 2024/10/28 16:24:21 by bgolding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRC_DIR			=	src/
 OBJ_DIR			=	obj/
 INC_DIR			=	inc/
 COMMON_INC_DIR	=	../inc/
+DEP_DIR			=	dep/
 LIBFT_DIR 		=	$(LIB)libft/
 MINILIBX_DIR	=	$(LIB)mlx/
 LIBGRAPHIC_DIR	=	$(LIB)libgraphic/
@@ -81,12 +82,16 @@ SRC_FILES		=	$(addprefix main/, $(MAIN_FILES)) \
 SRCS			=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJS			=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
+DEPS			=	$(addprefix $(DEP_DIR), $(addsuffix .d, $(SRC_FILES)))
+
 LIB_LINK		=	-L$(LIBFT_DIR) -lft -L$(MINILIBX_DIR) -lmlx -L$(LIBGRAPHIC_DIR) -lgraphic -L$(LIBDLIST) -ldlist $(OS_FLAGS)
 
 CC				=	gcc
 CFLAGS			=	-Wall -Wextra -Werror -O2
-RM				=	rm -f
-AR				=	ar -r
+DFLAGS			:=	-MMD -MF
+DEP_FILE		=	$(DEP_DIR)$*.d
+RM				:=	rm -rf
+AR				:=	ar -r
 
 MAKEFLAGS		=	--no-print-directory
 
@@ -99,8 +104,9 @@ CLEAR_LINE		=	\033[2K
 TOTAL_FILES		=	$(words $(SRCS))
 COMPILED_COUNT	=	0
 
-
 all:			$(STATIC_LIBS) $(NAME)
+
+-include $(DEPS)
 
 $(STATIC_LIBS):
 				@echo "$(YELLOW)Compiling static libraries...$(DEF_COLOR)"
@@ -117,12 +123,13 @@ $(NAME):		$(STATIC_LIBS) $(OBJS)
 
 $(OBJ_DIR)%.o:	$(SRC_DIR)%.c
 				@mkdir -p $(dir $@)
+				@mkdir -p $(subst $(OBJ_DIR), $(DEP_DIR), $(dir $@))
 				@$(eval COMPILED_COUNT=$(shell echo $$(($(COMPILED_COUNT) + 1))))
 				@printf "\r$(YELLOW)[$(COMPILED_COUNT)/$(TOTAL_FILES)] Compiling $(TRUE_NAME) files$(DEF_COLOR)"
-				@$(CC) $(CFLAGS) $(INC_PATHS) -c $< -o $@
+				@$(CC) $(CFLAGS) $(DFLAGS) $(DEP_FILE) $(INC_PATHS) -c $< -o $@
 
 clean:
-				@$(RM) -rf $(OBJ_DIR)
+				@$(RM) $(OBJ_DIR) $(DEP_DIR)
 				@make clean -C $(LIBFT_DIR)
 				@make clean -C $(LIBGRAPHIC_DIR)
 				@make clean -C $(LIBDLIST)
@@ -138,7 +145,8 @@ fcleanlibs:
 				@make fclean -C $(LIBGRAPHIC_DIR)
 				@make fclean -C $(LIBDLIST)
 
-re:				fclean all
+re:				fclean
+				@$(MAKE) all
 
 libft:
 				@make -C $(LIBFT_DIR)

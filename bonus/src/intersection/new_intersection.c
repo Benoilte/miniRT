@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_intersection.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 11:35:44 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/08/20 11:04:47 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/09 15:18:15 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_intersection	*new_intersection(t_shape *shape, float t)
 	new = (t_intersection *)malloc(sizeof(t_intersection));
 	if (!new)
 	{
-		perror("new_intersection allocation memory");
+		print_error("new_intersection", strerror(errno));
 		return (NULL);
 	}
 	*new = set_intersection(shape, t);

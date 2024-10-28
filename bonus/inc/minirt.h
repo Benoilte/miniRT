@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:23:05 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/27 18:24:57 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/22 22:41:26 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,16 @@
 //	LOCAL HEADERS
 # include "forward_declarations.h"
 # include "hex_colors.h"
+# include "error_handling.h"
 # include "parsing.h"
+# include "render.h"
 # include "ray.h"
 # include "intersection.h"
 # include "shape.h"
 # include "light.h"
+# include "refraction.h"
+# include "controls.h"
+# include "helper.h"
 
 //	STANDARD LIBRARIES
 # include <errno.h>
@@ -36,24 +41,18 @@
 //	DEFINES
 # define WINDOW_NAME "miniRT"
 
-# define INVALID_POINTER "invalid (null) pointer passed as argument"
-
 //	OS specifics
 # ifdef __APPLE__
 #  include "macos_keycodes.h"
-#  define WIN_WIDTH 900
-#  define WIN_HEIGHT 600
-#  define WIN_MID_X 450
-#  define WIN_MID_Y 300
+#  define DEFAULT_WIN_WIDTH 960
+#  define DEFAULT_WIN_HEIGHT 720
 # endif
 
 # ifdef __linux__
 #  include "linux_keycodes.h"
 #  include <X11/X.h>
-#  define WIN_WIDTH 2400
-#  define WIN_HEIGHT 1600
-#  define WIN_MID_X 1200
-#  define WIN_MID_Y 800
+#  define DEFAULT_WIN_WIDTH 2048
+#  define DEFAULT_WIN_HEIGHT 1536
 # endif
 
 // 	TYPEDEFS
@@ -69,26 +68,32 @@ typedef struct s_mlx
 	int		endian;
 }			t_mlx;
 
-typedef t_list					t_shape_list;
-
 typedef struct s_world
 {
 	t_shape_list	*shapes;
 	t_light			*light;
 	t_color			ambient;
+	t_material		default_material;
 }					t_world;
 
 typedef struct s_camera
 {
-	size_t	hsize;
-	size_t	vsize;
-	float	field_of_view;
-	t_m4x4	transform;
-	t_m4x4	transform_inverse;
-	float	pixel_size;
-	float	half_width;
-	float	half_height;
-}			t_camera;
+	t_point		from;
+	t_vector	forward;
+	t_vector	up;
+	float		field_of_view;
+	t_m4x4		transform;
+	t_m4x4		transform_inverse;
+	float		pixel_size;
+	float		half_width;
+	float		half_height;
+}				t_camera;
+
+typedef struct s_err_fds
+{
+	int	stderr_cpy;
+	int	err_log;
+}		t_err_fds;
 
 typedef struct s_data
 {
@@ -96,66 +101,62 @@ typedef struct s_data
 	t_mlx			*mlx;
 	t_world			*world;
 	t_camera		*camera;
+	t_render		render;
+	t_pixel			resolution;
+	t_err_fds		fd;
 }					t_data;
 
-//	PROTOTYPES
+//	PROTOTYPES - DATA
 
-	//	ERROR HANDLING
+//	init_data.c
+t_data		*init_data(int argc, char **argv);
 
-int					input_error(t_input_data *input, const char *source, \
-															const char *msg);
-int					log_error(t_list **errors, int type, int line);
-void				exit_error(t_data *data, char *message);
-int					print_error(const char *source, const char *msg);
+//	init_world.c
+t_world		*init_world(t_list *token_list);
+t_shape		*add_new_shape_to_world(t_world *world, t_shape_type type);
 
-	//	DATA
+//	init_input.c
+int			init_input(t_input_data *input, int argc, char **argv);
 
-int					init_input(t_input_data *input, int argc, char **argv);
-t_data				*init_data(int argc, char **argv);
-t_world				*init_world(t_list *token_list);
-t_camera			*init_camera(char **str);
-void				destroy_input(t_input_data *input);
-void				destroy_data(t_data *data);
-void				destroy_world(t_world *world);
-void				destroy_camera(t_camera *camera);
-t_shape				*add_new_shape_to_world(t_world *world, t_shape_type type);
-char				**get_element(t_list *token_list, t_id id);
-float				rt_roundf(float val);
-t_tuple				str_to_tuple(char *str, int type);
-t_color				str_to_rgb(char *str);
-t_color				get_ambient(char **str);
+//	init_render.c
+int			init_render_settings(t_data *data, t_render *render);
 
-	//	WINDOW (MLX)
+//	init_utils.c
+char		**get_element(t_list *token_list, t_id id);
+float		rt_roundf(float val);
+t_tuple		str_to_tuple(char *str, int type);
+t_color		str_to_rgb(char *str);
+t_color		get_ambient(char **str);
 
-t_mlx				*init_mlx(void);
-void				destroy_mlx(t_mlx *mlx);
-int					close_minirt(t_data *data);
-void				reset_image(t_data *data);
+//	destroy_data.c
+void		destroy_data(t_data *data);
 
-	//	HOOKS
+//	destroy_world.c
+void		destroy_world(t_world *world);
 
-void				set_hooks(t_data *data);
-int					keypress(int keycode, t_data *data);
-int					mouse_down(int keycode, t_data *data);
-int					mouse_up(int keycode, t_data *data);
-int					mouse_move(int x, int y, t_data *data);
+//	destroy_input.c
+void		destroy_input(t_input_data *input);
 
-	//	DRAW_UTILS
+//	destroy_render.c
+void		destroy_render_settings(t_render *render);
 
-void				set_pixel_color(t_data *data, int x, int y, int color);
+//	render/camera.c
+t_camera	*init_camera(t_data *data);
+void		destroy_camera(t_camera *camera);
 
-	//	RENDER
+//	PROTOTYPES - WINDOW (MLX)
 
-void				render(t_data *data);
-t_m4x4				view_transform(t_point from, t_vector forward, t_vector up);
-t_camera			camera(size_t hsize, size_t vsize, float fov);
-t_ray				ray_for_pixel(t_camera camera, size_t px, size_t py);
-int					intersect_world(t_intersect_list **list, t_ray *ray, \
-									t_world *world);
-int					color_at(t_color *color, t_ray *ray, t_world *world);
+//	init_mlx.c
+t_mlx		*init_mlx(t_pixel resolution);
+void		reset_image(t_data *data);
 
-	// TEST
+//	destroy_mlx_[linux|macos].c
+void		destroy_mlx(t_mlx *mlx);
+//	close_[linux|macos].c
+int			close_minirt(t_data *data);
 
-void				print_color(t_color c, char *msg);
+//	PROTOTYPES - TESTS
+
+void		print_color(t_color c, char *msg);
 
 #endif

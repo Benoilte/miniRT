@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder_normal.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <benoit.brandt@proton.me>         +#+  +:+       +#+        */
+/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 12:08:46 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/12 16:36:14 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/21 11:56:32 by bebrandt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shape.h"
-
-// take the object_point and remove the y component.
+#include "minirt.h"
 
 static bool	hit_upper_cap(t_shape *shape, t_point *object_point, float dist)
 {

@@ -6,11 +6,11 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 18:53:48 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/17 14:55:09 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/01 18:05:23 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shape.h"
+#include "minirt.h"
 
 static t_point	get_object_point(t_m4x4 *inverted, t_point *world_point)
 {

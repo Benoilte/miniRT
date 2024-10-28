@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   sphere_intersect.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bebrandt <bebrandt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 12:51:20 by bgolding          #+#    #+#             */
-/*   Updated: 2024/09/06 14:12:48 by bebrandt         ###   ########.fr       */
+/*   Updated: 2024/10/01 18:08:35 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shape.h"
+#include "minirt.h"
 
 bool	intersect_sphere(t_ray *ray, t_shape *shape, t_report *report)
 {

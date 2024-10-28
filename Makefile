@@ -6,7 +6,7 @@
 #    By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/25 14:03:36 by bebrandt          #+#    #+#              #
-#    Updated: 2024/09/26 16:02:16 by bgolding         ###   ########.fr        #
+#    Updated: 2024/10/28 11:54:18 by bgolding         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,18 +32,20 @@ else
 	exit 1
 endif
 
+MAKEFLAGS		=	--no-print-directory
+
 # Mandatory rules
 
 $(NAME):		mandatory
 
 mandatory:		
-				@make all -C $(MANDATORY_DIR) --no-print-directory
+				@make all -C $(MANDATORY_DIR)
 
 clean:
-				@make clean -C $(MANDATORY_DIR) --no-print-directory
+				@make clean -C $(MANDATORY_DIR)
 
 fclean:
-				@make fclean -C $(MANDATORY_DIR) --no-print-directory
+				@make fclean -C $(MANDATORY_DIR)
 
 re:				fclean mandatory
 
@@ -52,13 +54,13 @@ re:				fclean mandatory
 $(NAME_BONUS):	bonus
 
 bonus:
-				@make all -C $(BONUS_DIR) --no-print-directory
+				@make all -C $(BONUS_DIR)
 
 cleanbonus:
-				@make clean -C $(BONUS_DIR) --no-print-directory
+				@make clean -C $(BONUS_DIR)
 
 fcleanbonus:
-				@make fclean -C $(BONUS_DIR) --no-print-directory
+				@make fclean -C $(BONUS_DIR)
 
 rebonus:		fcleanbonus bonus
 
@@ -73,23 +75,23 @@ fcleanall:		fclean fcleanbonus
 reall:			fcleanall all
 
 fcleanlibs:
-				@make clean -C $(MINILIBX_DIR) --no-print-directory
-				@make fclean -C $(LIBFT_DIR) --no-print-directory
-				@make fclean -C $(LIBGRAPHIC_DIR) --no-print-directory
-				@make fclean -C $(LIBDLIST) --no-print-directory
+				@make clean -C $(MINILIBX_DIR)
+				@make fclean -C $(LIBFT_DIR)
+				@make fclean -C $(LIBGRAPHIC_DIR)
+				@make fclean -C $(LIBDLIST)
 
 
 libft:
-				@make -C $(LIBFT_DIR) --no-print-directory
+				@make -C $(LIBFT_DIR)
 
 libgraphic:
-				@make -C $(LIBGRAPHIC_DIR) --no-print-directory
+				@make -C $(LIBGRAPHIC_DIR)
 
 libdlist:
-				@make -C $(LIBDLIST) --no-print-directory
+				@make -C $(LIBDLIST)
 
 mlx:
-				@make -C $(MINILIBX_DIR) --no-print-directory
+				@make -C $(MINILIBX_DIR)
 
 .PHONY:			mandatory clean fclean re \
 				bonus cleanbonus fcleanbonus rebonus \

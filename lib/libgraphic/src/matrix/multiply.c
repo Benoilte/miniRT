@@ -6,7 +6,7 @@
 /*   By: bgolding <bgolding@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 16:55:50 by bebrandt          #+#    #+#             */
-/*   Updated: 2024/09/06 19:44:53 by bgolding         ###   ########.fr       */
+/*   Updated: 2024/10/21 08:52:02 by bgolding         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,13 @@ t_tuple	mx_mult_tuple(t_m4x4 a, t_tuple tuple)
 	t.w = (a.data[3][0] * tuple.x) + (a.data[3][1] * tuple.y) \
 		+ (a.data[3][2] * tuple.z) + (a.data[3][3] * tuple.w);
 	return (t);
+}
+
+t_m4x4	mx_mult_scalar(t_m4x4 m, float s)
+{
+	return ((t_m4x4){{\
+	{m.data[0][0] * s, m.data[0][1] * s, m.data[0][2] * s, m.data[0][3] * s}, \
+	{m.data[1][0] * s, m.data[1][1] * s, m.data[1][2] * s, m.data[1][3] * s}, \
+	{m.data[2][0] * s, m.data[2][1] * s, m.data[2][2] * s, m.data[2][3] * s}, \
+	{m.data[3][0] * s, m.data[3][1] * s, m.data[3][2] * s, m.data[3][3] * s}}});
 }
